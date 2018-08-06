@@ -1,5 +1,5 @@
 <?php 
-include("db/conexion.php");
+require_once("db/conexion.php");
 require_once('validaciones.php');
 /**
  * 

@@ -21,7 +21,6 @@ $conexion = mysqli_connect( $servidor, $usuario, '', $basededatos) or die ("No s
 return $conexion;
 	}
 
-
 }
 
 

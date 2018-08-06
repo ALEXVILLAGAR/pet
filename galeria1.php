@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once("db/onexion.php");
+require_once("db/conexion.php");
 require_once("ControlClass.php");
 if(!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)){
 	header('Location: index.php');
