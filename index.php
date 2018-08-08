@@ -1,5 +1,11 @@
-
-<?PHP session_start(); ?>
+<?PHP session_start();
+require_once("ControlClass.php");
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+	$var = isset($_SESSION['user']['tipo']);
+}else{
+	$no_login = true;
+}
+ ?>
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -64,7 +70,7 @@
 		}else{
 		?>
 		 	<li class="nav-item">
-	            <button class="btn btn-outline-info" > <a class="nav-link js-scroll-trigger" href="ruta.php?variable=cerrar"> cerrar sesion</a>
+	            <button class="btn btn-outline-info" > <a class="nav-link js-scroll-trigger" href="ruta.php?variable=cerrar_login"> cerrar sesion</a>
 	            </button>
 	         </li>
 <?php   
@@ -214,6 +220,8 @@
 	    </section>
 
 <!--sesion para las donaciones-->
+<?php if($var){
+ ?>
 	    <section id="services">
 	      <div class="container">
 	        <div class="row">
@@ -258,7 +266,9 @@
 	        <img class="card-img-bottom" height="500" src="https://images.pastatic.com/Content/ImagesContent/2544/122060/Imagen_Tres_Guru_Donaton.jpg?w=900" alt="Card image cap">
 	      </div>
 	    </section>
-
+<?php
+}
+?>
 <!--sesion para nuestras mascotas-->
 	    <section class="p-0" id="portfolio">
 	      <div class="container-fluid p-0">
@@ -466,7 +476,9 @@
 	      <div class="container text-center">
 	        <h2 class="mb-4">Si aun no estas registrado, registrate y disfrutas de todos nuestros servicios</h2>
 	        <a class="btn btn-light btn-xl sr-button" href="#"data-toggle="modal" data-target="#modalLRForm">Registrar o ingresar</a>
-	      </div>	      
+	         <a class="btn btn-light btn-xl sr-button" href="#"data-toggle="modal" data-target="#fundacion">Soy una fundacion</a>
+	      </div>	
+
 	    </section>
 
 	<!-- Footer -->
@@ -523,26 +535,16 @@
         <form>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">cantidad en pesos:</label>
-            <select name="OS">
-               <option value="0">0</option> 
-               <option value="1">1000</option> 
-               <option value="2">2000</option> 
-               <option value="3">3000</option>
-               <option value="10">4000</option> 
-               <option value="11">5000</option> 
-               <option value="12">6000</option> 
-            </select>
+            <input type="number" name="monto" value="1000" min="1000">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">para cual fundacion?:</label>
              <select name="OS">
                <option value="0"> </option> 
-               <option value="1">entidad1</option> 
-               <option value="2">entidad2</option> 
-               <option value="3">entidad3</option>
-               <option value="10">entidad4</option> 
-               <option value="11">entidad5</option> 
-               <option value="12">entidad6</option> 
+               <?php $fundaciones = Fundacion::fundaciones();  
+               	foreach ($fundaciones as $element) {
+               		echo "<option value=".$element['nombre'].">".$element['nombre']."</option>";               	}
+               ?>
             </select>
             
           </div>
@@ -662,6 +664,111 @@
 	</div>
 	<!-- final del Modal: Login / Register -->
 
+ <!--Modal: Login / Register para fundaciones-->
+	<div class="modal fade" id="fundacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog cascading-modal" role="document">
+	        <!--Content-->
+	        <div class="modal-content">
+
+	            <!--Modal cascading tabs-->
+	            <div class="modal-c-tabs">
+
+	                <!-- Nav tabs -->
+	                <ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
+	                    <li class="nav-item">
+	                        <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i>ingresar</a>
+	                    </li>
+	                    <li class="nav-item">
+	                        <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fa fa-user-plus mr-1"></i> registrarme</a>
+	                    </li>
+	                </ul>
+
+	                <!-- Tab panels -->
+	                <div class="tab-content">
+	                    <!--Panel 7-->
+	                    <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+	                        <!--Body-->
+	                        <div class="modal-body mb-1 registrar">
+	                           <form class="login-form" action="ruta.php?variable=login_fundacion" method="POST">
+	  <div class="form-group">
+	    <label for="exampleInputEmail1" class="text-uppercase">Email</label>
+	    <input type="text" class="form-control" placeholder="......." id="email" name="correo" method="POST">
+	    
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1" class="text-uppercase" >contraseña</label>
+	    <input type="password" class="form-control" placeholder="***********" name="clave" id="clave" method="POST">
+	  </div>
+	  
+	  
+	    <div class="form-check">
+	    <label class="form-check-label">
+	      <input type="checkbox" class="form-check-input">
+	      <small>Remember Me</small>
+	    </label>
+	    <button type="submit" class="btn btn-login float-right">Entrar</button>
+	  </div>
+	</form>
+	                        </div>
+	                        <!--Footer-->
+	                        <div class="modal-footer">
+	                            <div class="options text-center text-md-right mt-1">
+	                                <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
+	                                <p>¿Se te olvidó tu contraseña? <a href="#" class="blue-text">recuperar</a></p>
+	                            </div>
+	                            <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">cerrar</button>
+	                        </div>
+
+	                    </div>
+	                    <!--/.Panel 7-->
+
+	                    <!--Panel 8 formulario para registrar-->
+
+	                    <div class="tab-pane fade" id="panel8" role="tabpanel">
+
+	                        <!--Body-->
+	                        <div class="modal-body registrar1">
+	                            <div class="md-form form-sm mb-5">
+	                                <i class="fa fa-envelope prefix"></i>
+	                                <input type="email" id="modalLRInput12" class="form-control form-control-sm validate">
+	                                <label data-error="wrong" data-success="right" for="modalLRInput12">correo</label>
+	                            </div>
+
+	                            <div class="md-form form-sm mb-5">
+	                                <i class="fa fa-lock prefix"></i>
+	                                <input type="password" id="modalLRInput13" class="form-control form-control-sm validate">
+	                                <label data-error="wrong" data-success="right" for="modalLRInput13">contraseña</label>
+	                            </div>
+
+	                            <div class="md-form form-sm mb-4">
+	                                <i class="fa fa-lock prefix"></i>
+	                                <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
+	                                <label data-error="wrong" data-success="right" for="modalLRInput14">comprobar contraseña</label>
+	                            </div>
+
+	                            <div class="text-center form-sm mt-2">
+	                                <button class="btn btn-info">registrarme <i class="fa fa-sign-in ml-1"></i></button>
+	                            </div>
+
+	                        </div>
+	                        <!--Footer-->
+	                        <div class="modal-footer">
+	                            <div class="options text-right">
+	                                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+	                            </div>
+	                            <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+	                        </div>
+	                    </div>
+	                    <!--/.Panel 8-->
+	                </div>
+
+	            </div>
+	        </div>
+	        <!--/.Content-->
+	    </div>
+	</div>
+	<!-- final del Modal: Login / Register -->
 
 <!-- Modal para verificar cerrar seíón-->
 				<div class="modal fade" id="cerrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

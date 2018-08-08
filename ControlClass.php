@@ -20,22 +20,23 @@ class Control
 		header('Location: index.php');
 	}
 
-	public static function login(){
-		//Validacion::validar_email($_POST);		
-		session_start();
-		$consulta = "SELECT * FROM usuario WHERE email = '".$_POST['correo']."' && contra = '".$_POST['clave']."'";
-
+	public static function login($table='usuario'){
+		//Validacion::validar_email($_POST);
+			$consulta = "SELECT * FROM $table WHERE email = '".$_POST['correo']."' && clave = '".$_POST['clave']."'";			
 		$resultado = mysqli_query(self::$db, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 		$fila =  mysqli_fetch_array($resultado);
-		 
-		// if(password_verify($_POST['clave'],$fila['contra'])){
-		if($_POST['clave']===$fila['contra']){
+		
+		// if(password_verify($_POST['clave'],$fila['clave'])){
+		if($_POST['clave']===$fila['clave']){
+			session_start();
 			$_SESSION['loggedin'] = true;
 			$_SESSION['user'] = $fila;
 			$_SESSION['start'] = time();
 		    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
-
-			if($fila['tipo']==='admi'){
+		    if($table==='fundacion'){
+		    	header('Location: entidad1.php');
+		    }
+			elseif($fila['tipo']==='admi'){
 			    header('Location: entidad1.php');     
 			} 
 			elseif($fila['tipo']==='usuario'){ 
@@ -103,7 +104,7 @@ class Usuario
 	}
 
 	public function uptade_user(){ //$_POST valores de la actualizacion 
-		$insertion = mysqli_query($this->db,"UPDATE usuario SET nombre='$_POST[nombre]',documento='$_POST[documento]',direccion= '$_POST[direccion]', valoracion='$_POST[valoracion]', estado='$_POST[estado]', contra='$_POST[contra]', email='$_POST[email]', tipo='$_POST[tipo]' WHERE id = '$_SESSION[user][id]'") or die ('errorrrr');
+		$insertion = mysqli_query($this->db,"UPDATE usuario SET nombre='$_POST[nombre]',documento='$_POST[documento]',direccion= '$_POST[direccion]', valoracion='$_POST[valoracion]', estado='$_POST[estado]', clave='$_POST[contra]', email='$_POST[email]', tipo='$_POST[tipo]' WHERE id = '$_SESSION[user][id]'") or die ('errorrrr');
 		header('Location: index.php');
 	}
 
@@ -178,15 +179,8 @@ class Mascota
 //--------------------------------Clase Fundacion ----------------------------------------
 class Fundacion 
 {
-	private $fundacion;
+	public $fundacion;
 	private $db;
-	private $id;
-	public $nombre;
-	public $email;
-	public $clave;
-	public $certificado;
-	public $telefono;
-	public $direccion;
 
 	function __construct()
 	{
@@ -230,6 +224,10 @@ class Fundacion
 //para verificar niveles de seguridad de las fundaciones.
 	public function authorizacion($certificado){
 		return $this->fundacion['certificado']===$certificado;
+	}
+
+	public function is_fundacion(){
+		return isset($this->fundacion);
 	}
 }
  ?>

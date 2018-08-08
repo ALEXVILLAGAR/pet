@@ -7,11 +7,15 @@ switch ($variable) {
 			$ctrl = new Control();
 			$ctrl->login();
 		break;
-	case 'cerrar':
+	case 'cerrar_login':
 		Control::cerrar_sesion();
 		break;
-		case 'agragar_mascota':
-		Control::cerrar_sesion();
+	case 'agregar_mascota':
+		//Control::cerrar_sesion();
+	break;
+	case 'login_fundacion':
+			$ctrl = new Control();
+			$ctrl->login('fundacion');
 		break;
 	// case 'users':
 	// 	$user = new Usuario();
