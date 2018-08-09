@@ -1,17 +1,11 @@
 <?php 
 session_start();
 require_once("ControlClass.php");
-if(!(SessionesPet::session_active())){
+$fundacion = new Fundacion();
+if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
 	header('Location: index.php');
 	exit;
 }
-/*$user =new Usuario();
-if(!$user->authorizacion('admi')){
-	echo "<h2> No tienes Nivel para acceder a esta seccion </h2>";
-	exit;
-}*/
-$fundacion = new Fundacion();
-$fundacion->is_fundacion();
 ?>
 
 <!DOCTYPE html>
@@ -290,7 +284,7 @@ $fundacion->is_fundacion();
 
 					<!--Body-->
 					<div class="modal-body registrar1" >
-						<form action="agregarpet.php" method="POST" enctype="multipart/form-data" action="agregarpet.php">
+						<form action="ruta.php?variable=agregar_pet" method="POST" enctype="multipart/form-data">
 
 							<div class="md-form form-sm mb-5">
 								<input type="text" id="modalLRInput12" class="form-control form-control-sm validate" name="nombre" placeholder="nombre" required>

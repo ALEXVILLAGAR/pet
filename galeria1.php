@@ -39,8 +39,6 @@ if(!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)){
 
 <?php 
 
-$conectar=new Conectar();
-$conectar->conexion();
 $mascota=Mascota::all_pet();
 $db = Conectar::conexion();	
 

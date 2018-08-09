@@ -1,6 +1,6 @@
 <?PHP session_start();
 require_once("ControlClass.php");
-if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+if(SessionesPet::session_active()){
 	$var = isset($_SESSION['user']['tipo']);
 }else{
 	$no_login = true;
@@ -62,7 +62,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 	              <a class="nav-link js-scroll-trigger" href="#contacto">Contactar</a></button>
 	            </li>
 	            <?php
-		if(!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)){
+		if(!(SessionesPet::session_active())){
 ?>
 				<li class="nav-item">
 	              <button class="btn btn-outline-info"> <a class="nav-link js-scroll-trigger" href="#registrar">registrarme o ingresar </a></button>
@@ -535,27 +535,27 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="ruta.php?variable=donacion" method="post" accept-charset="utf-8">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">cantidad en pesos:</label>
             <input type="number" name="monto" value="1000" min="1000">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">para cual fundacion?:</label>
-             <select name="OS">
+             <select name="id_fundacion">
                <option value="0"> </option> 
                <?php $fundaciones = Fundacion::fundaciones();  
                	foreach ($fundaciones as $element) {
-               		echo "<option value=".$element['nombre'].">".$element['nombre']."</option>";               	}
+               		echo "<option value=".$element['id'].">".$element['nombre']."</option>";               	}
                ?>
             </select>
             
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">cancelar donación</button>
-        <button type="button" class="btn btn-success">realizar donación</button>
+        <button type="submit" class="btn btn-success">realizar donación</button>
+        </form>
       </div>
     </div>
   </div>

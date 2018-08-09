@@ -26,7 +26,7 @@ class Control
 	}
 
 	public static function login($table='usuario'){
-		//Validacion::validar_email($_POST);
+		Validacion::validar_email($_POST[correo]);
 		$consulta = "SELECT * FROM $table WHERE email = '$_POST[correo]' && clave = '$_POST[clave]'";			
 		
 		$resultado = mysqli_query(Conectar::conexion(), $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
@@ -154,7 +154,7 @@ class Mascota
 		header('Location: index.php');
 	}
 
-	public function agregar_mascota(){ //$_POST valores para agregar ofcourse
+	public static function agregar_mascota(){ //$_POST valores para agregar ofcourse
 		$revisar = getimagesize($_FILES["imagen"]["tmp_name"]);//se toma tamaño de la imagen
 		if($revisar !== false){                    //y se verifica si tiene  tamaño para validar si se cargo o no
 			$image=$_FILES['imagen']['tmp_name'];
@@ -162,8 +162,9 @@ class Mascota
 		}else{
 			echo "error";
 		}
-		mysqli_query(Conectar::conexion(),"INSERT INTO mascota  VALUES  ('','$_POST[nombre]', '$_POST[raza]', '$_POST[edad]', '$_POST[estado]', '$_POST[disponible]', '$imgContenido', 1)") or die ('errorrrr');
-		header('Location: index.php');
+		$fundacion = SessionesPet::sesion_info();	
+		mysqli_query(Conectar::conexion(),"INSERT INTO mascota  VALUES  ('','$_POST[nombre]', '$_POST[raza]', '$_POST[edad]', '$_POST[estado]', '$imgContenido',1, '$fundacion[id]')") or die ('errorrrr');
+		header('Location: entidad1.php');
 	}
 
 	public function cambiar_reserva(){ //$_POST valores de la actualizacion ofcourse
@@ -174,11 +175,6 @@ class Mascota
 	public function eliminar_mascota(){ //$_POST valores de la actualizacion ofcourse
 		$insertion = mysqli_query($this->db,"DELETE FROM mascota WHERE  id='$_POST[id]' ") or die ('errorrrr');
 		header('Location: index.php');
-	}
-
-	// debe ir en masctoaClass
-	public function mis_mascotas($id_fundacion){
-		return mysqli_query($db,"SElECT * FROM mascota WHERE id_fundacion='$id_fundacion'") or die ( "Algo ha ido mal en la consulta a la base de datos");
 	}
 
 }
@@ -200,10 +196,6 @@ class Fundacion
 		header('Location: entidad1.php');
 	}
 
-	// public function donaciones(){
-	// 	return mysqli_query($this->db,"SElECT * FROM fundacion WHERE id_fundacion=" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-	// }
-
 	public static function fundaciones(){ //Retorna todas las fundaciones que existen
 		$db=Conectar::conexion();
 		$resultado = mysqli_query($db,"SElECT * FROM fundacion" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
@@ -211,10 +203,14 @@ class Fundacion
 	}
 
 	public static function donacion(){ //Crea  una donacion para una fundacion
-		$user_id = $_SESSION['user']['id'];
-		$data_base = Conectar::conexion();
-		mysqli_query($data_base,"INSERT INTO donacion VALUES ('$_POST[monto]','$_POST[fecha]','$user_id','$_POST[id_fundacion]')") or die ('errorrrr');
-		// header('Location: index.php');
+		if(Validacion::validar_donacion()){
+			$user = SessionesPet::sesion_info();
+			$fecha = date("Y-m-d H:i:s");
+			mysqli_query(Conectar::conexion(),"INSERT INTO donaciones VALUES ('','$_POST[monto]','$fecha','$user[id]','$_POST[id_fundacion]')") or die ('errorrrr');
+			header('Location: index.php');
+		}else{
+			header('Location: index.php?variable=fail_donacion');
+		}
 	}
 
 	public function fundacion(){ //retorna una fundacion
@@ -226,19 +222,22 @@ class Fundacion
 		header('Location: index.php');
 	}
 
-	public function Mis_donaciones($id){ //retorna las donaciones que tiene una fundación
-		$data_base = Conectar::conexion();
-		 return mysqli_query($data_base,"SElECT * FROM donaciones WHERE id_fundacion= $id)") or die ('errorrrr');
-		
+	public function Mis_donaciones(){ //retorna las donaciones que tiene una fundación
+		 return mysqli_query($this->db,"SElECT * FROM donaciones WHERE id_fundacion= '$this->fundacion[id]')") or die ('errorrrr');
 	}
 
+	public function mis_mascotas(){
+		$id_fundacion = $this->fundacion['id'];
+		$resultado =  mysqli_query($this->db,"SElECT * FROM mascota WHERE id_fundacion='$id_fundacion'") or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;
+	}
 //para verificar niveles de seguridad de las fundaciones.
 	public function authorizacion($certificado){
 		return $this->fundacion['certificado']===$certificado;
 	}
 
 	public function is_fundacion(){
-		return isset($this->fundacion);
+		return isset($this->fundacion['certificado']);
 	}
 }
 
@@ -254,10 +253,12 @@ class SessionesPet
 	}
 
 	public static function sesion_info(){
+		session_start();
 		return $_SESSION['user'];
 	}
 
 	public static function is_expired(){
+		session_start();
 		time()>$_SESSION['expire'] ? true : false;		
 	}
 }

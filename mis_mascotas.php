@@ -2,17 +2,12 @@
 session_start();
 require_once("db/conexion.php");
 require_once("ControlClass.php");
-if(!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)){
-	header('Location: index.php');
-	exit;
-}
-	$user =new Fundacion();
-	if(!$user->authorizacion('usuario')){
+$fundacion =new Fundacion();
+if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
 		echo "<h2> No tienes Nivel para acceder a esta seccion </h2>";
-		exit;
-	}
-
-	
+	// header('Location: index.php');
+	exit;
+}	
  ?>
 
 	<!doctype html>
@@ -38,11 +33,7 @@ if(!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)){
 	
 
 <?php 
-
-$mascota=Mascota::all_pet();
-$db = Conectar::conexion();	
-
-while ($fila=mysqli_fetch_array($mascota)){
+	foreach ($fundacion->mis_mascotas() as $fila){
 				?>
 				<div class="card" style="width: 18rem;">
   <img class="card-img-top" src="data:image/jpg;base64,<?php echo base64_encode($fila['foto'])?> "/> alt="Card image cap">

@@ -9,8 +9,8 @@ switch ($variable) {
 	case 'cerrar_login':
 		Control::cerrar_sesion();
 		break;
-	case 'agragar_mascota':
-		// Control::cerrar_sesion();
+	case 'agregar_pet':
+			Mascota::agregar_mascota();
 		break;
 	case 'registrarme':
 		Control::register();
