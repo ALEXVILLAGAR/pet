@@ -6,7 +6,7 @@ switch ($variable) {
 	case 'login':
 			Control::login();
 		break;
-	case 'cerrar':
+	case 'cerrar_login':
 		Control::cerrar_sesion();
 		break;
 	case 'agragar_mascota':
@@ -17,7 +17,15 @@ switch ($variable) {
 		break;
 	case 'new_contacto';
 		Control::newContacto();
+	case 'login_fundacion':
+			Control::login('fundacion');
 		break;
+	case 'new_denuncia':
+			$denuncia = new Denuncia();
+		break;
+	case 'donacion':
+			Fundacion::donacion();
+		break;			
 	// case 'users':
 	// 	$user = new Usuario();
 	// 	$user->todos_usuarios();

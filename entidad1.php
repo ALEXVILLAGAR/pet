@@ -5,11 +5,13 @@ if(!(SessionesPet::session_active())){
 	header('Location: index.php');
 	exit;
 }
-$user =new Usuario();
+/*$user =new Usuario();
 if(!$user->authorizacion('admi')){
 	echo "<h2> No tienes Nivel para acceder a esta seccion </h2>";
 	exit;
-}
+}*/
+$fundacion = new Fundacion();
+$fundacion->is_fundacion();
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +88,7 @@ if(!$user->authorizacion('admi')){
 <div class="row">
 	<div class="col-lg-10 mx-auto">
 		<h1 class="text-uppercase">
-			<strong>somos (nombre de la entidad) comprometidos con nuestras mascotas.</strong>
+			<strong>somos <?php echo $fundacion->fundacion['nombre']; ?> comprometidos con nuestras mascotas.</strong>
 			<!-- Button trigger modal para probar -->
 			</h1>
 			<hr>
@@ -255,7 +257,8 @@ if(!$user->authorizacion('admi')){
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-success" data-dismiss="modal">no, quiero quedarme</button>
-							<button type="button" class="btn btn-primary">si, quiero salir</button>
+							<a href="ruta.php?variable=cerrar_login">
+							<button type="button" class="btn btn-primary">si, quiero salir</button></a>
 						</div>
 					</div>
 				</div>
