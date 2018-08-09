@@ -342,69 +342,72 @@
 
           <!-- Grid row -->
           <div class="row">
+			
+			<form action="ruta.php?variable=new_contacto" method="post" accept-charset="utf-8">
+		        <!-- Grid column -->
+		        <div class="col-md-6">
+		          <div class="md-form mb-0">
+		            <input type="text" id="form-contact-name"  name="nombre_contact" class="form-control" required autofocus="autofocus">
+		            <label for="form-contact-name" class="">*nombre</label>
+		          </div>
+		        </div>
+		        <!-- Grid column -->
 
-            <!-- Grid column -->
-            <div class="col-md-6">
-              <div class="md-form mb-0">
-                <input type="text" id="form-contact-name" class="form-control">
-                <label for="form-contact-name" class="">*nombre</label>
-              </div>
-            </div>
-            <!-- Grid column -->
+		        <!-- Grid column -->
+		        <div class="col-md-6">
+		          <div class="md-form mb-0">
+		            <input type="email" id="form-contact-email" name="correo_contact" class="form-control" required autofocus="autofocus">
+		            <label for="form-contact-email" class="">*correo</label>
+		          </div>
+		        </div>
+		        <!-- Grid column -->
 
-            <!-- Grid column -->
-            <div class="col-md-6">
-              <div class="md-form mb-0">
-                <input type="text" id="form-contact-email" class="form-control">
-                <label for="form-contact-email" class="">*correo</label>
-              </div>
-            </div>
-            <!-- Grid column -->
+		      </div>
+		      <!-- Grid row -->
 
-          </div>
+		      <!-- Grid row -->
+		      <div class="row">
+
+		        <!-- Grid column -->
+		        <div class="col-md-6">
+		          <div class="md-form mb-0">
+		            <input type="text" onkeypress="return valida(event)" id="form-contact-phone" name="telefono_contact" class="form-control" required autofocus="autofocus">
+		            <label for="form-contact-phone" class="">*telefono</label>
+		          </div>
+		        </div>
+		        <!-- Grid column -->
+
+		        <!-- Grid column -->
+		        <div class="col-md-6">
+		          <div class="md-form mb-0">
+		            <input type="text" id="form-contact-company" name="company" class="form-control">
+		            <label for="form-contact-company" class="">compañia</label>
+		          </div>
+		        </div>
+		        <!-- Grid column -->
+
+          		</div>
           <!-- Grid row -->
 
+	          <!-- Grid row -->
+	          <div class="row">
+
+	            <!-- Grid column -->
+	            <div class="col-md-12">
+	              <div class="md-form mb-0">
+	                <textarea type="text" id="form-contact-message" class="form-control md-textarea" rows="3" required autofocus="autofocus"></textarea>
+	                <label for="form-contact-message">*cual es tu caso.</label>
+	                <a class="btn-floating btn-lg blue">
+	                  <i class="fa fa-send-o"></i>
+	                </a>
+	              </div>
+	            </div>
+	            <!-- Grid column -->
+
+	          </div>
           <!-- Grid row -->
-          <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-md-6">
-              <div class="md-form mb-0">
-                <input type="text" id="form-contact-phone" class="form-control">
-                <label for="form-contact-phone" class="">*telefono</label>
-              </div>
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-6">
-              <div class="md-form mb-0">
-                <input type="text" id="form-contact-company" class="form-control">
-                <label for="form-contact-company" class="">compañia</label>
-              </div>
-            </div>
-            <!-- Grid column -->
-
-          </div>
-          <!-- Grid row -->
-
-          <!-- Grid row -->
-          <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-md-12">
-              <div class="md-form mb-0">
-                <textarea type="text" id="form-contact-message" class="form-control md-textarea" rows="3"></textarea>
-                <label for="form-contact-message">*cual es tu caso.</label>
-                <a class="btn-floating btn-lg blue">
-                  <i class="fa fa-send-o"></i>
-                </a>
-              </div>
-            </div>
-            <!-- Grid column -->
-
-          </div>
-          <!-- Grid row -->
+          <input type="submit" value="enviar">
+		</form>
 
         </div>
 
@@ -585,14 +588,13 @@
 	                           <form class="login-form" action="ruta.php?variable=login" method="POST">
 	  <div class="form-group">
 	    <label for="exampleInputEmail1" class="text-uppercase">correo</label>
-	    <input type="text" class="form-control" placeholder="example@gmail.com" id="correo" name="correo" method="POST">
+	    <input type="email" class="form-control" placeholder="example@gmail.com" id="correo" name="correo" required autofocus="autofocus">
 	    
 	  </div>
 	  <div class="form-group">
 	    <label for="exampleInputPassword1" class="text-uppercase" >contraseña</label>
-	    <input type="password" class="form-control" placeholder="***********" name="clave" id="clave" method="POST">
+	    <input type="password" class="form-control" placeholder="***********" name="clave" id="clave" required autofocus="autofocus">
 	  </div>
-	  
 	  
 	    <div class="form-check">
 	    <label class="form-check-label">
@@ -621,27 +623,47 @@
 
 	                        <!--Body-->
 	                        <div class="modal-body registrar1">
-	                            <div class="md-form form-sm mb-5">
-	                                <i class="fa fa-envelope prefix"></i>
-	                                <input type="email" id="modalLRInput12" class="form-control form-control-sm validate">
-	                                <label data-error="wrong" data-success="right" for="modalLRInput12">correo</label>
-	                            </div>
+	                        	<form action="ruta.php?variable=registrarme" method="post" accept-charset="utf-8" name="formRegistro">
+		                            <div class="md-form form-sm mb-5">
+		                                <i class="fa fa-envelope prefix"></i>
+		                                <input type="email" name="correo" id="modalLRInput12" class="form-control form-control-sm validate" required autofocus>
+		                                <label data-error="wrong" data-success="right" for="modalLRInput12">correo</label>
+		                            </div>
 
-	                            <div class="md-form form-sm mb-5">
-	                                <i class="fa fa-lock prefix"></i>
-	                                <input type="password" id="modalLRInput13" class="form-control form-control-sm validate">
-	                                <label data-error="wrong" data-success="right" for="modalLRInput13">contraseña</label>
-	                            </div>
+ 									<div class="md-form form-sm mb-5">
+		                                <i class="fa fa-lock prefix"></i>
+		                                <input type="text" name="nombre" id="modalLRInput14" class="form-control form-control-sm validate" required autofocus>
+		                                <label data-error="wrong" data-success="right" for="modalLRInput14">Nombre</label>
+		                            </div>
 
-	                            <div class="md-form form-sm mb-4">
-	                                <i class="fa fa-lock prefix"></i>
-	                                <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
-	                                <label data-error="wrong" data-success="right" for="modalLRInput14">comprobar contraseña</label>
-	                            </div>
+		                            <div class="md-form form-sm mb-5">
+		                                <i class="fa fa-lock prefix"></i>
+		                                <input type="text" name="documento" id="modalLRInput14" class="form-control form-control-sm validate" onkeypress="return valida(event)" required autofocus>
+		                                <label data-error="wrong" data-success="right" for="modalLRInput14">Documento</label>
+		                            </div>
 
-	                            <div class="text-center form-sm mt-2">
-	                                <button class="btn btn-info">registrarme <i class="fa fa-sign-in ml-1"></i></button>
-	                            </div>
+		                             <div class="md-form form-sm mb-5">
+		                                <i class="fa fa-lock prefix"></i>
+		                                <input type="text" name="direccion" id="modalLRInput14" class="form-control form-control-sm validate" required autofocus>
+		                                <label data-error="wrong" data-success="right" for="modalLRInput14">Direccion</label>
+		                            </div>
+
+		                            <div class="md-form form-sm mb-5">
+		                                <i class="fa fa-lock prefix"></i>
+		                                <input type="password" name="clave" id="contra_registro" class="form-control form-control-sm validate" min="6" required autofocus>
+		                                <label data-error="wrong" data-success="right" for="modalLRInput13">contraseña</label>
+		                            </div>
+
+		                            <div class="md-form form-sm mb-4">
+		                                <i class="fa fa-lock prefix"></i>
+		                                <input type="password" name="confirmar-contra" id="confirm_contra" class="form-control form-control-sm validate" min="6"  onkeypress="return igual(event)" required autofocus>
+		                                <label data-error="wrong" data-success="right" for="modalLRInput14">comprobar contraseña</label>  <span id="ContraOk"></span>
+		                            </div>
+
+		                            <div class="text-center form-sm mt-2">
+		                                <button type="submit" class="btn btn-info">registrarme <i class="fa fa-sign-in ml-1"></i></button>
+		                            </div>
+	                        	</form>
 
 	                        </div>
 	                        <!--Footer-->
@@ -697,6 +719,33 @@
 
 	    <!-- Custom scripts for this template -->
 	    <script src="js/creative.min.js"></script>
+<!-- escript para validar que los campos de tipo string solo permitan numeros como la cc -->
+<script>
+function valida(e){
+    tecla = (document.all) ? e.keyCode : e.which;
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla==8){
+        return true;
+    }
+    // Patron de entrada, en este caso solo acepta numeros
+    patron =/[0-9]/;
+    return patron.test(String.fromCharCode(tecla));
+}
+
+function igual(e){ 
+    tecla = (document.all) ? e.keyCode : e.which;
+	if (tecla==8){
+        return true;
+    }
+    valido=document.getElementById('ContraOk');
+    if(document.getElementById('contra_registro').value == document.getElementById('confirm_contra').value){
+		valido.innerText = "Coinciden";
+    }else{
+    	valido.innerText = "No Coinciden";
+    }
+} 	
+</script>
+
 
 	  </body>
 

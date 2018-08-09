@@ -4,14 +4,19 @@ require_once('ControlClass.php');
 $variable = $_GET['variable'];
 switch ($variable) {
 	case 'login':
-			$ctrl = new Control();
-			$ctrl->login();
+			Control::login();
 		break;
 	case 'cerrar':
 		Control::cerrar_sesion();
 		break;
-		case 'agragar_mascota':
-		Control::cerrar_sesion();
+	case 'agragar_mascota':
+		// Control::cerrar_sesion();
+		break;
+	case 'registrarme':
+		Control::register();
+		break;
+	case 'new_contacto';
+		Control::newContacto();
 		break;
 	// case 'users':
 	// 	$user = new Usuario();

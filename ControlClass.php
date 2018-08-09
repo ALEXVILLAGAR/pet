@@ -8,33 +8,36 @@ require_once('validaciones.php');
 //Funciones de registro de usuarios, login y cerrar sesion
 class Control
 {
-	static $db;
+	// public static $db = Conectar::conexion();
 
 	function __construct()
 	{
-		self::$db = Conectar::conexion();
+		// self::$db = Conectar::conexion();
 	}
 
 	public static function register(){
-		$insertion = mysqli_query(self::$db,"INSERT INTO usuario VALUES ('$_POST[nombre]','$_POST[documento]','$_POST[direccion]','$_POST[valoracion]','$_POST[estado]','$_POST[contra]','$POST[email]','$_POST[tipo]')") or die ('errorrrr');
-		header('Location: index.php');
+		if(Validacion::validar_registro($_POST)){
+			$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO usuario VALUES ('','$_POST[nombre]','$_POST[documento]','$_POST[direccion]','buena','disponible','$_POST[clave]','$_POST[correo]','usuario')") or die ('errorrrr');
+			Control::login();
+		}else{
+			header('Location: index.php?variable=registro_fail');
+		}
+		//header('Location: index.php');
 	}
 
 	public static function login(){
 		//Validacion::validar_email($_POST);		
-		session_start();
 		$consulta = "SELECT * FROM usuario WHERE email = '".$_POST['correo']."' && contra = '".$_POST['clave']."'";
 
-		$resultado = mysqli_query(self::$db, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		$resultado = mysqli_query(Conectar::conexion(), $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 		$fila =  mysqli_fetch_array($resultado);
-		 
 		// if(password_verify($_POST['clave'],$fila['contra'])){
 		if($_POST['clave']===$fila['contra']){
+			session_start();
 			$_SESSION['loggedin'] = true;
 			$_SESSION['user'] = $fila;
 			$_SESSION['start'] = time();
 		    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
-
 			if($fila['tipo']==='admi'){
 			    header('Location: entidad1.php');     
 			} 
@@ -55,6 +58,11 @@ class Control
 		unset($_SESSION["user"]); //eliminar una variable de session
 		session_destroy(); //cerrar la session correctamente
 		header('Location: index.php');
+	}
+
+	public function newContacto(){
+		var_dump($_POST);
+		
 	}
 }
 
@@ -78,7 +86,7 @@ class Denuncia
 	}
 
 	public static function denuncias(){
-		return mysqli_query($this->db,"SELECT * FROM denuncia") or die ('error');
+		return mysqli_query(Conectar::conexion(),"SELECT * FROM denuncia") or die ('error');
 	}
 }
 
@@ -92,14 +100,12 @@ class Usuario
 	function __construct()
 	{
 		$this->db = Conectar::conexion();
-		$this->usuario = $_SESSION['user'];
+		$this->usuario = SessionesPet::sesion_info();
 	}
 
 	public static function todos_usuarios(){	//retorna todos los usuarios de la bd
-		$consulta = "SELECT * FROM usuario";
-		$db = Conectar::conexion();
-		$resultado = mysqli_query($db, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-		return $resultado;
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM usuario" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return mysqli_fetch_array($resultado);
 	}
 
 	public function uptade_user(){ //$_POST valores de la actualizacion 
@@ -113,6 +119,7 @@ class Usuario
 	
 	public static function calificate($id){
 		$consulta = "UPDATE usuario SET valoracion = '$_POST[nuevo_valor]' WHERE id = '$id'"; 
+		mysqli_query(Conectar::conexion(),$consulta);
 		header('Location: entidad1.php');
 	}
 
@@ -126,67 +133,58 @@ class Usuario
 //-------------------------------------------------------------Clase Mascota ---------------------------------------------------------
 
 class Mascota
-		{
-			private $db;
-			
-			function __construct()
-			{
-				$this->db = Conectar::conexion();
-			}
+{
+	private $db;
+	
+	function __construct()
+	{
+		$this->db = Conectar::conexion();
+	}
 
-			public static function all_pet(){
-			$consulta = "SELECT * FROM mascota";
-				$resultado = mysqli_query(Conectar::conexion(), $consulta ) or die ( "casi");
-				return $resultado;
-			}
+	public static function all_pet(){
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota" ) or die ( "casi");
+		return $resultado;
+	}
 
-			public function uptade_pet(){ //$_POST valores de la actualizacion ofcourse
-				$insertion = mysqli_query($this->db,"UPDATE mascota SET nombre='$_POST[nombre]',raza='$_POST[raza]',edad= '$_POST[edad]', estado='$_POST[estado]', disponible='$_POST[disponible]', foto='$_POST[foto]', id_fundacion='$_POST[id_fundacion]' WHERE id = '$id[id]'") or die ('errorrrr');
-				header('Location: index.php');
-			}
+	public function uptade_pet(){ //$_POST valores de la actualizacion ofcourse
+		$insertion = mysqli_query($this->db,"UPDATE mascota SET nombre='$_POST[nombre]',raza='$_POST[raza]',edad= '$_POST[edad]', estado='$_POST[estado]', disponible='$_POST[disponible]', foto='$_POST[foto]', id_fundacion='$_POST[id_fundacion]' WHERE id = '$id[id]'") or die ('errorrrr');
+		header('Location: index.php');
+	}
 
-			public function agregar_mascota(){ //$_POST valores para agregar ofcourse
-				$revisar = getimagesize($_FILES["imagen"]["tmp_name"]);//se toma tamaño de la imagen
-				if($revisar !== false){                    //y se verifica si tiene  tamaño para validar si se cargo o no
-					$image=$_FILES['imagen']['tmp_name'];
-					$imgContenido=addslashes(file_get_contents($image));
-				}else{
-					echo "error";
-				}
-
-				mysqli_query(Conectar::conexion(),"INSERT INTO mascota  VALUES  ('','$_POST[nombre]', '$_POST[raza]', '$_POST[edad]', '$_POST[estado]', '$_POST[disponible]', '$imgContenido', 1)") or die ('errorrrr');
-				header('Location: index.php');
-			}
-
-			public function cambiar_reserva(){ //$_POST valores de la actualizacion ofcourse
-				$insertion = mysqli_query($this->db,"UPDATE mascota SET  disponible='$_POST[disponible]' WHERE id = '$_POST[id]'") or die ('errorrrr');
-				header('Location: index.php');
-			}
-
-			public function eliminar_mascota(){ //$_POST valores de la actualizacion ofcourse
-				$insertion = mysqli_query($this->db,"DELETE FROM mascota WHERE  id='$_POST[id]' ") or die ('errorrrr');
-				header('Location: index.php');
-			}
-
-			// debe ir en masctoaClass
-			public function mis_mascotas($id_fundacion){
-				return mysqli_query($db,"SElECT * FROM mascota WHERE id_fundacion='$id_fundacion'") or die ( "Algo ha ido mal en la consulta a la base de datos");
-			}
-
+	public function agregar_mascota(){ //$_POST valores para agregar ofcourse
+		$revisar = getimagesize($_FILES["imagen"]["tmp_name"]);//se toma tamaño de la imagen
+		if($revisar !== false){                    //y se verifica si tiene  tamaño para validar si se cargo o no
+			$image=$_FILES['imagen']['tmp_name'];
+			$imgContenido=addslashes(file_get_contents($image));
+		}else{
+			echo "error";
 		}
+		mysqli_query(Conectar::conexion(),"INSERT INTO mascota  VALUES  ('','$_POST[nombre]', '$_POST[raza]', '$_POST[edad]', '$_POST[estado]', '$_POST[disponible]', '$imgContenido', 1)") or die ('errorrrr');
+		header('Location: index.php');
+	}
+
+	public function cambiar_reserva(){ //$_POST valores de la actualizacion ofcourse
+		$insertion = mysqli_query($this->db,"UPDATE mascota SET  disponible='$_POST[disponible]' WHERE id = '$_POST[id]'") or die ('errorrrr');
+		header('Location: index.php');
+	}
+
+	public function eliminar_mascota(){ //$_POST valores de la actualizacion ofcourse
+		$insertion = mysqli_query($this->db,"DELETE FROM mascota WHERE  id='$_POST[id]' ") or die ('errorrrr');
+		header('Location: index.php');
+	}
+
+	// debe ir en masctoaClass
+	public function mis_mascotas($id_fundacion){
+		return mysqli_query($db,"SElECT * FROM mascota WHERE id_fundacion='$id_fundacion'") or die ( "Algo ha ido mal en la consulta a la base de datos");
+	}
+
+}
 
 //--------------------------------Clase Fundacion ----------------------------------------
 class Fundacion 
 {
 	private $fundacion;
 	private $db;
-	private $id;
-	public $nombre;
-	public $email;
-	public $clave;
-	public $certificado;
-	public $telefono;
-	public $direccion;
 
 	function __construct()
 	{
@@ -216,10 +214,14 @@ class Fundacion
 		header('Location: index.php');
 	}
 
-	public function fundacion($id){ //retorna una fundacion
-		return mysqli_query($db,"SElECT * FROM fundacion WHERE id='$id'") or die ( "Algo ha ido mal en la consulta a la base de datos");
+	public function fundacion(){ //retorna una fundacion
+		return mysqli_query($this->db,"SElECT * FROM fundacion WHERE id='$this->fundacion[id]'") or die ( "Algo ha ido mal en la consulta a la base de datos");
 	}
 
+	public static function new_fundacion(){
+		$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO fundacion VALUES ('$_POST[nombre]','$_POST[email]','$_POST[clave]','$_POST[certificado]','$_POST[telefono]','$_POST[direccion]')") or die ('errorrrr');
+		header('Location: index.php');
+	}
 
 	public function Mis_donaciones($id){ //retorna las donaciones que tiene una fundación
 		$data_base = Conectar::conexion();
@@ -230,6 +232,26 @@ class Fundacion
 //para verificar niveles de seguridad de las fundaciones.
 	public function authorizacion($certificado){
 		return $this->fundacion['certificado']===$certificado;
+	}
+}
+
+// clase para manejo de la session
+/**
+ * 
+ */
+class SessionesPet
+{
+		
+	public static function session_active(){
+		return (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true);
+	}
+
+	public static function sesion_info(){
+		return $_SESSION['user'];
+	}
+
+	public static function is_expired(){
+		time()>$_SESSION['expire'] ? true : false;		
 	}
 }
  ?>

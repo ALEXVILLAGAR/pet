@@ -1,9 +1,9 @@
 <?php 
 session_start();
 require_once("ControlClass.php");
-if(!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)){
-header('Location: index.php');
-exit;
+if(!(SessionesPet::session_active())){
+	header('Location: index.php');
+	exit;
 }
 $user =new Usuario();
 if(!$user->authorizacion('usuario')){
