@@ -13,7 +13,7 @@ require_once 'validaciones.php';
 require_once('clase/ClaseSession.php');
 
 //Funciones de registro de usuarios, login y cerrar sesion
->>>>>>> origin/master
+
 
 require_once("clase/ClaseControl.php");
 //-------------------------------------------------------------clase Denuncias -----------------------------------------------------------
