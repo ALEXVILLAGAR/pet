@@ -39,7 +39,7 @@ class Control
 			    header('Location: ..\entidad1.php');     
 			}
 			elseif($fila['tipo']==='usuario'){
-		    	header('Location: views\fundacion\user.php');
+		    	header('Location: views\usuario\user.php');
 			} 
 			else{ 
 				header('Location: index.php');
