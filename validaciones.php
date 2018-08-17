@@ -9,7 +9,8 @@ class Validacion
 
 		public static function validar_email($email){
 			if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
-				header('Location: index.php?variable=email_fail');			
+				// header('Location: ..\index.php?variable=email_fail');			
+				return false;
 			}
 			return true;
 		}
@@ -31,11 +32,6 @@ class Validacion
 		public static function validar_donacion($campos){
 			if($campos['monto']>0 && filter_var($campos['monto'],FILTER_VALIDATE_INT)){
 				return true;
-				// $db = Conectar::conexion();
-				// $result = mysqli_query($db,"SELECT * FROM fundacion WHERE id='$campos[id_fundacion]'");
-				// if($result->is_empty()){
-				// 	header('Location: index.php?variable=true');			
-				// }
 			}else{return false;}
 		}
 }
