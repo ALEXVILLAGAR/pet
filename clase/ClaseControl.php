@@ -1,0 +1,66 @@
+<?php 
+
+class Control
+{
+	// public static $db = Conectar::conexion();
+
+	function __construct()
+	{
+		// self::$db = Conectar::conexion();
+	}
+
+	public static function register(){
+		if(Validacion::validar_registro($_POST)){
+			$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO usuario VALUES ('','$_POST[nombre]','$_POST[documento]','$_POST[direccion]','buena','disponible',MD5('$_POST[clave]'),'$_POST[correo]','usuario')") or die ('errorrrr');
+			Control::login();
+		}else{
+			header('Location: ..\index.php?variable=registro_fail');
+		}
+	}
+
+	public static function login($table='usuario'){
+		Validacion::validar_email($_POST[correo]);
+		$consulta = "SELECT * FROM $table WHERE email = '$_POST[correo]' && clave = MD5('$_POST[clave]')";			
+		
+		$resultado = mysqli_query(Conectar::conexion(), $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		$fila =  mysqli_fetch_array($resultado);
+		
+		if(MD5($_POST['clave'])==$fila['clave']){
+		// if($_POST['clave']===$fila['clave']){
+			session_start();
+			$_SESSION['loggedin'] = true;
+			$_SESSION['user'] = $fila;
+			$_SESSION['start'] = time();
+		    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
+		    if($table==='fundacion'){
+		    	header('Location: views\fundacion\userfundacion.php');
+		    }
+			elseif($fila['tipo']==='admi'){
+			    header('Location: ..\entidad1.php');     
+			}
+			elseif($fila['tipo']==='usuario'){
+		    	header('Location: views\fundacion\user.php');
+			} 
+			else{ 
+				header('Location: index.php');
+				}
+		}else{
+			$variable =true;
+			header('Location: index.php?variable=$variable');
+		}
+	}
+
+	public static function cerrar_sesion(){
+		session_start();
+		unset($_SESSION["user"]); //eliminar una variable de session
+		session_destroy(); //cerrar la session correctamente
+		header('Location: index.php');
+	}
+
+	public function newContacto(){
+		var_dump($_POST);
+		
+	}
+}
+
+ ?>
