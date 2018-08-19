@@ -106,6 +106,13 @@ require_once("ControlClass.php");
                             Soy Fundación
                         </button>
     <?php
+            }else {
+
+        ?>  
+        <button class="btn btn-primary btn-xl js-scroll-trigger">
+            <a class="text-white" href="ruta.php?variable=cerrar_login">cerrar Sesión</a>
+        </button>
+         <?php
             }
         ?> 
                         

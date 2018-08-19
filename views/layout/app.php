@@ -181,7 +181,7 @@ if(!$user->authorizacion('usuario')){
                             </a>
                         </li>
                         <li class="">
-                            <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#MhacerDenuncia">
                                 <i class="fas fa-bullhorn">
                                 </i>
                                 <span>
@@ -220,3 +220,4 @@ if(!$user->authorizacion('usuario')){
         </nav>
         <!-- sidebar-wrapper  -->
         
+        <?php include '..\..\modal\MhacerDenuncia.php' ?>

@@ -20,20 +20,19 @@ $mascota = new Mascota();
                                 <p>
                                 </p>
                                 <p>
-                                    <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#reservar_mascota?>" onclick="pasarId()" >
+                                    <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#reservar_mascota" >
                                         Adoptar
                                     </a>
-<script language=JavaScript>
-
-function pasarId(id) {
-   $id=$element['id'];
-}
-</script>
                                     
                                     <!-- Button to Open the Modal -->
                                     <button class="btn btn-info" data-target=<?php echo "#myModal".$element['id'] ?> data-toggle="modal" type="button">
                                         Leer Mas
                                     </button>
+                                    <br><br>
+                                     <button class="btn btn-danger"  href="#" data-toggle="modal" data-target="#MavisoSaveFavorito" type="button">
+                                        me gusta<span class="fa fa-heart mb-2 sr-icons"></span>
+                                    </button>
+                                    
                                     <!-- The Modal -->
 
                                     <div class="modal" id=<?php echo "myModal".$element['id'] ?> >
@@ -105,9 +104,12 @@ function pasarId(id) {
                     </hr>
                 </div>
                 <?php endforeach ?>
+                
             </div>
         </div>
-<?php include '..\..\modal\ConfirmarAdopcion.php' ?>
+<?php include '..\..\modal\ComfirmarAdopcion.php' ?>
+<?php include '..\..\modal\MavisoSaveFavorito.php' ?>
+
        
 
 
