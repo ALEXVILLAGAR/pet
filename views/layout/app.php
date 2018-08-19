@@ -1,5 +1,5 @@
 <?php 
-session_start();
+// session_start();
 require_once("..\..\ControlClass.php");
 if(!(SessionesPet::session_active())){
     header('Location: index.php');
@@ -70,8 +70,13 @@ if(!$user->authorizacion('usuario')){
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <img alt="User picture" class="img-responsive img-rounded" src="../../img/user.jpg">
-                        </img>
+
+        <?php if (isset($user->usuario['foto_perfil'])): ?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($user->usuario['foto_perfil'])?> " class="img-responsive img-rounded" alt="User picture"/>
+        <?php else: ?>
+            <img alt="User picture" class="img-responsive img-rounded" src="//placehold.it/150">
+        <?php endif ?>
+        
                     </div>
                     <div class="user-info">
                         <span class="user-name">

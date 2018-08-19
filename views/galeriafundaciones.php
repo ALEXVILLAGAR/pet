@@ -8,7 +8,11 @@
                         <?php echo $element['nombre'] ?>
                     </h3>
                     <hr>
+            <?php if ($element['foto_fundacion']!=null): ?>
+                <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto_fundacion'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/>
+            <?php else: ?>
                         <img src="https://static.wixstatic.com/media/af93c6_644d5bb4aab74c3790e965e7b4e46939.png/v1/fill/w_130,h_131,al_c,usm_0.66_1.00_0.01/af93c6_644d5bb4aab74c3790e965e7b4e46939.png" width="250"/>
+            <?php endif ?>
                         <div class="animal-info panel">
                             <p>
                             </p>
@@ -21,7 +25,7 @@
                                     Donar
                                 </button>
                                 <!-- The Modal -->
-                                <?php include 'donar.html'?>
+                                <?php include 'donar.php' ?>
                             </p>
                         </div>
                     </hr>

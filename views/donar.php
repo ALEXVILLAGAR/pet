@@ -5,6 +5,9 @@
             <div class="modal-header">
                 <h3 class="modal-title" id="myModalLabel">
                     Nueva Donación
+                    <?php if (isset($element['nombre'])): ?>
+                        <?php echo $element['nombre'] ?>
+                    <?php endif ?>
                 </h3>
                 <button class="close" data-dismiss="modal" type="button">
                     x

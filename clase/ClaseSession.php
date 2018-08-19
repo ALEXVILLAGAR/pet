@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 class SessionesPet
 {
@@ -8,8 +9,7 @@ class SessionesPet
 		return (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true);
 	}
 
-	public static function session_info(){
-		// session_start();
+	public static function session_info(){		
 		return $_SESSION['user'];
 	}
 

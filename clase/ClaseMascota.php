@@ -30,18 +30,15 @@ class Mascota
 	}
 
 	public function uptade_pet(){ //$_POST valores de la actualizacion ofcourse
-		$insertion = mysqli_query($this->db,"UPDATE mascota SET nombre='$_POST[nombre]',raza='$_POST[raza]',edad= '$_POST[edad]', estado='$_POST[estado]', disponible='$_POST[disponible]', foto='$_POST[foto]', id_fundacion='$_POST[id_fundacion]' WHERE id = '$id[id]'") or die ('errorrrr');
-		header('Location: ../index.php');
+		if(isset($_FILES['imagen'])){
+			$imgContenido=Control::foto($_FILES["imagen"]["tmp_name"]);
+		 }
+		$insertion = mysqli_query($this->db,"UPDATE mascota SET nombre='$_POST[nombre]',especie='$_POST[especie]',raza='$_POST[raza]',edad= '$_POST[edad]', estado='$_POST[estado]',foto = '$imgContenido' WHERE id = '$_POST[id]'") or die ('errorrrr');
+		header('Location: views/fundacion/gmascotas.php');
 	}
 
 	public static function agregar_mascota(){ //$_POST valores para agregar ofcourse
-		$revisar = getimagesize($_FILES["imagen"]["tmp_name"]);//se toma tamaño de la imagen
-		if($revisar !== false){                    //y se verifica si tiene  tamaño para validar si se cargo o no
-			$image=$_FILES['imagen']['tmp_name'];
-			$imgContenido=addslashes(file_get_contents($image));
-		}else{
-			echo "error";
-		}
+		$imgContenido=Control::foto($_FILES["imagen"]["tmp_name"]);
 		session_start();
 		$fundacion = $_SESSION['user'];
 		mysqli_query(Conectar::conexion(),"INSERT INTO mascota  VALUES  ('','$_POST[nombre]','$_POST[especie]','$_POST[raza]', '$_POST[edad]', '$_POST[estado]', '$imgContenido',1, '$fundacion[id]')") or die ('errorrrr');
@@ -55,7 +52,7 @@ class Mascota
 
 	public function eliminar_mascota(){ //$_POST valores de la actualizacion ofcourse
 		$insertion = mysqli_query($this->db,"DELETE FROM mascota WHERE  id='$_POST[id]' ") or die ('errorrrr');
-		header('Location: ../index.php');
+		header('Location: views/fundacion/gmascotas.php');
 	}
 
 	public function perteneA($id){

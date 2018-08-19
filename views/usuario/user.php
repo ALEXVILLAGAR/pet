@@ -2,7 +2,7 @@
     include('../layout/app.php');
  ?>
  <section class="bg-faded page-content" >
-             <?php include '..\donar.html'?>   <!-- TODO modificar para donar a la fundacion correcta-->
+             <?php include '..\donar.php'?>   <!-- TODO modificar para donar a la fundacion correcta-->
             <?php include '..\galerias\galeria.php' ?>
             
         </section>
