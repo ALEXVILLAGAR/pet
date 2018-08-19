@@ -6,13 +6,20 @@ class Denuncia
 	function __construct()
 	{
 		$this->db = Conectar::conexion();
+		$this->Denuncia();
 	}
 
-	function Denuncia(){
-		$imagen='traspuesto';
-		$user_id = $_SESSION['user']['id'];
-		mysqli_query($this->db,"INSERT INTO denuncia VALUES ('$_POST[fecha]','$imagen','$user_id')") or die ('errorrrr');
-		// header('Location: index.php');
+	public function Denuncia(){		
+
+		if($_FILES["imagen"]["size"]>0){
+			$imagen = Control::foto($_FILES["imagen"]["tmp_name"]);
+		}else{
+			$imagen=null;
+		}
+		$user = SessionesPet::session_info();
+		$fecha = date("Y-m-d H:i:s");
+		mysqli_query($this->db,"INSERT INTO denuncia VALUES ('','$fecha','$imagen','$_POST[direccion]','$_POST[descripcion]','$user[id]')") or die ('errorrrr');
+		header('Location: views/usuario/user.php');
 	}
 
 	public static function denuncias(){

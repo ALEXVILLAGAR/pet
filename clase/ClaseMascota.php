@@ -3,26 +3,43 @@
 class Mascota
 {
 	private $db;
-	
-	function __construct()
+	public $mascota;
+
+	function __construct($id=null)
 	{
 		$this->db = Conectar::conexion();
+		$this->mascota = mysqli_fetch_array($this->only_pet($id));
 	}
 
-	public function all_pet(){
-		$resultado = mysqli_query($this->db, "SELECT * FROM mascota" ) or die ( "casi");
+	public function only_pet($id){
+		$resultado = mysqli_query($this->db, "SELECT * FROM mascota WHERE id='$id' ") or die ( "casi");
 		return $resultado;
 	}
 
-	public function all_dogs(){
-		$resultado = mysqli_query($this->db, "SELECT * FROM mascota WHERE especie = 'Perro" ) or die ( "casi");
+	public static function all_pet(){	//todas las mascotas
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota") or die ( "casi");
+		return $resultado;
+	}
+
+	public static  function all_dogs(){ //todos las mascotas perros
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE especie = 'Perro'" ) or die ( "casi");
 		return $resultado;	
 	}
 
-	public function all_cats(){
-		$resultado = mysqli_query($this->db, "SELECT * FROM mascota WHERE especie = 'Gato" ) or die ( "casi");
+	public static  function all_cats(){ //todos las mascotas gatos
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE especie = 'Gato'" ) or die ( "casi");
 		return $resultado;	
 	}
+
+	public static function only_disponible(){
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE disponible=1" ) or die ( "casi");
+		return $resultado;
+	}
+
+	public static function only_reservada(){
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE disponible=0" ) or die ( "casi");
+		return $resultado;
+	}	
 
 	public function uptade_pet(){ //$_POST valores de la actualizacion ofcourse
 		if(isset($_FILES['imagen'])){
@@ -40,17 +57,19 @@ class Mascota
 		header('Location: views/fundacion/userfundacion.php');
 	}
 
-	public function cambiar_reserva(){ //$_POST valores de la actualizacion ofcourse
-		$insertion = mysqli_query($this->db,"UPDATE mascota SET  disponible='$_POST[disponible]' WHERE id = '$_POST[id]'") or die ('errorrrr');
-		header('Location: ../index.php');
+	public static function reservar(){
+		$insertion = mysqli_query(Conectar::conexion(),"UPDATE mascota SET  disponible='no disponible' WHERE id = '$_POST[id_pet]'") or die ('errorrrr');
+		header('Location: index.php');
 	}
 
 	public function eliminar_mascota(){ //$_POST valores de la actualizacion ofcourse
-		$insertion = mysqli_query($this->db,"DELETE FROM mascota WHERE  id='$_POST[id]' ") or die ('errorrrr');
+		$id = $this->mascota['id'];
+		$insertion = mysqli_query($this->db,"DELETE FROM mascota WHERE  id='$id' ") or die ('errorrrr');
 		header('Location: views/fundacion/gmascotas.php');
 	}
 
-	public function perteneA($id){
+	public function perteneceA(){
+		$id=$this->mascota['id_fundacion'];
 		$resultado = mysqli_query($this->db, "SELECT * FROM fundacion WHERE id='$id' ") or die ( "casi");
 		return mysqli_fetch_array($resultado);
 	}

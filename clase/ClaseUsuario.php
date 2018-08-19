@@ -40,9 +40,16 @@ class Usuario
 	}
 
 	// preferencia
-	public function preferencia($id_pet){
-			$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('$id_pet','$this->usuario[id]')") or die ('errorrrr');
-		header('Location: ..\index.php');
+	public function preferencia(){
+		$user_id = $this->usuario['id'];
+		$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$_POST[id_pet]','$user_id')") or die ('error');
+		header('Location: index.php');
+	}
+
+	public function mis_favoritos(){
+		$id=$this->usuario['id'];
+		$resultado = mysqli_query($this->db, "SELECT * FROM preferencia WHERE id_usuario = '$id'" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;
 	}
 
 	public static function GetUsuario($id){

@@ -5,6 +5,7 @@
         <section class="bg-faded page-content" >
              <?php include '../donar.php'?>
             <?php include '../galeriafundaciones.php'?>
+            
         </section>
         <!-- page-content" -->
     </div>

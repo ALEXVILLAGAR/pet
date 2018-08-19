@@ -113,12 +113,12 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="../fundacion/misperros.php">
                                             Perros
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="../fundacion/misgatos.php">
                                             Gatos
                                         </a>
                                     </li>

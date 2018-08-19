@@ -27,11 +27,11 @@ switch ($variable) {
 		Fundacion::donacion();
 		break;
 	case 'updatePet':
-		$mascota = new Mascota();
+		$mascota = new Mascota($_POST['id']);
 		$mascota->uptade_pet();
 		break;
 	case 'eliminar_pet':
-		$mascota = new Mascota();
+		$mascota = new Mascota($_POST['id']);
 		$mascota->eliminar_mascota();
 		break;
 	case 'FotoFundacion':
@@ -49,6 +49,13 @@ switch ($variable) {
 	case 'actualizarFun':
 		$fundacion = new Fundacion();
 		$fundacion->actualizar();
+		break;
+	case 'agregarFav':
+		$user = new Usuario();
+		$user->preferencia();
+		break;
+	case 'adoptar':
+		Mascota::reservar();
 		break;
 	// case 'users':
 	// 	$user = new Usuario();
