@@ -1,13 +1,24 @@
-<div class="modal" id="newDonationM">
+<?php if (isset($element['id'])): ?>
+<div class="modal" id=<?php echo "newDonationM".$element['id'] ?>>
+    <?php else: ?>
+<div class="modal" id="newDonationM" ?>>
+<?php endif ?>
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
                 <h3 class="modal-title" id="myModalLabel">
-                    Nueva Donación
-                    <?php if (isset($element['nombre'])): ?>
-                        <?php echo $element['nombre'] ?>
-                    <?php endif ?>
+                    Nueva Donación                     
+                    <?php if (isset($element['nombre'])):
+                         echo $element['nombre'] ?>
+                    <?php else: ?>
+                           <select name="id_fundacion">
+                           <?php foreach (Fundacion::fundaciones() as $element): ?>
+                               <option value="<?php echo $element['id'] ?>"> 
+                                <?php echo $element['nombre'] ?> </option>
+                            </select> 
+                    <?php endforeach ?>
+                     <?php endif ?>
                 </h3>
                 <button class="close" data-dismiss="modal" type="button">
                     x

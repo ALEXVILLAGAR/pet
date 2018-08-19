@@ -21,7 +21,7 @@
                                     Leer Más
                                 </a>
                                 <!-- Button to Open the Modal -->
-                                <button class="btn btn-info" data-target="#newDonationM" data-toggle="modal" type="button">
+                                <button class="btn btn-info" data-target=<?php echo "#newDonationM".$element['id'] ?> data-toggle="modal" type="button">
                                     Donar
                                 </button>
                                 <!-- The Modal -->

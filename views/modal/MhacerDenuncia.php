@@ -10,26 +10,27 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="../../ruta.php?variable=new_denuncia" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="formGroupExampleInput">Direccion</label>
-    <input type="text" class="form-control" id="direccionDenuncia" placeholder="Donde ocurrio el caso" name="">
+    <input type="text" class="form-control" id="direccionDenuncia" placeholder="Donde ocurrio el caso" name="direccion" required autofocus="autofocus">
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Denuncio que:</label>
-    <textarea class="form-control" rows="3" id="denuncia" placeholder="Describe la denuncia" name=""></textarea>
+    <textarea class="form-control" rows="3" id="denuncia" placeholder="Describe la denuncia" name="descripcion" required autofocus="autofocus"></textarea>
     <!--<input type="text" class="form-control" id="denuncia" placeholder="Describe la denuncia" name="">-->
   </div>
   <div class="form-group">
     <label for="exampleFormControlFile1">cargar imagen</label>
-    <input type="file" class="form-control-file" id="imagenDenuncia" name="">
+    <input type="file" class="form-control-file" id="imagenDenuncia" name="imagen">
   </div>
-</form>
       </div>
       <div class="modal-footer bg-secondary">
-        <button type="button" class="btn btn-secondary bg-warning text-dark" >denunciar</button>
-        <button type="button" class="btn btn-primary bg-danger text-dark" data-dismiss="modal">cancelar</button>
+        <button type="submit" class="btn btn-secondary bg-warning text-dark" >denunciar</button>
+        <button type="reset" class="btn btn-primary bg-danger text-dark" data-dismiss="modal">cancelar</button>
       </div>
+</form>
+
     </div>
   </div>
 </div>

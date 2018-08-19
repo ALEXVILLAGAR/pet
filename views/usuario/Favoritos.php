@@ -4,7 +4,7 @@ include '../layout/app.php';
         <!-- sidebar-wrapper  -->
         <section class="bg-faded page-content" >
              <?php include '../donar.php'?>
-            <?php include '../MisFavs.html'?>
+            <?php include '../MisFavs.php'?>
         </section>
         <!-- page-content" -->
     </div>

@@ -123,12 +123,12 @@ if(!$user->authorizacion('usuario')){
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="../usuario/perros.php">
                                             Perros
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="../usuario/gatos.php">
                                             Gatos
                                         </a>
                                     </li>
@@ -220,4 +220,4 @@ if(!$user->authorizacion('usuario')){
         </nav>
         <!-- sidebar-wrapper  -->
         
-        <?php include '..\..\modal\MhacerDenuncia.php' ?>
+        <?php include '..\modal\MhacerDenuncia.php' ?>

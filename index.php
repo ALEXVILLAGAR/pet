@@ -122,7 +122,7 @@ require_once("ControlClass.php");
         </header>
 <!--------------------------------GALERIA------------------------------------------>
        <section class="bg-primary mascotas-index py-2 text-xs-center p-0" id="portfolio">
-           <?php include 'views/galerias/galeria.php'?>
+           <?php include 'views/galerias/galeria_disponible.php'?>
        </section> 
 <!--------------------------------FUNDACIONES-------------------------------------->
         <section class="bg-dark" id="about" >
