@@ -1,6 +1,6 @@
        <div class="container text-center">
             <div id="animales">                   
-                <?php foreach (Mascota::all_cats() as $element): 
+                <?php foreach (Mascota::only_disponible() as $element): 
                     $pet = new Mascota($element['id']);
                     $fundacion = $pet->perteneceA();
                 ?>

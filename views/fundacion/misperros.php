@@ -1,14 +1,12 @@
 <?php 
-    include('../layout/app.php');
+include '../layout/app_fundacion.php';
  ?>
- <section class="bg-faded page-content" >
-             <?php include '..\donar.php'?>   <!-- TODO modificar para donar a la fundacion correcta-->
-            <?php include '..\galerias\galeria_disponible.php' ?>
-            
+        <!-- sidebar-wrapper  -->
+        <section class="bg-faded page-content">
+            <?php include '../galerias/galeria_perro.php'?>
         </section>
         <!-- page-content" -->
     </div>
-
     <!-- page-wrapper -->
     <script src="../../vendor/jquery-easing/jquery.easing.min.js">
     </script>
