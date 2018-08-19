@@ -1,4 +1,4 @@
-<?php $imagenes = array('img/perro1.gif', 'img/perro2.gif', 'img/perro3.gif', 'img/gato1.gif', 'img/gato2.gif', 'img/gato3.gif');
+<?php 
 $mascota = new Mascota();
 ?>
 
@@ -21,11 +21,11 @@ $mascota = new Mascota();
                                         Adoptar
                                     </a>
                                     <!-- Button to Open the Modal -->
-                                    <button class="btn btn-info" data-target="#myModal" data-toggle="modal" type="button">
+                                    <button class="btn btn-info" data-target=<?php echo "#myModal".$element['id'] ?> data-toggle="modal" type="button">
                                         Leer Mas
                                     </button>
                                     <!-- The Modal -->
-                                    <div class="modal" id="myModal">
+                                    <div class="modal" id=<?php echo "myModal".$element['id'] ?> >
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
@@ -57,7 +57,7 @@ $mascota = new Mascota();
                                                                                 <?php echo "Raza: ".$element['raza'] ?>
                                                                             </li>
                                                                             <li>
-                                                                                <?php echo "Edad: ".$element['nombre'] ?>
+                                                                                <?php echo "Edad: ".$element['edad'] ?>
                                                                             </li>
                                                                             <li>
                                                                                 <?php echo "Tamaño: ".$element['nombre'] ?>
@@ -84,7 +84,7 @@ $mascota = new Mascota();
                                                         Cerrar
                                                     </button>
                                                 </div>
-                                            </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </p>

@@ -1,4 +1,5 @@
-<?PHP session_start();
+<?PHP 
+// session_start();
 require_once("ControlClass.php");
  ?>
 <!DOCTYPE html> 

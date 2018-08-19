@@ -1,5 +1,5 @@
 <?php 
-
+// session_start();
 class Fundacion 
 {
 	public $fundacion;
@@ -12,8 +12,14 @@ class Fundacion
 	}
 
 	public function actualizar(){
-		$insertion = mysqli_query($this->db,"UPDATE fundacion SET nombre='$_POST[nombre]',email='$_POST[email]',clave=MD5('$_POST[clave]'), certificado='$_POST[certificado]',telefono='$_POST[telefono]',direccion= '$_POST[direccion]' WHERE id = '$_SESSION[user][id]'") or die ('errorrrr');
-		header('Location: ../entidad1.php');
+		$id = $this->fundacion['id'];
+		if (isset($_FILES["certificado"])) {
+			$imagen=Control::foto($_FILES["certificado"]["tmp_name"]);
+			mysqli_query($this->db,"UPDATE fundacion SET certificado='$imagen' WHERE id = '$id'") or die ('errorrrr');
+		}
+		$insertion = mysqli_query($this->db,"UPDATE fundacion SET nombre='$_POST[nombre]',email='$_POST[correo]',telefono='$_POST[telefono]',direccion= '$_POST[direccion]' WHERE id = '$id'") or die ('errorrrr');
+		$_SESSION['user']=$this->fundacion($id);
+		header('Location: views/perfil/perfilF.php');
 	}
 
 	public static function fundaciones(){ //Retorna todas las fundaciones que existen
@@ -34,7 +40,7 @@ class Fundacion
 	}
 
 	public static function fundacion($id){ //retorna una fundacion
-	$resultado = mysqli_query($this->db, "SELECT * FROM fundacion WHERE id='$id' ") or die ( "casi");
+	$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM fundacion WHERE id='$id' ") or die ( "casi");
 		return mysqli_fetch_array($resultado);
 	}
 
@@ -61,6 +67,14 @@ class Fundacion
 
 	public function is_fundacion(){
 		return isset($this->fundacion['certificado']);
+	}
+
+	public function foto(){
+		$image = Control::foto($_FILES["imagen"]["tmp_name"]);
+		$id = $this->fundacion['id'];
+		$insertion = mysqli_query($this->db,"UPDATE fundacion SET foto_fundacion='$image' WHERE id = '$id'") or die ('errorrrr');
+		$_SESSION['user']=$this->fundacion($id);
+		header('Location: views/perfil/perfilF.php');
 	}
 }
 
