@@ -1,10 +1,11 @@
-<?php 
-require_once("db/conexion.php");
-require_once('validaciones.php');
+<?php
+require_once "db/conexion.php";
+require_once 'validaciones.php';
 /**
- * 
+ *
  */
 //-------------------------------------------------------------Clase Control -----------------------------------------------------------
+
 //// clase para manejo de la session
 /**
  * 
@@ -12,6 +13,7 @@ require_once('validaciones.php');
 require_once('clase/ClaseSession.php');
 
 //Funciones de registro de usuarios, login y cerrar sesion
+
 
 require_once("clase/ClaseControl.php");
 //-------------------------------------------------------------clase Denuncias -----------------------------------------------------------

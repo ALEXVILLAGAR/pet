@@ -1,11 +1,12 @@
-<?php 
-require_once('db/conexion.php');
+<?php
+require_once 'db/conexion.php';
 /**
- * 
+ *
  */
 class Validacion
 {
-		private $opciones =  array('options' => array('min_range' => 0,'max_range' => 10));
+    private $opciones = array('options' => array('min_range' => 0, 'max_range' => 10));
+
 
 		public static function validar_email($email){
 			if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
@@ -34,6 +35,5 @@ class Validacion
 				return true;
 			}else{return false;}
 		}
-}
 
- ?>
+}

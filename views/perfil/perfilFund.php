@@ -1,16 +1,24 @@
 <div class="container ">
     <div class="row my-2 bg-faded">
         <div class="col-lg-4 order-lg-1 text-center">
+        <?php if (isset($fundacion->fundacion['foto_fundacion'])): ?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($fundacion->fundacion['foto_fundacion'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/>
+        <?php else: ?>
             <img alt="avatar" class="mx-auto img-fluid img-circle d-block" src="//placehold.it/150">
+        <?php endif ?>
                 <h6 class="mt-2">
                     Cambiar Foto
                 </h6>
                 <label class="custom-file">
-                    <input class="custom-file-input" id="file" type="file">
-                        <span class="custom-file-control btn btn-dark">
-                            Subir Foto
-                        </span>
-                    </input>
+                    <form action="../../ruta.php?variable=FotoFundacion" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                        <input class="custom-file-input" id="file" type="file" name="imagen">
+                            <span class="custom-file-control btn btn-dark">
+                                Cargar Foto
+                            </span>
+                        </input>
+
+                        <input type="submit" class="btn btn-danger" value="Subir Foto">
+                    </form>
                 </label>
             </img>
         </div>
@@ -61,7 +69,7 @@
                     <!--/row-->
                 </div>
                 <div class="tab-pane" id="edit">
-                    <form role="form">
+                    <form action="../../ruta.php?variable=actualizarFun" role="form" method="post" enctype="multipart/form-data">
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
                                 Nombre
@@ -140,7 +148,7 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Certificado</label>
                             <div class="col-lg-9">
-                                <input type="file" class="form-control" >
+                                <input type="file" class="form-control" name="certificado">
                             </div>
                         </div>
 
@@ -151,7 +159,7 @@
                             </label>
                             <div class="col-lg-9">
                                 <input class="btn btn-primary" type="reset" value="Cancelar">
-                                    <input class="btn btn-info" type="button" value="Guardar Cambios">
+                                    <input class="btn btn-info" type="submit" value="Guardar Cambios">
                                     </input>
                                 </input>
                             </div>

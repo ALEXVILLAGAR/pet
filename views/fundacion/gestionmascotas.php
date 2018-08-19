@@ -31,6 +31,7 @@
                         
                         <th>Nombre</th>
 						<th>Raza</th>
+						<th>Especie</th>
 						<th>Tamaño</th>
                         <th>Estado</th>
                         <th>Foto</th>
@@ -50,14 +51,86 @@
                         
                         <td> <?php echo $element['nombre'] ?></td>
                         <td> <?php echo $element['raza'] ?></td>
+                        <td> <?php echo $element['especie'] ?></td>
                         <td> <?php echo "tamaño" ?></td>
                         <td> <?php echo $element['estado'] ?></td>
                         <td> <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto'])?> " class="avatar" alt="Avatar"/></td>
                         <td>
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Editar"></i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
+                            <a href=<?php echo "#editEmployeeModal".$element['id'] ?> class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Editar"></i></a>
+                            <a href=<?php echo "#deleteEmployeeModal".$element['id'] ?> class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
                         </td>
                     </tr>
+
+    <div id=<?php echo "editEmployeeModal".$element['id'] ?> class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="../../ruta.php?variable=updatePet" method="POST" enctype="multipart/form-data">
+					<div class="modal-header">
+						<h4 class="modal-title">Editar Información</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+
+					<div class="modal-body">
+						<div class="form-group">
+								<label>Nombre</label>
+								<input type="text" class="form-control" name="nombre" value="<?php echo $element['nombre'] ?>" placeholder="nombre" required>
+							</div>
+						<input type="hidden" name="id" value=<?php echo $element['id'] ?>>
+						<div class="form-group">
+							<label> Especie </label>
+							<input type="text" class="form-control" name="especie" value="<?php echo $element['especie'] ?>" readonly>
+						</div>
+
+							<div class="form-group">
+								<label>Raza</label>
+								<input type="text" class="form-control" name="raza" placeholder="raza" value="<?php echo $element['raza'] ?>" required> 
+							</div>
+							<div class="form-group">
+								<label>Edad</label>
+								<input type="text" class="form-control" name="edad" value="<?php echo $element['edad'] ?>" placeholder="edad" required> 
+							</div>
+
+							<div class="form-group">
+								<label>Estado</label>
+								<input type="text" class="form-control" name="estado" placeholder="estado ()" value="<?php echo $element['estado'] ?>" required>
+							</div>
+
+							<div class="form-group">
+								<label>Foto</label>
+								<input type="file"  name="imagen" class="form-control">
+							</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+						<input type="submit" class="btn btn-info" value="Guardar">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Delete Modal HTML -->
+	<div id=<?php echo "deleteEmployeeModal".$element['id'] ?> class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="../../ruta.php?variable=eliminar_pet" method="post">
+					<div class="modal-header">
+						<h4 class="modal-title">Eliminar Mascota</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>¿Seguro que quieres eliminar estos registros de <?php echo $element['nombre'] ?> ?</p>
+						<p class="text-warning"><i class="fas fa-exclamation-triangle"></i><small>Esta acción no se puede deshacer.</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" name="id" value="<?php echo $element['id'] ?>">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+						<input type="submit" class="btn btn-danger" value="Eliminar">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
                 	<?php endforeach ?>
 
                 </tbody>
@@ -75,9 +148,11 @@
                 </ul>
             </div>
         </div>
-    
+    	
 	<!-- Edit Modal HTML -->
-	<div id="addEmployeeModal" class="modal fade">
+	
+<!-- Add modal  -->
+<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="../../ruta.php?variable=agregar_pet" method="POST" enctype="multipart/form-data">
@@ -126,74 +201,6 @@
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
 						<input type="submit" class="btn btn-info" value="Añadir">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Edit Modal HTML -->
-	<div id="editEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form action="#" method="POST" enctype="multipart/form-data">
-					<div class="modal-header">
-						<h4 class="modal-title">Editar Información</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-
-					<div class="modal-body">
-						<div class="form-group">
-								<label>Nombre</label>
-								<input type="text" class="form-control" name="nombre" placeholder="nombre" required>
-							</div>
-
-							<div class="form-group">
-								<label>Raza</label>
-
-								<input type="text" class="form-control" name="raza" placeholder="raza" required> 
-							</div>
-							<div class="form-group">
-								<label>Edad</label>
-
-								<input type="text" class="form-control" name="edad" placeholder="edad" required> 
-							</div>
-
-							<div class="form-group">
-								<label>Estado</label>
-
-								<input type="text" class="form-control" name="estado" placeholder="estado ()" required>
-							</div>
-
-							<div class="form-group">
-								<label>Foto</label>
-
-								<input type="file"  name="imagen" class="form-control" required>
-							</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-info" value="Guardar">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Eliminar Fundación</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<p>¿Seguro que quieres eliminar estos registros?</p>
-						<p class="text-warning"><i class="fas fa-exclamation-triangle"></i><small>Esta acción no se puede deshacer.</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-danger" value="Eliminar">
 					</div>
 				</form>
 			</div>

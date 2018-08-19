@@ -1,5 +1,5 @@
 <?php
-require_once('ControlClass.php');
+require_once 'ControlClass.php';
 
 $variable = $_GET['variable'];
 switch ($variable) {
@@ -25,7 +25,31 @@ switch ($variable) {
 		break;
 	case 'donacion':
 		Fundacion::donacion();
-		break;			
+		break;
+	case 'updatePet':
+		$mascota = new Mascota();
+		$mascota->uptade_pet();
+		break;
+	case 'eliminar_pet':
+		$mascota = new Mascota();
+		$mascota->eliminar_mascota();
+		break;
+	case 'FotoFundacion':
+		$fundacion = new Fundacion();
+		$fundacion->foto();
+		break;
+	case 'update_user':
+		$user = new Usuario();
+		$user->uptade_user();
+		break;
+	case 'FotoUser':
+		$user = new Usuario();
+		$user->foto();
+		break;
+	case 'actualizarFun':
+		$fundacion = new Fundacion();
+		$fundacion->actualizar();
+		break;
 	// case 'users':
 	// 	$user = new Usuario();
 	// 	$user->todos_usuarios();
@@ -37,7 +61,3 @@ switch ($variable) {
 		# code...
 		break;
 }
-
-
-
-?>
