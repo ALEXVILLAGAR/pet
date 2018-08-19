@@ -1,5 +1,5 @@
 <?php 
-session_start();
+// session_start();
 require_once("../../ControlClass.php");
 $fundacion = new Fundacion();
 if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
@@ -64,8 +64,13 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <img alt="User picture" class="img-responsive img-rounded" src="../../img/user.jpg">
-                        </img>
+
+        <?php if (isset($fundacion->fundacion['foto_fundacion'])): ?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($fundacion->fundacion['foto_fundacion'])?>" alt="User picture" class="img-responsive img-rounded"/>
+        <?php else: ?>
+             <img alt="User picture" class="img-responsive img-rounded" src="../../img/user.jpg">
+        <?php endif ?>
+        
                     </div>
                     <div class="user-info">
                         <span class="user-name">

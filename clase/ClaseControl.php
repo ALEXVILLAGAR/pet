@@ -59,7 +59,16 @@ class Control
 
 	public function newContacto(){
 		var_dump($_POST);
-		
+	}
+
+	public static function foto($picture){
+		$revisar = getimagesize($picture);//se toma tamaño de la imagen
+		if($revisar !== false){                    //y se verifica si tiene  tamaño para validar si se cargo o no
+			$image=$picture;
+			return addslashes(file_get_contents($image));
+		}else{
+			echo "error";
+		}
 	}
 }
 

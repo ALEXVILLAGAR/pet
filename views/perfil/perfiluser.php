@@ -1,16 +1,24 @@
 <div class="container ">
     <div class="row my-2 bg-faded">
         <div class="col-lg-4 order-lg-1 text-center">
+        <?php if (isset($user->usuario['foto_perfil'])): ?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($user->usuario['foto_perfil'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/>
+        <?php else: ?>
             <img alt="avatar" class="mx-auto img-fluid img-circle d-block" src="//placehold.it/150">
+        <?php endif ?>
                 <h6 class="mt-2">
                     Cambiar Foto
                 </h6>
                 <label class="custom-file">
-                    <input class="custom-file-input" id="file" type="file">
-                        <span class="btn btn-dark custom-file-control">
-                            Subir Foto
-                        </span>
-                    </input>
+                    <form action="../../ruta.php?variable=FotoUser" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                        <input class="custom-file-input" id="file" type="file" name="imagen">
+                            <span class="custom-file-control btn btn-dark">
+                                Cargar Foto
+                            </span>
+                        </input>
+
+                        <input type="submit" class="btn btn-danger" value="Subir Foto">
+                    </form>
                 </label>
             </img>
         </div>
@@ -54,7 +62,7 @@
                     <!--/row-->
                 </div>
                 <div class="tab-pane" id="edit">
-                    <form role="form">
+                    <form action="../../ruta.php?variable=update_user" role="form" method="post">
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
                                 Nombres
@@ -117,7 +125,7 @@
                                 Contraseña
                             </label>
                             <div class="col-lg-9">
-                                <input class="form-control"  name="contra" type="password" value="" required autofocus="autofocus" readonly>
+                                <input class="form-control" type="password" value="" required autofocus="autofocus" readonly>
                                 </input>
                             </div>
                         </div>
@@ -126,7 +134,7 @@
                                 Confirmar contraseña
                             </label>
                             <div class="col-lg-9">
-                                <input class="form-control" name="confirm-contra" type="password" value="" required autofocus="autofocus" readonly>
+                                <input class="form-control" type="password" value="" required autofocus="autofocus" readonly>
                                 </input>
                             </div>
                         </div>
