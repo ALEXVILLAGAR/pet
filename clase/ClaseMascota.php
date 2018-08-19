@@ -9,6 +9,11 @@ class Mascota
 		$this->db = Conectar::conexion();
 	}
 
+	public function only_pet($id){
+		$resultado = mysqli_query($this->db, "SELECT * FROM mascota WHERE id='$id' ") or die ( "casi");
+		return $resultado;
+	}
+
 	public function all_pet(){
 		$resultado = mysqli_query($this->db, "SELECT * FROM mascota" ) or die ( "casi");
 		return $resultado;

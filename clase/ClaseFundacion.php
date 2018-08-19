@@ -16,6 +16,12 @@ class Fundacion
 		header('Location: ../entidad1.php');
 	}
 
+	public static function only_fundacion($id){ //Retorna todas las fundaciones que existen
+		$db=Conectar::conexion();
+		$resultado = mysqli_query($db,"SElECT * FROM fundacion WHERE id='$id' " ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;
+	}
+
 	public static function fundaciones(){ //Retorna todas las fundaciones que existen
 		$db=Conectar::conexion();
 		$resultado = mysqli_query($db,"SElECT * FROM fundacion" ) or die ( "Algo ha ido mal en la consulta a la base de datos");

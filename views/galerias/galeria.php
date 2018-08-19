@@ -6,10 +6,13 @@ $mascota = new Mascota();
             <div id="animales">                   
                 <?php foreach ($mascota->all_pet() as $element): 
                     $fundacion = $mascota->perteneA($element['id_fundacion']);
+                    $id=$element['id'];
+
                     ?>
                 <div class="animal white-panel">
                     <h3 href="#Nombre2" id="NombreMas">
                         <?php echo $element['nombre'] ?>
+                        <?php echo $id ?>
                     </h3>
                     <hr>
                          <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto'])?> " width="250"/>
@@ -17,23 +20,30 @@ $mascota = new Mascota();
                                 <p>
                                 </p>
                                 <p>
-                                    <a class="btn btn-primary" href="#">
+                                    <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#reservar_mascota?>" onclick="pasarId()" >
                                         Adoptar
                                     </a>
+<script language=JavaScript>
+
+function pasarId(id) {
+   $id=$element['id'];
+}
+</script>
+                                    
                                     <!-- Button to Open the Modal -->
                                     <button class="btn btn-info" data-target="#myModal" data-toggle="modal" type="button">
                                         Leer Mas
                                     </button>
                                     <!-- The Modal -->
                                     <div class="modal" id="myModal">
-                                        <div class="modal-dialog">
+                                        <div class="modal-dialog border-info">
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">
+                                                <div class="modal-header bg-dark">
+                                                    <h4 class="modal-title text-light">
                                                         Información Mascota
                                                     </h4>
-                                                    <button class="close" data-dismiss="modal" type="button">
+                                                    <button class="close bg-danger" data-dismiss="modal" type="button">
                                                         ×
                                                     </button>
                                                 </div>
@@ -76,7 +86,7 @@ $mascota = new Mascota();
                                                     </div>
                                                 </div>
                                                 <!-- Modal footer -->
-                                                <div class="modal-footer">
+                                                <div class="modal-footer bg-seconda">
                                                     <button class="btn btn-primary btn-block" type="button">
                                                         Adoptar
                                                     </button>
@@ -95,4 +105,7 @@ $mascota = new Mascota();
                 <?php endforeach ?>
             </div>
         </div>
+<?php include '..\..\modal\ConfirmarAdopcion.php' ?>
+       
+
 
