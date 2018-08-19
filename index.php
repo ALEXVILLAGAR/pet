@@ -109,9 +109,9 @@ require_once("ControlClass.php");
             }else {
 
         ?>  
-        <button class="btn btn-primary btn-xl js-scroll-trigger">
-            <a class="text-white" href="ruta.php?variable=cerrar_login">cerrar Sesión</a>
-        </button>
+            <a class="text-white btn btn-primary btn-xl js-scroll-trigger" href="#">Regresar a mi perfil</a>
+            <a class="text-white btn btn-primary btn-xl js-scroll-trigger" href="ruta.php?variable=cerrar_login">cerrar mi sesión</a>
+        
          <?php
             }
         ?> 
@@ -121,11 +121,27 @@ require_once("ControlClass.php");
             </div>
         </header>
 <!--------------------------------GALERIA------------------------------------------>
+<div class="col-lg-12 text-center">
+    <br>
+                <h2 class="section-heading">
+                    Nuestras mascotas
+                </h2>
+                <hr class="my-4">
+                </hr>
+            </div>
        <section class="bg-primary mascotas-index py-2 text-xs-center p-0" id="portfolio">
            <?php include 'views/galerias/galeria.php'?>
        </section> 
 <!--------------------------------FUNDACIONES-------------------------------------->
         <section class="bg-dark" id="about" >
+            <div class="col-lg-12 text-center">
+    <br>
+                <h2 class="section-heading text-white">
+                    Fundaciones aliadas
+                </h2>
+                <hr class="my-4">
+                </hr>
+            </div>
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-12">
@@ -214,7 +230,7 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-handshake-o text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        en Domicilios
+                       <a href="#" data-target="#loginModal" data-toggle="modal">en Domicilios</a> 
                     </h3>
 
                     <p class="text-muted mb-0">
@@ -227,7 +243,7 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-btc text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        en linea
+                        <a href="#" data-target="#loginModal" data-toggle="modal">en linea</a>
                     </h3>
                     <p class="text-muted mb-0">
                         You can use this theme as is, or you can make changes!
@@ -239,7 +255,7 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-money text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        puntos de atención
+                        <a href="#" data-target="#loginModal" data-toggle="modal">puntos de atención</a>
                     </h3>
                     <p class="text-muted mb-0">
                         We update dependencies to keep things fresh.
@@ -251,7 +267,7 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-whatsapp text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        contactanos
+                        <a href="#" data-target="#loginModal" data-toggle="modal">contactanos</a>
                     </h3>
                     <p class="text-muted mb-0">
                         You have to make your websites with love these days!

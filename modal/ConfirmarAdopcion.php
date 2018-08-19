@@ -46,7 +46,7 @@
   <tbody>
     <tr>
       <?php $variable1=($_GET['$id']); echo $variable1;
-       foreach ($mascota->only_pet('$variable1') as $element): ?>
+       foreach ($mascota->only_pet('14') as $element): ?>
       <td class="border-top-0 border border-secondary"><?php echo $element['nombre']; ?></td>
       <td class="border-top-0 border border-secondary"><?php echo $element['edad']; ?></td>
       <td class="border-top-0 border border-secondary" colspan="2"><?php echo $element['raza']; ?></td>

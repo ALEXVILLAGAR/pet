@@ -53,10 +53,9 @@ if(!$user->authorizacion('usuario')){
 <body>
 
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
-        <a class="btn btn-sm btn-dark" href="#" id="show-sidebar">
-            <i class="fas fa-bars">
-            </i>
-        </a>
+        <button class="btn btn-md bg-primary border border-dark text-primary" id="show-sidebar">
+             <i class=" bg-dark btn btn-md">Mi menu</i>
+        </button>
         <nav class="sidebar-wrapper" id="sidebar">
             <div class="sidebar-content">
                 <div class="sidebar-brand">
@@ -186,6 +185,15 @@ if(!$user->authorizacion('usuario')){
                                 </i>
                                 <span>
                                     Hacer Denuncia
+                                </span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="..\..\index.php" >
+                                <i class="fas fa-arrow-alt-circle-left">
+                                </i>
+                                <span>
+                                    Inicio
                                 </span>
                             </a>
                         </li>
