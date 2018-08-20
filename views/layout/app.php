@@ -188,6 +188,37 @@ if(!$user->authorizacion('usuario')){
                                 </span>
                             </a>
                         </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fas fa-archive">
+                                </i>
+                                <span>
+                                    Mis adopciones
+                                </span>
+
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="../usuario/adoptados.php">
+                                            Adoptados
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="..\usuario\Estado_Adopcion.php">
+                                            Procesos de adopcion
+                                        </a>
+                                    </li>
+                                    <li >
+                            <a href="#" data-toggle="modal" data-target="#Mestado_Adopcion">
+                            
+                                    Mi calificacion
+                            
+                            </a>
+                        </li>
+                                </ul>
+                            </div>
+                        </li>
                         <li class="">
                             <a href="..\..\index.php" >
                                 <i class="fas fa-arrow-alt-circle-left">
@@ -229,3 +260,6 @@ if(!$user->authorizacion('usuario')){
         <!-- sidebar-wrapper  -->
         
         <?php include '..\modal\MhacerDenuncia.php' ?>
+        <!--<?php include 'Mmi_Calificacion.php' ?>-->
+
+
