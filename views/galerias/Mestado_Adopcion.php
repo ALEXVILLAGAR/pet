@@ -12,7 +12,8 @@
 
     </div>
     <div class="modal-footer bg-secondary">
-        <button type="reset" class="btn btn-primary bg-success text-dark" data-dismiss="modal">cerrar</button>
+        <button type="reset" class="btn btn-primary bg-success text-dark" data-dismiss="modal">cerrar</butto>
       </div>
   </div>
+</div>
 </div>

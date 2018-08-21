@@ -17,7 +17,7 @@
                             <p>
                             </p>
                             <p>
-                                <a class="btn btn-primary" href="#">
+                                <a class="btn btn-primary" href="#" >
                                     Leer Más
                                 </a>
                                 <!-- Button to Open the Modal -->
@@ -26,6 +26,7 @@
                                 </button>
                                 <!-- The Modal -->
                                 <?php include 'donar.php' ?>
+                                <?php include 'galerias/leermas.php' ?>
                             </p>
                         </div>
                     </hr>

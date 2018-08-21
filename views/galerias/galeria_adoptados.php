@@ -53,15 +53,7 @@
                                 <p>
                                 </p>
                                 <p>
-                            <?php if (SessionesPet::session_active()): ?>
-                                    <a class="btn btn-primary" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> >
-                                        Adoptar
-                                    </a>
-                                    <!-- Button to Open the Modal -->
-                                    <br><br>
-                                     <button class="btn btn-danger"  href="#" data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito".$element['id'] ?> type="button">
-                                        me gusta<span class="fa fa-heart mb-2 sr-icons"></span>
-                                    </button>
+                            <?php if (SessionesPet::session_active()): ?>   
                                 <?php endif?>
                                     <button class="btn btn-info" data-target=<?php echo "#myModal".$element['id'] ?> data-toggle="modal" type="button">
                                         Leer Mas
@@ -69,6 +61,7 @@
                                     
                                     <!-- The Modal -->
                                     <?php include 'leermas.php'; ?>
+                                   
                                 </p>
                             </div>
                         </img>

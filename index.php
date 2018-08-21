@@ -121,15 +121,16 @@ require_once("ControlClass.php");
             </div>
         </header>
 <!--------------------------------GALERIA------------------------------------------>
-<div class="col-lg-12 text-center">
+
+       <section class="bg-primary mascotas-index py-2 text-xs-center p-0" id="portfolio">
+        <div class="col-lg-12 text-center">
     <br>
-                <h2 class="section-heading">
+                <h2 class="section-heading text-white">
                     Nuestras mascotas
                 </h2>
-                <hr class="my-4">
+                <hr class="my-6 bg-white">
                 </hr>
             </div>
-       <section class="bg-primary mascotas-index py-2 text-xs-center p-0" id="portfolio">
            <?php include 'views/galerias/galeria_disponible.php'?>
        </section> 
 <!--------------------------------FUNDACIONES-------------------------------------->

@@ -71,6 +71,7 @@
                                     
                                     <!-- The Modal -->
                                     <?php include 'leermas.php'; ?>
+                                    <?php include 'Mestado_Adopcion.php'; ?>
                                 </p>
                             </div>
                         </img>

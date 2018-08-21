@@ -210,10 +210,8 @@ if(!$user->authorizacion('usuario')){
                                         </a>
                                     </li>
                                     <li >
-                            <a href="#" data-toggle="modal" data-target="#Mestado_Adopcion">
-                            
+                            <a href="#" data-toggle="modal" data-target="#Mmi_Calificacion">
                                     Mi calificacion
-                            
                             </a>
                         </li>
                                 </ul>
@@ -260,6 +258,6 @@ if(!$user->authorizacion('usuario')){
         <!-- sidebar-wrapper  -->
         
         <?php include '..\modal\MhacerDenuncia.php' ?>
-        <!--<?php include 'Mmi_Calificacion.php' ?>-->
+       <<?php include '..\modal\Mmi_Calificacion.php' ?>
 
 
