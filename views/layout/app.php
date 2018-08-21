@@ -53,10 +53,9 @@ if(!$user->authorizacion('usuario')){
 <body>
 
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
-        <a class="btn btn-sm btn-dark" href="#" id="show-sidebar">
-            <i class="fas fa-bars">
-            </i>
-        </a>
+        <button class="btn btn-md bg-primary border border-dark text-primary" id="show-sidebar">
+             <i class=" bg-dark btn btn-md">Mi menu</i>
+        </button>
         <nav class="sidebar-wrapper" id="sidebar">
             <div class="sidebar-content">
                 <div class="sidebar-brand">
@@ -189,6 +188,44 @@ if(!$user->authorizacion('usuario')){
                                 </span>
                             </a>
                         </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fas fa-archive">
+                                </i>
+                                <span>
+                                    Mis adopciones
+                                </span>
+
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="../usuario/adoptados.php">
+                                            Adoptados
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="..\usuario\Estado_Adopcion.php">
+                                            Procesos de adopcion
+                                        </a>
+                                    </li>
+                                    <li >
+                            <a href="#" data-toggle="modal" data-target="#Mmi_Calificacion">
+                                    Mi calificacion
+                            </a>
+                        </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a href="..\..\index.php" >
+                                <i class="fas fa-arrow-alt-circle-left">
+                                </i>
+                                <span>
+                                    Inicio
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -221,3 +258,6 @@ if(!$user->authorizacion('usuario')){
         <!-- sidebar-wrapper  -->
         
         <?php include '..\modal\MhacerDenuncia.php' ?>
+       <<?php include '..\modal\Mmi_Calificacion.php' ?>
+
+

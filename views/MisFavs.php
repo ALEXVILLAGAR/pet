@@ -1,11 +1,12 @@
-<div class="container py-3">
-    <div class="card">
-        <div class="row ">
-             <?php 
+<div class="container py-3" >
+    <?php 
             foreach($user->mis_favoritos() as $element): 
                     $pet = new Mascota($element['id_mascota']);
                 ?>
-            <div class="col-md-4 box">
+    <div class="card" style="z-index: -1">
+        <div class="row ">
+             
+            <div class="col-md-4 box " id="fundaciones">
                 <img src="data:image/jpg;base64,<?php echo base64_encode($pet->mascota['foto'])?>" class="w-100"/>
                 </img>
             </div>
@@ -36,8 +37,8 @@
                         </div>
                     </div>
                 </div>
-            <?php endforeach ?>
+            
 
         </div>
-    </div>
+    </div><br><?php endforeach ?>
 </div>
