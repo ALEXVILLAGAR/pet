@@ -57,6 +57,10 @@ switch ($variable) {
 	case 'adoptar':
 		Mascota::reservar();
 		break;
+	case 'return_home':
+		$user = new Usuario();
+		Control::redirige($user->usuario,true);
+		break;
 	// case 'users':
 	// 	$user = new Usuario();
 	// 	$user->todos_usuarios();

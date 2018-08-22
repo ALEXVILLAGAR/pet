@@ -64,7 +64,6 @@ class Usuario
 		$_SESSION['user']=$this->GetUsuario($id);
 		header('Location: views/usuario/perfil.php');
 	}
-
 }
 
  ?>

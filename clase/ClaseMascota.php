@@ -58,7 +58,7 @@ class Mascota
 	}
 
 	public static function reservar(){
-		$insertion = mysqli_query(Conectar::conexion(),"UPDATE mascota SET  disponible='no disponible' WHERE id = '$_POST[id_pet]'") or die ('errorrrr');
+		$insertion = mysqli_query(Conectar::conexion(),"UPDATE mascota SET  disponible='no disponible',solicitud='proceso',id_usuario='$_POST[id_usuario]' WHERE id = '$_POST[id_pet]'") or die ('errorrrr');
 		header('Location: index.php');
 	}
 

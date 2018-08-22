@@ -1,6 +1,6 @@
        <div class="container text-center">
             <div id="animales">                   
-                <?php foreach (Mascota::all_dogs() as $element): 
+                <?php foreach (Mascota::only_reservada() as $element): 
                     $pet = new Mascota($element['id']);
                     $fundacion = $pet->perteneceA();
                 ?>
@@ -14,20 +14,17 @@
                                 <p>
                                 </p>
                                 <p>
-                            <?php if (SessionesPet::session_active()): ?>
-                                    
-                                <?php endif?>
                                     <button class="btn btn-info" data-target=<?php echo "#myModal".$element['id'] ?> data-toggle="modal" type="button">
                                         Leer Mas
                                     </button>
                                     <br> <br>
-                                    <button class="btn btn-warning" data-target="#Mestado_Adopcion" data-toggle="modal" type="button">
+                                    <button class="btn btn-warning" data-target=<?php echo "#Mestado_Adopcion".$element['id'] ?> data-toggle="modal" type="button">
                                         conocer estado
                                     </button>
                                     
                                     <!-- The Modal -->
                                     <?php include 'leermas.php'; ?>
-                                    <!-- <?php include 'Mestado_Adopcion.php'; ?>-->
+                                     <?php include 'Mestado_Adopcion.php'; ?>
                                     
                                 </p>
                             </div>
@@ -39,47 +36,4 @@
                  
             </div>
         </div>
-       <div class="container text-center">
-            <div id="animales">                   
-                <?php foreach (Mascota::all_dogs() as $element): 
-                    $pet = new Mascota($element['id']);
-                    $fundacion = $pet->perteneceA();
-                ?>
-                <div class="animal white-panel">
-                    <h3 href="#Nombre2" id="NombreMas">
-                        <?php echo $pet->mascota['nombre'] ?>
-                    </h3>
-                    <hr>
-                         <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto'])?> " width="250"/>
-                            <div class="animal-info panel">
-                                <p>
-                                </p>
-                                <p>
-                            <?php if (SessionesPet::session_active()): ?>
-                                    <a class="btn btn-primary" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> >
-                                        Adoptar
-                                    </a>
-                                    <!-- Button to Open the Modal -->
-                                    <br><br>
-                                     <button class="btn btn-danger"  href="#" data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito".$element['id'] ?> type="button">
-                                        me gusta<span class="fa fa-heart mb-2 sr-icons"></span>
-                                    </button>
-                                <?php endif?>
-                                    <button class="btn btn-info" data-target=<?php echo "#myModal".$element['id'] ?> data-toggle="modal" type="button">
-                                        Leer Mas
-                                    </button>
-                                    
-                                    <!-- The Modal -->
-                                    <?php include 'leermas.php'; ?>
-                                    <?php include 'Mestado_Adopcion.php'; ?>
-                                </p>
-                            </div>
-                        </img>
-                    </hr>
-                </div>
-                     
-
-                <?php endforeach ?>
-                
-            </div>
-        </div>
+       
