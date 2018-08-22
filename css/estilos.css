@@ -3,7 +3,6 @@
     max-width: 100%;
     width: 100%;
 }
-
 #fundaciones img {
     width: 500px;
     max-width: 100%;
@@ -16,7 +15,6 @@
         object-position: center center;
     }
 }
-
 img {
     width: 500px;
     max-width: 100%;
@@ -52,6 +50,15 @@ img {
 #about img {
     height: 35rem;
     width: 80%;
+}
+#about {
+    padding: 1rem 0
+}
+#contact {
+    padding-bottom: 1rem
+}
+.abajo {
+    z-index: -1;
 }
 /* header estilos */
 
