@@ -1,3 +1,16 @@
+<?php 
+require_once("..\..\ControlClass.php");
+if(!(SessionesPet::session_active())){
+    header('Location: index.php');
+    exit;
+}
+$user =new Usuario();
+if(!$user->authorizacion('admi')){
+    echo "<h2> No tienes Nivel para acceder a esta seccion </h2>";
+    exit;
+}
+
+ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,18 +22,18 @@
                             I WANT A PET
                         </title>
                         <!-- Bootstrap core CSS -->
-                        <link href="css/estilos.css" rel="stylesheet">
-                            <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+                        <link href="../../css/estilos.css" rel="stylesheet">
+                            <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
                                 <!-- Custom fonts for this template -->
-                                <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+                                <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
                                     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
                                         <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" rel="stylesheet">
                                             <!-- Plugin CSS -->
-                                            <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-                                                <link href="css/custom.css" rel="stylesheet">
-                                                    <link href="css/custom-themes.css" rel="stylesheet">
+                                            <link href="../../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+                                                <link href="../../css/custom.css" rel="stylesheet">
+                                                    <link href="../../css/custom-themes.css" rel="stylesheet">
                                                         <!-- Custom styles for this template -->
-                                                        <link href="css/creative.min.css" rel="stylesheet">
+                                                        <link href="../../css/creative.min.css" rel="stylesheet">
                                                         </link>
                                                     </link>
                                                 </link>

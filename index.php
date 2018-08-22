@@ -109,10 +109,12 @@ require_once("ControlClass.php");
             }else {
 
         ?>  
-            <a class="text-white btn btn-primary btn-xl js-scroll-trigger" href="#">Regresar a mi perfil</a>
+            <a class="text-white btn btn-primary btn-xl js-scroll-trigger" href="ruta.php?variable=return_home">Regresar a mi perfil</a>
+
             <a class="text-white btn btn-primary btn-xl js-scroll-trigger" href="ruta.php?variable=cerrar_login">cerrar mi sesión</a>
         
          <?php
+
             }
         ?> 
                         

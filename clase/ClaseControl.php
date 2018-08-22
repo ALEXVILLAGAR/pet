@@ -27,7 +27,7 @@ class Control
 		
 		if(MD5($_POST['clave'])==$fila['clave']){
 		// if($_POST['clave']===$fila['clave']){
-			session_start();
+			// session_start();
 			$_SESSION['loggedin'] = true;
 			$_SESSION['user'] = $fila;
 			$_SESSION['start'] = time();
@@ -35,15 +35,7 @@ class Control
 		    if($table==='fundacion'){
 		    	header('Location: views\fundacion\userfundacion.php');
 		    }
-			elseif($fila['tipo']==='admi'){
-			    header('Location: ..\entidad1.php');     
-			}
-			elseif($fila['tipo']==='usuario'){
-		    	header('Location: views\usuario\user.php');
-			} 
-			else{ 
-				header('Location: index.php');
-				}
+		    Control::redirige($fila);
 		}else{
 			$variable =true;
 			header('Location: index.php?variable=$variable');
@@ -63,12 +55,27 @@ class Control
 
 	public static function foto($picture){
 		$revisar = getimagesize($picture);//se toma tamaño de la imagen
-		if($revisar !== false){                    //y se verifica si tiene  tamaño para validar si se cargo o no
+		if($revisar !== false){  //y se verifica si tiene  tamaño para validar si se cargo o no
 			$image=$picture;
 			return addslashes(file_get_contents($image));
 		}else{
 			echo "error";
 		}
+	}
+
+	public static function redirige($fila,$es_fundacion=false){
+			if($fila['tipo']=='admi'){
+			    header('Location: views\perfil\perfiladmin.php');     
+			}
+			elseif($fila['tipo']=='usuario'){
+		    	header('Location: views\usuario\user.php');
+			}
+			elseif($es_fundacion=='redirige'){
+		    	header('Location: views\fundacion\userfundacion.php');
+			}
+			else{
+		    	header('Location: index.php');
+			}
 	}
 }
 

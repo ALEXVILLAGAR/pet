@@ -39,6 +39,8 @@
                     </tr>
                 </thead>
                 <tbody>
+                	<?php foreach (Mascota::all_pet() as $element): 
+                		$pet = new Mascota($element['id']); ?>
                     <tr>
 						<td>
 							<span class="custom-checkbox">
@@ -46,11 +48,12 @@
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar">Lucas</td>
-                        <td>criollo</td>
-						<td>1</td>
-                        <td>mediano</td>
-                        <td>OnePets</td>
+                        <td><img src="data:image/jpg;base64,<?php echo base64_encode($element['foto'])?> " class="avatar" alt="avatar"/>
+                        	<?php echo $pet->mascota['nombre'] ?> </td>
+                        <td><?php echo $pet->mascota['raza'] ?></td>
+						<td><?php echo $pet->mascota['edad'] ?></td>
+                        <td><?php echo $pet->mascota['edad'] ?></td>
+                        <td><?php echo $pet->perteneceA()['nombre'] ?></td>
                         <td><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, quisquam.</p></td>
                         <td>
                             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Editar"></i></a>
@@ -58,81 +61,8 @@
 
                         </td>
                     </tr>
-                    <tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox2" name="options[]" value="1">
-								<label for="checkbox2"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar">Max</td>
-                        <td>criollo</td>
-						<td>2</td>
-                        <td>mediano</td>
-                        <td>OnePets</td>
-                        <td><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, quisquam.</p></td>
-                        <td>
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Editar"> </i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
+                	<?php endforeach ?>
 
-                        </td>
-                    </tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox3" name="options[]" value="1">
-								<label for="checkbox3"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar"> skiper</td>
-                        <td>criollo</td>
-						<td>2</td>
-                        <td>grande</td>
-                        <td>OnePets</td>
-                        <td><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, quisquam.</p></td>
-                        <td>
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Editar"></i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
-
-                    </tr>
-                    <tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox4" name="options[]" value="1">
-								<label for="checkbox4"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar">Firulais</td>
-                        <td>criollo</td>
-						<td>3</td>
-                        <td>grande</td>
-                        <td>OnePets</td>
-                        <td><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, quisquam.</p></td>
-                        <td>
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Editar"> </i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
-
-                        </td>
-                    </tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox5" name="options[]" value="1">
-								<label for="checkbox5"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar">Angora</td>
-                        <td>criollo</td>
-						<td>1</td>
-                        <td>grande</td>
-                        <td>OnePets</td>
-                        <td><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, quisquam.</p></td>
-                        <td>
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class=" fas fa-edit" data-toggle="tooltip" title="Editar"> </i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
-
-                        </td>
-                    </tr>
                 </tbody>
             </table>
 			<div class="clearfix">
