@@ -248,7 +248,7 @@ if(!$user->authorizacion('usuario')){
                     </div>
                 </div>
                 <div>
-                    <a href="../../ruta.php?variable=cerrar_login">
+                    <a  data-toggle="modal" data-target="#Mcerrar_sesion" >
                         <i class="fa fa-power-off">
                         </i>
                     </a>
@@ -258,6 +258,7 @@ if(!$user->authorizacion('usuario')){
         <!-- sidebar-wrapper  -->
         
         <?php include '..\modal\MhacerDenuncia.php' ?>
-       <<?php include '..\modal\Mmi_Calificacion.php' ?>
+       <?php include '..\modal\Mmi_Calificacion.php' ?>
+        <?php include '..\modal\Mcerrar_sesion.php' ?>
 
 

@@ -35,33 +35,36 @@
                         </label>
                         <br>
                             <div aria-label="Basic example" class="btn-group values" role="group">
-                                <button class="btn btn-sample active selectvalue" type="button">
+                                <button class="btn btn-sample active selectvalue" type="button" onclick="document.getElementById('stripeAmount').innerHTML = '5000'">
                                     5000
                                 </button>
-                                <button class="btn btn-sample selectvalue" type="button">
+                                <button class="btn btn-sample selectvalue" type="button" onclick="document.getElementById('stripeAmount').innerHTML = '10000'">
                                     10000
                                 </button>
-                                <button class="btn btn-sample selectvalue" type="button">
+                                <button class="btn btn-sample selectvalue" type="button" onclick="document.getElementById('stripeAmount').innerHTML = '20000'">
                                     20000
                                 </button>
-                                <button class="btn btn-sample selectvalue" type="button">
+                                <button class="btn btn-sample selectvalue" type="button" onclick="document.getElementById('stripeAmount').innerHTML = '50000'">
                                     50000
                                 </button>
-                                <button class="btn btn-sample customvalue" type="button">
+                                <button class="btn btn-sample customvalue" type="button" onclick="document.getElementById('ool').style.display = 'inline'">
                                     Otra cantidad
                                 </button>
                             </div>
-                            <div class="input-group customam" style="display: none; margin-top:10px;">
-                                <span class="input-group-addon" id="basic-addon1">
-                                    $
-                                </span>
-                                <input aria-describedby="basic-addon1" class="form-control" id="custom" placeholder="Otra cantidad" type="number">
-                                </input>
-                            </div>
-                        </br>
+                            
                     </div>
                 </div>
                 <br>
+                <div class="input-group customam" style="display: none; margin-top:10px;" id="ool">
+                                <span class="input-group-addon" id="basic-addon1">
+                                    $
+                                </span>
+                                <input  id="custom" placeholder="Otra cantidad" type="number"></input>
+                                <button class="btn btn-sample customvalue" type="button" onclick="document.getElementById('stripeAmount').innerHTML = document.getElementById('custom').value">
+                                    Agregar
+                                </button>
+                </div>
+                <br><br>
                     <div class="money-donate">
                         <span id="displayAmount">
                             <h2>
@@ -75,7 +78,7 @@
                         </span>
                     </div>
                     <div class="info-box">
-                        Muchas gracias por participar en esta campaÃ±a
+                        Muchas gracias por participar en esta campaña
                     </div>
                 </br>
             </div>
