@@ -34,6 +34,11 @@
                         Editar
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-target="#pass" data-toggle="tab" href="">
+                        Cambiar Contraseña
+                    </a>
+                </li>
             </ul>
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
@@ -74,15 +79,6 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
-                                Apellidos
-                            </label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value="Apellidos">
-                                </input>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">
                                 Email
                             </label>
                             <div class="col-lg-9">
@@ -108,21 +104,35 @@
                                 </input>
                             </div>
                         </div>
+                        
+                        
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
                             </label>
-                            <div class="col-lg-6">
-                                <input class="form-control" placeholder="Ciudad" type="text" value="">
+                            <div class="col-lg-9">
+                                <input  class="btn btn-primary" type="reset" value="Cancelar">
+                                    <input class="btn btn-info" type="submit" value="Guardar Cambios">
+                                    </input>
                                 </input>
                             </div>
-                            <div class="col-lg-3">
-                                <input class="form-control" placeholder="Departamento" type="text" value="">
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="pass">
+                    <form action="../../ruta.php?variable=update_user" role="form" method="post">
+                                          
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">
+                                Contraseña actual
+                            </label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="password" value="" required autofocus="autofocus" readonly>
                                 </input>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
-                                Contraseña
+                                Nueva contraseña
                             </label>
                             <div class="col-lg-9">
                                 <input class="form-control" type="password" value="" required autofocus="autofocus" readonly>

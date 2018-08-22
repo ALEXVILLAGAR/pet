@@ -34,6 +34,11 @@
                         Editar
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-target="#pass" data-toggle="tab" href="">
+                        Cambiar Contraseña
+                    </a>
+                </li>
             </ul>
             <div class="tab-content py-4">
                 <div class="tab-pane active" id="profile">
@@ -115,18 +120,32 @@
                                 </input>
                             </div>
                         </div>
+                        
+                        
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Certificado</label>
+                            <div class="col-lg-9">
+                                <input type="file" class="form-control" name="certificado">
+                            </div>
+                        </div>
+
+
+
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
                             </label>
-                            <div class="col-lg-6">
-                                <input class="form-control" placeholder="Ciudad" type="text" value="">
-                                </input>
-                            </div>
-                            <div class="col-lg-3">
-                                <input class="form-control" placeholder="Departamento" type="text" value="">
+                            <div class="col-lg-9">
+                                <input class="btn btn-primary" type="reset" value="Cancelar">
+                                    <input class="btn btn-info" type="submit" value="Guardar Cambios">
+                                    </input>
                                 </input>
                             </div>
                         </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="pass">
+                    <form action="../../ruta.php?variable=actualizarFun" role="form" method="post" enctype="multipart/form-data">
+                        
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
                                 Contraseña
@@ -145,12 +164,7 @@
                                 </input>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Certificado</label>
-                            <div class="col-lg-9">
-                                <input type="file" class="form-control" name="certificado">
-                            </div>
-                        </div>
+                        
 
 
 
