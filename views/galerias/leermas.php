@@ -51,9 +51,11 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer bg-secondary">
-                <button class="btn btn-primary btn-block" type="button">
-                    Adoptar
-                </button>
+                <?php if(isset($user)): ?>
+                    <button class="btn btn-primary btn-block" type="button">
+                        Adoptar
+                    </button>
+                <?php endif ?>
                 <button class="btn btn-warning" data-dismiss="modal" type="button">
                     Cerrar
                 </button>

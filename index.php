@@ -133,7 +133,8 @@ require_once("ControlClass.php");
                 <hr class="my-6 bg-white">
                 </hr>
             </div>
-           <?php include 'views/galerias/galeria_disponible.php'?>
+            <?php $consulta = Mascota::only_disponible(); ?>
+           <?php include 'views/galerias/galeria_user.php'?>
        </section> 
 <!--------------------------------FUNDACIONES-------------------------------------->
         <section class="bg-dark" id="about" >

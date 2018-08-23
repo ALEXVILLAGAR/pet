@@ -33,37 +33,43 @@ class Usuario
 		header('Location: ..\entidad1.php');
 	}
 
-	public function mis_donaciones(){
+	public function mis_donaciones(){	//mis donaciones
 		$id=$this->usuario['id'];
 		$resultado = mysqli_query($this->db, "SELECT * FROM donaciones WHERE id_usuario = '$id'" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 		return $resultado;
 	}
 
-	// preferencia
-	public function preferencia(){
+	public function preferencia(){ //añadir una mascota a mis favotiros
 		$user_id = $this->usuario['id'];
 		$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$_POST[id_pet]','$user_id')") or die ('error');
 		header('Location: index.php');
 	}
 
-	public function mis_favoritos(){
+	public function mis_favoritos(){	//favoritos de cada usuario
 		$id=$this->usuario['id'];
 		$resultado = mysqli_query($this->db, "SELECT * FROM preferencia WHERE id_usuario = '$id'" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 		return $resultado;
 	}
 
-	public static function GetUsuario($id){
+	public static function GetUsuario($id){ //obtener un usuario segun id
 		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM usuario WHERE id='$id' ") or die ( "casi");
 		return mysqli_fetch_array($resultado);
 	}
 
-	public function foto(){
+	public function foto(){ //actualizar foto de usuario
 		$image = Control::foto($_FILES["imagen"]["tmp_name"]);
 		$id = $this->usuario['id'];
 		$insertion = mysqli_query($this->db,"UPDATE usuario SET foto_perfil='$image' WHERE id = '$id'") or die ('errorrrr');
 		$_SESSION['user']=$this->GetUsuario($id);
 		header('Location: views/usuario/perfil.php');
 	}
+
+	public function mis_reservadas(){ //todas las mascotas reservadas
+		$user_id = $this->usuario['id'];
+		$resultado = mysqli_query($this->db, "SELECT * FROM mascota WHERE solicitud='proceso' && id_usuario = '$user_id'" ) or die ( "casi");
+		return $resultado;
+	}
+
 }
 
  ?>

@@ -25,15 +25,6 @@ class Validacion
 				}
 				return true;
 			}
-			// elseif (!filter_var($campos['documento'],FILTER_VALIDATE_INT,$this->opciones)) {
-			// 		header('Location: index.php?variable=true');			
-			// }
-		}
-
-		public static function validar_donacion($campos){
-			if($campos['monto']>0 && filter_var($campos['monto'],FILTER_VALIDATE_INT)){
-				return true;
-			}else{return false;}
-		}
+		}		
 
 }

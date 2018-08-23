@@ -1,6 +1,6 @@
        <div class="container text-center">
             <div id="animales">                   
-                <?php foreach (Mascota::only_reservada() as $element): 
+                <?php foreach ($user->mis_reservadas() as $element): 
                     $pet = new Mascota($element['id']);
                     $fundacion = $pet->perteneceA();
                 ?>

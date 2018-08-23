@@ -44,7 +44,7 @@
 </table>
       </div>
       <div class="modal-footer bg-secondary">
-        <form action="ruta.php?variable=adoptar" method="post">
+        <form action="http://localhost/pet/ruta.php?variable=adoptar" method="post">
           <input type="hidden" name="id_pet" value="<?php echo $element['id'] ?>">
           <input type="hidden" name="id_usuario" value="<?php $user = new Usuario(); echo $user->usuario['id'] ?>">
           <button type="submit" class="btn btn-success border border-info" >Confirmar reserva</button>

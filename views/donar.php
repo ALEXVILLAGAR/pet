@@ -8,17 +8,21 @@
             <!-- Modal Header -->
             <div class="modal-header">
                 <h3 class="modal-title" id="myModalLabel">
-                    Nueva Donación                     
+                    Nueva Donación
+                <form action="../../ruta.php?variable=donacion" id="form-donar" method="post">
+                    <input type="hidden" name="monto" id="monto" value="">
                     <?php if (isset($element['nombre'])):
                          echo $element['nombre'] ?>
+                         <input type="hidden" name="id_fundacion" value="<?php echo $element['id'] ?>">
                     <?php else: ?>
                            <select name="id_fundacion">
                            <?php foreach (Fundacion::fundaciones() as $element): ?>
                                <option value="<?php echo $element['id'] ?>"> 
                                 <?php echo $element['nombre'] ?> </option>
-                            </select> 
-                    <?php endforeach ?>
+                            <?php endforeach ?>
+                            </select>
                      <?php endif ?>
+                 </form>
                 </h3>
                 <button class="close" data-dismiss="modal" type="button">
                     x
@@ -59,7 +63,7 @@
                                 <span class="input-group-addon" id="basic-addon1">
                                     $
                                 </span>
-                                <input  id="custom" placeholder="Otra cantidad" type="number"></input>
+                                <input  id="custom" placeholder="Otra cantidad" min="1000" type="number"></input>
                                 <button class="btn btn-sample customvalue" type="button" onclick="document.getElementById('stripeAmount').innerHTML = document.getElementById('custom').value">
                                     Agregar
                                 </button>
@@ -84,13 +88,19 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <form>
-                    <button class="btn btn-primary" id="stripeButton" style="width: 100%;">
+                    <button class="btn btn-primary" id="stripeButton" style="width: 100%;" onclick="SubmitForm()">
                         Continuar con la donación
                     </button>
-                </form>
             </div>
         </div>
     </div>
 </div>
 
+<script type="text/javascript">
+    
+    function SubmitForm () {
+        document.getElementById('monto').value = document.getElementById('stripeAmount').innerText;
+        var form = document.forms['form-donar'];
+        form.submit();
+    }
+</script>

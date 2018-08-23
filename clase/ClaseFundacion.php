@@ -29,14 +29,10 @@ class Fundacion
 	}
 
 	public static function donacion(){ //Crea  una donacion para una fundacion
-		if(Validacion::validar_donacion()){
-			$user = SessionesPet::sesion_info();
+			$user = SessionesPet::session_info();
 			$fecha = date("Y-m-d H:i:s");
 			mysqli_query(Conectar::conexion(),"INSERT INTO donaciones VALUES ('','$_POST[monto]','$fecha','$user[id]','$_POST[id_fundacion]')") or die ('errorrrr');
-			header('Location: ../index.php');
-		}else{
-			header('Location: ../index.php?variable=fail_donacion');
-		}
+			header('Location: views/usuario/user.php');
 	}
 
 	public static function fundacion($id){ //retorna una fundacion
@@ -59,6 +55,18 @@ class Fundacion
 		$id_fundacion = $this->fundacion['id'];
 		$resultado =  mysqli_query($this->db,"SElECT * FROM mascota WHERE id_fundacion='$id_fundacion'") or die ( "Algo ha ido mal en la consulta a la base de datos");
 		return $resultado;
+	}
+
+	public function mis_gatos(){
+		$id_fundacion = $this->fundacion['id'];
+		$resultado =  mysqli_query($this->db,"SElECT * FROM mascota WHERE id_fundacion='$id_fundacion'  && especie='Gato'") or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;	
+	}
+
+	public function mis_perros(){
+		$id_fundacion = $this->fundacion['id'];
+		$resultado =  mysqli_query($this->db,"SElECT * FROM mascota WHERE id_fundacion='$id_fundacion'  && especie='Perro'") or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;	
 	}
 //para verificar niveles de seguridad de las fundaciones.
 	public function authorizacion($certificado){

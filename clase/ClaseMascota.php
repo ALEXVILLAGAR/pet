@@ -31,15 +31,15 @@ class Mascota
 		return $resultado;	
 	}
 
-	public static function only_disponible(){
+	public static function only_disponible(){ //solo mascotas disponibles
 		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE disponible=1" ) or die ( "casi");
 		return $resultado;
 	}
 
-	public static function only_reservada(){
+	public static function only_reservada(){ //todas las mascotas reservadas
 		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE disponible=0" ) or die ( "casi");
 		return $resultado;
-	}	
+	}
 
 	public function uptade_pet(){ //$_POST valores de la actualizacion ofcourse
 		if(isset($_FILES['imagen'])){

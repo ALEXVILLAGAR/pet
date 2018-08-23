@@ -3,7 +3,8 @@ include '../layout/app_fundacion.php';
  ?>
         <!-- sidebar-wrapper  -->
         <section class="bg-faded page-content">
-            <?php include '../galerias/galeria.php'?>
+            <?php $consulta = $fundacion->mis_mascotas(); ?>
+            <?php include '../galerias/galeria_fundacion.php'?>
         </section>
         <!-- page-content" -->
     </div>
