@@ -4,7 +4,7 @@ $(document).ready(function() {
         padding_x: 10,
         padding_y: 10,
         margin_bottom: 50,
-        single_column_breakpoint: 700
+        single_column_breakpoint: 900
     });
 });
 /*------tabla-------------------------------------------------------*/

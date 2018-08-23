@@ -1,14 +1,13 @@
 <?php 
-include '../layout/app.php';
-
+    include('../layout/app_administrador.php');
  ?>
-        <!-- sidebar-wrapper  -->
-        <section class="bg-faded page-content" >
-            <?php include '../donar.php'?>
-            <?php include '../perfil/perfiluser.php'?>
+ <section class="bg-faded page-content" >
+        <?php include '..\tablas\tablaaprobarfund.php'?>
+            
         </section>
         <!-- page-content" -->
     </div>
+
     <!-- page-wrapper -->
     <script src="../../vendor/jquery-easing/jquery.easing.min.js">
     </script>

@@ -1,12 +1,17 @@
 <?php 
 // session_start();
-require_once("../../ControlClass.php");
-$fundacion = new Fundacion();
-if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
+require_once("..\..\ControlClass.php");
+if(!(SessionesPet::session_active())){
     header('Location: index.php');
     exit;
 }
-?>
+$user =new Usuario();
+if(!$user->authorizacion('admi')){
+    echo "<h2> No tienes Nivel para acceder a esta seccion </h2>";
+    exit;
+}
+ ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,7 +52,7 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
 </html>
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
-        <a class="btn btn-sm btn-dark arriba" href="#" id="show-sidebar">
+        <a class="btn btn-sm btn-dark" href="#" id="show-sidebar">
             <i class="fas fa-bars">
             </i>
         </a>
@@ -64,22 +69,23 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-
-        <?php if (isset($fundacion->fundacion['foto_fundacion'])): ?>
-            <img src="data:image/jpg;base64,<?php echo base64_encode($fundacion->fundacion['foto_fundacion'])?>" alt="User picture" class="img-responsive img-rounded"/>
+                       <?php if (isset($user->usuario['foto_perfil'])): ?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($user->usuario['foto_perfil'])?> " class="img-responsive img-rounded" alt="User picture"/>
         <?php else: ?>
-             <img alt="User picture" class="img-responsive img-rounded" src="../../img/user.jpg">
+            <img alt="User picture" class="img-responsive img-rounded" src="//placehold.it/150">
         <?php endif ?>
-        
                     </div>
                     <div class="user-info">
                         <span class="user-name">
                             <strong>
-                                <?php  echo($fundacion->fundacion['nombre']); ?>
+                            </strong>
+                            <strong>
+                               <?php echo($user->usuario['nombre']); ?>
                             </strong>
                         </span>
-                        <span class="user-role">                            
-                            Fundación
+                        <span class="user-role">
+                            <strong>Administrador</strong>
+                            <strong> <?php echo($user->usuario['email']); ?></strong>
                         </span>
                         <span class="user-status">
                             <i class="fa fa-circle">
@@ -98,104 +104,80 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                             </span>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a href="#" id="mascotas">
                                 <i class="fas fa-paw">
                                 </i>
                                 <span>
-                                    Mis Mascotas
+                                    Mascotas
                                 </span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="../fundacion/userfundacion.php">
+                                        <a href="../administrador/administrador.php">
                                             Todos
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="../fundacion/misperros.php">
+                                        <a href="perros_admin.php">
                                             Perros
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="../fundacion/misgatos.php">
+                                        <a href="gatos_admin.php">
                                             Gatos
                                         </a>
                                     </li>
-
                                 </ul>
                             </div>
                         </li>
-                            <li>
-                            <a href="../fundacion/gmascotas.php" >
-                                <i class="fas fa-paw">
-                                </i>
-                                <span>
-                                    Gestión mascotas
-                                </span>
-                            </a>
-                        </li>
-                        </li>
                         <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fas fa-hand-holding-usd">
+                            <a href="#" id="mascotas">
+                                <i class="fas fa-home">
                                 </i>
                                 <span>
-                                    Donaciones
-                                </span>
-                                <span class="badge badge-pill badge-primary">
-                                    3
+                                    Fundaciones
                                 </span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="../fundacion/misdonacionesF.php">
-                                            Mis Donaciones
-                                        </a>
-                                    </li>
-                                   </ul>
-                            </div>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fas fa-user-check">
-                                </i>
-                                <span>
-                                    Calificación Usuario
-                                </span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            Calificación Usuario
+                                        <a href="aprobar_fundacion.php">
+                                            Aprobar Fundaciones
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                           Usuarios Calificados 
+                                        <a href="gestion_fundaciones.php">
+                                            Gestion Fundaciones
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="">
-                            <a href="..\..\index.php" >
-                                <i class="fas fa-arrow-alt-circle-left">
+                        <li class="sidebar-dropdown">
+                            <a href="#" id="mascotas">
+                                <i class="fas fa-user">
                                 </i>
                                 <span>
-                                    Inicio
+                                    Usuarios
                                 </span>
                             </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="gestion_usuarios.php">
+                                            Gestion usuarios
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
-                                           </ul>
+                    </ul>
                 </div>
                 <!-- sidebar-menu  -->
             </div>
             <!-- sidebar-content  -->
             <div class="sidebar-footer">
-
                 <div class="dropdown">
                     <a aria-expanded="false" aria-haspopup="true" class="" data-toggle="dropdown" href="#" id="dropdownMenuMessage">
                         <i class="fa fa-cog">
@@ -204,23 +186,25 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                         </span>
                     </a>
                     <div aria-labelledby="dropdownMenuMessage" class="dropdown-menu">
-                        <a class="dropdown-item" href="../perfil/perfilF.php">
+                        <a class="dropdown-item" href="perfilAdmin.php">
                             Mi perfil
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            Help
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            Setting
                         </a>
                     </div>
                 </div>
                 <div>
-                    <a  data-toggle="modal" data-target="#Mcerrar_sesion" >
+                    <a href="#" data-toggle="modal" data-target="#Mcerrar_sesion">
                         <i class="fa fa-power-off">
                         </i>
                     </a>
+                   
                 </div>
             </div>
         </nav>
-        <?php include '..\modal\Mcerrar_sesion.php'; ?>
+        <!-- sidebar-wrapper  -->
+         
+ <?php include '..\modal\Mcerrar_sesion.php' ?>
+      
+        <!-- page-content" -->
+    
+
+

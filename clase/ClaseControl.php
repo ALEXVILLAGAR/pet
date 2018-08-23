@@ -11,7 +11,7 @@ class Control
 
 	public static function register(){
 		if(Validacion::validar_registro($_POST)){
-			$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO usuario VALUES ('','$_POST[nombre]','$_POST[documento]','$_POST[direccion]','buena','disponible',MD5('$_POST[clave]'),'$_POST[correo]','usuario')") or die ('errorrrr');
+			$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO usuario VALUES ('','$_POST[nombre]','$_POST[documento]','$_POST[direccion]','buena','disponible',MD5('$_POST[clave]'),'$_POST[correo]','usuario',null)") or die ('errorrrr');
 			Control::login();
 		}else{
 			header('Location: ..\index.php?variable=registro_fail');
@@ -27,23 +27,12 @@ class Control
 		
 		if(MD5($_POST['clave'])==$fila['clave']){
 		// if($_POST['clave']===$fila['clave']){
-			session_start();
+			// session_start();
 			$_SESSION['loggedin'] = true;
 			$_SESSION['user'] = $fila;
 			$_SESSION['start'] = time();
 		    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
-		    if($table==='fundacion'){
-		    	header('Location: views\fundacion\userfundacion.php');
-		    }
-			elseif($fila['tipo']==='admi'){
-			    header('Location: ..\entidad1.php');     
-			}
-			elseif($fila['tipo']==='usuario'){
-		    	header('Location: views\usuario\user.php');
-			} 
-			else{ 
-				header('Location: index.php');
-				}
+		    Control::redirige($fila);
 		}else{
 			$variable =true;
 			header('Location: index.php?variable=$variable');
@@ -57,19 +46,28 @@ class Control
 		header('Location: index.php');
 	}
 
-	public function newContacto(){
-		var_dump($_POST);
-	}
-
 	public static function foto($picture){
 		$revisar = getimagesize($picture);//se toma tamaño de la imagen
-		if($revisar !== false){                    //y se verifica si tiene  tamaño para validar si se cargo o no
+		if($revisar !== false){  //y se verifica si tiene  tamaño para validar si se cargo o no
 			$image=$picture;
 			return addslashes(file_get_contents($image));
 		}else{
 			echo "error";
 		}
 	}
+
+	public static function redirige($fila){
+			if($fila['tipo']=='admi'){
+			    header('Location: views\administrador\administrador.php');     
+			}
+			elseif($fila['tipo']=='usuario'){
+		    	header('Location: views\usuario\user.php');
+			}
+			else{
+		    	header('Location: views\fundacion\userfundacion.php');
+			}
+	}
+
 }
 
  ?>

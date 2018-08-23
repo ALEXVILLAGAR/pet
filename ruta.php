@@ -57,6 +57,24 @@ switch ($variable) {
 	case 'adoptar':
 		Mascota::reservar();
 		break;
+	case 'return_home':
+		$user = new Usuario();
+		Control::redirige($user->usuario);
+		break;
+	case 'eliminarFundacion':
+		Fundacion::Eliminar();
+		break;
+	case 'cambiarPassFun':
+		$fundacion = new Fundacion();
+		$fundacion->cambiarPass();
+		break;
+	case 'cambiarPassUser':
+		$usuario = new Usuario();
+		$usuario->cambiarPass();
+		break;
+	// case 'actualizarFundacionAdmin':
+
+	// 	break;
 	// case 'users':
 	// 	$user = new Usuario();
 	// 	$user->todos_usuarios();
