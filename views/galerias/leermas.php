@@ -1,7 +1,7 @@
 <div class="modal" id=<?php echo "myModal".$element['id'] ?> >
-    <div class="modal-dialog border-info">
+    <div class="modal-dialog">
 
-        <div class="modal-content">
+        <div class="modal-content border-white">
             <!-- Modal Header -->
             <div class="modal-header bg-dark">
                 <h4 class="modal-title text-light">
@@ -50,11 +50,11 @@
                 </div>
             </div>
             <!-- Modal footer -->
-            <div class="modal-footer bg-seconda">
+            <div class="modal-footer bg-secondary">
                 <button class="btn btn-primary btn-block" type="button">
                     Adoptar
                 </button>
-                <button class="btn btn-danger" data-dismiss="modal" type="button">
+                <button class="btn btn-warning" data-dismiss="modal" type="button">
                     Cerrar
                 </button>
             </div>

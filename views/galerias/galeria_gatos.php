@@ -1,4 +1,4 @@
-       <div class="container text-center">
+<div class="container text-center">
             <div id="animales">                   
                 <?php foreach (Mascota::all_cats() as $element): 
                     $pet = new Mascota($element['id']);
@@ -27,12 +27,13 @@
                                     <button class="btn btn-info" data-target=<?php echo "#myModal".$element['id'] ?> data-toggle="modal" type="button">
                                         Leer Mas
                                     </button>
+
                                     
                                     <!-- The Modal -->
                                     <?php include 'ConfirmarAdopcion.php'; ?>
                                     <?php include 'MavisoSaveFavorito.php'; ?>
-
                                     <?php include 'leermas.php'; ?>
+                                    
                                 </p>
                             </div>
                         </img>
