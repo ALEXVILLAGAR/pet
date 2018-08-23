@@ -17,7 +17,7 @@ class Validacion
 		}
 
 		public static function validar_registro($campos){
-			if(($campos['confirmar-contra']===$campos['clave']) && Validacion::validar_email($campos['correo'])){
+			if(($campos['confirmar-contra']==$campos['clave']) && Validacion::validar_email($campos['correo'])){
 				$db = Conectar::conexion();
 				$result = mysqli_fetch_array(mysqli_query($db,"SELECT * FROM usuario WHERE email='$campos[correo]'"));
 				if(isset($result)){	//si la variable no esta vacia, ya existe un usuario creado con este correo
@@ -25,15 +25,6 @@ class Validacion
 				}
 				return true;
 			}
-			// elseif (!filter_var($campos['documento'],FILTER_VALIDATE_INT,$this->opciones)) {
-			// 		header('Location: index.php?variable=true');			
-			// }
-		}
-
-		public static function validar_donacion($campos){
-			if($campos['monto']>0 && filter_var($campos['monto'],FILTER_VALIDATE_INT)){
-				return true;
-			}else{return false;}
-		}
+		}		
 
 }

@@ -1,9 +1,11 @@
 <div class="container py-3" >
     <?php 
             foreach($user->mis_favoritos() as $element): 
-                    $pet = new Mascota($element['id_mascota']);
+                    $pet = new Mascota($element['id']);
+                    $fundacion = $pet->perteneceA();
+                    if($pet==null){ echo "no hay";}else{
                 ?>
-    <div class="card" style="z-index: -1">
+    <div class="card border-danger rounded-right" style="z-index: ">
         <div class="row ">
              
             <div class="col-md-4 box " id="fundaciones">
@@ -25,20 +27,24 @@
                                     Edad: <?php echo $pet->mascota['edad'] ?>
                                 </li>
                                 <li>
-                                    Tamaño: <?php echo $pet->mascota['nombre'] ?>
+                                    Tamaño: <?php echo $pet->mascota['tamano'] ?>
                                 </li>
                                 <li>
-                                    Fundación: <?php echo $pet->perteneceA()['nombre'] ?>
+                                    Fundación: <?php echo $fundacion['nombre'] ?>
                                 </li>
+                                <br>
+                                <a class="btn btn-success" align="left" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> >Quiero adoptarla</a>
+
                             </ul>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, ratione!
-                            </p>
+                            
+
                         </div>
+                        
                     </div>
                 </div>
             
 
         </div>
-    </div><br><?php endforeach ?>
+    </div><br><?php include 'galerias/ConfirmarAdopcion.php'; ?> <?php } endforeach ?>
 </div>
+

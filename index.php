@@ -133,12 +133,13 @@ require_once("ControlClass.php");
                 <hr class="my-6 bg-white">
                 </hr>
             </div>
-           <?php include 'views/galerias/galeria_disponible.php'?>
+            <?php $consulta = Mascota::only_disponible(); $vistauser=true;?>
+           <?php include 'views/galerias/galeria_principal.php'?>
        </section> 
 <!--------------------------------FUNDACIONES-------------------------------------->
-        <section class="bg-dark" id="about" >
+        <section class="bg-dark py-2 text-xs-center" id="about" >
             <div class="col-lg-12 text-center">
-    <br>
+                <br>
                 <h2 class="section-heading text-white">
                     Fundaciones aliadas
                 </h2>
@@ -161,42 +162,26 @@ require_once("ControlClass.php");
                     <!-- The slideshow -->
                     <div class="carousel-inner">
                         <center>
-                            <div class="carousel-item active">
-                                <img alt="Los Angeles" src="img/1.jpg">
-                                    <div class="carousel-caption">
-                                        <h3>
-                                            Los Angeles
-                                        </h3>
-                                        <p>
-                                            We had such a great time in LA!
-                                        </p>
-                                    </div>
-                                </img>
-                            </div>
-                            <div class="carousel-item">
-                                <img alt="Chicago" src="img/2.jpg">
-                                    <div class="carousel-caption">
-                                        <h3>
-                                            Los Angeles
-                                        </h3>
-                                        <p>
-                                            We had such a great time in LA!
-                                        </p>
-                                    </div>
-                                </img>
-                            </div>
-                            <div class="carousel-item">
-                                <img alt="New York" src="img/fundacion1.jpg">
-                                    <div class="carousel-caption">
-                                        <h3>
-                                            Los Angeles
-                                        </h3>
-                                        <p>
-                                            We had such a great time in LA!
-                                        </p>
-                                    </div>
-                                </img>
-                            </div>
+                            <?php foreach (Fundacion::FundacionSlide() as $key => $element): ?>
+                                <?php if ($key>2) continue; ?>
+                                <?php if ($key+1==1): ?>
+                                    <div class="carousel-item active">
+                                <?php else: ?>
+                                    <div class="carousel-item">
+                                <?php endif ?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto_fundacion'])?>" alt="Los Angeles"/>
+                                        <div class="carousel-caption">
+                                            <h3>
+                                                <?php echo $element['nombre'] ?>
+                                            </h3>
+                                            <p>
+                                                <strong><?php echo "direccion: ".$element['direccion']."<br> Email: ".$element['email'] ?></strong>
+                                            </p>
+                                        </div>
+                                    </img>
+                                </div>
+                            <?php endforeach ?>
+
                         </center>
                     </div>
                     <!-- Left and right controls -->
@@ -215,9 +200,8 @@ require_once("ControlClass.php");
 </section>
 <!--------------------------------DONACION----------------------------------------->
          <section id="services">
-    <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center py-2 text-xs-center">
                 <h2 class="section-heading">
                     Como Hacer Donaciones
                 </h2>
@@ -225,7 +209,6 @@ require_once("ControlClass.php");
                 </hr>
             </div>
         </div>
-    </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">

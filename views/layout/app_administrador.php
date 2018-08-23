@@ -1,4 +1,5 @@
 <?php 
+// session_start();
 require_once("..\..\ControlClass.php");
 if(!(SessionesPet::session_active())){
     header('Location: index.php');
@@ -9,8 +10,8 @@ if(!$user->authorizacion('admi')){
     echo "<h2> No tienes Nivel para acceder a esta seccion </h2>";
     exit;
 }
-
  ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,18 +69,23 @@ if(!$user->authorizacion('admi')){
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <img alt="User picture" class="img-responsive img-rounded" src="img/user.jpg">
-                        </img>
+                       <?php if (isset($user->usuario['foto_perfil'])): ?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($user->usuario['foto_perfil'])?> " class="img-responsive img-rounded" alt="User picture"/>
+        <?php else: ?>
+            <img alt="User picture" class="img-responsive img-rounded" src="//placehold.it/150">
+        <?php endif ?>
                     </div>
                     <div class="user-info">
                         <span class="user-name">
-                            Alexander
                             <strong>
-                                Villaneda
+                            </strong>
+                            <strong>
+                               <?php echo($user->usuario['nombre']); ?>
                             </strong>
                         </span>
                         <span class="user-role">
-                            Administrador
+                            <strong>Administrador</strong>
+                            <strong> <?php echo($user->usuario['email']); ?></strong>
                         </span>
                         <span class="user-status">
                             <i class="fa fa-circle">
@@ -108,17 +114,17 @@ if(!$user->authorizacion('admi')){
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="../administrador/administrador.php">
                                             Todos
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="perros_admin.php">
                                             Perros
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="gatos_admin.php">
                                             Gatos
                                         </a>
                                     </li>
@@ -136,12 +142,12 @@ if(!$user->authorizacion('admi')){
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="aprobar_fundacion.php">
                                             Aprobar Fundaciones
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="gestion_fundaciones.php">
                                             Gestion Fundaciones
                                         </a>
                                     </li>
@@ -159,7 +165,7 @@ if(!$user->authorizacion('admi')){
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="gestion_usuarios.php">
                                             Gestion usuarios
                                         </a>
                                     </li>
@@ -180,43 +186,25 @@ if(!$user->authorizacion('admi')){
                         </span>
                     </a>
                     <div aria-labelledby="dropdownMenuMessage" class="dropdown-menu">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="perfilAdmin.php">
                             Mi perfil
                         </a>
                     </div>
                 </div>
                 <div>
-                    <a href="index.php">
+                    <a href="#" data-toggle="modal" data-target="#Mcerrar_sesion">
                         <i class="fa fa-power-off">
                         </i>
                     </a>
+                   
                 </div>
             </div>
         </nav>
         <!-- sidebar-wrapper  -->
-        <section class="bg-faded page-content">
-            <?php include '..\tablas\tablamascotasadmin.php'?>
-
-        </section>
+         
+ <?php include '..\modal\Mcerrar_sesion.php' ?>
+      
         <!-- page-content" -->
-    </div>
-    <!-- page-wrapper -->
-    <script src="../../vendor/jquery-easing/jquery.easing.min.js">
-    </script>
-    <script src="../../vendor/scrollreveal/scrollreveal.min.js">
-    </script>
-    <script src="../../vendor/magnific-popup/jquery.magnific-popup.min.js">
-    </script>
-    <script src="../../vendor/jquery/jquery.min.js">
-    </script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js">
-    </script>
-    <script src="../../js/custom.js">
-    </script>
-    <script src="../../js/pinterest_grid.js">
-    </script>
-    <script src="../../js/creative.min.js">
-    </script>
-    <script src="../../js/main.js">
-    </script>
-</body>
+    
+
+

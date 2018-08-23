@@ -18,7 +18,7 @@ class Denuncia
 		}
 		$user = SessionesPet::session_info();
 		$fecha = date("Y-m-d H:i:s");
-		mysqli_query($this->db,"INSERT INTO denuncia VALUES ('','$fecha',null,$imagen','$_POST[direccion]','$_POST[descripcion]','$user[id]')") or die ('errorrrr');
+		mysqli_query($this->db,"INSERT INTO denuncia VALUES ('','$fecha',null,'$imagen','$_POST[direccion]','$_POST[descripcion]','$user[id]')") or die ('errorrrr');
 		header('Location: views/usuario/user.php');
 	}
 

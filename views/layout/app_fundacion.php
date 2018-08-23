@@ -47,7 +47,7 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
 </html>
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
-        <a class="btn btn-sm btn-dark" href="#" id="show-sidebar">
+        <a class="btn btn-sm btn-dark arriba" href="#" id="show-sidebar">
             <i class="fas fa-bars">
             </i>
         </a>

@@ -11,7 +11,7 @@ class Control
 
 	public static function register(){
 		if(Validacion::validar_registro($_POST)){
-			$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO usuario VALUES ('','$_POST[nombre]','$_POST[documento]','$_POST[direccion]','buena','disponible',MD5('$_POST[clave]'),'$_POST[correo]','usuario')") or die ('errorrrr');
+			$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO usuario VALUES ('','$_POST[nombre]','$_POST[documento]','$_POST[direccion]','buena','disponible',MD5('$_POST[clave]'),'$_POST[correo]','usuario',null)") or die ('errorrrr');
 			Control::login();
 		}else{
 			header('Location: ..\index.php?variable=registro_fail');
@@ -32,9 +32,6 @@ class Control
 			$_SESSION['user'] = $fila;
 			$_SESSION['start'] = time();
 		    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
-		    if($table==='fundacion'){
-		    	header('Location: views\fundacion\userfundacion.php');
-		    }
 		    Control::redirige($fila);
 		}else{
 			$variable =true;
@@ -49,10 +46,6 @@ class Control
 		header('Location: index.php');
 	}
 
-	public function newContacto(){
-		var_dump($_POST);
-	}
-
 	public static function foto($picture){
 		$revisar = getimagesize($picture);//se toma tamaño de la imagen
 		if($revisar !== false){  //y se verifica si tiene  tamaño para validar si se cargo o no
@@ -63,20 +56,18 @@ class Control
 		}
 	}
 
-	public static function redirige($fila,$es_fundacion=false){
+	public static function redirige($fila){
 			if($fila['tipo']=='admi'){
-			    header('Location: views\perfil\perfiladmin.php');     
+			    header('Location: views\administrador\administrador.php');     
 			}
 			elseif($fila['tipo']=='usuario'){
 		    	header('Location: views\usuario\user.php');
 			}
-			elseif($es_fundacion=='redirige'){
+			else{
 		    	header('Location: views\fundacion\userfundacion.php');
 			}
-			else{
-		    	header('Location: index.php');
-			}
 	}
+
 }
 
  ?>

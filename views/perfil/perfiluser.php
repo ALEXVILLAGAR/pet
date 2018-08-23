@@ -119,40 +119,46 @@
                     </form>
                 </div>
                 <div class="tab-pane" id="pass">
-                    <form action="../../ruta.php?variable=update_user" role="form" method="post">
-                                          
+                    <form action="../../ruta.php?variable=cambiarPassUser" role="form" method="post">
+                        
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
-                                Contraseña actual
+                                Contraseña Actual
                             </label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" value="" required autofocus="autofocus" readonly>
+                                <input class="form-control" type="password" name="password-actual" required>
                                 </input>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
-                                Nueva contraseña
+                                Contraseña
                             </label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" value="" required autofocus="autofocus" readonly>
+                                <input class="form-control" type="password" name="password" required>
                                 </input>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
                                 Confirmar contraseña
                             </label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" value="" required autofocus="autofocus" readonly>
+                                <input class="form-control" type="password" name="confirm-password" required>
                                 </input>
                             </div>
                         </div>
+                        
+
+
+
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
                             </label>
                             <div class="col-lg-9">
-                                <input  class="btn btn-primary" type="reset" value="Cancelar">
+                                <input class="btn btn-primary" type="reset" value="Cancelar">
                                     <input class="btn btn-info" type="submit" value="Guardar Cambios">
                                     </input>
                                 </input>
