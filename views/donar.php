@@ -4,23 +4,27 @@
 <div class="modal" id="newDonationM" ?>>
 <?php endif ?>
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content border-success">
             <!-- Modal Header -->
-            <div class="modal-header">
+            <div class="modal-header bg-dark text-white">
                 <h3 class="modal-title" id="myModalLabel">
-                    Nueva Donación                     
+                    Nueva Donación
+                <form action="../../ruta.php?variable=donacion" id="form-donar" method="post">
+                    <input type="hidden" name="monto" id="monto" value="">
                     <?php if (isset($element['nombre'])):
                          echo $element['nombre'] ?>
+                         <input type="hidden" name="id_fundacion" value="<?php echo $element['id'] ?>">
                     <?php else: ?>
                            <select name="id_fundacion">
                            <?php foreach (Fundacion::fundaciones() as $element): ?>
                                <option value="<?php echo $element['id'] ?>"> 
                                 <?php echo $element['nombre'] ?> </option>
-                            </select> 
-                    <?php endforeach ?>
+                            <?php endforeach ?>
+                            </select>
                      <?php endif ?>
+                 </form>
                 </h3>
-                <button class="close" data-dismiss="modal" type="button">
+                <button class="close bg-danger" data-dismiss="modal" type="button">
                     x
                 </button>
             </div>
@@ -35,33 +39,36 @@
                         </label>
                         <br>
                             <div aria-label="Basic example" class="btn-group values" role="group">
-                                <button class="btn btn-sample active selectvalue" type="button">
+                                <button class="btn btn-sample active selectvalue" type="button" onclick="document.getElementById('stripeAmount').innerHTML = '5000'">
                                     5000
                                 </button>
-                                <button class="btn btn-sample selectvalue" type="button">
+                                <button class="btn btn-sample selectvalue" type="button" onclick="document.getElementById('stripeAmount').innerHTML = '10000'">
                                     10000
                                 </button>
-                                <button class="btn btn-sample selectvalue" type="button">
+                                <button class="btn btn-sample selectvalue" type="button" onclick="document.getElementById('stripeAmount').innerHTML = '20000'">
                                     20000
                                 </button>
-                                <button class="btn btn-sample selectvalue" type="button">
+                                <button class="btn btn-sample selectvalue" type="button" onclick="document.getElementById('stripeAmount').innerHTML = '50000'">
                                     50000
                                 </button>
-                                <button class="btn btn-sample customvalue" type="button">
+                                <button class="btn btn-sample customvalue" type="button" onclick="document.getElementById('ool').style.display = 'inline'">
                                     Otra cantidad
                                 </button>
                             </div>
-                            <div class="input-group customam" style="display: none; margin-top:10px;">
-                                <span class="input-group-addon" id="basic-addon1">
-                                    $
-                                </span>
-                                <input aria-describedby="basic-addon1" class="form-control" id="custom" placeholder="Otra cantidad" type="number">
-                                </input>
-                            </div>
-                        </br>
+                            
                     </div>
                 </div>
                 <br>
+                <div class="input-group customam" style="display: none; margin-top:10px;" id="ool">
+                                <span class="input-group-addon" id="basic-addon1">
+                                    $
+                                </span>
+                                <input  id="custom" placeholder="Otra cantidad" min="1000" type="number"></input>
+                                <button class="btn btn-sample customvalue" type="button" onclick="document.getElementById('stripeAmount').innerHTML = document.getElementById('custom').value">
+                                    Agregar
+                                </button>
+                </div>
+                <br><br>
                     <div class="money-donate">
                         <span id="displayAmount">
                             <h2>
@@ -74,20 +81,26 @@
                             </h2>
                         </span>
                     </div>
-                    <div class="info-box">
-                        Muchas gracias por participar en esta campaÃ±a
+                    <div class="info-box text-info text-center">
+                        <h4>Muchas gracias por participar en esta campaña.</h4>
                     </div>
                 </br>
             </div>
             <!-- Modal footer -->
-            <div class="modal-footer">
-                <form>
-                    <button class="btn btn-primary" id="stripeButton" style="width: 100%;">
+            <div class="modal-footer bg-secondary">
+                <button class="btn btn-success" id="stripeButton" style="width: 100%;" onclick="SubmitForm()">
                         Continuar con la donación
                     </button>
-                </form>
             </div>
         </div>
     </div>
 </div>
 
+<script type="text/javascript">
+    
+    function SubmitForm () {
+        document.getElementById('monto').value = document.getElementById('stripeAmount').innerText;
+        var form = document.forms['form-donar'];
+        form.submit();
+    }
+</script>

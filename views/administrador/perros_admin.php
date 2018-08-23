@@ -1,14 +1,14 @@
 <?php 
-include '../layout/app.php';
-
+    include('../layout/app_administrador.php');
  ?>
-        <!-- sidebar-wrapper  -->
-        <section class="bg-faded page-content" >
-            <?php include '../donar.php'?>
-            <?php include '../perfil/perfiluser.php'?>
+ <section class="bg-faded page-content" >
+        <?php $consulta=Mascota::all_dogs();$titulo='Perros'; ?>
+            <?php include '..\tablas\tabla_mascotas_admin.php'?>
+            
         </section>
         <!-- page-content" -->
     </div>
+
     <!-- page-wrapper -->
     <script src="../../vendor/jquery-easing/jquery.easing.min.js">
     </script>

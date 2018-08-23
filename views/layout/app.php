@@ -53,8 +53,8 @@ if(!$user->authorizacion('usuario')){
 <body>
 
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
-        <button class="btn btn-md bg-primary border border-dark text-primary" id="show-sidebar">
-             <i class=" bg-dark btn btn-md">Mi menu</i>
+        <button class="btn btn-md bg-primary border border-dark text-primary arriba" id="show-sidebar">
+             <i class=" bg-dark btn btn-md ">Mi menu</i>
         </button>
         <nav class="sidebar-wrapper" id="sidebar">
             <div class="sidebar-content">
@@ -248,7 +248,7 @@ if(!$user->authorizacion('usuario')){
                     </div>
                 </div>
                 <div>
-                    <a href="../../ruta.php?variable=cerrar_login">
+                    <a  data-toggle="modal" data-target="#Mcerrar_sesion" >
                         <i class="fa fa-power-off">
                         </i>
                     </a>
@@ -258,6 +258,7 @@ if(!$user->authorizacion('usuario')){
         <!-- sidebar-wrapper  -->
         
         <?php include '..\modal\MhacerDenuncia.php' ?>
-       <<?php include '..\modal\Mmi_Calificacion.php' ?>
+       <?php include '..\modal\Mmi_Calificacion.php' ?>
+        <?php include '..\modal\Mcerrar_sesion.php' ?>
 
 

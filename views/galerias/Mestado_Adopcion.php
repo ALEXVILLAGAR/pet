@@ -1,4 +1,4 @@
-<div class="modal fade" id="Mestado_Adopcion" >
+<div class="modal fade" id=<?php echo "Mestado_Adopcion".$element['id'] ?> >
   <div class="modal-dialog" role="document">
     <div class="modal-content border-info">
       <div class="modal-header bg-dark text-white">
@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <h1>aca hiria el estado de la adopcion</h1>
+      <h1> <?php echo $element['nombre']." su estado de la adopcion es ".$element['solicitud'] ?></h1>
 
     </div>
     <div class="modal-footer bg-secondary">

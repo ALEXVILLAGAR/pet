@@ -29,14 +29,10 @@ class Fundacion
 	}
 
 	public static function donacion(){ //Crea  una donacion para una fundacion
-		if(Validacion::validar_donacion()){
-			$user = SessionesPet::sesion_info();
+			$user = SessionesPet::session_info();
 			$fecha = date("Y-m-d H:i:s");
 			mysqli_query(Conectar::conexion(),"INSERT INTO donaciones VALUES ('','$_POST[monto]','$fecha','$user[id]','$_POST[id_fundacion]')") or die ('errorrrr');
-			header('Location: ../index.php');
-		}else{
-			header('Location: ../index.php?variable=fail_donacion');
-		}
+			header('Location: views/usuario/user.php');
 	}
 
 	public static function fundacion($id){ //retorna una fundacion
@@ -46,7 +42,7 @@ class Fundacion
 
 	public static function new_fundacion(){
 		$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO fundacion VALUES ('$_POST[nombre]','$_POST[email]',MD5('$_POST[clave]'),'$_POST[certificado]','$_POST[telefono]','$_POST[direccion]')") or die ('errorrrr');
-		header('Location: ../index.php');
+		header('Location: index.php');
 	}
 
 	public function Mis_donaciones(){ //retorna las donaciones que tiene una fundación
@@ -59,6 +55,18 @@ class Fundacion
 		$id_fundacion = $this->fundacion['id'];
 		$resultado =  mysqli_query($this->db,"SElECT * FROM mascota WHERE id_fundacion='$id_fundacion'") or die ( "Algo ha ido mal en la consulta a la base de datos");
 		return $resultado;
+	}
+
+	public function mis_gatos(){
+		$id_fundacion = $this->fundacion['id'];
+		$resultado =  mysqli_query($this->db,"SElECT * FROM mascota WHERE id_fundacion='$id_fundacion'  && especie='Gato'") or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;	
+	}
+
+	public function mis_perros(){
+		$id_fundacion = $this->fundacion['id'];
+		$resultado =  mysqli_query($this->db,"SElECT * FROM mascota WHERE id_fundacion='$id_fundacion'  && especie='Perro'") or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;	
 	}
 //para verificar niveles de seguridad de las fundaciones.
 	public function authorizacion($certificado){
@@ -75,6 +83,26 @@ class Fundacion
 		$insertion = mysqli_query($this->db,"UPDATE fundacion SET foto_fundacion='$image' WHERE id = '$id'") or die ('errorrrr');
 		$_SESSION['user']=$this->fundacion($id);
 		header('Location: views/perfil/perfilF.php');
+	}
+
+	public function Eliminar(){
+		$insertion = mysqli_query($this->db,"DELETE fundacion WHERE id = '$_POST[id_fundacion]'") or die ('errorrrr');
+		header('Location: views/administrador/gestion_fundaciones.php');
+	}
+
+	public function cambiarPass(){
+		if(MD5($_POST['password-actual'])!=$this->fundacion['clave'] || $_POST['confirm-password']!=$_POST['password']){
+			header('Location: views/perfil/perfilF.php?error-password-actual');
+		}else{
+			$id = $this->fundacion['id'];
+			$insertion = mysqli_query($this->db,"UPDATE fundacion SET clave=MD5('$_POST[password]') WHERE id = '$id'") or die ('errorrrr');
+			Control::cerrar_sesion();
+		}
+	}
+
+	public static function FundacionSlide(){
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM fundacion") or die ( "casi");
+		return $resultado;
 	}
 }
 
