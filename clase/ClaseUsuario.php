@@ -53,9 +53,7 @@ class Usuario
 	public function mis_favoritos(){	//favoritos de cada usuario
 		$id=$this->usuario['id'];
 		$resultado = mysqli_query($this->db, "SELECT * FROM preferencia WHERE id_usuario = '$id'" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-		$resultado=mysqli_fetch_array($resultado);
-		$mascota = mysqli_query($this->db, "SELECT * FROM mascota WHERE id = '$resultado[id_mascota]'" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-		return $mascota;
+		return $resultado;
 	}
 
 	public static function GetUsuario($id){ //obtener un usuario segun id
