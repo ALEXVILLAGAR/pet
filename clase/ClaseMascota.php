@@ -56,25 +56,29 @@ class Mascota
 			$imgContenido=Control::foto($_FILES["imagen"]["tmp_name"]);
 		 }
 		$insertion = mysqli_query($this->db,"UPDATE mascota SET nombre='$_POST[nombre]',especie='$_POST[especie]',raza='$_POST[raza]',tamano='$_POST[tamano]',edad= '$_POST[edad]', estado='$_POST[estado]',foto = '$imgContenido' WHERE id = '$_POST[id]'") or die ('errorrrr');
-		header('Location: views/fundacion/gmascotas.php');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
+		/*header('Location: views/fundacion/gmascotas.php');*/
 	}
 
 	public static function agregar_mascota(){ //$_POST valores para agregar ofcourse
 		$imgContenido=Control::foto($_FILES["imagen"]["tmp_name"]);
 		$fundacion = $_SESSION['user'];
 		$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO mascota  VALUES ('','$_POST[nombre]','$_POST[especie]','$_POST[raza]','$_POST[tamano]','$_POST[edad]','$_POST[estado]',null,'$imgContenido',1,'$fundacion[id]',null)") or die ('errorrrr');
-		header('Location: views/fundacion/userfundacion.php');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
+		/*header('Location: views/fundacion/userfundacion.php');*/
 	}
 
 	public static function reservar(){
 		$insertion = mysqli_query(Conectar::conexion(),"UPDATE mascota SET  disponible='no disponible',solicitud='proceso',id_usuario='$_POST[id_usuario]' WHERE id = '$_POST[id_pet]'") or die ('errorrrr');
-		header('Location: index.php');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
+		/*header('Location: index.php');*/
 	}
 
 	public function eliminar_mascota(){ //$_POST valores de la actualizacion ofcourse
 		$id = $this->mascota['id'];
 		$insertion = mysqli_query($this->db,"DELETE FROM mascota WHERE  id='$id' ") or die ('errorrrr');
-		header('Location: views/fundacion/gmascotas.php');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
+		/*header('Location: views/fundacion/gmascotas.php');*/
 	}
 
 	public function perteneceA(){

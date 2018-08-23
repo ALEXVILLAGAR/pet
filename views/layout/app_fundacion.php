@@ -207,12 +207,7 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                         <a class="dropdown-item" href="../perfil/perfilF.php">
                             Mi perfil
                         </a>
-                        <a class="dropdown-item" href="#">
-                            Help
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            Setting
-                        </a>
+                       
                     </div>
                 </div>
                 <div>

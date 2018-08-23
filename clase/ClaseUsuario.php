@@ -47,7 +47,8 @@ class Usuario
 		if($resultado['id_usuario']!=$user_id){
 			$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$_POST[id_pet]','$user_id')") or die ('error');
 		}else{ header('Location: index.php'); }
-		header('Location: views/usuario/user.php');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
+		/*header('Location: views/usuario/user.php');*/
 	}
 
 	public function mis_favoritos(){	//favoritos de cada usuario

@@ -19,7 +19,8 @@ class Fundacion
 		}
 		$insertion = mysqli_query($this->db,"UPDATE fundacion SET nombre='$_POST[nombre]',email='$_POST[correo]',telefono='$_POST[telefono]',direccion= '$_POST[direccion]' WHERE id = '$id'") or die ('errorrrr');
 		$_SESSION['user']=$this->fundacion($id);
-		header('Location: views/perfil/perfilF.php');
+header('Location: '.$_SERVER['HTTP_REFERER'] );
+		/*header('Location: views/perfil/perfilF.php');*/
 	}
 
 	public static function fundaciones(){ //Retorna todas las fundaciones que existen
@@ -32,7 +33,8 @@ class Fundacion
 			$user = SessionesPet::session_info();
 			$fecha = date("Y-m-d H:i:s");
 			mysqli_query(Conectar::conexion(),"INSERT INTO donaciones VALUES ('','$_POST[monto]','$fecha','$user[id]','$_POST[id_fundacion]')") or die ('errorrrr');
-			header('Location: views/usuario/user.php');
+			header('Location: '.$_SERVER['HTTP_REFERER'] );
+			/*header('Location: views/usuario/user.php');*/
 	}
 
 	public static function fundacion($id){ //retorna una fundacion
@@ -87,7 +89,8 @@ class Fundacion
 
 	public function Eliminar(){
 		$insertion = mysqli_query($this->db,"DELETE fundacion WHERE id = '$_POST[id_fundacion]'") or die ('errorrrr');
-		header('Location: views/administrador/gestion_fundaciones.php');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
+		/*header('Location: views/administrador/gestion_fundaciones.php');*/
 	}
 
 	public function cambiarPass(){

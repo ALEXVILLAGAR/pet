@@ -3,7 +3,7 @@
             foreach($user->mis_favoritos() as $element): 
                     $pet = new Mascota($element['id_mascota']);
                     $fundacion = $pet->perteneceA();
-                    if($pet==null){ echo "no hay";}else{
+                    
                 ?>
     <div class="card border-danger rounded-right" style="z-index: ">
         <div class="row ">
@@ -45,6 +45,6 @@
             
 
         </div>
-    </div><br><?php include 'galerias/ConfirmarAdopcion.php'; ?> <?php } endforeach ?>
+    </div><br><?php include 'galerias/ConfirmarAdopcion.php'; ?> <?php endforeach ?>
 </div>
 
