@@ -1,33 +1,34 @@
 <div class="container tabla">
-        <div class="table-wrapper border border-dark">
-            <div class="table-title">
+        <div class="table-wrapper border border-info">
+            <div class="table-title ">
                 <div class="row">
-                    <div class="col-sm-6">
-						<h2><b>Gatos </b></h2>
+                    <div class="col-sm-6 ">
+						<h2><b> <?php echo $titulo?> </b></h2>
 					</div>
-					<div class="">
-                        <div class="search-box">
-							<div class="input-group">
+					<div class="col-sm-3">
+                        <div class="search-box ">
+							<div class="input-group ">
 								<input type="text" id="search" class="form-control" placeholder="Buscar por nombre">
                                 <span class="input-group-addon"><i class="fas fa-search"></i></span>
 							</div>
                         </div>
                     </div>
-					<div class="col-sm-6">
+					<div class="col-sm-2">
 
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i> <span>Eliminar</span></a>
+						<a href="#deleteEmployeeModal" class="btn btn-danger border border-warning" data-toggle="modal"><i class="fas fa-minus-circle"></i> <span>Eliminar</span></a>
 					</div>
 
                 </div>
             </div>
-            <table class="table table-striped table-hover ">
-                <thead>
+            <table class="table table-striped table-hover">
+                <thead class="border border-white">
                     <tr>
 						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
+							<span class="custom-checkbox" >
+								<label for="selectAll" ></label>
+								<input type="checkbox" id="selectAll" placeholder="todas" >
 							</span>
+							
 						</th>
                         <th>Nombre</th>
                         <th>Raza</th>
@@ -39,7 +40,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                	<?php foreach (Mascota::all_cats() as $element): 
+
+                	<?php foreach ($consulta as $element): 
                 		$pet = new Mascota($element['id']); ?>
                     <tr>
 						<td>
@@ -61,27 +63,9 @@
 
                         </td>
                     </tr>
-                	<?php endforeach ?>
 
-                </tbody>
-            </table>
-			<div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-	<!-- Edit Modal HTML -->
-	<div id="editEmployeeModal" class="modal fade">
+<!-- Edit Modal HTML -->
+	<div class="modal fade" id=<?php echo "editEmployeeModal".$element1['id']?>>
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
@@ -125,7 +109,7 @@
 		</div>
 	</div>
 	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
+	<div class="modal fade" id=<?php echo "deleteEmployeeModal".$element1['id']?> >
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
@@ -149,3 +133,22 @@
 			</div>
 		</div>
 	</div>
+
+                	<?php endforeach ?>
+
+                </tbody>
+            </table>
+			<div class="clearfix">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>

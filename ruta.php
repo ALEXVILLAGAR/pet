@@ -53,15 +53,20 @@ switch ($variable) {
 	case 'agregarFav':
 		$user = new Usuario();
 		$user->preferencia();
-		header('Location: views/usuario/user.php');
 		break;
 	case 'adoptar':
 		Mascota::reservar();
 		break;
 	case 'return_home':
 		$user = new Usuario();
-		Control::redirige($user->usuario,true);
+		Control::redirige($user->usuario);
 		break;
+		case 'eliminarFundacion':
+			Fundacion::Eliminar();
+			break;
+	// case 'actualizarFundacionAdmin':
+
+	// 	break;
 	// case 'users':
 	// 	$user = new Usuario();
 	// 	$user->todos_usuarios();

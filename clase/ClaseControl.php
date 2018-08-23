@@ -32,9 +32,6 @@ class Control
 			$_SESSION['user'] = $fila;
 			$_SESSION['start'] = time();
 		    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
-		    if($table==='fundacion'){
-		    	header('Location: views\fundacion\userfundacion.php');
-		    }
 		    Control::redirige($fila);
 		}else{
 			$variable =true;
@@ -63,18 +60,18 @@ class Control
 		}
 	}
 
-	public static function redirige($fila,$es_fundacion=false){
+	public static function redirige($fila){
 			if($fila['tipo']=='admi'){
-			    header('Location: views\perfil\perfiladmin.php');     
+			    header('Location: views\administrador\administrador.php');     
 			}
 			elseif($fila['tipo']=='usuario'){
 		    	header('Location: views\usuario\user.php');
 			}
-			elseif($es_fundacion=='redirige'){
-		    	header('Location: views\fundacion\userfundacion.php');
-			}
+			// elseif($es_fundacion){
+		 //    	header('Location: views\fundacion\userfundacion.php');
+			// }
 			else{
-		    	header('Location: index.php');
+		    	header('Location: views\fundacion\userfundacion.php');
 			}
 	}
 }

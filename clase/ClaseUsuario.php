@@ -12,15 +12,16 @@ class Usuario
 	}
 
 	public static function todos_usuarios(){	//retorna todos los usuarios de la bd
-		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM usuario" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-		return mysqli_fetch_array($resultado);
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM usuario WHERE tipo='usuario'" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;
 	}
 
 	public function uptade_user(){ //$_POST valores de la actualizacion 
 		$id = $this->usuario['id'];
-		$insertion = mysqli_query($this->db,"UPDATE usuario SET nombre='$_POST[nombre]',documento='$_POST[documento]',direccion= '$_POST[direccion]', email='$_POST[correo]' WHERE id = '$id'") or die ('error');
-		$_SESSION['user']=$this->GetUsuario($id);
-		header('Location: views/usuario/perfil.php');
+		mysqli_query($this->db,"UPDATE usuario SET nombre='$_POST[nombre]',documento='$_POST[documento]',direccion= '$_POST[direccion]', email='$_POST[correo]' WHERE id = '$id'") or die ('error');	
+		$user = $this->GetUsuario($id);
+		$_SESSION['user']= $user;
+		Control::redirige($user);
 	}
 
 	public function authorizacion($type){
@@ -42,7 +43,7 @@ class Usuario
 	public function preferencia(){ //añadir una mascota a mis favotiros
 		$user_id = $this->usuario['id'];
 		$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$_POST[id_pet]','$user_id')") or die ('error');
-		header('Location: index.php');
+		header('Location: views/usuario/user.php');
 	}
 
 	public function mis_favoritos(){	//favoritos de cada usuario
@@ -60,8 +61,10 @@ class Usuario
 		$image = Control::foto($_FILES["imagen"]["tmp_name"]);
 		$id = $this->usuario['id'];
 		$insertion = mysqli_query($this->db,"UPDATE usuario SET foto_perfil='$image' WHERE id = '$id'") or die ('errorrrr');
-		$_SESSION['user']=$this->GetUsuario($id);
-		header('Location: views/usuario/perfil.php');
+		$user = $this->GetUsuario($id);
+		$_SESSION['user']= $user;
+		Control::redirige($user);
+		
 	}
 
 	public function mis_reservadas(){ //todas las mascotas reservadas

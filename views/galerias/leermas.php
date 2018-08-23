@@ -52,7 +52,7 @@
             <!-- Modal footer -->
             <div class="modal-footer bg-secondary">
 
-                <?php if(isset($user)): ?>
+                <?php if(isset($vistauser)): ?>
                     <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> data-dismiss="modal">
                         Adoptar
                     </button>

@@ -2,7 +2,8 @@
     include('../layout/app_administrador.php');
  ?>
  <section class="bg-faded page-content" >
-        <?php include '..\tablas\tabla_perros_admin.php'?>
+    <h1>control de usuarios</h1>
+        <?php include '..\tablas\tabla_control_usuarios.php'?>
             
         </section>
         <!-- page-content" -->

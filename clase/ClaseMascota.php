@@ -21,13 +21,23 @@ class Mascota
 		return $resultado;
 	}
 
+	public static  function all_dogs_disponibles(){ //todos las mascotas perros
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE especie = 'Perro' && disponible='1'" ) or die ( "casi");
+		return $resultado;	
+	}
+
 	public static  function all_dogs(){ //todos las mascotas perros
-		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE especie = 'Perro'" ) or die ( "casi");
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE especie = 'Perro' && disponible='1'" ) or die ( "casi");
 		return $resultado;	
 	}
 
 	public static  function all_cats(){ //todos las mascotas gatos
 		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE especie = 'Gato'" ) or die ( "casi");
+		return $resultado;	
+	}
+
+	public static  function all_cats_disponibles(){ //todos las mascotas gatos disponibles
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE especie = 'Gato' && disponible='1'" ) or die ( "casi");
 		return $resultado;	
 	}
 

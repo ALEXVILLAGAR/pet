@@ -1,9 +1,9 @@
 <?php 
     include('../layout/app_administrador.php');
  ?>
- <section class="bg-faded page-content" >
-        <?php include '..\tablas\tabla_gatos_admin.php'?>
+ <section class="bg-faded page-content" >                              <!-- TODO modificar para donar a la fundacion correcta-->
             
+            <?php include '..\perfil\perfiluser.php'?>
         </section>
         <!-- page-content" -->
     </div>

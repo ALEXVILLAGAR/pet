@@ -30,7 +30,7 @@
                                     Tamaño: <?php echo $pet->mascota['nombre'] ?>
                                 </li>
                                 <li>
-                                    Fundación: <?php echo $pet->perteneceA()['nombre'] ?>
+                                    Fundación: <?php echo $fundacion['nombre'] ?>
                                 </li>
                                 <br>
                                 <a class="btn btn-success" align="left" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> >Quiero adoptarla</a>

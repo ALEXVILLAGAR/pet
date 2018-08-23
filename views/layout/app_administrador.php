@@ -114,7 +114,7 @@ if(!$user->authorizacion('admi')){
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="../usuario/administrador.php">
+                                        <a href="../administrador/administrador.php">
                                             Todos
                                         </a>
                                     </li>
@@ -142,7 +142,7 @@ if(!$user->authorizacion('admi')){
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="aprovar_fundacion.php">
+                                        <a href="aprobar_fundacion.php">
                                             Aprobar Fundaciones
                                         </a>
                                     </li>
@@ -165,7 +165,7 @@ if(!$user->authorizacion('admi')){
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="gestion_usuarios.php">
                                             Gestion usuarios
                                         </a>
                                     </li>
@@ -186,7 +186,7 @@ if(!$user->authorizacion('admi')){
                         </span>
                     </a>
                     <div aria-labelledby="dropdownMenuMessage" class="dropdown-menu">
-                        <a class="dropdown-item" href="perfil.php">
+                        <a class="dropdown-item" href="perfilAdmin.php">
                             Mi perfil
                         </a>
                     </div>

@@ -4,7 +4,7 @@ include '../layout/app_fundacion.php';
         <!-- sidebar-wrapper  -->
         <section class="bg-faded page-content">
               <?php $consulta = $fundacion->mis_perros(); ?>
-            <?php include '../galerias/galeria_fundacion.php'?>
+            <?php include '../galerias/galeria_principal.php'?>
         </section>
         <!-- page-content" -->
     </div>

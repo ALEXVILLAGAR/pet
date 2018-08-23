@@ -42,7 +42,7 @@ class Fundacion
 
 	public static function new_fundacion(){
 		$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO fundacion VALUES ('$_POST[nombre]','$_POST[email]',MD5('$_POST[clave]'),'$_POST[certificado]','$_POST[telefono]','$_POST[direccion]')") or die ('errorrrr');
-		header('Location: ../index.php');
+		header('Location: index.php');
 	}
 
 	public function Mis_donaciones(){ //retorna las donaciones que tiene una fundación
@@ -83,6 +83,11 @@ class Fundacion
 		$insertion = mysqli_query($this->db,"UPDATE fundacion SET foto_fundacion='$image' WHERE id = '$id'") or die ('errorrrr');
 		$_SESSION['user']=$this->fundacion($id);
 		header('Location: views/perfil/perfilF.php');
+	}
+
+	public function Eliminar(){
+		$insertion = mysqli_query($this->db,"DELETE fundacion WHERE id = '$_POST[id_fundacion]'") or die ('errorrrr');
+		header('Location: views/administrador/gestion_fundaciones.php');
 	}
 }
 

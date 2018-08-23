@@ -3,8 +3,8 @@
  ?>
  <section class="bg-faded page-content" >
              <?php include '..\donar.php'?>   <!-- TODO modificar para donar a la fundacion correcta-->
-             <?php $consulta = Mascota::all_dogs() ?>
-            <?php include '..\galerias\galeria_user.php' ?>
+             <?php $consulta = Mascota::all_dogs_disponibles(); $vistauser=true; ?>
+            <?php include '..\galerias\galeria_principal.php' ?>
         </section>
         <!-- page-content" -->
     </div>

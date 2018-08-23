@@ -1,13 +1,14 @@
 <?php 
-include '../layout/app_fundacion.php';
+    include('../layout/app_administrador.php');
  ?>
-        <!-- sidebar-wrapper  -->
-        <section class="bg-faded page-content">
-            <?php $consulta = $fundacion->mis_gatos(); ?>
-            <?php include '../galerias/galeria_principal.php'?>
+ <section class="bg-faded page-content" >
+        <?php $consulta = Mascota::all_cats(); $titulo = 'Gatos';?>
+            <?php include '..\tablas\tabla_mascotas_admin.php'?>
+            
         </section>
         <!-- page-content" -->
     </div>
+
     <!-- page-wrapper -->
     <script src="../../vendor/jquery-easing/jquery.easing.min.js">
     </script>

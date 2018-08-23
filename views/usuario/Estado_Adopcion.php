@@ -3,7 +3,8 @@
  ?>
  <section class="bg-faded page-content" >
              <?php include '..\donar.php'?>   <!-- TODO modificar para donar a la fundacion correcta-->
-            <?php include '..\galerias\galeria_pendientes.php' ?>
+            <?php $consulta = $user->mis_reservadas(); $conocerEstado=true;
+             include '..\galerias\galeria_principal.php' ?>
         </section>
         <!-- page-content" -->
     </div>

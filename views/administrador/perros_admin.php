@@ -1,9 +1,10 @@
 <?php 
     include('../layout/app_administrador.php');
  ?>
- <section class="bg-faded page-content" >                              <!-- TODO modificar para donar a la fundacion correcta-->
-            <?php include '..\donar.php'?>   <!-- TODO modificar para donar a la fundacion correcta-->
-            <?php include '..\tablas\tablamascotasadmin.php'?>
+ <section class="bg-faded page-content" >
+        <?php $consulta=Mascota::all_dogs();$titulo='Perros'; ?>
+            <?php include '..\tablas\tabla_mascotas_admin.php'?>
+            
         </section>
         <!-- page-content" -->
     </div>
