@@ -136,9 +136,9 @@ require_once("ControlClass.php");
            <?php include 'views/galerias/galeria_disponible.php'?>
        </section> 
 <!--------------------------------FUNDACIONES-------------------------------------->
-        <section class="bg-dark" id="about" >
+        <section class="bg-dark py-2 text-xs-center" id="about" >
             <div class="col-lg-12 text-center">
-    <br>
+                <br>
                 <h2 class="section-heading text-white">
                     Fundaciones aliadas
                 </h2>
@@ -215,9 +215,8 @@ require_once("ControlClass.php");
 </section>
 <!--------------------------------DONACION----------------------------------------->
          <section id="services">
-    <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center py-2 text-xs-center">
                 <h2 class="section-heading">
                     Como Hacer Donaciones
                 </h2>
@@ -225,7 +224,6 @@ require_once("ControlClass.php");
                 </hr>
             </div>
         </div>
-    </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">

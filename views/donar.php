@@ -4,9 +4,9 @@
 <div class="modal" id="newDonationM" ?>>
 <?php endif ?>
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content border-success">
             <!-- Modal Header -->
-            <div class="modal-header">
+            <div class="modal-header bg-dark text-white">
                 <h3 class="modal-title" id="myModalLabel">
                     Nueva Donación                     
                     <?php if (isset($element['nombre'])):
@@ -20,7 +20,7 @@
                     <?php endforeach ?>
                      <?php endif ?>
                 </h3>
-                <button class="close" data-dismiss="modal" type="button">
+                <button class="close bg-danger" data-dismiss="modal" type="button">
                     x
                 </button>
             </div>
@@ -77,15 +77,15 @@
                             </h2>
                         </span>
                     </div>
-                    <div class="info-box">
-                        Muchas gracias por participar en esta campaña
+                    <div class="info-box text-info text-center">
+                        <h4>Muchas gracias por participar en esta campaña.</h4>
                     </div>
                 </br>
             </div>
             <!-- Modal footer -->
-            <div class="modal-footer">
+            <div class="modal-footer bg-secondary">
                 <form>
-                    <button class="btn btn-primary" id="stripeButton" style="width: 100%;">
+                    <button class="btn btn-success" id="stripeButton" style="width: 100%;">
                         Continuar con la donación
                     </button>
                 </form>

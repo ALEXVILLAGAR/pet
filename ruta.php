@@ -53,6 +53,7 @@ switch ($variable) {
 	case 'agregarFav':
 		$user = new Usuario();
 		$user->preferencia();
+		header('Location: views/usuario/user.php');
 		break;
 	case 'adoptar':
 		Mascota::reservar();

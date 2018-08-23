@@ -68,18 +68,23 @@ if(!$user->authorizacion('admi')){
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <img alt="User picture" class="img-responsive img-rounded" src="img/user.jpg">
-                        </img>
+                       <?php if (isset($user->usuario['foto_perfil'])): ?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($user->usuario['foto_perfil'])?> " class="img-responsive img-rounded" alt="User picture"/>
+        <?php else: ?>
+            <img alt="User picture" class="img-responsive img-rounded" src="//placehold.it/150">
+        <?php endif ?>
                     </div>
                     <div class="user-info">
                         <span class="user-name">
-                            Alexander
                             <strong>
-                                Villaneda
+                            </strong>
+                            <strong>
+                               <?php echo($user->usuario['nombre']); ?>
                             </strong>
                         </span>
                         <span class="user-role">
-                            Administrador
+                            <strong>Administrador</strong>
+                            <strong> <?php echo($user->usuario['email']); ?></strong>
                         </span>
                         <span class="user-status">
                             <i class="fa fa-circle">
@@ -186,17 +191,18 @@ if(!$user->authorizacion('admi')){
                     </div>
                 </div>
                 <div>
-                    <a href="index.php">
+                    <a href="#" data-toggle="modal" data-target="#Mcerrar_sesion">
                         <i class="fa fa-power-off">
                         </i>
                     </a>
+                   
                 </div>
             </div>
         </nav>
         <!-- sidebar-wrapper  -->
         <section class="bg-faded page-content">
             <?php include '..\tablas\tablamascotasadmin.php'?>
-
+ <?php include '..\modal\Mcerrar_sesion.php' ?>
         </section>
         <!-- page-content" -->
     </div>

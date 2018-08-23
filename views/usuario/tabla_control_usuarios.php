@@ -3,9 +3,9 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-						<h2><b>Solicitud de Fundaciones </b></h2>
+						<h2><b>Usuarios </b></h2>
 					</div>
-					<div class="col-sm-3">
+					<div class="">
                         <div class="search-box">
 							<div class="input-group">
 								<input type="text" id="search" class="form-control" placeholder="Buscar por nombre">
@@ -13,7 +13,10 @@
 							</div>
                         </div>
                     </div>
+					<div class="col-sm-6">
 
+						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i> <span>Eliminar</span></a>
+					</div>
 
                 </div>
             </div>
@@ -31,7 +34,7 @@
 						<th>Direccion</th>
                         <th>Telefono</th>
                         <th>Certificado</th>
-                        <th>Opciones</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,9 +51,9 @@
                         <td>(171) 555-2222</td>
                         <td>Certificado</td>
                         <td>
+                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Editar"></i></a>
+                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
 
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href="#aceptarEmployeeModal"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
                         </td>
                     </tr>
                     <tr>
@@ -66,9 +69,9 @@
                         <td>(313) 555-5735</td>
                         <td>Certificado</td>
                         <td>
+                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Editar"> </i></a>
+                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
 
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href="#aceptarEmployeeModal"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
                         </td>
                     </tr>
 					<tr>
@@ -84,10 +87,9 @@
                         <td>(503) 555-9931</td>
                         <td>Certificado</td>
                         <td>
+                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Editar"></i></a>
+                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
 
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href="#aceptarEmployeeModal"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
-                        </td>
                     </tr>
                     <tr>
 						<td>
@@ -102,9 +104,9 @@
                         <td>(204) 619-5731</td>
                         <td>Certificado</td>
                         <td>
+                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Editar"> </i></a>
+                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
 
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href="#aceptarEmployeeModal"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
                         </td>
                     </tr>
 					<tr>
@@ -120,9 +122,9 @@
                         <td>(480) 631-2097</td>
                         <td>Certificado</td>
                         <td>
+                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class=" fas fa-edit" data-toggle="tooltip" title="Editar"> </i></a>
+                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
 
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href="#aceptarEmployeeModal"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
                         </td>
                     </tr>
                 </tbody>
@@ -142,50 +144,66 @@
         </div>
     </div>
 
-	<!-- Aceptar Modal HTML -->
-	<div id="aceptarEmployeeModal" class="modal fade">
+	<!-- Edit Modal HTML -->
+	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">
-						<h4 class="modal-title">Aceptar Solicitud de Fundación</h4>
+						<h4 class="modal-title">Editar Información</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
+
 					<div class="modal-body">
-						<p>La fundación sera registrada dentro de la base de datos.</p>
-						<p class="text-info"><small>Se enviara un email a la fundación para notificarla.</small></p>
-
+						<div class="form-group">
+							<label>Nombre</label>
+							<input type="text" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Email</label>
+							<input type="email" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Dirección</label>
+							<textarea class="form-control" required></textarea>
+						</div>
+						<div class="form-group">
+							<label>Telefono</label>
+							<input type="text" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Foto</label>
+							<input type="file" class="form-control" >
+						</div>
+						<div class="form-group">
+							<label>Certificado</label>
+							<input type="file" class="form-control" >
+						</div>
 					</div>
-
 					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
-						<input type="submit" class="btn btn-primary" value="Aceptar">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+						<input type="submit" class="btn btn-primary" value="Guardar">
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-
 	<!-- Delete Modal HTML -->
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">
-						<h4 class="modal-title">Cancelar Solicitud de Fundación</h4>
+						<h4 class="modal-title">Eliminar Fundación</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p>¿Seguro que quieres cancelar la solicitud de esta fundación?</p>
-						<p class="text-warning"><small>Se enviara un email a la fundación para notificarla.</small></p>
-						<div class="form-group">
-							<label>Comentarios</label>
-							<textarea placeholder="Agrege aqui la razón para negar la solicitud"	class="form-control" maxlength="65525" required="required"></textarea>
-						</div>
+						<p>¿Seguro que quieres eliminar estos registros?</p>
+						<p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
 					</div>
 					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
-						<input type="submit" class="btn btn-danger" value="Cancelar Solicitud">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+						<input type="submit" class="btn btn-primary" value="Eliminar">
 					</div>
 				</form>
 			</div>
