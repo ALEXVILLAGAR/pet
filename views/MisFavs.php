@@ -1,7 +1,7 @@
 <div class="container py-3" >
     <?php 
             foreach($user->mis_favoritos() as $element): 
-                    $pet = new Mascota($element['id_mascota']);
+                    $pet = new Mascota($element['id']);
                     $fundacion = $pet->perteneceA();
                     if($pet==null){ echo "no hay";}else{
                 ?>
@@ -27,7 +27,7 @@
                                     Edad: <?php echo $pet->mascota['edad'] ?>
                                 </li>
                                 <li>
-                                    Tamaño: <?php echo $pet->mascota['nombre'] ?>
+                                    Tamaño: <?php echo $pet->mascota['tamano'] ?>
                                 </li>
                                 <li>
                                     Fundación: <?php echo $fundacion['nombre'] ?>

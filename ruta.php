@@ -61,9 +61,17 @@ switch ($variable) {
 		$user = new Usuario();
 		Control::redirige($user->usuario);
 		break;
-		case 'eliminarFundacion':
-			Fundacion::Eliminar();
-			break;
+	case 'eliminarFundacion':
+		Fundacion::Eliminar();
+		break;
+	case 'cambiarPassFun':
+		$fundacion = new Fundacion();
+		$fundacion->cambiarPass();
+		break;
+	case 'cambiarPassUser':
+		$usuario = new Usuario();
+		$usuario->cambiarPass();
+		break;
 	// case 'actualizarFundacionAdmin':
 
 	// 	break;

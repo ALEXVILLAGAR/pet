@@ -42,14 +42,20 @@ class Usuario
 
 	public function preferencia(){ //añadir una mascota a mis favotiros
 		$user_id = $this->usuario['id'];
-		$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$_POST[id_pet]','$user_id')") or die ('error');
+		$resultado = mysqli_query($this->db, "SELECT * FROM preferencia WHERE id_mascota = '$_POST[id_pet]'" ) or die ( "Algo ha ido mal en la consulta");
+		$resultado=mysqli_fetch_array($resultado);
+		if($resultado['id_usuario']!=$user_id){
+			$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$_POST[id_pet]','$user_id')") or die ('error');
+		}else{ header('Location: index.php'); }
 		header('Location: views/usuario/user.php');
 	}
 
 	public function mis_favoritos(){	//favoritos de cada usuario
 		$id=$this->usuario['id'];
 		$resultado = mysqli_query($this->db, "SELECT * FROM preferencia WHERE id_usuario = '$id'" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-		return $resultado;
+		$resultado=mysqli_fetch_array($resultado);
+		$mascota = mysqli_query($this->db, "SELECT * FROM mascota WHERE id = '$resultado[id_mascota]'" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $mascota;
 	}
 
 	public static function GetUsuario($id){ //obtener un usuario segun id
@@ -73,6 +79,20 @@ class Usuario
 		return $resultado;
 	}
 
+	public function cambiarPass(){
+		if(MD5($_POST['password-actual'])!=$this->usuario['clave'] || $_POST['confirm-password']!=$_POST['password']){
+			if($this->usuario['tipo']!='admi'){
+				header('Location: views/usuario/perfil.php?error-password-actual');
+			}else{
+				header('Location: views/administrador/perfilAdmin.php?error-password-actual');
+			}
+		}else{
+			$id = $this->usuario['id'];
+			$insertion = mysqli_query($this->db,"UPDATE usuario SET clave=MD5('$_POST[password]') WHERE id = '$id'") or die ('errorrrr');
+			Control::cerrar_sesion();
+		}
+	}
 }
+
 
  ?>

@@ -34,7 +34,7 @@
                                             <?php echo "Edad: ".$pet->mascota['edad'] ?>
                                         </li>
                                         <li>
-                                            <?php echo "Tamaño: ".$pet->mascota['nombre'] ?>
+                                            <?php echo "Tamaño: ".$pet->mascota['tamano'] ?>
                                         </li>
                                         <li>
                                             <?php echo "Fundación: ".$fundacion['nombre']?>

@@ -11,7 +11,7 @@ class Control
 
 	public static function register(){
 		if(Validacion::validar_registro($_POST)){
-			$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO usuario VALUES ('','$_POST[nombre]','$_POST[documento]','$_POST[direccion]','buena','disponible',MD5('$_POST[clave]'),'$_POST[correo]','usuario')") or die ('errorrrr');
+			$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO usuario VALUES ('','$_POST[nombre]','$_POST[documento]','$_POST[direccion]','buena','disponible',MD5('$_POST[clave]'),'$_POST[correo]','usuario',null)") or die ('errorrrr');
 			Control::login();
 		}else{
 			header('Location: ..\index.php?variable=registro_fail');
@@ -46,10 +46,6 @@ class Control
 		header('Location: index.php');
 	}
 
-	public function newContacto(){
-		var_dump($_POST);
-	}
-
 	public static function foto($picture){
 		$revisar = getimagesize($picture);//se toma tamaño de la imagen
 		if($revisar !== false){  //y se verifica si tiene  tamaño para validar si se cargo o no
@@ -67,13 +63,11 @@ class Control
 			elseif($fila['tipo']=='usuario'){
 		    	header('Location: views\usuario\user.php');
 			}
-			// elseif($es_fundacion){
-		 //    	header('Location: views\fundacion\userfundacion.php');
-			// }
 			else{
 		    	header('Location: views\fundacion\userfundacion.php');
 			}
 	}
+
 }
 
  ?>

@@ -55,15 +55,14 @@ class Mascota
 		if(isset($_FILES['imagen'])){
 			$imgContenido=Control::foto($_FILES["imagen"]["tmp_name"]);
 		 }
-		$insertion = mysqli_query($this->db,"UPDATE mascota SET nombre='$_POST[nombre]',especie='$_POST[especie]',raza='$_POST[raza]',edad= '$_POST[edad]', estado='$_POST[estado]',foto = '$imgContenido' WHERE id = '$_POST[id]'") or die ('errorrrr');
+		$insertion = mysqli_query($this->db,"UPDATE mascota SET nombre='$_POST[nombre]',especie='$_POST[especie]',raza='$_POST[raza]',tamano='$_POST[tamano]',edad= '$_POST[edad]', estado='$_POST[estado]',foto = '$imgContenido' WHERE id = '$_POST[id]'") or die ('errorrrr');
 		header('Location: views/fundacion/gmascotas.php');
 	}
 
 	public static function agregar_mascota(){ //$_POST valores para agregar ofcourse
 		$imgContenido=Control::foto($_FILES["imagen"]["tmp_name"]);
-		session_start();
 		$fundacion = $_SESSION['user'];
-		mysqli_query(Conectar::conexion(),"INSERT INTO mascota  VALUES  ('','$_POST[nombre]','$_POST[especie]','$_POST[raza]', '$_POST[edad]', '$_POST[estado]', '$imgContenido',1, '$fundacion[id]')") or die ('errorrrr');
+		$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO mascota  VALUES ('','$_POST[nombre]','$_POST[especie]','$_POST[raza]','$_POST[tamano]','$_POST[edad]','$_POST[estado]',null,'$imgContenido',1,'$fundacion[id]',null)") or die ('errorrrr');
 		header('Location: views/fundacion/userfundacion.php');
 	}
 
@@ -82,6 +81,13 @@ class Mascota
 		$id=$this->mascota['id_fundacion'];
 		$resultado = mysqli_query($this->db, "SELECT * FROM fundacion WHERE id='$id' ") or die ( "casi");
 		return mysqli_fetch_array($resultado);
+	}
+
+	public function MePrefiere($id_user){
+		$id_pet = $this->mascota['id'];
+		$resultado = mysqli_query($this->db, "SELECT * FROM preferencia WHERE id_usuario='$id_user' && id_mascota = '$id_pet'") or die ( "casi");
+		$resultado = mysqli_fetch_array($resultado);
+		return $resultado['id_mascota']==$id_pet;
 	}
 
 }

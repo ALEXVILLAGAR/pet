@@ -89,6 +89,21 @@ class Fundacion
 		$insertion = mysqli_query($this->db,"DELETE fundacion WHERE id = '$_POST[id_fundacion]'") or die ('errorrrr');
 		header('Location: views/administrador/gestion_fundaciones.php');
 	}
+
+	public function cambiarPass(){
+		if(MD5($_POST['password-actual'])!=$this->fundacion['clave'] || $_POST['confirm-password']!=$_POST['password']){
+			header('Location: views/perfil/perfilF.php?error-password-actual');
+		}else{
+			$id = $this->fundacion['id'];
+			$insertion = mysqli_query($this->db,"UPDATE fundacion SET clave=MD5('$_POST[password]') WHERE id = '$id'") or die ('errorrrr');
+			Control::cerrar_sesion();
+		}
+	}
+
+	public static function FundacionSlide(){
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM fundacion") or die ( "casi");
+		return $resultado;
+	}
 }
 
  ?>

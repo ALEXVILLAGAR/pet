@@ -20,9 +20,11 @@
                                     </a>
                                     <!-- Button to Open the Modal -->
                                     <br><br>
+                                <?php if (!$pet->MePrefiere(SessionesPet::session_info()['id'])): ?>
                                      <button class="btn btn-danger"  href="#" data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito".$element['id'] ?> type="button">
-                                        me gusta<span class="fa fa-heart mb-2 sr-icons"></span>
+                                        me gusta <span class="fa fa-heart mb-2 sr-icons"></span>
                                     </button>
+                                <?php endif ?>
                                 <?php endif?>
                                     <button class="btn btn-info" data-target=<?php echo "#myModal".$element['id'] ?> data-toggle="modal" type="button">
                                         Leer Mas

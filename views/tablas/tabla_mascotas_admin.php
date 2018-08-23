@@ -54,7 +54,7 @@
                         	<?php echo $pet->mascota['nombre'] ?> </td>
                         <td><?php echo $pet->mascota['raza'] ?></td>
 						<td><?php echo $pet->mascota['edad'] ?></td>
-                        <td><?php echo $pet->mascota['edad'] ?></td>
+                        <td><?php echo $pet->mascota['tamano'] ?></td>
                         <td><?php echo $pet->perteneceA()['nombre'] ?></td>
                         <td><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, quisquam.</p></td>
                         <td>
