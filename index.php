@@ -137,18 +137,19 @@ require_once("ControlClass.php");
            <?php include 'views/galerias/galeria_principal.php'?>
        </section> 
 <!--------------------------------FUNDACIONES-------------------------------------->
-        <section class="bg-dark py-2 text-xs-center" id="about" >
-            <div class="col-lg-12 text-center">
-                <br>
+        <section class="bg-dark" id="about" >
+            <!-- <div class="col-lg-12 text-center "> 
+                
+            </div> -->
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-12">
+
                 <h2 class="section-heading text-white">
                     Fundaciones aliadas
                 </h2>
                 <hr class="my-4">
                 </hr>
-            </div>
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-lg-12">
                 <div class="carousel slide" data-ride="carousel" id="demo">
                     <!-- Indicators -->
                     <ul class="carousel-indicators">
@@ -349,9 +350,8 @@ require_once("ControlClass.php");
         <script src="js/main.js">
         </script>
         <script src="js/login-register.js" type="text/javascript"></script>
-     <script src="js/login-registerF.js" type="text/javascript"></script>
-        <?php include 'views/login/loginU.html'?>
-    <?php include 'views/login/loginF.html'?>
+        <?php include 'views/login/login.html'?>
+    
 
     <script>
 function valida(e){
