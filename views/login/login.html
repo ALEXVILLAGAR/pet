@@ -1,83 +1,189 @@
+<
 <!-- Modal -->
-<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade login" id="LoginUser" role="dialog" tabindex="-1">
-    <div class="modal-dialog form-dark" role="document">
-        <!--Content-->
-        <div class="modal-content card card-image">
-            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
-                <!--Header-->
-                <div class="modal-header text-center pb-4">
-                    <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel">
-                        <strong>
-                            SIGN
-                        </strong>
-                        <a class="green-text font-weight-bold">
-                            <strong>
-                                UP
-                            </strong>
-                        </a>
-                    </h3>
-                    <button aria-label="Close" class="close white-text" data-dismiss="modal" type="button">
-                        <span aria-hidden="true">
-                            ×
-                        </span>
-                    </button>
-                </div>
-                <!--Body-->
-                <div class="modal-body">
-                    <!--Body-->
-                    <div class="md-form mb-5">
-                        <input class="form-control validate white-text" id="Form-email5" type="email">
-                            <label data-error="wrong" data-success="right" for="Form-email5">
-                                Your email
-                            </label>
-                        </input>
-                    </div>
-                    <div class="md-form pb-3">
-                        <input class="form-control validate white-text" id="Form-pass5" type="password">
-                            <label data-error="wrong" data-success="right" for="Form-pass5">
-                                Your password
-                            </label>
-                            <div class="form-group mt-4">
-                                <input class="form-check-input" id="checkbox624" type="checkbox">
-                                    <label class="white-text form-check-label" for="checkbox624">
-                                        Accept the
-                                        <a class="green-text font-weight-bold" href="#">
-                                            Terms and Conditions
-                                        </a>
-                                    </label>
-                                </input>
+<div class="modal fade login" id="loginModal">
+    <div class="modal-dialog login animated">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h2 class="modal-title text-dark px-5">
+                    Iniciar Sesión
+                </h2>
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    <div class="content">
+                        <div class="social">
+                            <img src="img/user.jpg" style="">
+                            </img>
+                        </div>
+                        <div class="division">
+                            <div class="line.l">
                             </div>
-                        </input>
-                    </div>
-                    <!--Grid row-->
-                    <div class="row d-flex align-items-center mb-4">
-                        <!--Grid column-->
-                        <div class="text-center mb-3 col-md-12">
-                            <button class="btn btn-success btn-block btn-rounded z-depth-1" type="button">
-                                Sign up
-                            </button>
                         </div>
-                        <!--Grid column-->
-                    </div>
-                    <!--Grid row-->
-                    <!--Grid row-->
-                    <div class="row">
-                        <!--Grid column-->
-                        <div class="col-md-12">
-                            <p class="font-small white-text d-flex justify-content-end">
-                                Have an account?
-                                <a class="green-text ml-1 font-weight-bold" href="#">
-                                    Log in
-                                </a>
-                            </p>
+                        <div class="error">
                         </div>
-                        <!--Grid column-->
+                        <div class="form loginBox lbU" id="loginBoxU">
+                            <form accept-charset="UTF-8" action="ruta.php?variable=login" method="post">
+                                <input autofocus="autofocus" class="form-control mx-auto" id="correo" name="correo" placeholder="Correo" required="" type="text">
+                                </input>
+                                <input autofocus="autofocus" class="form-control mx-auto" id="password" name="clave" placeholder="Contraseña" required="" type="password">
+                                </input>
+                                <div class="espacio1">
+                                </div>
+                                <input class="btn btn-default btn-login" onclick="loginAjax()" type="submit" value="Inicio Sesión">
+                                    <!-- href="user.php" onclick="loginAjax()" -->
+                                </input>
+                            </form>
+                        </div>
                     </div>
-                    <!--Grid row-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="forgot login-footer lfU" id="login-footerU">
+                    <span>
+                        Pensando en
+                        <a href="javascript: showRegisterForm();">
+                            Crear Una Cuenta
+                        </a>
+                        ?
+                    </span>
+                </div>
+                <div class="forgot register-footer rfU" id="register-footerU" style="display:none">
+                    <span>
+                        Ya Tienes Una Cuenta?
+                    </span>
+                    <a href="javascript: showLoginForm();">
+                        Inicia Sesión
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="content registerBox rbU" id="registerBoxU" style="display:none;">
+                    <div class="form">
+                        <form accept-charset="UTF-8" action="ruta.php?variable=registrarme" data-remote="true" html="{:multipart=>true}" method="post">
+                            <!-- -->
+                            <input autofocus="autofocus" class="form-control mx-auto" id="email" name="correo" placeholder="Correo" required="" type="text">
+                                <input autofocus="autofocus" class="form-control mx-auto" id="email" name="nombre" placeholder="Nombre" required="" type="text">
+                                    <input autofocus="autofocus" class="form-control mx-auto" id="documento" name="documento" onkeypress="return valida(event)" placeholder="Cedula" required="" type="text">
+                                        <input autofocus="autofocus" class="form-control mx-auto" id="telefono" name="telefono" onkeypress="return valida(event)" placeholder="Telefono" required="" type="text">
+                                            <input autofocus="autofocus" class="form-control mx-auto" id="email" name="direccion" placeholder="Dirección" required="" type="text">
+                                                <input autofocus="autofocus" class="form-control mx-auto" id="contra_registro" min="6" name="clave" placeholder="Contraseña" required="" type="password">
+                                                    <input autofocus="autofocus" class="form-control mx-auto" id="confirm_contra" min="6" name="confirmar-contra" onkeypress="return igual(event)" placeholder="Confirmar_Contraseña" required="" type="password">
+                                                        <span id="ContraOk">
+                                                        </span>
+                                                        <div class="espacio1">
+                                                        </div>
+                                                        <input class="btn btn-default btn-register" type="submit" value="Crea Tu Cuenta">
+                                                            <!-- name="commit" -->
+                                                        </input>
+                                                    </input>
+                                                </input>
+                                            </input>
+                                            <div class="espacio">
+                                            </div>
+                                        </input>
+                                    </input>
+                                </input>
+                            </input>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <!--/.Content-->
+    </div>
+</div>
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade login" id="loginModalF">
+    <div class="modal-dialog login animated">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h2 class="modal-title text-dark px-5">
+                    Iniciar Sesión
+                </h2>
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    <div class="content">
+                        <div class="social">
+                            <img src="img/user.jpg" style="">
+                            </img>
+                        </div>
+                        <div class="division">
+                            <div class="line.l">
+                            </div>
+                        </div>
+                        <div class="error">
+                        </div>
+                        <div class="form loginBox">
+                            <form accept-charset="UTF-8" action="ruta.php?variable=login_fundacion" method="post">
+                                <input autofocus="autofocus" class="form-control mx-auto" id="email" name="correo" placeholder="Correo" required="" type="text">
+                                </input>
+                                <input autofocus="autofocus" class="form-control mx-auto" id="password" name="clave" placeholder="clave" required="" type="password">
+                                </input>
+                                <div class="espacio1">
+                                </div>
+                                <input class="btn btn-default btn-login" onclick="loginAjaxF()" type="submit" value="Inicio Sesión">
+                                    <!-- onclick="loginAjax()" -->
+                                </input>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <div class="forgot login-footer">
+                    <span>
+                        Pensando en
+                        <a href="javascript: showRegisterFormF();">
+                            Crear Una Cuenta
+                        </a>
+                        ?
+                    </span>
+                </div> -->
+                <div class="forgot register-footer" style="display:none">
+                    <!-- <span>
+                        Ya Tienes Una Cuenta?
+                    </span> -->
+                    <a href="javascript: showLoginFormF();">
+                        Inicia Sesión
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="box">
+                <div class="content registerBox" style="display:none;">
+                    <div class="form">
+                        <form accept-charset="UTF-8" action="/register" data-remote="true" html="{:multipart=>true}" method="post">
+                            <input class="form-control mx-auto" id="email" name="email" placeholder="Correo" type="text">
+                                <input class="form-control mx-auto" id="email" name="email" placeholder="Nombre" type="text">
+                                    <input class="form-control mx-auto" id="email" name="email" placeholder="Cedula" type="text">
+                                        <input class="form-control mx-auto" id="email" name="email" placeholder="Telefono" type="text">
+                                            <input class="form-control mx-auto" id="email" name="email" placeholder="Dirección" type="text">
+                                                <input class="form-control mx-auto" id="password" name="password" placeholder="Contraseña" type="password">
+                                                    <input class="form-control mx-auto" id="password_confirmation" name="Confirma_Contraseña" placeholder="Confirmar_Contraseña" type="password">
+                                                        <div class="espacio1">
+                                                        </div>
+                                                        <input class="btn btn-default btn-register" name="commit" type="submit" value="Crea Tu Cuenta">
+                                                        </input>
+                                                    </input>
+                                                </input>
+                                            </input>
+                                            <div class="espacio">
+                                            </div>
+                                        </input>
+                                    </input>
+                                </input>
+                            </input>
+                        </form>
+                    </div>
+                </div>
+            </div> -->
+        </div>
     </div>
 </div>
 <!-- Modal -->

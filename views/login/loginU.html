@@ -25,14 +25,14 @@
                         </div>
                         <div class="form loginBox">
                             <form accept-charset="UTF-8" action="ruta.php?variable=login" method="post">
-                                <input class="form-control mx-auto" id="correo" name="correo" placeholder="Correo" type="text" required autofocus="autofocus">
+                                <input autofocus="autofocus" class="form-control mx-auto" id="correo" name="correo" placeholder="Correo" required="" type="text">
                                 </input>
-                                <input class="form-control mx-auto" id="password" name="clave" placeholder="Contraseña" type="password" required autofocus="autofocus" >
+                                <input autofocus="autofocus" class="form-control mx-auto" id="password" name="clave" placeholder="Contraseña" required="" type="password">
                                 </input>
                                 <div class="espacio1">
                                 </div>
                                 <input class="btn btn-default btn-login" type="submit" value="Inicio Sesión">
-                                <!-- href="user.php" onclick="loginAjax()" -->
+                                    <!-- href="user.php" onclick="loginAjax()" -->
                                 </input>
                             </form>
                         </div>
@@ -62,19 +62,20 @@
                 <div class="content registerBox" style="display:none;">
                     <div class="form">
                         <form accept-charset="UTF-8" action="ruta.php?variable=registrarme" data-remote="true" html="{:multipart=>true}" method="post">
-                            <!--  -->
-                            <input class="form-control mx-auto" id="email" name="correo" placeholder="Correo" type="email" required autofocus="autofocus">
-                                <input class="form-control mx-auto" id="email" name="nombre" placeholder="Nombre" type="text" required autofocus="autofocus">
-                                    <input class="form-control mx-auto" id="documento" name="documento" placeholder="Cedula" type="text" onkeypress="return valida(event)" required autofocus="autofocus">
-                                        <input class="form-control mx-auto" id="telefono" name="telefono" placeholder="Telefono" type="text" onkeypress="return valida(event)" required autofocus="autofocus">
-                                            <input class="form-control mx-auto" id="email" name="direccion" placeholder="Dirección" type="text" required autofocus="autofocus">
-                                                <input class="form-control mx-auto" id="contra_registro" name="clave" min="6" placeholder="Contraseña" type="password" required autofocus="autofocus">
-                                                    <input class="form-control mx-auto" id="confirm_contra" min="6" onkeypress="return igual(event)" name="confirmar-contra" placeholder="Confirmar_Contraseña" type="password" required autofocus="autofocus">
-                                                      <span id="ContraOk"></span>
+                            <!-- -->
+                            <input autofocus="autofocus" class="form-control mx-auto" id="email" name="correo" placeholder="Correo" required="" type="email">
+                                <input autofocus="autofocus" class="form-control mx-auto" id="email" name="nombre" placeholder="Nombre" required="" type="text">
+                                    <input autofocus="autofocus" class="form-control mx-auto" id="documento" name="documento" onkeypress="return valida(event)" placeholder="Cedula" required="" type="text">
+                                        <input autofocus="autofocus" class="form-control mx-auto" id="telefono" name="telefono" onkeypress="return valida(event)" placeholder="Telefono" required="" type="text">
+                                            <input autofocus="autofocus" class="form-control mx-auto" id="email" name="direccion" placeholder="Dirección" required="" type="text">
+                                                <input autofocus="autofocus" class="form-control mx-auto" id="contra_registro" min="6" name="clave" placeholder="Contraseña" required="" type="password">
+                                                    <input autofocus="autofocus" class="form-control mx-auto" id="confirm_contra" min="6" name="confirmar-contra" onkeypress="return igual(event)" placeholder="Confirmar_Contraseña" required="" type="password">
+                                                        <span id="ContraOk">
+                                                        </span>
                                                         <div class="espacio1">
                                                         </div>
                                                         <input class="btn btn-default btn-register" type="submit" value="Crea Tu Cuenta">
-                                                        <!-- name="commit" -->
+                                                            <!-- name="commit" -->
                                                         </input>
                                                     </input>
                                                 </input>

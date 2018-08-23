@@ -25,14 +25,14 @@
                         </div>
                         <div class="form loginBox">
                             <form accept-charset="UTF-8" action="ruta.php?variable=login_fundacion" method="post">
-                                <input class="form-control mx-auto" id="email" name="correo" placeholder="Correo" type="text" required autofocus="autofocus">
+                                <input autofocus="autofocus" class="form-control mx-auto" id="email" name="correo" placeholder="Correo" required="" type="text">
                                 </input>
-                                <input class="form-control mx-auto" id="password" name="clave" placeholder="clave" type="password" required autofocus="autofocus">
+                                <input autofocus="autofocus" class="form-control mx-auto" id="password" name="clave" placeholder="clave" required="" type="password">
                                 </input>
                                 <div class="espacio1">
                                 </div>
-                                <input class="btn btn-default btn-login" type="submit" value="Inicio Sesión">
-                                <!-- onclick="loginAjax()" -->
+                                <input class="btn btn-default btn-login" onclick="loginAjaxF()" type="submit" value="Inicio Sesión">
+                                    <!-- onclick="loginAjax()" -->
                                 </input>
                             </form>
                         </div>
