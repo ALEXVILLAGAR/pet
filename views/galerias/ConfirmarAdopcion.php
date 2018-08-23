@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <h5 class="modal-title text-dark" id="exampleModalLongTitle"><center> <?php echo $element['nombre'] ?> quedara reservada, para que puedas diligenciar tramites con la fundación.</center></h5>
+        <h5 class="modal-title text-dark" id="exampleModalLongTitle"><center> <?php echo $pet->mascota['nombre'] ?> quedara reservada, para que puedas diligenciar tramites con la fundación.</center></h5>
         <br><br>
         <table class="table table-sm">
   <thead>
@@ -36,9 +36,9 @@
   </thead>
     <tbody>
     <tr>
-        <td class="border-top-0 border border-secondary"><?php echo $element['nombre']; ?></td>
-        <td class="border-top-0 border border-secondary"><?php echo $element['edad']; ?></td>
-        <td class="border-top-0 border border-secondary" colspan="2"><?php echo $element['raza']; ?></td>
+        <td class="border-top-0 border border-secondary"><?php echo $pet->mascota['nombre']; ?></td>
+        <td class="border-top-0 border border-secondary"><?php echo $pet->mascota['edad']; ?></td>
+        <td class="border-top-0 border border-secondary" colspan="2"><?php echo $pet->mascota['raza']; ?></td>
     </tr>
   </tbody>
 </table>

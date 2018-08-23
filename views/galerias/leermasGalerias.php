@@ -1,11 +1,11 @@
-<div class="modal" id=<?php echo "myModal".$element['id'] ?> >
+<div class="modal" id=<?php echo "Mleer_fundacion".$element['id'] ?> >
     <div class="modal-dialog">
 
         <div class="modal-content border-white">
             <!-- Modal Header -->
             <div class="modal-header bg-dark">
                 <h4 class="modal-title text-light">
-                    Información Mascota
+                    Información de la fundación
                 </h4>
                 <button class="close bg-danger" data-dismiss="modal" type="button">
                     ×
@@ -16,28 +16,25 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mascota-block">
-                             <img src="data:image/jpg;base64,<?php echo base64_encode($pet->mascota['foto'])?> "/>
+                             <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto_fundacion'])?> "/>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mascota-block">
                             <h3>
-                                <?php echo $pet->mascota['nombre'] ?>
+                                <?php echo $element['nombre'] ?>
                             </h3>
                             <hr>
                                 <div class="mascota-info panel">
                                     <ul>
                                         <li>
-                                            <?php echo "Raza: ".$pet->mascota['raza'] ?>
+                                            <?php echo "correo: ".$element['email'] ?>
                                         </li>
                                         <li>
-                                            <?php echo "Edad: ".$pet->mascota['edad'] ?>
+                                            <?php echo "telefono: ".$element['telefono'] ?>
                                         </li>
                                         <li>
-                                            <?php echo "Tamaño: ".$pet->mascota['nombre'] ?>
-                                        </li>
-                                        <li>
-                                            <?php echo "Fundación: ".$fundacion['nombre']?>
+                                            <?php echo "direccion: ".$element['direccion']?>
                                         </li>
                                     </ul>
                                     <p>
@@ -51,13 +48,6 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer bg-secondary">
-
-                <?php if(isset($user)): ?>
-                    <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> data-dismiss="modal">
-                        Adoptar
-                    </button>
-                <?php endif ?>
-
                 <button class="btn btn-warning" data-dismiss="modal" type="button">
                     Cerrar
                 </button>

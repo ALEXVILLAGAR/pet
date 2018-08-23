@@ -1,34 +1,33 @@
 <div class="container tabla">
-        <div class="table-wrapper border border-info">
-            <div class="table-title ">
+        <div class="table-wrapper border border-dark">
+            <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-6 ">
-						<h2><b>Todas las mascotas </b></h2>
+                    <div class="col-sm-6">
+						<h2><b>Perros </b></h2>
 					</div>
-					<div class="col-sm-3">
-                        <div class="search-box ">
-							<div class="input-group ">
+					<div class="">
+                        <div class="search-box">
+							<div class="input-group">
 								<input type="text" id="search" class="form-control" placeholder="Buscar por nombre">
                                 <span class="input-group-addon"><i class="fas fa-search"></i></span>
 							</div>
                         </div>
                     </div>
-					<div class="col-sm-2">
+					<div class="col-sm-6">
 
-						<a href="#deleteEmployeeModal" class="btn btn-danger border border-warning" data-toggle="modal"><i class="fas fa-minus-circle"></i> <span>Eliminar</span></a>
+						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i> <span>Eliminar</span></a>
 					</div>
 
                 </div>
             </div>
             <table class="table table-striped table-hover">
-                <thead class="border border-white">
+                <thead>
                     <tr>
 						<th>
-							<span class="custom-checkbox" >
-								<label for="selectAll" ></label>
-								<input type="checkbox" id="selectAll" placeholder="todas" >
+							<span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
 							</span>
-							
 						</th>
                         <th>Nombre</th>
                         <th>Raza</th>
@@ -40,7 +39,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                	<?php foreach (Mascota::all_pet() as $element): 
+                	<?php foreach (Mascota::all_dogs() as $element): 
                 		$pet = new Mascota($element['id']); ?>
                     <tr>
 						<td>
