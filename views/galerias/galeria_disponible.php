@@ -20,9 +20,11 @@
                                     </a>
                                     <!-- Button to Open the Modal -->
                                     <br><br>
+                                    
                                      <button class="btn btn-danger"  href="#" data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito".$element['id'] ?> type="button">
                                         me gusta<span class="fa fa-heart mb-2 sr-icons"></span>
                                     </button>
+                                    <div class="heart"></div>
                                 <?php endif?>
                                     <button class="btn btn-info" data-target=<?php echo "#myModal".$element['id'] ?> data-toggle="modal" type="button">
                                         Leer Mas

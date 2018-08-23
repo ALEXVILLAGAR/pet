@@ -3,7 +3,6 @@
     max-width: 100%;
     width: 100%;
 }
-
 #fundaciones img {
     width: 500px;
     max-width: 100%;
@@ -16,7 +15,6 @@
         object-position: center center;
     }
 }
-
 img {
     width: 500px;
     max-width: 100%;
@@ -479,4 +477,20 @@ ul.redes li a {
     width: 78%;
     height: 20%;
     margin: 1%;
+}
+/*--------------CORAZON FAV--------------------*/
+
+.heart {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: url(http://imagizer.imageshack.com/img923/4545/XdJDuY.png) no-repeat;
+    cursor: pointer;
+}
+.heart-blast {
+    background-position: -2800px 0;
+    transition: background 1s steps(28);
 }
