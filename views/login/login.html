@@ -1,4 +1,3 @@
-<
 <!-- Modal -->
 <div class="modal fade login" id="loginModal">
     <div class="modal-dialog login animated">
@@ -32,7 +31,7 @@
                                 </input>
                                 <div class="espacio1">
                                 </div>
-                                <input class="btn btn-default btn-login" onclick="loginAjax()" type="submit" value="Inicio Sesión">
+                                <input class="btn btn-default btn-login" type="submit" value="Inicio Sesión">
                                     <!-- href="user.php" onclick="loginAjax()" -->
                                 </input>
                             </form>
@@ -64,7 +63,7 @@
                     <div class="form">
                         <form accept-charset="UTF-8" action="ruta.php?variable=registrarme" data-remote="true" html="{:multipart=>true}" method="post">
                             <!-- -->
-                            <input autofocus="autofocus" class="form-control mx-auto" id="email" name="correo" placeholder="Correo" required="" type="text">
+                            <input autofocus="autofocus" class="form-control mx-auto" id="email" name="correo" placeholder="Correo" required="" type="email">
                                 <input autofocus="autofocus" class="form-control mx-auto" id="email" name="nombre" placeholder="Nombre" required="" type="text">
                                     <input autofocus="autofocus" class="form-control mx-auto" id="documento" name="documento" onkeypress="return valida(event)" placeholder="Cedula" required="" type="text">
                                         <input autofocus="autofocus" class="form-control mx-auto" id="telefono" name="telefono" onkeypress="return valida(event)" placeholder="Telefono" required="" type="text">
@@ -76,6 +75,18 @@
                                                         <div class="espacio1">
                                                         </div>
                                                         <input class="btn btn-default btn-register" type="submit" value="Crea Tu Cuenta">
+                                                            <div class="forgot register-footer rfU" id="register-footerU" style="display:none">
+                                                                <span class="custom-checkbox">
+                                                                    <input id="checkbox1" name="options[]" required="" type="checkbox" value="1">
+                                                                        <label for="checkbox1">
+                                                                            Acepta
+                                                                        </label>
+                                                                    </input>
+                                                                </span>
+                                                                <a data-target="#exampleModalLong" data-toggle="modal" href="#">
+                                                                    Terminos y Condiciones
+                                                                </a>
+                                                            </div>
                                                             <!-- name="commit" -->
                                                         </input>
                                                     </input>
@@ -95,7 +106,45 @@
     </div>
 </div>
 <!-- Modal -->
-<!-- Modal -->
+<!-- Modal  Terminos y Condiciones User-->
+<div aria-hidden="true" aria-labelledby="exampleModalLongTitle" class="modal fade" id="exampleModalLong" tabindex="-1">
+    <div class="modal-dialog" style="overflow-y: initial;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Terminos y Condiciones
+                </h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">
+                        ×
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body" style="overflow-y: auto;">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+            v
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal  Fundaciones -->
 <div class="modal fade login" id="loginModalF">
     <div class="modal-dialog login animated">
         <div class="modal-content">
@@ -120,7 +169,7 @@
                         </div>
                         <div class="error">
                         </div>
-                        <div class="form loginBox">
+                        <div class="form loginBox lbF">
                             <form accept-charset="UTF-8" action="ruta.php?variable=login_fundacion" method="post">
                                 <input autofocus="autofocus" class="form-control mx-auto" id="email" name="correo" placeholder="Correo" required="" type="text">
                                 </input>
@@ -128,7 +177,7 @@
                                 </input>
                                 <div class="espacio1">
                                 </div>
-                                <input class="btn btn-default btn-login" onclick="loginAjaxF()" type="submit" value="Inicio Sesión">
+                                <input class="btn btn-default btn-login" type="submit" value="Inicio Sesión">
                                     <!-- onclick="loginAjax()" -->
                                 </input>
                             </form>
@@ -137,7 +186,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <!-- <div class="forgot login-footer">
+                <div class="forgot login-footer lfF">
                     <span>
                         Pensando en
                         <a href="javascript: showRegisterFormF();">
@@ -145,18 +194,18 @@
                         </a>
                         ?
                     </span>
-                </div> -->
-                <div class="forgot register-footer" style="display:none">
-                    <!-- <span>
+                </div>
+                <div class="forgot register-footer rfF" style="display:none">
+                    <span>
                         Ya Tienes Una Cuenta?
-                    </span> -->
+                    </span>
                     <a href="javascript: showLoginFormF();">
                         Inicia Sesión
                     </a>
                 </div>
             </div>
-            <!-- <div class="box">
-                <div class="content registerBox" style="display:none;">
+            <div class="box">
+                <div class="content registerBox rbF" style="display:none;">
                     <div class="form">
                         <form accept-charset="UTF-8" action="/register" data-remote="true" html="{:multipart=>true}" method="post">
                             <input class="form-control mx-auto" id="email" name="email" placeholder="Correo" type="text">
@@ -170,6 +219,18 @@
                                                         </div>
                                                         <input class="btn btn-default btn-register" name="commit" type="submit" value="Crea Tu Cuenta">
                                                         </input>
+                                                        <div class="forgot register-footer rfF" id="register-footerF" style="display:none">
+                                                            <span class="custom-checkbox">
+                                                                <input id="checkbox1" name="options[]" required="" type="checkbox" value="1">
+                                                                    <label for="checkbox1">
+                                                                        Acepta
+                                                                    </label>
+                                                                </input>
+                                                            </span>
+                                                            <a data-target="#exampleModalLongF" data-toggle="modal" href="#">
+                                                                Terminos y Condiciones
+                                                            </a>
+                                                        </div>
                                                     </input>
                                                 </input>
                                             </input>
@@ -182,8 +243,45 @@
                         </form>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- Modal  Terminos y Condiciones Fund-->
+<div aria-hidden="true" aria-labelledby="exampleModalLongTitle" class="modal fade" id="exampleModalLongF" tabindex="-1">
+    <div class="modal-dialog" style="overflow-y: initial;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Terminos y Condiciones
+                </h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">
+                        ×
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body" style="overflow-y: auto;">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+            v
+            </div>
+        </div>
+    </div>
+</div>

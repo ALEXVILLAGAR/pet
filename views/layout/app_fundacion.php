@@ -135,7 +135,6 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                 </span>
                             </a>
                         </li>
-                        </li>
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fas fa-hand-holding-usd">
@@ -157,41 +156,30 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                    </ul>
                             </div>
                         </li>
-                        <li class="sidebar-dropdown">
+                          <li class="sidebar-dropdown">
                             <a href="#">
-                                <i class="fas fa-user-check">
+                                <i class="fas fa-archive">
                                 </i>
                                 <span>
-                                    Calificación Usuario
+                                    Adopciones
                                 </span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">
-                                            Calificación Usuario
+                                        <a href="../usuario/adoptadosF.php">
+                                            Adoptados
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                           Usuarios Calificados 
+                                    <li >
+                                        <a href="..\usuario\Estado_AdopcionF.php">
+                                            Procesos de adopcion
                                         </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="">
-                            <a href="..\..\index.php" >
-                                <i class="fas fa-arrow-alt-circle-left">
-                                </i>
-                                <span>
-                                    Inicio
-                                </span>
-                            </a>
-                        </li>
-                                           </ul>
-                </div>
-                <!-- sidebar-menu  -->
+                                    </li>                        
+                                </ul>                </div>
+               <!-- sidebar-menu  -->
+
+                                       
             </div>
             <!-- sidebar-content  -->
             <div class="sidebar-footer">
@@ -206,12 +194,6 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                     <div aria-labelledby="dropdownMenuMessage" class="dropdown-menu">
                         <a class="dropdown-item" href="../perfil/perfilF.php">
                             Mi perfil
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            Help
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            Setting
                         </a>
                     </div>
                 </div>

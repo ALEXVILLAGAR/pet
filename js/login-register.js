@@ -6,6 +6,17 @@
  * Web script: http://creative-tim.com
  * 
  */
+$(function() {
+    // codes works on all bootstrap modal windows in application
+    // when the modal is closed
+    $('#modal-container').on('hidden.bs.modal', function() {
+        // remove the bs.modal data attribute from it
+        $(this).removeData('bs.modal');
+        // and empty the modal-content element
+        $('#modal-container .modal-content').empty();
+    });
+});
+
 function showRegisterForm() {
     $('.lbU').fadeOut('fast', function() {
         $('.rbU').fadeIn('fast');
@@ -66,10 +77,10 @@ function shakeModal() {
 }
 
 function showRegisterFormF() {
-    $('.loginBox').fadeOut('fast', function() {
-        $('.registerBox').fadeIn('fast');
-        $('.login-footer').fadeOut('fast', function() {
-            $('.register-footer').fadeIn('fast');
+    $('.lbF').fadeOut('fast', function() {
+        $('.rbF').fadeIn('fast');
+        $('.lfF').fadeOut('fast', function() {
+            $('.rfF').fadeIn('fast');
         });
         $('.modal-title').html('Registrate');
     });
