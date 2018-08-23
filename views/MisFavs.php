@@ -1,7 +1,7 @@
 <div class="container py-3" >
     <?php 
             foreach($user->mis_favoritos() as $element): 
-                    $pet = new Mascota($element['id']);
+                    $pet = new Mascota($element['id_mascota']);
                     $fundacion = $pet->perteneceA();
                     if($pet==null){ echo "no hay";}else{
                 ?>
