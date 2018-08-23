@@ -489,6 +489,7 @@ ul.redes li a {
     transform: translate(-50%, -50%);
     background: url(http://imagizer.imageshack.com/img923/4545/XdJDuY.png) no-repeat;
     cursor: pointer;
+    padding: 0px;
 }
 .heart-blast {
     background-position: -2800px 0;
