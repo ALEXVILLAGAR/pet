@@ -138,9 +138,7 @@ require_once("ControlClass.php");
        </section> 
 <!--------------------------------FUNDACIONES-------------------------------------->
         <section class="bg-dark" id="about" >
-            <!-- <div class="col-lg-12 text-center "> 
-                
-            </div> -->
+          
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-12">
