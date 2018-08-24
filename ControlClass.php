@@ -31,4 +31,7 @@ require_once("clase/ClaseMascota.php");
 
 //--------------------------------Clase Fundacion ----------------------------------------
 require_once("clase/ClaseFundacion.php");
+
+require_once('clase/ClaseAdopcion.php');
+
  ?>

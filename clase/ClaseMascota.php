@@ -27,7 +27,7 @@ class Mascota
 	}
 
 	public static  function all_dogs(){ //todos las mascotas perros
-		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE especie = 'Perro' && disponible='1'" ) or die ( "casi");
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE especie = 'Perro'" ) or die ( "casi");
 		return $resultado;	
 	}
 
@@ -47,7 +47,7 @@ class Mascota
 	}
 
 	public static function only_reservada(){ //todas las mascotas reservadas
-		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE disponible=0" ) or die ( "casi");
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE disponible=0 && solicitud!='Aprobada' " ) or die ( "casi");
 		return $resultado;
 	}
 
@@ -90,6 +90,19 @@ class Mascota
 		return $resultado['id_mascota']==$id_pet;
 	}
 
+	public function denegar(){
+		$id_pet = $this->mascota['id'];
+		$consulta = mysqli_query($this->db, "UPDATE mascota SET disponible=1, solicitud='denegada' WHERE id='$id_pet'");
+		header('Location: '.$_SERVER['HTTP_REFERER']);
+	}
+
+	public function dar_en_adopcion(){
+		$id_pet = $this->mascota['id'];
+		$id_user = SessionesPet::session_info();
+		$consulta = mysqli_query($this->db, "UPDATE mascota SET disponible=0, solicitud='Aprobada' WHERE id='$id_pet'");
+		$consulta2 = mysqli_query($this->db, "INSERT INTO adopcion values('',time(),'$id_user','$id_pet','compromiso')");
+		header('Location: '.$_SERVER['HTTP_REFERER']);
+	}
 }
 
  ?>

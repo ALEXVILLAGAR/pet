@@ -1,23 +1,19 @@
-<div class="container tabla">
-        <div class="table-wrapper">
+<div class="container tabla mr-3">
+        <div class="table-wrapper " >
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-6">
-						<h2><b>Solicitud de Fundaciones </b></h2>
-					</div>
-					<div class="col-sm-3">
-                        <div class="search-box">
-							<div class="input-group">
+                    <div class="col-sm-6 pr-5 col-lg-5">
+						<h2><b>Solicitud de Adopciones </b></h2>
+					</div>				
+                        <div class="search-box pl-5 col-lg-5" >
+							<div class="input-group col-sm-5 col-lg-5" style="float: right;">
 								<input type="text" id="search" class="form-control" placeholder="Buscar por nombre">
                                 <span class="input-group-addon"><i class="fas fa-search"></i></span>
-							</div>
-                        </div>
+							</div>             
                     </div>
-
-
                 </div>
-            </div>
-            <table class="table table-striped table-hover" id="tabla">
+     		</div>
+            <table class="table table-striped table-hover  ">
                 <thead>
                     <tr>
 						<th>
@@ -26,17 +22,19 @@
 								<label for="selectAll"></label>
 							</span>
 						</th>
-                        <th>Nombre</th>
+                        <th>Nombre Usuario</th>
+                        <th>Cedula</th>
                         <th>Email</th>
+
 						<th>Direccion</th>
-                        <th>Telefono</th>
-                        <th>Certificado</th>
+                        <!-- <th>fecha</th> -->
+                        <th>Mascota</th>
+                        <th>foto</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                	<!-- consultar las fundaciones q piden registro -->
-                	<?php foreach (Fundacion::FundacionInactiva() as $element): ?>
+                	<?php foreach (Mascota::only_reservada() as $element): $usuario = Usuario::GetUsuario($element['id_usuario']); $pet=new mascota($element['id'])?>
                 		
                     <tr>
 						<td>
@@ -45,50 +43,50 @@
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <td><?php echo $element['nombre'] ?> </td>
-                        <td><?php echo $element['email'] ?> </td>
-						<td><?php echo $element['direccion'] ?></td>
-                        <td><?php echo $element['telefono'] ?></td>
-                        <td>Certificado</td>
+                        <td>  <img src="data:image/jpg;base64,<?php echo base64_encode($usuario['foto_perfil'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/> <?php echo $usuario['nombre'] ?> </td>
+                        <td> <?php echo $usuario['documento'] ?> </td>
+                        <td> <?php echo $usuario['email'] ?> </td>
+                        <td> <?php echo $usuario['direccion'] ?> </td>
+                        <td> <?php echo $pet->mascota['nombre'] ?> </td>
+                        <td><img src="data:image/jpg;base64,<?php echo base64_encode($element['foto'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/></td>
                         <td>
-                            <a href=<?php echo "#deleteEmployeeModal".$element['id'] ?> class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href=<?php echo "#aceptarEmployeeModal".$element['id'] ?>  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
+
+                            <a href="<?php echo "#deleteEmployeeModal".$element['id']?>" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
+                            <a href="<?php echo "#aceptarEmployeeModal".$element['id']?>"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
                         </td>
                     </tr>
 
                     <!-- Aceptar Modal HTML -->
-	<div id=<?php echo "aceptarEmployeeModal".$element['id'] ?> class="modal fade">
+	<div id=<?php echo "aceptarEmployeeModal".$element['id']?> class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				
 					<div class="modal-header">
-						<h4 class="modal-title">Aceptar Solicitud de Fundación <?php echo $element['nombre'] ?> </h4>
+						<h4 class="modal-title">Aceptar Solicitud de <?php echo $usuario['nombre'] ?></h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p>La fundación sera registrada dentro de la base de datos.</p>
+						<p>La mascota <?php echo $pet->mascota['nombre'] ?> sera adoptada por <?php echo $usuario['nombre'] ?> .</p>
 						<p class="text-info"><small>Se enviara un email a la fundación para notificarla.</small></p>
 
 					</div>
 
 					<div class="modal-footer">
-					<form action="../../ruta.php?variable=aceptarFundacion" method="post">
-						<input type="hidden" name="id_fundacion" value="<?php echo $element['id'] ?>">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
-						<input type="submit" class="btn btn-primary" value="Aceptar">
-					</form>	
+						<form action="../../ruta.php?variable=darmascota" method="post">
+							<input type="text" name="id_mascota" value="<?php echo $pet->mascota['id']?>">
+							<input type="submit" class="btn btn-primary" value="Aceptar">
+						</form>
 					</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- Delete Modal HTML -->
-	<div id=<?php echo "deleteEmployeeModal".$element['id'] ?> class="modal fade">
+	<div id="<?php echo "deleteEmployeeModal".$element['id']?>" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				
 					<div class="modal-header">
-						<h4 class="modal-title">Cancelar Solicitud de Fundación <?php echo $element['nombre'] ?> </h4>
+						<h4 class="modal-title">Cancelar Solicitud de la mascota <?php echo $pet->mascota['nombre'] ?></h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
@@ -100,21 +98,19 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<form action="../../ruta.php?variable=aceptarFundacion" method="post">
-						<input type="hidden" name="id_fundacion" value="<?php echo $element['id'] ?>">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
-						<input type="submit" class="btn btn-primary" value="Aceptar">
-					</form>	
-
+						<form action="../../ruta.php?variable=negar_adopcion" method="POST">
+							<input type="hidden" name="id_mascota" value="<?php echo $pet->mascota['id']?>">
+							<input type="submit" class="btn btn-primary" value="Aceptar">
+						</form>
 					</div>
-				
 			</div>
 		</div>
 	</div>
 
                 	<?php endforeach ?>
 
-
+                    
                 </tbody>
             </table>
 			<div class="clearfix">

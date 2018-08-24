@@ -90,6 +90,12 @@ class Usuario
 			Control::cerrar_sesion();
 		}
 	}
+
+	public function mis_denuncias(){
+		$user_id = $this->usuario['id'];
+		$resultado = mysqli_query($this->db, "SELECT * FROM denuncia WHERE id_usuario = '$user_id'" ) or die ( "casi");
+		return $resultado;
+	}
 }
 
 

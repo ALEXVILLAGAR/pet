@@ -26,6 +26,9 @@ class Denuncia
 		$consulta =  mysqli_query(Conectar::conexion(),"SELECT * FROM denuncia") or die ('error');
 		return $consulta;
 	}
+
+	// public function resolver()
+
 }
 
  ?>
