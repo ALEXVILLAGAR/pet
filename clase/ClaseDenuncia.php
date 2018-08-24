@@ -27,6 +27,8 @@ class Denuncia
 		return $consulta;
 	}
 
+	// public function resolver()
+
 }
 
  ?>

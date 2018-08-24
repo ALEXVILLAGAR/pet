@@ -167,12 +167,12 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="../usuario/adoptadosF.php">
+                                        <a href="../fundacion/adoptadosF.php">
                                             Adoptados
                                         </a>
                                     </li>
                                     <li >
-                                        <a href="..\usuario\Estado_AdopcionF.php">
+                                        <a href="..\fundacion\Estado_AdopcionF.php">
                                             Procesos de adopcion
                                         </a>
                                     </li>                        

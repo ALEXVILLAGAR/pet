@@ -207,14 +207,13 @@
             <div class="box">
                 <div class="content registerBox rbF" style="display:none;">
                     <div class="form">
-                        <form accept-charset="UTF-8" action="/register" data-remote="true" html="{:multipart=>true}" method="post">
-                            <input class="form-control mx-auto" id="email" name="email" placeholder="Correo" type="text">
-                                <input class="form-control mx-auto" id="email" name="email" placeholder="Nombre" type="text">
-                                    <input class="form-control mx-auto" id="email" name="email" placeholder="Cedula" type="text">
-                                        <input class="form-control mx-auto" id="email" name="email" placeholder="Telefono" type="text">
-                                            <input class="form-control mx-auto" id="email" name="email" placeholder="Dirección" type="text">
-                                                <input class="form-control mx-auto" id="password" name="password" placeholder="Contraseña" type="password">
-                                                    <input class="form-control mx-auto" id="password_confirmation" name="Confirma_Contraseña" placeholder="Confirmar_Contraseña" type="password">
+                        <form accept-charset="UTF-8" action="ruta.php?variable=registro_fundacion" data-remote="true" html="{:multipart=>true}" method="post">
+                            <input class="form-control mx-auto" id="email" name="email" placeholder="Correo" type="email" required>
+                                <input class="form-control mx-auto" id="nombre" name="nombre" placeholder="Nombre" type="text" required>
+                                        <input class="form-control mx-auto" id="telefono" name="telefono" placeholder="Telefono" type="text" required>
+                                            <input class="form-control mx-auto" id="direccion" name="direccion" placeholder="Dirección" type="text" required>
+                                                <input class="form-control mx-auto" id="password" name="password" placeholder="Contraseña" type="password" required>
+                                                    <input class="form-control mx-auto" id="password_confirmation" name="Confirma_Contraseña" placeholder="Confirmar_Contraseña" type="password" required>
                                                         <div class="espacio1">
                                                         </div>
                                                         <input class="btn btn-default btn-register" name="commit" type="submit" value="Crea Tu Cuenta">

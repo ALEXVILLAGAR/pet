@@ -24,15 +24,18 @@
 						</th>
                         <th>Nombre Usuario</th>
                         <th>Cedula</th>
+                        <th>Email</th>
+
 						<th>Direccion</th>
-                        <th>Telefono</th>
-                        <th>fecha</th>
+                        <!-- <th>fecha</th> -->
                         <th>Mascota</th>
                         <th>foto</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
+                	<?php foreach (Mascota::only_reservada() as $element): $usuario = Usuario::GetUsuario($element['id_usuario']); $pet=new mascota($element['id'])?>
+                		
                     <tr>
 						<td>
 							<span class="custom-checkbox">
@@ -40,99 +43,74 @@
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar">Thomas Hardy</td>
-                        <td>thomashardy@mail.com</td>
-						<td>89 Chiaroscuro Rd, Portland, USA</td>
-                        <td>(171) 555-2222</td>
-                        <td>Certificado</td>
-                        <td>Certificado</td>
-                        <td>Certificado</td>
+                        <td>  <img src="data:image/jpg;base64,<?php echo base64_encode($usuario['foto_perfil'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/> <?php echo $usuario['nombre'] ?> </td>
+                        <td> <?php echo $usuario['documento'] ?> </td>
+                        <td> <?php echo $usuario['email'] ?> </td>
+                        <td> <?php echo $usuario['direccion'] ?> </td>
+                        <td> <?php echo $pet->mascota['nombre'] ?> </td>
+                        <td><img src="data:image/jpg;base64,<?php echo base64_encode($element['foto'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/></td>
                         <td>
 
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href="#aceptarEmployeeModal"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
+                            <a href="<?php echo "#deleteEmployeeModal".$element['id']?>" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
+                            <a href="<?php echo "#aceptarEmployeeModal".$element['id']?>"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
                         </td>
                     </tr>
-                    <tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox2" name="options[]" value="1">
-								<label for="checkbox2"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar">Dominique Perrier</td>
-                        <td>dominiqueperrier@mail.com</td>
-						<td>Obere Str. 57, Berlin, Germany</td>
-                        <td>(313) 555-5735</td>
-                        <td>Certificado</td>
-                        <td>Certificado</td>
-                        <td>Certificado</td>
-                        <td>
 
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href="#aceptarEmployeeModal"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
-                        </td>
-                    </tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox3" name="options[]" value="1">
-								<label for="checkbox3"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar"> Maria Anders</td>
-                        <td>mariaanders@mail.com</td>
-						<td>25, rue Lauriston, Paris, France</td>
-                        <td>(503) 555-9931</td>
-                        <td>Certificado</td>
-                        <td>Certificado</td>
-                        <td>Certificado</td>
-                        <td>
+                    <!-- Aceptar Modal HTML -->
+	<div id=<?php echo "aceptarEmployeeModal".$element['id']?> class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Aceptar Solicitud de <?php echo $usuario['nombre'] ?></h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>La mascota <?php echo $pet->mascota['nombre'] ?> sera adoptada por <?php echo $usuario['nombre'] ?> .</p>
+						<p class="text-info"><small>Se enviara un email a la fundación para notificarla.</small></p>
 
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href="#aceptarEmployeeModal"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox4" name="options[]" value="1">
-								<label for="checkbox4"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar">Fran Wilson</td>
-                        <td>franwilson@mail.com</td>
-						<td>C/ Araquil, 67, Madrid, Spain</td>
-                        <td>(204) 619-5731</td>
-                        <td>Certificado</td>
-                        <td>Certificado</td>
-                        <td>Certificado</td>
-                        <td>
+					</div>
 
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href="#aceptarEmployeeModal"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
-                        </td>
-                    </tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox5" name="options[]" value="1">
-								<label for="checkbox5"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar">Martin Blank</td>
-                        <td>martinblank@mail.com</td>
-						<td>Via Monte Bianco 34, Turin, Italy</td>
-                        <td>(480) 631-2097</td>
-                        <td>Certificado</td>
-                        <td>Certificado</td>
-                        <td>Certificado</td>	
-                        <td>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
+						<form action="../../ruta.php?variable=darmascota" method="post">
+							<input type="text" name="id_mascota" value="<?php echo $pet->mascota['id']?>">
+							<input type="submit" class="btn btn-primary" value="Aceptar">
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
 
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href="#aceptarEmployeeModal"  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
-                        </td>
-                    </tr>
+	<!-- Delete Modal HTML -->
+	<div id="<?php echo "deleteEmployeeModal".$element['id']?>" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Cancelar Solicitud de la mascota <?php echo $pet->mascota['nombre'] ?></h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>¿Seguro que quieres cancelar la solicitud de esta fundación?</p>
+						<p class="text-warning"><small>Se enviara un email a la fundación para notificarla.</small></p>
+						<div class="form-group">
+							<label>Comentarios</label>
+							<textarea placeholder="Agrege aqui la razón para negar la solicitud"	class="form-control" maxlength="65525" required="required"></textarea>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
+						<form action="../../ruta.php?variable=negar_adopcion" method="POST">
+							<input type="hidden" name="id_mascota" value="<?php echo $pet->mascota['id']?>">
+							<input type="submit" class="btn btn-primary" value="Aceptar">
+						</form>
+					</div>
+			</div>
+		</div>
+	</div>
+
+                	<?php endforeach ?>
+
+                    
                 </tbody>
             </table>
 			<div class="clearfix">
@@ -149,53 +127,3 @@
             </div>
         </div>
     </div>
-
-	<!-- Aceptar Modal HTML -->
-	<div id="aceptarEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Aceptar Solicitud de Fundación</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<p>La fundación sera registrada dentro de la base de datos.</p>
-						<p class="text-info"><small>Se enviara un email a la fundación para notificarla.</small></p>
-
-					</div>
-
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
-						<input type="submit" class="btn btn-primary" value="Aceptar">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-
-	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Cancelar Solicitud de Fundación</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<p>¿Seguro que quieres cancelar la solicitud de esta fundación?</p>
-						<p class="text-warning"><small>Se enviara un email a la fundación para notificarla.</small></p>
-						<div class="form-group">
-							<label>Comentarios</label>
-							<textarea placeholder="Agrege aqui la razón para negar la solicitud"	class="form-control" maxlength="65525" required="required"></textarea>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
-						<input type="submit" class="btn btn-danger" value="Cancelar Solicitud">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>

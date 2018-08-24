@@ -36,6 +36,8 @@
                 </thead>
                 <tbody>
                 	<!-- consultar las fundaciones q piden registro -->
+                	<?php foreach (Fundacion::FundacionInactiva() as $element): ?>
+                		
                     <tr>
 						<td>
 							<span class="custom-checkbox">
@@ -43,26 +45,24 @@
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar">Thomas Hardy</td>
-                        <td>thomashardy@mail.com</td>
-						<td>89 Chiaroscuro Rd, Portland, USA</td>
-                        <td>(171) 555-2222</td>
+                        <td><?php echo $element['nombre'] ?> </td>
+                        <td><?php echo $element['email'] ?> </td>
+						<td><?php echo $element['direccion'] ?></td>
+                        <td><?php echo $element['telefono'] ?></td>
                         <td>Certificado</td>
                         <td>
-                        	<?php $element1=1; ?>
-
-                            <a href=<?php echo "#deleteEmployeeModal".$element1['id'] ?> class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
-                            <a href=<?php echo "#aceptarEmployeeModal".$element1['id'] ?>  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
+                            <a href=<?php echo "#deleteEmployeeModal".$element['id'] ?> class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
+                            <a href=<?php echo "#aceptarEmployeeModal".$element['id'] ?>  data-toggle="modal"><i class="fas fa-check-square" data-toggle="tooltip" title="Aprobar solicitud"></i></a>
                         </td>
                     </tr>
 
                     <!-- Aceptar Modal HTML -->
-	<div id=<?php echo "aceptarEmployeeModal".$element1['id'] ?> class="modal fade">
+	<div id=<?php echo "aceptarEmployeeModal".$element['id'] ?> class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+				
 					<div class="modal-header">
-						<h4 class="modal-title">Aceptar Solicitud de Fundación</h4>
+						<h4 class="modal-title">Aceptar Solicitud de Fundación <?php echo $element['nombre'] ?> </h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
@@ -72,21 +72,23 @@
 					</div>
 
 					<div class="modal-footer">
+					<form action="../../ruta.php?variable=aceptarFundacion" method="post">
+						<input type="hidden" name="id_fundacion" value="<?php echo $element['id'] ?>">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
 						<input type="submit" class="btn btn-primary" value="Aceptar">
+					</form>	
 					</div>
-				</form>
 			</div>
 		</div>
 	</div>
 
 	<!-- Delete Modal HTML -->
-	<div id=<?php echo "deleteEmployeeModal".$element1['id'] ?> class="modal fade">
+	<div id=<?php echo "deleteEmployeeModal".$element['id'] ?> class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+				
 					<div class="modal-header">
-						<h4 class="modal-title">Cancelar Solicitud de Fundación</h4>
+						<h4 class="modal-title">Cancelar Solicitud de Fundación <?php echo $element['nombre'] ?> </h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
@@ -98,13 +100,19 @@
 						</div>
 					</div>
 					<div class="modal-footer">
+						<form action="../../ruta.php?variable=aceptarFundacion" method="post">
+						<input type="hidden" name="id_fundacion" value="<?php echo $element['id'] ?>">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
-						<input type="submit" class="btn btn-danger" value="Cancelar Solicitud">
+						<input type="submit" class="btn btn-primary" value="Aceptar">
+					</form>	
+
 					</div>
-				</form>
+				
 			</div>
 		</div>
 	</div>
+
+                	<?php endforeach ?>
 
 
                 </tbody>
