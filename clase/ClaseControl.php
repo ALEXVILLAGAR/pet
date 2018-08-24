@@ -20,7 +20,11 @@ class Control
 
 	public static function login($table='usuario'){
 		Validacion::validar_email($_POST[correo]);
-		$consulta = "SELECT * FROM $table WHERE email = '$_POST[correo]' && clave = MD5('$_POST[clave]')";			
+		if ($table='usuario') {
+			$consulta = "SELECT * FROM $table WHERE email = '$_POST[correo]' && clave = MD5('$_POST[clave]')";			
+		}else{
+			$consulta = "SELECT * FROM $table WHERE email = '$_POST[correo]' && clave = MD5('$_POST[clave]') && estado='Activo'";			
+		}
 		
 		$resultado = mysqli_query(Conectar::conexion(), $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 		$fila =  mysqli_fetch_array($resultado);
@@ -58,7 +62,7 @@ class Control
 
 	public static function redirige($fila){
 			if($fila['tipo']=='admi'){
-			    header('Location: views\administrador\administrador.php');     
+			    header('Location: views\administrador\estadisticas.php');     
 			}
 			elseif($fila['tipo']=='usuario'){
 		    	header('Location: views\usuario\user.php');

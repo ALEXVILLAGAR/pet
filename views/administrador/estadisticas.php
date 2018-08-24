@@ -1,9 +1,8 @@
 <?php 
-    include('../layout/app.php');
+    include('../layout/app_administrador.php');
  ?>
- <section class="bg-faded page-content" >
-             <?php include '..\donar.php'?>   <!-- TODO modificar para donar a la fundacion correcta-->
-            <?php include '..\tablas\tablaAdoU.php' ?>
+ <section class="bg-faded page-content" >                              <!-- TODO modificar para donar a la fundacion correcta-->
+            <?php include '..\indexadmon.php'?>
         </section>
         <!-- page-content" -->
     </div>

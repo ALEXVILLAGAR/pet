@@ -14,7 +14,7 @@
                         </div>
                     </div>
 					<div class="col-sm-6">
-
+						<a href="#addEmployeeModal" class="btn btn-info" data-toggle="modal"><i class="fas fa-plus-circle"></i> <span>Añadir Usuario</span></a>
 						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i> <span>Eliminar</span></a>
 					</div>
 
@@ -38,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                	<?php foreach (Usuario::todos_usuarios() as $element): ?>
+                      	<?php foreach (Usuario::todos_usuarios() as $element): ?>
 	                    <tr>
 							<td>
 								<span class="custom-checkbox">
@@ -52,31 +52,70 @@
 							<td><?php echo $element['direccion'] ?></td>
 	                        <td>Certificado</td>
 	                        <td>
-	                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Editar"></i></a>
-	                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
 
 	                        </td>
 	                    </tr>
                 	<?php endforeach ?>
-
-
+                    
                 </tbody>
             </table>
 			<div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <div class="hint-text">Mostrando <b>5</b> De <b>25</b> Uusarios</div>
                 <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item disabled"><a href="#">Previo</a></li>
                     <li class="page-item"><a href="#" class="page-link">1</a></li>
                     <li class="page-item"><a href="#" class="page-link">2</a></li>
                     <li class="page-item active"><a href="#" class="page-link">3</a></li>
                     <li class="page-item"><a href="#" class="page-link">4</a></li>
                     <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Siguiente</a></li>
                 </ul>
             </div>
         </div>
     </div>
-
+	<!-- Edit Modal HTML -->
+	<div id="addEmployeeModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">
+						<h4 class="modal-title">Añadir Usuario</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Nombre</label>
+							<input type="text" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Documento</label>
+							<input type="text" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Email</label>
+							<input type="email" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Direccion</label>
+							<textarea class="form-control" required></textarea>
+						</div>
+						<div class="form-group">
+							<label>Telefono</label>
+							<input type="text" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Foto</label>
+							<input type="file" class="form-control" >
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+						<input type="submit" class="btn btn-success" value="Añadir">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<!-- Edit Modal HTML -->
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
@@ -93,11 +132,15 @@
 							<input type="text" class="form-control" required>
 						</div>
 						<div class="form-group">
+							<label>Documento</label>
+							<input type="text" class="form-control" required>
+						</div>
+						<div class="form-group">
 							<label>Email</label>
 							<input type="email" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Dirección</label>
+							<label>Direccion</label>
 							<textarea class="form-control" required></textarea>
 						</div>
 						<div class="form-group">
@@ -108,14 +151,10 @@
 							<label>Foto</label>
 							<input type="file" class="form-control" >
 						</div>
-						<div class="form-group">
-							<label>Certificado</label>
-							<input type="file" class="form-control" >
-						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-primary" value="Guardar">
+						<input type="submit" class="btn btn-info" value="Guardar">
 					</div>
 				</form>
 			</div>
@@ -127,16 +166,16 @@
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">
-						<h4 class="modal-title">Eliminar Fundación</h4>
+						<h4 class="modal-title">Eliminar Usuario</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p>¿Seguro que quieres eliminar estos registros?</p>
-						<p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning"><small>This action cannot be undone.</small></p>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-primary" value="Eliminar">
+						<input type="submit" class="btn btn-danger" value="Eliminar">
 					</div>
 				</form>
 			</div>
