@@ -102,7 +102,9 @@
 
 							<div class="form-group">
 								<label>Foto</label>
-								<input type="file"  name="imagen" class="form-control" value="imagen">
+
+								<input type="file"  name="imagen" class="form-control">
+
 							</div>
 					</div>
 					<div class="modal-footer">

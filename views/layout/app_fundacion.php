@@ -135,7 +135,6 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                 </span>
                             </a>
                         </li>
-                        </li>
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fas fa-hand-holding-usd">
@@ -157,6 +156,7 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                    </ul>
                             </div>
                         </li>
+
                         <li class="">
                             <a href="..\..\index.php" >
                                 <i class="fas fa-arrow-alt-circle-left">
@@ -169,6 +169,30 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                            </ul>
                 </div>
                 <!-- sidebar-menu  -->
+
+                          <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fas fa-archive">
+                                </i>
+                                <span>
+                                    Adopciones
+                                </span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="../fundacion/adoptadosF.php">
+                                            Adoptados
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="..\fundacion\Estado_AdopcionF.php">
+                                            Procesos de adopcion
+                                        </a>
+                                    </li>                        
+                                </ul>                </div>
+               <!-- sidebar-menu  -->
+
             </div>
             <!-- sidebar-content  -->
             <div class="sidebar-footer">
@@ -184,7 +208,6 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                         <a class="dropdown-item" href="../perfil/perfilF.php">
                             Mi perfil
                         </a>
-                       
                     </div>
                 </div>
                 <div>

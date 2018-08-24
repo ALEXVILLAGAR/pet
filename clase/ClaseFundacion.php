@@ -43,8 +43,7 @@ header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
 	public static function new_fundacion(){
-		$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO fundacion VALUES ('$_POST[nombre]','$_POST[email]',MD5('$_POST[clave]'),'$_POST[certificado]','$_POST[telefono]','$_POST[direccion]')") or die ('errorrrr');
-		/*header('Location: index.php');*/
+		$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO fundacion values('','$_POST[nombre]','$_POST[email]',MD5('$_POST[password]'),'Inactivo','','$_POST[telefono]','$_POST[direccion]','')") or die ('errorrrr');
 		header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
@@ -109,6 +108,25 @@ header('Location: '.$_SERVER['HTTP_REFERER'] );
 		return $resultado;
 	}
 
+	public static function FundacionInactiva(){
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM fundacion WHERE estado='Inactivo'") or die ( "casi");
+		return $resultado;
+	}
+
+	public static function activarFund($id){
+		$insertion = mysqli_query(Conectar::conexion(),"UPDATE fundacion SET estado='Activo' WHERE id = '$id'") or die ('errorrrr');
+		header('Location: '.$_SERVER['HTTP_REFERER']);
+	}
+
+	public static function denegar($id){
+		$insertion = mysqli_query(Conectar::conexion(),"DELETE fundacion WHERE id = '$id' && estado!='Activo'") or die ('errorrrr');
+		header('Location: '.$_SERVER['HTTP_REFERER']);
+	}
+
+	public static function recaudo(){
+		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT SUM(monto) FROM donaciones "));
+		return $insertion;
+	}
 }
 
  ?>

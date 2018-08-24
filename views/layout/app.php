@@ -179,14 +179,31 @@ if(!$user->authorizacion('usuario')){
                                 </span>
                             </a>
                         </li>
-                        <li class="">
-                            <a href="#" data-toggle="modal" data-target="#MhacerDenuncia">
+                        <li class="sidebar-dropdown">
+                            <a href="#" >
                                 <i class="fas fa-bullhorn">
                                 </i>
                                 <span>
-                                    Hacer Denuncia
+                                    Denuncias
                                 </span>
                             </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="../usuario/MisDenuncias.php">
+                                            Mis de nuncias
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="#" data-toggle="modal" data-target="#MhacerDenuncia">
+                                <i class="fas fa-bullhorn">
+                                </i> <span>
+                                    Hacer Denuncia
+                                    </span>
+                                </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="#">

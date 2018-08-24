@@ -24,4 +24,6 @@ require_once("clase/ClaseMascota.php");
 require_once("clase/ClaseFundacion.php");
 
 require_once('clase/ClaseAdopcion.php');
+
  ?>
+
