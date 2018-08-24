@@ -21,7 +21,8 @@ class Usuario
 		mysqli_query($this->db,"UPDATE usuario SET nombre='$_POST[nombre]',documento='$_POST[documento]',direccion= '$_POST[direccion]', email='$_POST[correo]' WHERE id = '$id'") or die ('error');	
 		$user = $this->GetUsuario($id);
 		$_SESSION['user']= $user;
-		Control::redirige($user);
+          header('Location: '.$_SERVER['HTTP_REFERER'] );
+          		// Control::redirige($user);
 	}
 
 	public function authorizacion($type){
@@ -68,7 +69,8 @@ class Usuario
 		$insertion = mysqli_query($this->db,"UPDATE usuario SET foto_perfil='$image' WHERE id = '$id'") or die ('errorrrr');
 		$user = $this->GetUsuario($id);
 		$_SESSION['user']= $user;
-		Control::redirige($user);
+		/*Control::redirige($user);*/
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
 		
 	}
 

@@ -44,7 +44,8 @@ header('Location: '.$_SERVER['HTTP_REFERER'] );
 
 	public static function new_fundacion(){
 		$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO fundacion VALUES ('$_POST[nombre]','$_POST[email]',MD5('$_POST[clave]'),'$_POST[certificado]','$_POST[telefono]','$_POST[direccion]')") or die ('errorrrr');
-		header('Location: index.php');
+		/*header('Location: index.php');*/
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
 	public function Mis_donaciones(){ //retorna las donaciones que tiene una fundación
@@ -107,6 +108,7 @@ header('Location: '.$_SERVER['HTTP_REFERER'] );
 		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM fundacion") or die ( "casi");
 		return $resultado;
 	}
+
 }
 
  ?>

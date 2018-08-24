@@ -102,7 +102,7 @@
 
 							<div class="form-group">
 								<label>Foto</label>
-								<input type="file"  name="imagen" class="form-control" value="value="<?php echo $element['foto'] ?>"">
+								<input type="file"  name="imagen" class="form-control" value="imagen">
 							</div>
 					</div>
 					<div class="modal-footer">

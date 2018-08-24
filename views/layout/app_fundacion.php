@@ -157,29 +157,6 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                    </ul>
                             </div>
                         </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fas fa-user-check">
-                                </i>
-                                <span>
-                                    Calificación Usuario
-                                </span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            Calificación Usuario
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                           Usuarios Calificados 
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                         <li class="">
                             <a href="..\..\index.php" >
                                 <i class="fas fa-arrow-alt-circle-left">
