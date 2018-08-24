@@ -21,9 +21,9 @@
                                     <!-- Button to Open the Modal -->
                                     <br><br>
                                     
-                                     <button class="heart"  href="#" data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito".$element['id'] ?> type="button">
-                                        
-                                    </button>
+                                     <div class="container"><button class="btn heart"   data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito".$element['id'] ?> type="button">
+                                       Me gusta 
+                                    </button></div>
                                     
                                 <?php endif?>
                                     <button class="btn btn-info" data-target=<?php echo "#myModal".$element['id'] ?> data-toggle="modal" type="button">
