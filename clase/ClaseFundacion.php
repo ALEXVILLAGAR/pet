@@ -86,8 +86,11 @@ class Fundacion
 		header('Location: views/perfil/perfilF.php');
 	}
 
-	public function Eliminar(){
-		$insertion = mysqli_query($this->db,"DELETE fundacion WHERE id = '$_POST[id_fundacion]'") or die ('errorrrr');
+	public function Eliminar(){ //eliminar en casacde
+		mysqli_query($this->db,"DELETE fundacion WHERE id = '$_POST[id_fundacion]'") or die ('error fundacion');
+		mysqli_query($this->db,"DELETE preferencia LEFT JOIN mascota ON 'preferencia'.'id_mascota' = 'mascota'.'id' WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error en la tabla de preferencia');
+		mysqli_query($this->db,"DELETE mascota WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error eliminar mascotas');
+		mysqli_query($this->db,"DELETE donaciones WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error eliminar donaciones');
 		header('Location: views/administrador/gestion_fundaciones.php');
 	}
 
@@ -117,13 +120,19 @@ class Fundacion
 	}
 
 	public static function denegar($id){
-		$insertion = mysqli_query(Conectar::conexion(),"DELETE fundacion WHERE id = '$id' && estado!='Activo'") or die ('errorrrr');
+		$insertion = mysqli_query(Conectar::conexion(),"DELETE fundacion WHERE id = '$id' && estado!='Activo'") or die ('error al denegar');
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 
 	public static function recaudo(){
 		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT SUM(monto) FROM donaciones "));
 		return $insertion;
+	}
+
+	public function only_reservada(){ //todas las mascotas reservadas
+		$id_fundacion=$this->fundacion['id'];
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE disponible=0 && solicitud!='Aprobada' && id_fundacion='$id_fundacion' " ) or die ( "casi");
+		return $resultado;
 	}
 }
 

@@ -19,18 +19,16 @@ class Control
 	}
 
 	public static function login($table='usuario'){
-		Validacion::validar_email($_POST[correo]);
-		if ($table='usuario') {
+		Validacion::validar_email($_POST['correo']);
+		if ($table=='usuario') {
 			$consulta = "SELECT * FROM $table WHERE email = '$_POST[correo]' && clave = MD5('$_POST[clave]')";			
 		}else{
-			$consulta = "SELECT * FROM $table WHERE email = '$_POST[correo]' && clave = MD5('$_POST[clave]') && estado='Activo'";			
-		}
-		
+			$consulta = "SELECT * FROM $table WHERE email = '$_POST[correo]' && clave = MD5('$_POST[clave]') && estado = 'Activo'";
+		}		
 		$resultado = mysqli_query(Conectar::conexion(), $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 		$fila =  mysqli_fetch_array($resultado);
 		
 		if(MD5($_POST['clave'])==$fila['clave']){
-		// if($_POST['clave']===$fila['clave']){
 			// session_start();
 			$_SESSION['loggedin'] = true;
 			$_SESSION['user'] = $fila;
@@ -70,6 +68,10 @@ class Control
 			else{
 		    	header('Location: views\fundacion\userfundacion.php');
 			}
+	}
+
+	public static function botonesGaleria(){
+		return SessionesPet::session_active() && SessionesPet::session_info()['tipo']=='usuario';
 	}
 
 }

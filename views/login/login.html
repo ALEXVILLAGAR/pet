@@ -25,14 +25,14 @@
                         </div>
                         <div class="form loginBox lbU" id="loginBoxU">
                             <form accept-charset="UTF-8" action="ruta.php?variable=login" method="post">
-                                <input autofocus="autofocus" class="form-control mx-auto" id="correo" name="correo" placeholder="Correo" required="" type="text">
+                                <input autofocus="autofocus" class="form-control mx-auto" id="correo_login" name="correo" placeholder="Correo" type="email" required>
                                 </input>
-                                <input autofocus="autofocus" class="form-control mx-auto" id="password" name="clave" placeholder="Contraseña" required="" type="password">
+                                <input autofocus="autofocus" class="form-control mx-auto" id="password_login" name="clave" placeholder="Contraseña" type="password" required>
                                 </input>
                                 <div class="espacio1">
                                 </div>
                                 <input class="btn btn-default btn-login" type="submit" value="Inicio Sesión">
-                                    <!-- href="user.php" onclick="loginAjax()" -->
+                                    <!-- href="user.php"  onclick="loginAjax($('#correo_login').val(),$('#password_login').val())"-->
                                 </input>
                             </form>
                         </div>
@@ -63,11 +63,11 @@
                     <div class="form">
                         <form accept-charset="UTF-8" action="ruta.php?variable=registrarme" data-remote="true" html="{:multipart=>true}" method="post">
                             <!-- -->
-                            <input autofocus="autofocus" class="form-control mx-auto" id="email" name="correo" placeholder="Correo" required="" type="email">
-                                <input autofocus="autofocus" class="form-control mx-auto" id="email" name="nombre" placeholder="Nombre" required="" type="text">
+                            <input autofocus="autofocus" class="form-control mx-auto" id="correo" name="correo" placeholder="Correo" required="" type="email">
+                                <input autofocus="autofocus" class="form-control mx-auto" id="nombre" name="nombre" placeholder="Nombre" required="" type="text">
                                     <input autofocus="autofocus" class="form-control mx-auto" id="documento" name="documento" onkeypress="return valida(event)" placeholder="Cedula" required="" type="text">
                                         <input autofocus="autofocus" class="form-control mx-auto" id="telefono" name="telefono" onkeypress="return valida(event)" placeholder="Telefono" required="" type="text">
-                                            <input autofocus="autofocus" class="form-control mx-auto" id="email" name="direccion" placeholder="Dirección" required="" type="text">
+                                            <input autofocus="autofocus" class="form-control mx-auto" id="direccion" name="direccion" placeholder="Dirección" required="" type="text">
                                                 <input autofocus="autofocus" class="form-control mx-auto" id="contra_registro" min="6" name="clave" placeholder="Contraseña" required="" type="password">
                                                     <input autofocus="autofocus" class="form-control mx-auto" id="confirm_contra" min="6" name="confirmar-contra" onkeypress="return igual(event)" placeholder="Confirmar_Contraseña" required="" type="password">
                                                         <span id="ContraOk">
