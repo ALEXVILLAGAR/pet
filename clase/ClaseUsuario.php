@@ -100,9 +100,18 @@ class Usuario
 		return $resultado;
 	}
 
+
 	public static function total_usuarios(){
 		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT Count(id) FROM usuario "));
 		return $insertion;
+        }
+
+	public function mis_adoptados(){
+		$user_id = $this->usuario['id'];
+		$consulta="SELECT * FROM adopcion LEFT JOIN `mascota` ON `adopcion`.`id_usuario` = '$user_id' WHERE `mascota`.`id_usuario` = '$user_id' && solicitud = 'Aprobada'";
+		$resultado = mysqli_query($this->db, $consulta ) or die ( "casi");
+		return $resultado;	
+
 	}
 }
 
