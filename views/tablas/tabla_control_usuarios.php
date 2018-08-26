@@ -15,7 +15,6 @@
                     </div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-info" data-toggle="modal"><i class="fas fa-plus-circle"></i> <span>Añadir Usuario</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i> <span>Eliminar</span></a>
 					</div>
 
                 </div>
@@ -51,10 +50,32 @@
 	                        <td><?php echo $element['email'] ?></td>
 							<td><?php echo $element['direccion'] ?></td>
 	                        <td>Certificado</td>
-	                        <td>
-
-	                        </td>
+	                        <td> <a href=<?php echo "#deleteEmployeeModal".$element['id'] ?> class="btn btn-danger" data-toggle="modal"><i class="fas fa-minus-circle"></i> <span>Eliminar</span></a></td>
 	                    </tr>
+
+	                    	<!-- Delete Modal HTML -->
+	<div class="modal fade" id="<?php echo "deleteEmployeeModal".$element['id']?>">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="../../ruta.php?variable=eliminarUsuario" method="post">
+					<input type="hidden" name="id_usuario" value="<?php echo $element['id'] ?>">
+					<div class="modal-header">
+						<h4 class="modal-title">Eliminar Usuario <?php echo $element['nombre'] ?> </h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning"><small>This action cannot be undone.</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+						<input type="submit" class="btn btn-danger" value="Eliminar">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
                 	<?php endforeach ?>
                     
                 </tbody>
@@ -155,27 +176,6 @@
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
 						<input type="submit" class="btn btn-info" value="Guardar">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Eliminar Usuario</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<p>Are you sure you want to delete these Records?</p>
-						<p class="text-warning"><small>This action cannot be undone.</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-danger" value="Eliminar">
 					</div>
 				</form>
 			</div>

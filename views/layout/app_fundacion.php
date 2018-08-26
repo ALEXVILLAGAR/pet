@@ -166,8 +166,7 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                 </span>
                             </a>
                         </li>
-                                           </ul>
-                </div>
+                      
                 <!-- sidebar-menu  -->
 
                           <li class="sidebar-dropdown">
@@ -190,7 +189,11 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                             Procesos de adopcion
                                         </a>
                                     </li>                        
-                                </ul>                </div>
+                                </ul>                
+                            </div>
+                        </li>
+                     </ul>
+                </div>
                <!-- sidebar-menu  -->
 
             </div>
