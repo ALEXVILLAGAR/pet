@@ -45,6 +45,8 @@
             
 
         </div>
-    </div><br><?php include 'galerias/ConfirmarAdopcion.php'; ?> <?php  endforeach ?>
+
+    </div><br><?php include 'galerias/ConfirmarAdopcion.php'; ?> <?php endforeach ?>
+
 </div>
 

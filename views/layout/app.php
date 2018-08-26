@@ -226,11 +226,7 @@ if(!$user->authorizacion('usuario')){
                                             Procesos de adopcion
                                         </a>
                                     </li>
-                                    <li >
-                            <a href="#" data-toggle="modal" data-target="#Mmi_Calificacion">
-                                    Mi calificacion
-                            </a>
-                        </li>
+                              
                                 </ul>
                             </div>
                         </li>

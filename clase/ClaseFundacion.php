@@ -19,7 +19,7 @@ class Fundacion
 		}
 		$insertion = mysqli_query($this->db,"UPDATE fundacion SET nombre='$_POST[nombre]',email='$_POST[correo]',telefono='$_POST[telefono]',direccion= '$_POST[direccion]' WHERE id = '$id'") or die ('errorrrr');
 		$_SESSION['user']=$this->fundacion($id);
-		header('Location: views/perfil/perfilF.php');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
 	public static function fundaciones(){ //Retorna todas las fundaciones que existen
@@ -32,7 +32,7 @@ class Fundacion
 			$user = SessionesPet::session_info();
 			$fecha = date("Y-m-d H:i:s");
 			mysqli_query(Conectar::conexion(),"INSERT INTO donaciones VALUES ('','$_POST[monto]','$fecha','$user[id]','$_POST[id_fundacion]')") or die ('errorrrr');
-			header('Location: views/usuario/user.php');
+			header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
 	public static function fundacion($id){ //retorna una fundacion
@@ -41,9 +41,8 @@ class Fundacion
 	}
 
 	public static function new_fundacion(){
-		var_dump($_POST);
-		$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO fundacion values('','$_POST[nombre]','$_POST[email]',MD5('$_POST[password]'),'Inactio','','$_POST[telefono]','$_POST[direccion]','')") or die ('errorrrr');
-		header('Location: index.php');
+		$insertion = mysqli_query(Conectar::conexion(),"INSERT INTO fundacion values('','$_POST[nombre]','$_POST[email]',MD5('$_POST[password]'),'Inactivo','','$_POST[telefono]','$_POST[direccion]','')") or die ('errorrrr');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
 	public function Mis_donaciones(){ //retorna las donaciones que tiene una fundación
@@ -91,7 +90,7 @@ class Fundacion
 		mysqli_query($this->db,"DELETE preferencia LEFT JOIN mascota ON 'preferencia'.'id_mascota' = 'mascota'.'id' WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error en la tabla de preferencia');
 		mysqli_query($this->db,"DELETE mascota WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error eliminar mascotas');
 		mysqli_query($this->db,"DELETE donaciones WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error eliminar donaciones');
-		header('Location: views/administrador/gestion_fundaciones.php');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
 	public function cambiarPass(){
