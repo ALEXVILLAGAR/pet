@@ -7,7 +7,7 @@ if(!(SessionesPet::session_active())){
 }
 $user =new Usuario();
 if(!$user->authorizacion('usuario')){
-    echo "<h2> No tienes Nivel para acceder a esta seccion </h2>";
+    include '../../error.html';
     exit;
 }
  ?>

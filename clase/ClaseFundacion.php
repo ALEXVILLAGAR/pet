@@ -127,6 +127,11 @@ header('Location: '.$_SERVER['HTTP_REFERER'] );
 		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT SUM(monto) FROM donaciones "));
 		return $insertion;
 	}
+
+	public static function numero_fundaciones(){
+		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT COUNT(id) FROM fundacion "));
+		return $insertion;
+	}
 }
 
  ?>
