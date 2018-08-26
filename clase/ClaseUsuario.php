@@ -99,6 +99,13 @@ class Usuario
 		$resultado = mysqli_query($this->db, "SELECT * FROM denuncia WHERE id_usuario = '$user_id'" ) or die ( "casi");
 		return $resultado;
 	}
+
+	public function mis_adoptados(){
+		$user_id = $this->usuario['id'];
+		$consulta="SELECT * FROM adopcion LEFT JOIN `mascota` ON `adopcion`.`id_usuario` = '$user_id' WHERE `mascota`.`id_usuario` = '$user_id' && solicitud = 'Aprobada'";
+		$resultado = mysqli_query($this->db, $consulta ) or die ( "casi");
+		return $resultado;	
+	}
 }
 
 

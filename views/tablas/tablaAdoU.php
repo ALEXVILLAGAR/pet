@@ -38,8 +38,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                	<?php foreach ($variable as $key => $value): ?>
-                		
+                	<?php foreach ($user->mis_adoptados() as $element): 
+                        $pet = new Mascota($element['id_mascota']);
+                        $fundacion = $pet->perteneceA();
+                        ?>
                     <tr>
 						<td>
 							<span class="custom-checkbox">
@@ -47,19 +49,40 @@
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar"></td>
-                        <td>89 Chiaroscuro Rd, Portland, USA</td>
-                      <td>(171) 555-2222</td> 
-                      <td>(313) 555-5735</td>
-                         <td>(313) 555-5735</td>
-                            <td>(313) 555-5735</td>
-                              
-                       
-                        <td>
-                         <!--  <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i></a>  -->
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
+                        <td>  <?php echo $pet->mascota['nombre'] ?> </td>
+                        <td> <img src="data:image/jpg;base64,<?php echo base64_encode($pet->mascota['foto'])?> " width="250"/> </td>
+                        <td>  <?php echo $element['fecha'] ?> </td>
+                        <td> <?php echo $fundacion['nombre'] ?> </td>
+                        <td>  <?php echo $fundacion['direccion'] ?> </td>
+                        <td> <?php echo $fundacion['telefono'] ?> </td>
+
+                        <td>                             
+                            <a href="<?php echo "#deleteEmployeeModal".$element['id'] ?>" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
                         </td>
                     </tr>
+
+                    <!-- Delete Modal HTML -->
+    <div id="<?php echo "#deleteEmployeeModal".$element['id'] ?>" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Eliminar Registro</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>esta seguro de borrar estos registros?</p>
+                        <p class="text-warning"><small>Esta Acción no puede ser deshecha.</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                        <input type="submit" class="btn btn-danger" value="Eliminar">
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+
                 	<?php endforeach ?>
                     
                 </tbody>
@@ -77,25 +100,5 @@
                 </ul>
             </div>
         </div>
-		<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Eliminar Usuario</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<p>esta seguro de borrar estos registros?</p>
-						<p class="text-warning"><small>Esta Acción no puede ser deshecha.</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-danger" value="Eliminar">
-					</div>
-				</form>
-			</div>
-    </div>
-		</div>
+		
 	</div>

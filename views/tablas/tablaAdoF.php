@@ -28,17 +28,19 @@
 								<label for="selectAll"></label>
 							</span>
 						</th>
-                        <th>Mascota</th>
                         <th>Foto</th>
+                        <th>Mascota</th>
 						<th>Fecha</th>
                        <th>Adoptante</th>
+                       <th>Documento</th>
                        <th>Direccion</th>
-                       <th>Telefono</th>
                        <th>opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                	<?php foreach (Adopcion::adoptados() as $element): ?>
+                	<?php
+                    foreach (Adopcion::adoptadasDeFun($fundacion->fundacion['id']) as $element): $pet=new Mascota($element['id_mascota']); 
+                        $usuario = Usuario::GetUsuario($element['id_usuario'])?>
                 		
                     <tr>
 						<td>
@@ -47,26 +49,26 @@
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar"></td>
-                        <td>89 Chiaroscuro Rd, Portland, USA</td>
-                      <td>(171) 555-2222</td> 
-                      <td>(313) 555-5735</td>
-                      <td>(171) 555-2222</td> 
-                      <td>(313) 555-5735</td>
-                       
+                        <td><img src="data:image/jpg;base64,<?php echo base64_encode($pet->mascota['foto'])?> " class="avatar" alt="avatar"/></td>
+                        <td> <?php echo $pet->mascota['nombre'] ?> </td>
+                        <td> <?php echo $element['fecha'] ?> </td>
+                      <td> <?php echo $usuario['nombre'] ?> </td>
+                      <td> <?php echo $usuario['documento'] ?> </td>
+                      <td> <?php echo $usuario['direccion'] ?> </td>
+
                         <td>
 
-                            <a href=<?php echo "#deleteEmployeeModal".$element['id'] ?> class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
+                            <a href="<?php echo "#deleteEmployeeModal".$element['id'] ?>" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
                         </td>
                     </tr>
 
 	<!-- Delete Modal HTML -->
-	<div id="<?php echo "#deleteEmployeeModal".$element['id'] ?>" class="modal fade">
+	<div id="<?php echo "deleteEmployeeModal".$element['id'] ?>" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">
-						<h4 class="modal-title">Eliminar Usuario</h4>
+						<h4 class="modal-title">Eliminar registro de Adopcion</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">

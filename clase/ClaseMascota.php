@@ -46,11 +46,6 @@ class Mascota
 		return $resultado;
 	}
 
-	public static function only_reservada(){ //todas las mascotas reservadas
-		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE disponible=0 && solicitud!='Aprobada' " ) or die ( "casi");
-		return $resultado;
-	}
-
 	public function uptade_pet(){ //$_POST valores de la actualizacion ofcourse
 		if(isset($_FILES['imagen'])){
 			$imgContenido=Control::foto($_FILES["imagen"]["tmp_name"]);
@@ -76,9 +71,11 @@ class Mascota
 
 	public function eliminar_mascota(){ //$_POST valores de la actualizacion ofcourse
 		$id = $this->mascota['id'];
-		$insertion = mysqli_query($this->db,"DELETE FROM mascota WHERE  id='$id' ") or die ('errorrrr');
-		header('Location: '.$_SERVER['HTTP_REFERER'] );
-		/*header('Location: views/fundacion/gmascotas.php');*/
+		mysqli_query($this->db,"DELETE FROM preferencia WHERE  id_msacota='$id' ") or die ('error eliminar mascota de preferencia');
+		mysqli_query($this->db,"DELETE FROM mascota WHERE  id='$id' ") or die ('error al eliminar mascota');
+		mysqli_query($this->db,"DELETE FROM adopcion WHERE  id_mascota='$id' ") or die ('error al eliminar adopcion');
+		header('Location: views/fundacion/gmascotas.php');
+
 	}
 
 	public function perteneceA(){
@@ -96,15 +93,16 @@ class Mascota
 
 	public function denegar(){
 		$id_pet = $this->mascota['id'];
-		$consulta = mysqli_query($this->db, "UPDATE mascota SET disponible=1, solicitud='denegada' WHERE id='$id_pet'");
+		$consulta = mysqli_query($this->db, "UPDATE mascota SET disponible=1, solicitud='Denegada', id_usuario=null WHERE id='$id_pet'");
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 
 	public function dar_en_adopcion(){
 		$id_pet = $this->mascota['id'];
-		$id_user = SessionesPet::session_info();
-		$consulta = mysqli_query($this->db, "UPDATE mascota SET disponible=0, solicitud='Aprobada' WHERE id='$id_pet'");
-		$consulta2 = mysqli_query($this->db, "INSERT INTO adopcion values('',time(),'$id_user','$id_pet','compromiso')");
+		$id_user = SessionesPet::session_info()['id'];
+		$fecha = date("Y-m-d H:i:s");
+		 mysqli_query($this->db, "UPDATE mascota SET disponible=0, solicitud='Aprobada' WHERE id='$id_pet'");
+		 mysqli_query($this->db,"INSERT INTO adopcion VALUES ('','$fecha','$_POST[id_usuario]','$id_pet',null)") or die ('errorrrr');
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 }
