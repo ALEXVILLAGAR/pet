@@ -14,7 +14,7 @@ class Adopcion
 	}
 
 	public function eliminarAdoptada($id){
-		mysqli_query(Conectar::conexion(),"DELETE adopcion WHERE id = '$id'") or die ('error al eliminar');
+		mysqli_query(Conectar::conexion(),"DELETE FROM adopcion WHERE id = '$id'") or die ('error al eliminar');
 		// mysqli_query(Conectar::conexion(),"DELETE mascota WHERE id = '$id'") or die ('error al ');
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}

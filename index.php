@@ -134,7 +134,11 @@ require_once("ControlClass.php");
                 <hr class="my-6 bg-white">
                 </hr>
             </div>
-            <?php $consulta = Mascota::only_disponible(); $vistauser=true;?>
+            <?php $consulta = Mascota::only_disponible(); 
+            if (SessionesPet::session_active()) {
+                $vistauser=true;
+            }
+             ?>
            <?php include 'views/galerias/galeria_principal.php'?>
        </section> 
 <!--------------------------------FUNDACIONES-------------------------------------->

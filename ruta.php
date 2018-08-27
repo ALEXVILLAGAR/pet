@@ -90,8 +90,11 @@ switch ($variable) {
 		Fundacion::activarFund($_POST['id_fundacion']);
 		break;
 	case 'negarFundacion':
-		Fundacion::denegar($_POST['id_fundacion']);
+		Fundacion::denegar();
 		break;
+		case 'eliminarUsuario':
+			Usuario::eliminarUsuario();
+			break;
 	// case 'actualizarFundacionAdmin':
 
 	// 	break;

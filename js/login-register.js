@@ -53,23 +53,6 @@ function openRegisterModal() {
     }, 230);
 }
 
-function loginAjax(email, clave) {    
-    var parametros = {"email" : email,
-    "clave": clave};
-    console.log(parametros);
-    // $.ajax({
-    //     data: parametros,
-    //     url: '../ruta.php?variable=login',
-    //     type: 'post',
-    //     success: function(response){
-    //         console.log('ya va'+response);
-    //     },
-    //     fail: function(response){
-    //         shakeModal();
-    //     }   
-    // });
-}
-
 function shakeModal() {
     $('#loginModal .modal-dialog').addClass('shake');
     $('.error').addClass('alert alert-danger').html("Correo Invalido/Contraseña Incorrecta");
@@ -115,19 +98,6 @@ function openRegisterModalF() {
     }, 230);
 }
 
-function loginAjaxF() {
-    /*   Remove this comments when moving to server
-    $.post( "/login", function( data ) {
-            if(data == 1){
-                window.location.replace("/home");            
-            } else {
-                 shakeModal(); 
-            }
-        });
-    */
-    /*   Simulate error message from the server   */
-    shakeModalF();
-}
 
 function shakeModalF() {
     $('#loginModalF .modal-dialog').addClass('shake');

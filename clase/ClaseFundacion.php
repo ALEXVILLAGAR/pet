@@ -86,10 +86,10 @@ class Fundacion
 	}
 
 	public function Eliminar(){ //eliminar en casacde
-		mysqli_query($this->db,"DELETE fundacion WHERE id = '$_POST[id_fundacion]'") or die ('error fundacion');
-		mysqli_query($this->db,"DELETE preferencia LEFT JOIN mascota ON 'preferencia'.'id_mascota' = 'mascota'.'id' WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error en la tabla de preferencia');
-		mysqli_query($this->db,"DELETE mascota WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error eliminar mascotas');
-		mysqli_query($this->db,"DELETE donaciones WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error eliminar donaciones');
+		mysqli_query($this->db,"DELETE FROM fundacion WHERE id = '$_POST[id_fundacion]'") or die ('error fundacion');
+		mysqli_query($this->db,"DELETE FROM preferencia LEFT JOIN mascota ON 'preferencia'.'id_mascota' = 'mascota'.'id' WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error en la tabla de preferencia');
+		mysqli_query($this->db,"DELETE FROM mascota WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error eliminar mascotas');
+		mysqli_query($this->db,"DELETE FROM donaciones WHERE id_fundacion = '$_POST[id_fundacion]'") or die ('error eliminar donaciones');
 		header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
@@ -118,8 +118,8 @@ class Fundacion
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 
-	public static function denegar($id){
-		$insertion = mysqli_query(Conectar::conexion(),"DELETE fundacion WHERE id = '$id' && estado!='Activo'") or die ('error al denegar');
+	public static function denegar(){		
+		mysqli_query(Conectar::conexion(),"DELETE FROM fundacion WHERE id = '$_POST[id_fundacion]' && estado!='Activo'") or die ('error al denegar');
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 

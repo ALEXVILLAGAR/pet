@@ -38,14 +38,15 @@
                                         <button class="btn btn-warning" data-target=<?php echo "#Mcancelar_adopcion".$element['id'] ?> data-toggle="modal" type="button">
                                             cancelar Solicitud.
                                         </button>
+                                        <?php include 'leermas.php'; ?>
+                                    <?php include '..\modal\Mcancelar_adopcion.php'; ?>
                                     <?php endif ?> 
                                     
                                     <!-- The Modal -->
                                     <?php include 'ConfirmarAdopcion.php'; ?>
                                     <?php include 'MavisoSaveFavorito.php'; ?>
                                      <?php include 'Mestado_Adopcion.php'; ?>
-                                    <?php include 'leermas.php'; ?>
-                                    <?php include '..\modal\Mcancelar_adopcion.php' ?>
+                                    
                                 </p>
                             </div>
                         </img>
