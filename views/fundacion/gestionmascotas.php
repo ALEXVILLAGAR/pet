@@ -52,7 +52,7 @@
                         <td> <?php echo $element['nombre'] ?></td>
                         <td> <?php echo $element['raza'] ?></td>
                         <td> <?php echo $element['especie'] ?></td>
-                        <td> <?php echo "tamaño" ?></td>
+                        <td> <?php echo $element['tamano'] ?></td>
                         <td> <?php echo $element['estado'] ?></td>
                         <td> <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto'])?> " class="avatar" alt="Avatar"/></td>
                         <td>
@@ -91,13 +91,20 @@
 							</div>
 
 							<div class="form-group">
+								<label>Tamaño</label>
+								<input type="text" class="form-control" name="tamano" value="<?php echo $element['tamano'] ?>" placeholder="Pequeño, Mediano, Grande" required autofocus="autofocus"> 
+							</div>
+
+							<div class="form-group">
 								<label>Estado</label>
 								<input type="text" class="form-control" name="estado" placeholder="estado ()" value="<?php echo $element['estado'] ?>" required>
 							</div>
 
 							<div class="form-group">
 								<label>Foto</label>
+
 								<input type="file"  name="imagen" class="form-control">
+
 							</div>
 					</div>
 					<div class="modal-footer">
@@ -184,6 +191,11 @@
 								<label>Edad</label>
 
 								<input type="text" class="form-control" name="edad" placeholder="edad" required> 
+							</div>
+
+							<div class="form-group">
+								<label>Tamaño</label>
+								<input type="text" class="form-control" name="tamano" placeholder="Pequeño, Mediano, Grande" required autofocus="autofocus"> 
 							</div>
 
 							<div class="form-group">

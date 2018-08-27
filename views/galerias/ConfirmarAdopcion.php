@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <h5 class="modal-title text-dark" id="exampleModalLongTitle"><center> <?php echo $element['nombre'] ?> quedara reservada, para que puedas diligenciar tramites con la fundación.</center></h5>
+        <h5 class="modal-title text-dark" id="exampleModalLongTitle"><center> <?php echo $pet->mascota['nombre'] ?> quedara reservada, para que puedas diligenciar tramites con la fundación.</center></h5>
         <br><br>
         <table class="table table-sm">
   <thead>
@@ -36,16 +36,18 @@
   </thead>
     <tbody>
     <tr>
-        <td class="border-top-0 border border-secondary"><?php echo $element['nombre']; ?></td>
-        <td class="border-top-0 border border-secondary"><?php echo $element['edad']; ?></td>
-        <td class="border-top-0 border border-secondary" colspan="2"><?php echo $element['raza']; ?></td>
+        <td class="border-top-0 border border-secondary"><?php echo $pet->mascota['nombre']; ?></td>
+        <td class="border-top-0 border border-secondary"><?php echo $pet->mascota['edad']; ?></td>
+        <td class="border-top-0 border border-secondary" colspan="2"><?php echo $pet->mascota['raza']; ?></td>
     </tr>
   </tbody>
 </table>
       </div>
       <div class="modal-footer bg-secondary">
-        <form action="ruta.php?variable=adoptar" method="post">
+
+        <form action="http://localhost:8080/pet/ruta.php?variable=adoptar" method="post">
           <input type="hidden" name="id_pet" value="<?php echo $element['id'] ?>">
+          <input type="hidden" name="id_usuario" value="<?php $user = new Usuario(); echo $user->usuario['id'] ?>">
           <button type="submit" class="btn btn-success border border-info" >Confirmar reserva</button>
         </form>
         <button type="reset" class="btn btn-primary border border-info" data-dismiss="modal">cancelar reserva</button>

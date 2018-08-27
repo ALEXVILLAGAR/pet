@@ -1,83 +1,336 @@
+<script>
+function loginAjax(email, clave) {
+    var parametros = {"correo" : email,
+    "clave": clave};
+    if(parametros["correo"]!="" && parametros["clave"]!=""){
+        $.ajax({
+            data: parametros,
+            url: 'ruta.php?variable=login',
+            type: 'post',
+            success: function(response){
+                if(response!=0){
+                    window.location.assign(response);
+                }else{
+                    shakeModal();
+                }
+            },
+            fail: function(response){
+                shakeModal();
+            }
+        });
+    }else{
+        shakeModal();
+    }
+}
+
+function loginAjaxF(email, clave) {
+    var parametros = {"correo" : email,
+    "clave": clave};
+    if(parametros["correo"]!="" && parametros["clave"]!=""){
+        $.ajax({
+            data: parametros,
+            url: 'ruta.php?variable=login_fundacion',
+            type: 'post',
+            success: function(response){
+                if(response!=0){
+                    window.location.assign("views/fundacion/userfundacion.php");
+                }else{
+                    shakeModalF();
+                }
+            },
+            fail: function(response){
+                shakeModalF();
+            }
+        });
+    }else{
+        shakeModalF();
+    }
+}
+</script>
+
 <!-- Modal -->
-<div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade login" id="LoginUser" role="dialog" tabindex="-1">
-    <div class="modal-dialog form-dark" role="document">
-        <!--Content-->
-        <div class="modal-content card card-image">
-            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
-                <!--Header-->
-                <div class="modal-header text-center pb-4">
-                    <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel">
-                        <strong>
-                            SIGN
-                        </strong>
-                        <a class="green-text font-weight-bold">
-                            <strong>
-                                UP
-                            </strong>
-                        </a>
-                    </h3>
-                    <button aria-label="Close" class="close white-text" data-dismiss="modal" type="button">
-                        <span aria-hidden="true">
-                            ×
-                        </span>
-                    </button>
-                </div>
-                <!--Body-->
-                <div class="modal-body">
-                    <!--Body-->
-                    <div class="md-form mb-5">
-                        <input class="form-control validate white-text" id="Form-email5" type="email">
-                            <label data-error="wrong" data-success="right" for="Form-email5">
-                                Your email
-                            </label>
-                        </input>
-                    </div>
-                    <div class="md-form pb-3">
-                        <input class="form-control validate white-text" id="Form-pass5" type="password">
-                            <label data-error="wrong" data-success="right" for="Form-pass5">
-                                Your password
-                            </label>
-                            <div class="form-group mt-4">
-                                <input class="form-check-input" id="checkbox624" type="checkbox">
-                                    <label class="white-text form-check-label" for="checkbox624">
-                                        Accept the
-                                        <a class="green-text font-weight-bold" href="#">
-                                            Terms and Conditions
-                                        </a>
-                                    </label>
-                                </input>
+<div class="modal fade login" id="loginModal">
+    <div class="modal-dialog login animated">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h2 class="modal-title text-dark px-5">
+                    Iniciar Sesión
+                </h2>
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    <div class="content">
+                        <div class="social">
+                            <img src="img/user.jpg" style="">
+                            </img>
+                        </div>
+                        <div class="division">
+                            <div class="line.l">
                             </div>
-                        </input>
-                    </div>
-                    <!--Grid row-->
-                    <div class="row d-flex align-items-center mb-4">
-                        <!--Grid column-->
-                        <div class="text-center mb-3 col-md-12">
-                            <button class="btn btn-success btn-block btn-rounded z-depth-1" type="button">
-                                Sign up
-                            </button>
                         </div>
-                        <!--Grid column-->
-                    </div>
-                    <!--Grid row-->
-                    <!--Grid row-->
-                    <div class="row">
-                        <!--Grid column-->
-                        <div class="col-md-12">
-                            <p class="font-small white-text d-flex justify-content-end">
-                                Have an account?
-                                <a class="green-text ml-1 font-weight-bold" href="#">
-                                    Log in
-                                </a>
-                            </p>
+                        <div class="error">
                         </div>
-                        <!--Grid column-->
+                        <div class="form loginBox lbU" id="loginBoxU">
+                            <!-- <form accept-charset="UTF-8" action="ruta.php?variable=login" method="post"> -->
+                                <input autofocus="autofocus" class="form-control mx-auto" id="correo_login" name="correo" placeholder="Correo" type="email" required>
+                                </input>
+                                <input autofocus="autofocus" class="form-control mx-auto" id="password_login" name="clave" placeholder="Contraseña" type="password" required>
+                                </input>
+                                <div class="espacio1">
+                                </div>
+                                <input class="btn btn-default btn-login" type="submit" value="Inicio Sesión" onclick="loginAjax($('#correo_login').val(),$('#password_login').val())">
+                                    <!-- href="user.php"  -->
+                                </input>
+                            <!-- </form> -->
+                        </div>
                     </div>
-                    <!--Grid row-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="forgot login-footer lfU" id="login-footerU">
+                    <span>
+                        Pensando en
+                        <a href="javascript: showRegisterForm();">
+                            Crear Una Cuenta
+                        </a>
+                        ?
+                    </span>
+                </div>
+                <div class="forgot register-footer rfU" id="register-footerU" style="display:none">
+                    <span>
+                        Ya Tienes Una Cuenta?
+                    </span>
+                    <a href="javascript: showLoginForm();">
+                        Inicia Sesión
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="content registerBox rbU" id="registerBoxU" style="display:none;">
+                    <div class="form">
+                        <form accept-charset="UTF-8" action="ruta.php?variable=registrarme" data-remote="true" html="{:multipart=>true}" method="post">
+                            <!-- -->
+                            <input autofocus="autofocus" class="form-control mx-auto" id="correo" name="correo" placeholder="Correo" required="" type="email">
+                                <input autofocus="autofocus" class="form-control mx-auto" id="nombre" name="nombre" placeholder="Nombre" required="" type="text">
+                                    <input autofocus="autofocus" class="form-control mx-auto" id="documento" name="documento" onkeypress="return valida(event)" placeholder="Cedula" required="" type="text">
+                                        <input autofocus="autofocus" class="form-control mx-auto" id="telefono" name="telefono" onkeypress="return valida(event)" placeholder="Telefono" required="" type="text">
+                                            <input autofocus="autofocus" class="form-control mx-auto" id="direccion" name="direccion" placeholder="Dirección" required="" type="text">
+                                                <input autofocus="autofocus" class="form-control mx-auto" id="contra_registro" min="6" name="clave" placeholder="Contraseña" required="" type="password">
+                                                    <input autofocus="autofocus" class="form-control mx-auto" id="confirm_contra" min="6" name="confirmar-contra" onkeypress="return igual(event)" placeholder="Confirmar_Contraseña" required="" type="password">
+                                                        <span id="ContraOk">
+                                                        </span>
+                                                        <div class="espacio1">
+                                                        </div>
+                                                        <input class="btn btn-default btn-register" type="submit" value="Crea Tu Cuenta">
+                                                            <div class="forgot register-footer rfU" id="register-footerU" style="display:none">
+                                                                <span class="custom-checkbox">
+                                                                    <input id="checkbox1" name="options[]" required="" type="checkbox" value="1">
+                                                                        <label for="checkbox1">
+                                                                            Acepta
+                                                                        </label>
+                                                                    </input>
+                                                                </span>
+                                                                <a data-target="#exampleModalLong" data-toggle="modal" href="#">
+                                                                    Terminos y Condiciones
+                                                                </a>
+                                                            </div>
+                                                            <!-- name="commit" -->
+                                                        </input>
+                                                    </input>
+                                                </input>
+                                            </input>
+                                            <div class="espacio">
+                                            </div>
+                                        </input>
+                                    </input>
+                                </input>
+                            </input>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <!--/.Content-->
     </div>
 </div>
 <!-- Modal -->
+<!-- Modal  Terminos y Condiciones User-->
+<div aria-hidden="true" aria-labelledby="exampleModalLongTitle" class="modal fade" id="exampleModalLong" tabindex="-1">
+    <div class="modal-dialog" style="overflow-y: initial;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Terminos y Condiciones
+                </h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">
+                        ×
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body" style="overflow-y: auto;">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+            v
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal  Fundaciones -->
+<div class="modal fade login" id="loginModalF">
+    <div class="modal-dialog login animated">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h2 class="modal-title text-dark px-5">
+                    Iniciar Sesión
+                </h2>
+                <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    <div class="content">
+                        <div class="social">
+                            <img src="img/user.jpg" style="">
+                            </img>
+                        </div>
+                        <div class="division">
+                            <div class="line.l">
+                            </div>
+                        </div>
+                        <div class="error">
+                        </div>
+                        <div class="form loginBox lbF">
+                            <!-- <form accept-charset="UTF-8" action="ruta.php?variable=login_fundacion" method="post"> -->
+                                <input autofocus="autofocus" class="form-control mx-auto" id="email_fundacion" name="correo" placeholder="Correo" required="" type="text">
+                                </input>
+                                <input autofocus="autofocus" class="form-control mx-auto" id="password_fundacion" name="clave" placeholder="clave" required="" type="password">
+                                </input>
+                                <div class="espacio1">
+                                </div>
+                                <input class="btn btn-default btn-login" type="submit" value="Inicio Sesión" onclick="loginAjaxF($('#email_fundacion').val(),$('#password_fundacion').val())">
+                                    <!-- onclick="loginAjax()" -->
+                                </input>
+                            <!-- </form> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="forgot login-footer lfF">
+                    <span>
+                        Pensando en
+                        <a href="javascript: showRegisterFormF();">
+                            Crear Una Cuenta
+                        </a>
+                        ?
+                    </span>
+                </div>
+                <div class="forgot register-footer rfF" style="display:none">
+                    <span>
+                        Ya Tienes Una Cuenta?
+                    </span>
+                    <a href="javascript: showLoginFormF();">
+                        Inicia Sesión
+                    </a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="content registerBox rbF" style="display:none;">
+                    <div class="form">
+                        <form accept-charset="UTF-8" action="ruta.php?variable=registro_fundacion" data-remote="true" html="{:multipart=>true}" method="post">
+                            <input class="form-control mx-auto" id="email" name="email" placeholder="Correo" type="email" required>
+                                <input class="form-control mx-auto" id="nombre" name="nombre" placeholder="Nombre" type="text" required>
+                                        <input class="form-control mx-auto" id="telefono" name="telefono" placeholder="Telefono" type="text" required>
+                                            <input class="form-control mx-auto" id="direccion" name="direccion" placeholder="Dirección" type="text" required>
+                                                <input class="form-control mx-auto" id="password" name="password" placeholder="Contraseña" type="password" required>
+                                                    <input class="form-control mx-auto" id="password_confirmation" name="Confirma_Contraseña" placeholder="Confirmar_Contraseña" type="password" required>
+                                                        <div class="espacio1">
+                                                        </div>
+                                                        <input class="btn btn-default btn-register" name="commit" type="submit" value="Crea Tu Cuenta">
+                                                        </input>
+                                                        <div class="forgot register-footer rfF" id="register-footerF" style="display:none">
+                                                            <span class="custom-checkbox">
+                                                                <input id="checkbox1" name="options[]" required="" type="checkbox" value="1">
+                                                                    <label for="checkbox1">
+                                                                        Acepta
+                                                                    </label>
+                                                                </input>
+                                                            </span>
+                                                            <a data-target="#exampleModalLongF" data-toggle="modal" href="#">
+                                                                Terminos y Condiciones
+                                                            </a>
+                                                        </div>
+                                                    </input>
+                                                </input>
+                                            </input>
+                                            <div class="espacio">
+                                            </div>
+                                        </input>
+                                    </input>
+                                </input>
+                            </input>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal  Terminos y Condiciones Fund-->
+<div aria-hidden="true" aria-labelledby="exampleModalLongTitle" class="modal fade" id="exampleModalLongF" tabindex="-1">
+    <div class="modal-dialog" style="overflow-y: initial;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    Terminos y Condiciones
+                </h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">
+                        ×
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body" style="overflow-y: auto;">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+
+                orem ipsum dolor sit amet, consectetur adipisicing elit. Aut et quam, officia explicabo eaque voluptas harum distinctio saepe quidem voluptate soluta maxime, facere iure cum omnis sequi odio molestias quos.
+            v
+            </div>
+        </div>
+    </div>
+</div>

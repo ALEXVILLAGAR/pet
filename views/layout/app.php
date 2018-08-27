@@ -5,9 +5,11 @@ if (!(SessionesPet::session_active())) {
     header('Location: index.php');
     exit;
 }
+
 $user = new Usuario();
 if (!$user->authorizacion('usuario')) {
-    echo "<h2> No tienes Nivel para acceder a esta seccion </h2>";
+    include '../../error.html';
+
     exit;
 }
 ?>
@@ -54,10 +56,9 @@ if (!$user->authorizacion('usuario')) {
 <body>
 
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
-        <a class="btn btn-sm btn-dark" href="#" id="show-sidebar">
-            <i class="fas fa-bars">
-            </i>
-        </a>
+        <button class="btn btn-md bg-primary border border-dark text-primary arriba" id="show-sidebar">
+             <i class=" bg-dark btn btn-md ">Mi menu</i>
+        </button>
         <nav class="sidebar-wrapper" id="sidebar">
             <div class="sidebar-content">
                 <div class="sidebar-brand">
@@ -181,12 +182,63 @@ if (!$user->authorizacion('usuario')) {
                                 </span>
                             </a>
                         </li>
-                        <li class="">
-                            <a href="#" data-toggle="modal" data-target="#MhacerDenuncia">
+                        <li class="sidebar-dropdown">
+                            <a href="#" >
                                 <i class="fas fa-bullhorn">
                                 </i>
                                 <span>
+                                    Denuncias
+                                </span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="../usuario/MisDenuncias.php">
+                                            Mis de nuncias
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="#" data-toggle="modal" data-target="#MhacerDenuncia">
+                                <i class="fas fa-bullhorn">
+                                </i> <span>
                                     Hacer Denuncia
+                                    </span>
+                                </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fas fa-archive">
+                                </i>
+                                <span>
+                                    Mis adopciones
+                                </span>
+
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="../usuario/adoptados.php">
+                                            Adoptados
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="..\usuario\Estado_Adopcion.php">
+                                            Procesos de adopcion
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a href="..\..\index.php" >
+                                <i class="fas fa-arrow-alt-circle-left">
+                                </i>
+                                <span>
+                                    Inicio
                                 </span>
                             </a>
                         </li>
@@ -212,7 +264,7 @@ if (!$user->authorizacion('usuario')) {
                     </div>
                 </div>
                 <div>
-                    <a href="../../ruta.php?variable=cerrar_login">
+                    <a  data-toggle="modal" data-target="#Mcerrar_sesion" >
                         <i class="fa fa-power-off">
                         </i>
                     </a>
@@ -221,4 +273,10 @@ if (!$user->authorizacion('usuario')) {
         </nav>
         <!-- sidebar-wrapper  -->
 
+
         <?php include '..\modal\MhacerDenuncia.php'?>
+       <?php include '..\modal\Mmi_Calificacion.php'?>
+        <?php include '..\modal\Mcerrar_sesion.php'?>
+
+
+

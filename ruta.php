@@ -57,6 +57,47 @@ switch ($variable) {
 	case 'adoptar':
 		Mascota::reservar();
 		break;
+	case 'return_home':
+		$user = new Usuario();
+		Control::redirige($user->usuario);
+		break;
+	case 'eliminarFundacion':
+		Fundacion::Eliminar();
+		break;
+	case 'cambiarPassFun':
+		$fundacion = new Fundacion();
+		$fundacion->cambiarPass();
+		break;
+	case 'cambiarPassUser':
+		$usuario = new Usuario();
+		$usuario->cambiarPass();
+		break;
+	case 'resolver_denuncia':
+		Denuncia::resolver();
+		break;
+	case 'negar_adopcion':
+		$mascota = new Mascota($_POST['id_mascota']);
+		$mascota->denegar();
+		break;
+	case 'darmascota':
+		$mascota = new Mascota($_POST['id_mascota']);
+		$mascota->dar_en_adopcion();
+		break;
+	case 'registro_fundacion':
+		Fundacion::new_fundacion();
+		break;
+	case 'aceptarFundacion':
+		Fundacion::activarFund($_POST['id_fundacion']);
+		break;
+	case 'negarFundacion':
+		Fundacion::denegar();
+		break;
+		case 'eliminarUsuario':
+			Usuario::eliminarUsuario();
+			break;
+	// case 'actualizarFundacionAdmin':
+
+	// 	break;
 	// case 'users':
 	// 	$user = new Usuario();
 	// 	$user->todos_usuarios();

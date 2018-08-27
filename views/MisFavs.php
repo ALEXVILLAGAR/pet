@@ -1,11 +1,14 @@
-<div class="container py-3">
-    <div class="card">
-        <div class="row ">
-             <?php 
+<div class="container py-3" >
+    <?php 
             foreach($user->mis_favoritos() as $element): 
                     $pet = new Mascota($element['id_mascota']);
+                    $fundacion = $pet->perteneceA();
+                    if ($pet->mascota['solicitud']!=null) continue;
                 ?>
-            <div class="col-md-4 box">
+    <div class="card border-danger rounded-right" style="z-index: ">
+        <div class="row ">
+             
+            <div class="col-md-4 box " id="fundaciones">
                 <img src="data:image/jpg;base64,<?php echo base64_encode($pet->mascota['foto'])?>" class="w-100"/>
                 </img>
             </div>
@@ -24,20 +27,26 @@
                                     Edad: <?php echo $pet->mascota['edad'] ?>
                                 </li>
                                 <li>
-                                    Tamaño: <?php echo $pet->mascota['nombre'] ?>
+                                    Tamaño: <?php echo $pet->mascota['tamano'] ?>
                                 </li>
                                 <li>
-                                    Fundación: <?php echo $pet->perteneceA()['nombre'] ?>
+                                    Fundación: <?php echo $fundacion['nombre'] ?>
                                 </li>
+                                <br>
+                                <a class="btn btn-success" align="left" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> >Quiero adoptarla</a>
+
                             </ul>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, ratione!
-                            </p>
+                            
+
                         </div>
+                        
                     </div>
                 </div>
-            <?php endforeach ?>
+            
 
         </div>
-    </div>
+
+    </div><br><?php include 'galerias/ConfirmarAdopcion.php'; ?> <?php endforeach ?>
+
 </div>
+

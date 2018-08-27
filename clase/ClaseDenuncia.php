@@ -18,13 +18,18 @@ class Denuncia
 		}
 		$user = SessionesPet::session_info();
 		$fecha = date("Y-m-d H:i:s");
-		mysqli_query($this->db,"INSERT INTO denuncia VALUES ('','$fecha','$imagen','$_POST[direccion]','$_POST[descripcion]','$user[id]')") or die ('errorrrr');
-		header('Location: views/usuario/user.php');
+		mysqli_query($this->db,"INSERT INTO denuncia VALUES ('','$fecha',null,'$imagen','$_POST[direccion]','$_POST[descripcion]','$user[id]')") or die ('errorrrr');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
+		/*header('Location: views/usuario/user.php');*/
 	}
 
 	public static function denuncias(){
-		return mysqli_query(Conectar::conexion(),"SELECT * FROM denuncia") or die ('error');
+		$consulta =  mysqli_query(Conectar::conexion(),"SELECT * FROM denuncia") or die ('error');
+		return $consulta;
 	}
+
+	// public function resolver()
+
 }
 
  ?>

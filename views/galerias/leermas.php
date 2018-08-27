@@ -1,7 +1,7 @@
 <div class="modal" id=<?php echo "myModal".$element['id'] ?> >
-    <div class="modal-dialog border-info">
+    <div class="modal-dialog">
 
-        <div class="modal-content">
+        <div class="modal-content border-white">
             <!-- Modal Header -->
             <div class="modal-header bg-dark">
                 <h4 class="modal-title text-light">
@@ -34,7 +34,7 @@
                                             <?php echo "Edad: ".$pet->mascota['edad'] ?>
                                         </li>
                                         <li>
-                                            <?php echo "Tamaño: ".$pet->mascota['nombre'] ?>
+                                            <?php echo "Tamaño: ".$pet->mascota['tamano'] ?>
                                         </li>
                                         <li>
                                             <?php echo "Fundación: ".$fundacion['nombre']?>
@@ -50,11 +50,15 @@
                 </div>
             </div>
             <!-- Modal footer -->
-            <div class="modal-footer bg-seconda">
-                <button class="btn btn-primary btn-block" type="button">
-                    Adoptar
-                </button>
-                <button class="btn btn-danger" data-dismiss="modal" type="button">
+            <div class="modal-footer bg-secondary">
+
+                <?php if(isset($vistauser)): ?>
+                    <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> data-dismiss="modal">
+                        Adoptar
+                    </button>
+                <?php endif ?>
+
+                <button class="btn btn-warning" data-dismiss="modal" type="button">
                     Cerrar
                 </button>
             </div>

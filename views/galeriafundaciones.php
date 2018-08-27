@@ -17,21 +17,23 @@
                             <p>
                             </p>
                             <p>
-                                <a class="btn btn-primary" href="#">
-                                    Leer Más
-                                </a>
+                           <button class="btn btn-danger" data-target=<?php echo "#Mleer_fundacion".$element['id'] ?> data-toggle="modal" type="button">
+                                        Leer Mas
+                                    </button>
+                                    
                                 <!-- Button to Open the Modal -->
-                                <button class="btn btn-info" data-target=<?php echo "#newDonationM".$element['id'] ?> data-toggle="modal" type="button">
+                                <button class="btn btn-info" data-target="#newDonationM" data-toggle="modal" type="button">
                                     Donar
                                 </button>
                                 <!-- The Modal -->
                                 <?php include 'donar.php' ?>
+                                <?php include 'galerias/leermasGalerias.php' ?>
                             </p>
                         </div>
                     </hr>
                 </div>
-            </div>
             <?php endforeach ?>
+            </div>
         </div>
     </div>
 </section>

@@ -47,7 +47,7 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
 </html>
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
-        <a class="btn btn-sm btn-dark" href="#" id="show-sidebar">
+        <a class="btn btn-sm btn-dark arriba" href="#" id="show-sidebar">
             <i class="fas fa-bars">
             </i>
         </a>
@@ -125,6 +125,7 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
 
                                 </ul>
                             </div>
+                        </li>
                             <li>
                             <a href="../fundacion/gmascotas.php" >
                                 <i class="fas fa-paw">
@@ -133,7 +134,6 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                     Gestión mascotas
                                 </span>
                             </a>
-                        </li>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="#">
@@ -156,9 +156,46 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                    </ul>
                             </div>
                         </li>
-                                           </ul>
-                </div>
+
+                        <li class="">
+                            <a href="..\..\index.php" >
+                                <i class="fas fa-arrow-alt-circle-left">
+                                </i>
+                                <span>
+                                    Inicio
+                                </span>
+                            </a>
+                        </li>
+                      
                 <!-- sidebar-menu  -->
+
+                          <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fas fa-archive">
+                                </i>
+                                <span>
+                                    Adopciones
+                                </span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="../fundacion/adoptadosF.php">
+                                            Adoptados
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="..\fundacion\Estado_AdopcionF.php">
+                                            Procesos de adopcion
+                                        </a>
+                                    </li>                        
+                                </ul>                
+                            </div>
+                        </li>
+                     </ul>
+                </div>
+               <!-- sidebar-menu  -->
+
             </div>
             <!-- sidebar-content  -->
             <div class="sidebar-footer">
@@ -174,19 +211,14 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                         <a class="dropdown-item" href="../perfil/perfilF.php">
                             Mi perfil
                         </a>
-                        <a class="dropdown-item" href="#">
-                            Help
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            Setting
-                        </a>
                     </div>
                 </div>
                 <div>
-                    <a href="../../ruta.php?variable=cerrar_login">
+                    <a  data-toggle="modal" data-target="#Mcerrar_sesion" >
                         <i class="fa fa-power-off">
                         </i>
                     </a>
                 </div>
             </div>
         </nav>
+        <?php include '..\modal\Mcerrar_sesion.php'; ?>

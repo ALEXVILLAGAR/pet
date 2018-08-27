@@ -12,10 +12,10 @@
      <h5 class="text-info">Quieres añadir a <?php echo $element['nombre'] ?> a tus favoritos ?</h5>
       </div>
       <div class="modal-footer bg-secondary">
-        <form action="ruta.php?variable=agregarFav" method="post" accept-charset="utf-8">
+        <form action="http://localhost:8080/pet/ruta.php?variable=agregarFav" method="post" accept-charset="utf-8">
           <input type="hidden" name="id_pet" value="<?php echo $element['id']  ?>">
           
-        <button type="submit" class="btn btn-primary bg-success text-dark">Añadir</button>
+        <button  type="submit" class="btn btn-primary bg-success text-dark">Añadir</button>
         </form>
         <button type="button" class="btn btn-primary bg-success text-dark" data-dismiss="modal">cerrar</button>
       </div>

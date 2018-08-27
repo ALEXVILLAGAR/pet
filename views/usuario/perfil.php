@@ -1,5 +1,6 @@
 <?php 
 include '../layout/app.php';
+
  ?>
         <!-- sidebar-wrapper  -->
         <section class="bg-faded page-content" >

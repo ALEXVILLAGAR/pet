@@ -55,6 +55,7 @@ require_once("ControlClass.php");
                                 Fundaciones aliadas
                             </a>
                         </li>
+      
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#services">
                                 Donar
@@ -109,10 +110,12 @@ require_once("ControlClass.php");
             }else {
 
         ?>  
-        <button class="btn btn-primary btn-xl js-scroll-trigger">
-            <a class="text-white" href="ruta.php?variable=cerrar_login">cerrar Sesión</a>
-        </button>
+            <a class="text-white btn btn-primary btn-xl js-scroll-trigger" href="ruta.php?variable=return_home">Regresar a mi perfil</a>
+
+            <a class="text-white btn btn-primary btn-xl js-scroll-trigger" href="ruta.php?variable=cerrar_login">cerrar mi sesión</a>
+        
          <?php
+
             }
         ?> 
                         
@@ -121,14 +124,35 @@ require_once("ControlClass.php");
             </div>
         </header>
 <!--------------------------------GALERIA------------------------------------------>
+
        <section class="bg-primary mascotas-index py-2 text-xs-center p-0" id="portfolio">
-           <?php include 'views/galerias/galeria_disponible.php'?>
+        <div class="col-lg-12 text-center">
+    <br>
+                <h2 class="section-heading text-white">
+                    Nuestras mascotas
+                </h2>
+                <hr class="my-6 bg-white">
+                </hr>
+            </div>
+            <?php $consulta = Mascota::only_disponible(); 
+            if (SessionesPet::session_active()) {
+                $vistauser=true;
+            }
+             ?>
+           <?php include 'views/galerias/galeria_principal.php'?>
        </section> 
 <!--------------------------------FUNDACIONES-------------------------------------->
         <section class="bg-dark" id="about" >
+          
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-12">
+
+                <h2 class="section-heading text-white">
+                    Fundaciones aliadas
+                </h2>
+                <hr class="my-4">
+                </hr>
                 <div class="carousel slide" data-ride="carousel" id="demo">
                     <!-- Indicators -->
                     <ul class="carousel-indicators">
@@ -142,42 +166,26 @@ require_once("ControlClass.php");
                     <!-- The slideshow -->
                     <div class="carousel-inner">
                         <center>
-                            <div class="carousel-item active">
-                                <img alt="Los Angeles" src="img/1.jpg">
-                                    <div class="carousel-caption">
-                                        <h3>
-                                            Los Angeles
-                                        </h3>
-                                        <p>
-                                            We had such a great time in LA!
-                                        </p>
-                                    </div>
-                                </img>
-                            </div>
-                            <div class="carousel-item">
-                                <img alt="Chicago" src="img/2.jpg">
-                                    <div class="carousel-caption">
-                                        <h3>
-                                            Los Angeles
-                                        </h3>
-                                        <p>
-                                            We had such a great time in LA!
-                                        </p>
-                                    </div>
-                                </img>
-                            </div>
-                            <div class="carousel-item">
-                                <img alt="New York" src="img/fundacion1.jpg">
-                                    <div class="carousel-caption">
-                                        <h3>
-                                            Los Angeles
-                                        </h3>
-                                        <p>
-                                            We had such a great time in LA!
-                                        </p>
-                                    </div>
-                                </img>
-                            </div>
+                            <?php foreach (Fundacion::FundacionSlide() as $key => $element): ?>
+                                <?php if ($key>2) continue; ?>
+                                <?php if ($key+1==1): ?>
+                                    <div class="carousel-item active">
+                                <?php else: ?>
+                                    <div class="carousel-item">
+                                <?php endif ?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto_fundacion'])?>" alt="Los Angeles"/>
+                                        <div class="carousel-caption">
+                                            <h3>
+                                                <?php echo $element['nombre'] ?>
+                                            </h3>
+                                            <p>
+                                                <strong><?php echo "direccion: ".$element['direccion']."<br> Email: ".$element['email'] ?></strong>
+                                            </p>
+                                        </div>
+                                    </img>
+                                </div>
+                            <?php endforeach ?>
+
                         </center>
                     </div>
                     <!-- Left and right controls -->
@@ -196,9 +204,8 @@ require_once("ControlClass.php");
 </section>
 <!--------------------------------DONACION----------------------------------------->
          <section id="services">
-    <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
+            <div class="col-lg-12 text-center py-2 text-xs-center">
                 <h2 class="section-heading">
                     Como Hacer Donaciones
                 </h2>
@@ -206,7 +213,6 @@ require_once("ControlClass.php");
                 </hr>
             </div>
         </div>
-    </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">
@@ -214,7 +220,7 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-handshake-o text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        en Domicilios
+                       <a href="#" data-target="#loginModal" data-toggle="modal">en Domicilios</a> 
                     </h3>
 
                     <p class="text-muted mb-0">
@@ -227,7 +233,7 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-btc text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        en linea
+                        <a href="#" data-target="#loginModal" data-toggle="modal">en linea</a>
                     </h3>
                     <p class="text-muted mb-0">
                         You can use this theme as is, or you can make changes!
@@ -239,7 +245,7 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-money text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        puntos de atención
+                        <a href="#" data-target="#loginModal" data-toggle="modal">puntos de atención</a>
                     </h3>
                     <p class="text-muted mb-0">
                         We update dependencies to keep things fresh.
@@ -251,7 +257,7 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-whatsapp text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        contactanos
+                        <a href="#" data-target="#loginModal" data-toggle="modal">contactanos</a>
                     </h3>
                     <p class="text-muted mb-0">
                         You have to make your websites with love these days!
@@ -347,9 +353,8 @@ require_once("ControlClass.php");
         <script src="js/main.js">
         </script>
         <script src="js/login-register.js" type="text/javascript"></script>
-     <script src="js/login-registerF.js" type="text/javascript"></script>
-        <?php include 'views/login/loginU.html'?>
-    <?php include 'views/login/loginF.html'?>
+        <?php include 'views/login/login.html'?>
+    
 
     <script>
 function valida(e){

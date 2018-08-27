@@ -1,3 +1,18 @@
+<?php 
+// session_start();
+require_once("..\..\ControlClass.php");
+if(!(SessionesPet::session_active())){
+    header('Location: index.php');
+    exit;
+}
+$user =new Usuario();
+if(!$user->authorizacion('admi')){
+    include '../../error.html';
+
+    exit;
+}
+ ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,18 +24,18 @@
                             I WANT A PET
                         </title>
                         <!-- Bootstrap core CSS -->
-                        <link href="css/estilos.css" rel="stylesheet">
-                            <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+                        <link href="../../css/estilos.css" rel="stylesheet">
+                            <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
                                 <!-- Custom fonts for this template -->
-                                <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+                                <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
                                     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
                                         <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" rel="stylesheet">
                                             <!-- Plugin CSS -->
-                                            <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-                                                <link href="css/custom.css" rel="stylesheet">
-                                                    <link href="css/custom-themes.css" rel="stylesheet">
+                                            <link href="../../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+                                                <link href="../../css/custom.css" rel="stylesheet">
+                                                    <link href="../../css/custom-themes.css" rel="stylesheet">
                                                         <!-- Custom styles for this template -->
-                                                        <link href="css/creative.min.css" rel="stylesheet">
+                                                        <link href="../../css/creative.min.css" rel="stylesheet">
                                                         </link>
                                                     </link>
                                                 </link>
@@ -55,18 +70,23 @@
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <img alt="User picture" class="img-responsive img-rounded" src="img/user.jpg">
-                        </img>
+                       <?php if (isset($user->usuario['foto_perfil'])): ?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($user->usuario['foto_perfil'])?> " class="img-responsive img-rounded" alt="User picture"/>
+        <?php else: ?>
+            <img alt="User picture" class="img-responsive img-rounded" src="//placehold.it/150">
+        <?php endif ?>
                     </div>
                     <div class="user-info">
                         <span class="user-name">
-                            Alexander
                             <strong>
-                                Villaneda
+                            </strong>
+                            <strong>
+                               <?php echo($user->usuario['nombre']); ?>
                             </strong>
                         </span>
                         <span class="user-role">
-                            Administrador
+                            <strong>Administrador</strong>
+                            <strong> <?php echo($user->usuario['email']); ?></strong>
                         </span>
                         <span class="user-status">
                             <i class="fa fa-circle">
@@ -84,6 +104,15 @@
                                 General
                             </span>
                         </li>
+                        <li class="">
+                            <a href="..\administrador\estadisticas.php" >
+                                <i class="fas fa-chart-line">
+                                </i>
+                                <span>
+                                    Estadisticas
+                                </span>
+                            </a>
+                        </li>
                         <li class="sidebar-dropdown">
                             <a href="#" id="mascotas">
                                 <i class="fas fa-paw">
@@ -95,17 +124,17 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="../administrador/administrador.php">
                                             Todos
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="perros_admin.php">
                                             Perros
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="gatos_admin.php">
                                             Gatos
                                         </a>
                                     </li>
@@ -123,12 +152,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="aprobar_fundacion.php">
                                             Aprobar Fundaciones
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="gestion_fundaciones.php">
                                             Gestion Fundaciones
                                         </a>
                                     </li>
@@ -146,12 +175,21 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="gestion_usuarios.php">
                                             Gestion usuarios
                                         </a>
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                        <li class="">
+                            <a href="..\..\index.php" >
+                                <i class="fas fa-arrow-alt-circle-left">
+                                </i>
+                                <span>
+                                    Mi inicio
+                                </span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -167,43 +205,25 @@
                         </span>
                     </a>
                     <div aria-labelledby="dropdownMenuMessage" class="dropdown-menu">
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="perfilAdmin.php">
                             Mi perfil
                         </a>
                     </div>
                 </div>
                 <div>
-                    <a href="index.php">
+                    <a href="#" data-toggle="modal" data-target="#Mcerrar_sesion">
                         <i class="fa fa-power-off">
                         </i>
                     </a>
+                   
                 </div>
             </div>
         </nav>
         <!-- sidebar-wrapper  -->
-        <section class="bg-faded page-content">
-            <?php include '..\tablas\tablamascotasadmin.php'?>
-
-        </section>
+         
+ <?php include '..\modal\Mcerrar_sesion.php' ?>
+      
         <!-- page-content" -->
-    </div>
-    <!-- page-wrapper -->
-    <script src="../../vendor/jquery-easing/jquery.easing.min.js">
-    </script>
-    <script src="../../vendor/scrollreveal/scrollreveal.min.js">
-    </script>
-    <script src="../../vendor/magnific-popup/jquery.magnific-popup.min.js">
-    </script>
-    <script src="../../vendor/jquery/jquery.min.js">
-    </script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js">
-    </script>
-    <script src="../../js/custom.js">
-    </script>
-    <script src="../../js/pinterest_grid.js">
-    </script>
-    <script src="../../js/creative.min.js">
-    </script>
-    <script src="../../js/main.js">
-    </script>
-</body>
+    
+
+
