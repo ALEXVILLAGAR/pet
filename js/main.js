@@ -68,3 +68,9 @@ $(document).ready(function() {
         });
     });
 });
+/*------------CORAZON FAV----------*/
+$(function() {
+    $(".heart").on("click", function() {
+        $(this).toggleClass("heart-blast");
+    });
+});

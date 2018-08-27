@@ -28,16 +28,20 @@
 								<label for="selectAll"></label>
 							</span>
 						</th>
-                        <th>Mascota</th>
                         <th>Foto</th>
+                        <th>Mascota</th>
 						<th>Fecha</th>
                        <th>Adoptante</th>
+                       <th>Documento</th>
                        <th>Direccion</th>
-                       <th>Telefono</th>
                        <th>opciones</th>
                     </tr>
                 </thead>
                 <tbody>
+                	<?php
+                    foreach (Adopcion::adoptadasDeFun($fundacion->fundacion['id']) as $element): $pet=new Mascota($element['id_mascota']); 
+                        $usuario = Usuario::GetUsuario($element['id_usuario'])?>
+                		
                     <tr>
 						<td>
 							<span class="custom-checkbox">
@@ -45,97 +49,44 @@
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar"></td>
-                        <td>89 Chiaroscuro Rd, Portland, USA</td>
-                      <td>(171) 555-2222</td> 
-                      <td>(313) 555-5735</td>
-                      <td>(171) 555-2222</td> 
-                      <td>(313) 555-5735</td>
-                       
+                        <td><img src="data:image/jpg;base64,<?php echo base64_encode($pet->mascota['foto'])?> " class="avatar" alt="avatar"/></td>
+                        <td> <?php echo $pet->mascota['nombre'] ?> </td>
+                        <td> <?php echo $element['fecha'] ?> </td>
+                      <td> <?php echo $usuario['nombre'] ?> </td>
+                      <td> <?php echo $usuario['documento'] ?> </td>
+                      <td> <?php echo $usuario['direccion'] ?> </td>
+
                         <td>
-                         <!--  <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i></a>  -->
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
+
+                            <a href="<?php echo "#deleteEmployeeModal".$element['id'] ?>" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
                         </td>
                     </tr>
-                    <tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox2" name="options[]" value="1">
-								<label for="checkbox2"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar"></td>
-                       	<td>Obere Str. 57, Berlin, Germany</td>
-                        <td>(313) 555-5735</td>
-                        <td>(313) 555-5735</td>
-                        <td>(171) 555-2222</td> 
-                      <td>(313) 555-5735</td>
-                        
-                        <td>
-                           <!-- <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Edit"> </i></a>  -->
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
-                        </td>
-                    </tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox3" name="options[]" value="1">
-								<label for="checkbox3"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar"></td>
-                    
-						<td>25, rue Lauriston, Paris, France</td>
-                       <td>(503) 555-9931</td>
-                       <td>(313) 555-5735</td>
-                       <td>(171) 555-2222</td> 
-                      <td>(313) 555-5735</td>
-                     
-                        <td>
-                          <!--    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i></a>  -->
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox4" name="options[]" value="1">
-								<label for="checkbox4"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar"></td>
-                        
-						<td>C/ Araquil, 67, Madrid, Spain</td>
-                       <td>(204) 619-5731</td>
-                       <td>(313) 555-5735</td>
-                       <td>(171) 555-2222</td> 
-                      <td>(313) 555-5735</td>
-                      
-                        <td>
-                          <!--   <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fas fa-edit" data-toggle="tooltip" title="Edit"> </i></a> -->
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
-                        </td>
-                    </tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox5" name="options[]" value="1">
-								<label for="checkbox5"></label>
-							</span>
-						</td>
-                        <td><img src="img/user.jpg" class="avatar" alt="Avatar"></td>
-                     
-						<td>Via Monte Bianco 34, Turin, Italy</td>
-                    <td>(480) 631-2097</td>
-                    <td>(313) 555-5735</td>
-                    <td>(171) 555-2222</td> 
-                      <td>(313) 555-5735</td>
-                  
-                        <td>
-                           <!-- <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class=" fas fa-edit" data-toggle="tooltip" title="Edit"> </i></a>  -->
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
-                        </td>
-                    </tr>
+
+	<!-- Delete Modal HTML -->
+	<div id="<?php echo "deleteEmployeeModal".$element['id'] ?>" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">
+						<h4 class="modal-title">Eliminar registro de Adopcion</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>esta seguro de borrar estos registros?</p>
+						<p class="text-warning"><small>Esta Acción no puede ser deshecha.</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+						<input type="submit" class="btn btn-danger" value="Eliminar">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    </div>
+
+                	<?php endforeach ?>
+
                 </tbody>
             </table>
 			<div class="clearfix">
@@ -151,112 +102,3 @@
                 </ul>
             </div>
         </div>
-    </div>
-	<!-- Edit Modal HTML -->
-	<!-- <div id="addEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Añadir Usuario</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Nombre</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Documento</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Direccion</label>
-							<textarea class="form-control" required></textarea>
-						</div>
-						<div class="form-group">
-							<label>Telefono</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Foto</label>
-							<input type="file" class="form-control" >
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-success" value="Añadir">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div> -->
-	<!-- Edit Modal HTML -->
-	<!-- <div id="editEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Editar Información</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-	
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Nombre</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Documento</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Direccion</label>
-							<textarea class="form-control" required></textarea>
-						</div>
-						<div class="form-group">
-							<label>Telefono</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Foto</label>
-							<input type="file" class="form-control" >
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-info" value="Guardar">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div> -->
-	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Eliminar Usuario</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<p>esta seguro de borrar estos registros?</p>
-						<p class="text-warning"><small>Esta Acción no puede ser deshecha.</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-danger" value="Eliminar">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>

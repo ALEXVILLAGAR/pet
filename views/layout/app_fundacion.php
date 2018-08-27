@@ -156,6 +156,19 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                    </ul>
                             </div>
                         </li>
+
+                        <li class="">
+                            <a href="..\..\index.php" >
+                                <i class="fas fa-arrow-alt-circle-left">
+                                </i>
+                                <span>
+                                    Inicio
+                                </span>
+                            </a>
+                        </li>
+                      
+                <!-- sidebar-menu  -->
+
                           <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fas fa-archive">
@@ -167,19 +180,22 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
-                                        <a href="../usuario/adoptadosF.php">
+                                        <a href="../fundacion/adoptadosF.php">
                                             Adoptados
                                         </a>
                                     </li>
                                     <li >
-                                        <a href="..\usuario\Estado_AdopcionF.php">
+                                        <a href="..\fundacion\Estado_AdopcionF.php">
                                             Procesos de adopcion
                                         </a>
                                     </li>                        
-                                </ul>                </div>
+                                </ul>                
+                            </div>
+                        </li>
+                     </ul>
+                </div>
                <!-- sidebar-menu  -->
 
-                                       
             </div>
             <!-- sidebar-content  -->
             <div class="sidebar-footer">

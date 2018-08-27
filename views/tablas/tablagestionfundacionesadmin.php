@@ -55,56 +55,10 @@
                         <td>Certificado</td>
                         <td>
 
-                             <button class="btn btn-info"  href="#" data-toggle="modal" data-target=<?php echo "#editEmployeeModal".$element1['id'] ?> type="button"> Editar  </button>
-
                              <button class="btn btn-danger"  href="#" data-toggle="modal" data-target=<?php echo "#deleteEmployeeModal".$element1['id'] ?> type="button"> Eliminar  </button>
                         </td>
                     </tr>
 
-                    <!-- Edit Modal HTML -->
-	<div class="modal fade" id=<?php echo "editEmployeeModal".$element1['id']?> >
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form action="#" method="post" enctype="multipart/form-data">
-					<div class="modal-header">
-						<h4 class="modal-title">Editar Información</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Nombre</label>
-							<input type="text" class="form-control" name="nombre" value="<?php echo $element1['nombre'] ?>" required>
-						</div>
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" name="correo" value="<?php echo $element1['email'] ?>" required>
-						</div>
-						<div class="form-group">
-							<label>Dirección</label>
-							<textarea class="form-control" name="direccion" value="<?php echo $element1['direccion'] ?>" required></textarea>
-						</div>
-						<div class="form-group">
-							<label>Telefono</label>
-							<input type="text" class="form-control" name="telefono" value="<?php echo $element1['telefono'] ?>" required>
-						</div>
-						<div class="form-group">
-							<label>Foto</label>
-							<input type="file" class="form-control" name="foto-fundacion">
-						</div>
-						<div class="form-group">
-							<label>Certificado</label>
-							<input type="file" class="form-control" name="certificado">
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-primary" value="Guardar">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
 	<!-- Delete Modal HTML -->
 	<div class="modal fade" id=<?php echo "deleteEmployeeModal".$element1['id'] ?> >
 		<div class="modal-dialog">
@@ -119,8 +73,8 @@
 						<p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
 					</div>
 					<div class="modal-footer">
-						<input type="hidden" name="id_fundacion" value="<?php echo $element1['id'] ?>">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+						<input type="hidden" name="id_fundacion" value="<?php echo $element1['id'] ?>">
 						<input type="submit" class="btn btn-primary" value="Eliminar">
 					</div>
 				</form>

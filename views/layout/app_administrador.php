@@ -7,7 +7,8 @@ if(!(SessionesPet::session_active())){
 }
 $user =new Usuario();
 if(!$user->authorizacion('admi')){
-    echo "<h2> No tienes Nivel para acceder a esta seccion </h2>";
+    include '../../error.html';
+
     exit;
 }
  ?>
@@ -103,6 +104,15 @@ if(!$user->authorizacion('admi')){
                                 General
                             </span>
                         </li>
+                        <li class="">
+                            <a href="..\administrador\estadisticas.php" >
+                                <i class="fas fa-chart-line">
+                                </i>
+                                <span>
+                                    Estadisticas
+                                </span>
+                            </a>
+                        </li>
                         <li class="sidebar-dropdown">
                             <a href="#" id="mascotas">
                                 <i class="fas fa-paw">
@@ -171,6 +181,15 @@ if(!$user->authorizacion('admi')){
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                        <li class="">
+                            <a href="..\..\index.php" >
+                                <i class="fas fa-arrow-alt-circle-left">
+                                </i>
+                                <span>
+                                    Mi inicio
+                                </span>
+                            </a>
                         </li>
                     </ul>
                 </div>

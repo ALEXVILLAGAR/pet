@@ -72,6 +72,29 @@ switch ($variable) {
 		$usuario = new Usuario();
 		$usuario->cambiarPass();
 		break;
+	case 'resolver_denuncia':
+		Denuncia::resolver();
+		break;
+	case 'negar_adopcion':
+		$mascota = new Mascota($_POST['id_mascota']);
+		$mascota->denegar();
+		break;
+	case 'darmascota':
+		$mascota = new Mascota($_POST['id_mascota']);
+		$mascota->dar_en_adopcion();
+		break;
+	case 'registro_fundacion':
+		Fundacion::new_fundacion();
+		break;
+	case 'aceptarFundacion':
+		Fundacion::activarFund($_POST['id_fundacion']);
+		break;
+	case 'negarFundacion':
+		Fundacion::denegar();
+		break;
+		case 'eliminarUsuario':
+			Usuario::eliminarUsuario();
+			break;
 	// case 'actualizarFundacionAdmin':
 
 	// 	break;

@@ -21,7 +21,7 @@ class Usuario
 		mysqli_query($this->db,"UPDATE usuario SET nombre='$_POST[nombre]',documento='$_POST[documento]',direccion= '$_POST[direccion]', email='$_POST[correo]' WHERE id = '$id'") or die ('error');	
 		$user = $this->GetUsuario($id);
 		$_SESSION['user']= $user;
-		Control::redirige($user);
+          header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
 	public function authorizacion($type){
@@ -47,7 +47,7 @@ class Usuario
 		if($resultado['id_usuario']!=$user_id){
 			$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$_POST[id_pet]','$user_id')") or die ('error');
 		}else{ header('Location: index.php'); }
-		header('Location: views/usuario/user.php');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
 	public function mis_favoritos(){	//favoritos de cada usuario
@@ -67,7 +67,7 @@ class Usuario
 		$insertion = mysqli_query($this->db,"UPDATE usuario SET foto_perfil='$image' WHERE id = '$id'") or die ('errorrrr');
 		$user = $this->GetUsuario($id);
 		$_SESSION['user']= $user;
-		Control::redirige($user);
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
 		
 	}
 
@@ -89,6 +89,36 @@ class Usuario
 			$insertion = mysqli_query($this->db,"UPDATE usuario SET clave=MD5('$_POST[password]') WHERE id = '$id'") or die ('errorrrr');
 			Control::cerrar_sesion();
 		}
+	}
+
+	public function mis_denuncias(){
+		$user_id = $this->usuario['id'];
+		$resultado = mysqli_query($this->db, "SELECT * FROM denuncia WHERE id_usuario = '$user_id'" ) or die ( "casi");
+		return $resultado;
+	}
+
+
+	public static function total_usuarios(){
+		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT Count(id) FROM usuario "));
+		return $insertion;
+        }
+
+	public function mis_adoptados(){
+		$user_id = $this->usuario['id'];
+		$consulta="SELECT * FROM adopcion LEFT JOIN `mascota` ON `adopcion`.`id_usuario` = '$user_id' WHERE `mascota`.`id_usuario` = '$user_id' && solicitud = 'Aprobada'";
+		$resultado = mysqli_query($this->db, $consulta ) or die ( "casi");
+		return $resultado;	
+
+	}
+
+	public static function eliminarUsuario(){
+		$id=$_POST['id_usuario'];
+		mysqli_query(Conectar::conexion(),"DELETE FROM preferencia WHERE id_usuario = '$id'") or die('error preferencia');
+		mysqli_query(Conectar::conexion(),"DELETE FROM adopcion WHERE id_usuario = '$id'") or die ('error adopcion');
+		mysqli_query(Conectar::conexion(),"DELETE FROM donaciones WHERE id_usuario = '$id'") or die ('error donaciones');
+		mysqli_query(Conectar::conexion(),"DELETE FROM denuncia WHERE id_usuario = '$id'") or die ('error denuncia');
+		mysqli_query(Conectar::conexion(),"DELETE FROM usuario WHERE id = '$id'") or die ('error al usuario');
+		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 }
 

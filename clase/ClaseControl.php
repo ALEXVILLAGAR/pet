@@ -19,23 +19,28 @@ class Control
 	}
 
 	public static function login($table='usuario'){
-		Validacion::validar_email($_POST[correo]);
-		$consulta = "SELECT * FROM $table WHERE email = '$_POST[correo]' && clave = MD5('$_POST[clave]')";			
-		
+		Validacion::validar_email($_POST['correo']);
+		if ($table=='usuario') {
+			$consulta = "SELECT * FROM $table WHERE email = '$_POST[correo]' && clave = MD5('$_POST[clave]')";			
+		}else{
+			$consulta = "SELECT * FROM $table WHERE email = '$_POST[correo]' && clave = MD5('$_POST[clave]') && estado = 'Activo'";
+		}		
 		$resultado = mysqli_query(Conectar::conexion(), $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 		$fila =  mysqli_fetch_array($resultado);
-		
 		if(MD5($_POST['clave'])==$fila['clave']){
-		// if($_POST['clave']===$fila['clave']){
-			// session_start();
 			$_SESSION['loggedin'] = true;
 			$_SESSION['user'] = $fila;
 			$_SESSION['start'] = time();
 		    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
-		    Control::redirige($fila);
+		    if($fila['tipo']=='admi'){
+			    echo 'views\administrador\estadisticas.php';
+		    }elseif($fila['tipo']=='usuario'){
+			    echo 'views\usuario\user.php';
+		    }else{
+			    echo 'views\fundacion\userfundacion.php';
+		    }
 		}else{
-			$variable =true;
-			header('Location: index.php?variable=$variable');
+			echo 0;
 		}
 	}
 
@@ -58,7 +63,7 @@ class Control
 
 	public static function redirige($fila){
 			if($fila['tipo']=='admi'){
-			    header('Location: views\administrador\administrador.php');     
+			    header('Location: views\administrador\estadisticas.php');     
 			}
 			elseif($fila['tipo']=='usuario'){
 		    	header('Location: views\usuario\user.php');
@@ -66,6 +71,10 @@ class Control
 			else{
 		    	header('Location: views\fundacion\userfundacion.php');
 			}
+	}
+
+	public static function botonesGaleria(){
+		return SessionesPet::session_active() && SessionesPet::session_info()['tipo']=='usuario';
 	}
 
 }
