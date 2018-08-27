@@ -22,7 +22,6 @@ class Usuario
 		$user = $this->GetUsuario($id);
 		$_SESSION['user']= $user;
           header('Location: '.$_SERVER['HTTP_REFERER'] );
-          		// Control::redirige($user);
 	}
 
 	public function authorizacion($type){
@@ -49,7 +48,6 @@ class Usuario
 			$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$_POST[id_pet]','$user_id')") or die ('error');
 		}else{ header('Location: index.php'); }
 		header('Location: '.$_SERVER['HTTP_REFERER'] );
-		/*header('Location: views/usuario/user.php');*/
 	}
 
 	public function mis_favoritos(){	//favoritos de cada usuario
@@ -69,7 +67,6 @@ class Usuario
 		$insertion = mysqli_query($this->db,"UPDATE usuario SET foto_perfil='$image' WHERE id = '$id'") or die ('errorrrr');
 		$user = $this->GetUsuario($id);
 		$_SESSION['user']= $user;
-		/*Control::redirige($user);*/
 		header('Location: '.$_SERVER['HTTP_REFERER'] );
 		
 	}
@@ -105,6 +102,16 @@ class Usuario
 		$consulta="SELECT * FROM adopcion LEFT JOIN `mascota` ON `adopcion`.`id_usuario` = '$user_id' WHERE `mascota`.`id_usuario` = '$user_id' && solicitud = 'Aprobada'";
 		$resultado = mysqli_query($this->db, $consulta ) or die ( "casi");
 		return $resultado;	
+	}
+
+	public static function eliminarUsuario(){
+		$id=$_POST['id_usuario'];
+		mysqli_query(Conectar::conexion(),"DELETE FROM preferencia WHERE id_usuario = '$id'") or die('error preferencia');
+		mysqli_query(Conectar::conexion(),"DELETE FROM adopcion WHERE id_usuario = '$id'") or die ('error adopcion');
+		mysqli_query(Conectar::conexion(),"DELETE FROM donaciones WHERE id_usuario = '$id'") or die ('error donaciones');
+		mysqli_query(Conectar::conexion(),"DELETE FROM denuncia WHERE id_usuario = '$id'") or die ('error denuncia');
+		mysqli_query(Conectar::conexion(),"DELETE FROM usuario WHERE id = '$id'") or die ('error al usuario');
+		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 }
 

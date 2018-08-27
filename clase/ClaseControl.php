@@ -27,17 +27,20 @@ class Control
 		}		
 		$resultado = mysqli_query(Conectar::conexion(), $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 		$fila =  mysqli_fetch_array($resultado);
-		
 		if(MD5($_POST['clave'])==$fila['clave']){
-			// session_start();
 			$_SESSION['loggedin'] = true;
 			$_SESSION['user'] = $fila;
 			$_SESSION['start'] = time();
 		    $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
-		    Control::redirige($fila);
+		    if($fila['tipo']=='admi'){
+			    echo 'views\administrador\estadisticas.php';
+		    }elseif($fila['tipo']=='usuario'){
+			    echo 'views\usuario\user.php';
+		    }else{
+			    echo 'views\fundacion\userfundacion.php';
+		    }
 		}else{
-			$variable =true;
-			header('Location: index.php?variable=$variable');
+			echo 0;
 		}
 	}
 

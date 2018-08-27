@@ -71,7 +71,7 @@ class Mascota
 
 	public function eliminar_mascota(){ //$_POST valores de la actualizacion ofcourse
 		$id = $this->mascota['id'];
-		mysqli_query($this->db,"DELETE FROM preferencia WHERE  id_msacota='$id' ") or die ('error eliminar mascota de preferencia');
+		mysqli_query($this->db,"DELETE FROM preferencia WHERE  id_mascota='$id' ") or die ('error eliminar mascota de preferencia');
 		mysqli_query($this->db,"DELETE FROM mascota WHERE  id='$id' ") or die ('error al eliminar mascota');
 		mysqli_query($this->db,"DELETE FROM adopcion WHERE  id_mascota='$id' ") or die ('error al eliminar adopcion');
 		header('Location: views/fundacion/gmascotas.php');

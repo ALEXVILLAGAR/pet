@@ -38,7 +38,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                	<?php foreach ($user->mis_adoptados() as $element): 
+                	<?php 
+                    // var_dump(mysqli_fetch_array($user->mis_adoptados()));
+                    foreach ($user->mis_adoptados() as $element): 
                         $pet = new Mascota($element['id_mascota']);
                         $fundacion = $pet->perteneceA();
                         ?>
@@ -62,7 +64,7 @@
                     </tr>
 
                     <!-- Delete Modal HTML -->
-    <div id="<?php echo "#deleteEmployeeModal".$element['id'] ?>" class="modal fade">
+    <div class="modal fade" id=<?php echo "deleteEmployeeModal".$element['id'] ?>>
         <div class="modal-dialog">
             <div class="modal-content">
                 <form>
@@ -80,8 +82,8 @@
                     </div>
                 </form>
             </div>
-            </div>
         </div>
+    </div>
 
                 	<?php endforeach ?>
                     
