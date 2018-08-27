@@ -88,10 +88,10 @@ function showRegisterFormF() {
 }
 
 function showLoginFormF() {
-    $('#loginModalF .registerBox').fadeOut('fast', function() {
-        $('.loginBox').fadeIn('fast');
-        $('.register-footer').fadeOut('fast', function() {
-            $('.login-footer').fadeIn('fast');
+    $('#loginModalF #registerBoxF').fadeOut('fast', function() {
+        $('#loginBoxF').fadeIn('fast');
+        $('#register-footerF').fadeOut('fast', function() {
+            $('#login-footerF').fadeIn('fast');
         });
         $('.modal-title').html('Iniciar Sesión');
     });

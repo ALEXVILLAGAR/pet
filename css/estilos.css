@@ -23,6 +23,54 @@ img {
     max-width: 100%;
     height: auto;
 }
+/* carousel perdidos */
+
+@media (min-width: 768px) {
+    /* show 3 items */
+    .carouselinnerP .active, .carouselinnerP .active+.carouselitemP, .carouselinnerP .active+.carouselitemP+.carouselitemP {
+        display: inline-block;
+    }
+    .carouselinnerP .carouselitemP.active:not(.carouselitemP-right):not(.carouselitemP-left), .carouselinnerP .carouselitemP.active:not(.carouselitemP-right):not(.carouselitemP-left)+.carouselitemP, .carouselinnerP .carouselitemP.active:not(.carouselitemP-right):not(.carouselitemP-left)+.carouselitemP+.carouselitemP {
+        transition: none;
+    }
+    .carouselinnerP .carouselitemP-next, .carouselinnerP .carouselitemP-prev {
+        position: absolute;
+        transform: translate3d(0, 0, 0);
+    }
+    .carouselinnerP .active.carouselitemP+.carouselitemP+.carouselitemP+.carouselitemP {
+        position: absolute;
+        top: 0;
+        right: -33.3333%;
+        z-index: -1;
+        display: inline-block;
+        visibility: visible;
+    }
+    /*     left or forward direction */
+    .active.carouselitemP-left+.carouselitemP-next.carouselitemP-left, .carouselitemP-next.carouselitemP-left+.carouselitemP, .carouselitemP-next.carouselitemP-left+.carouselitemP+.carouselitemP, .carouselitemP-next.carouselitemP-left+.carouselitemP+.carouselitemP+.carouselitemP {
+        position: absolute;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /*    farthest right hidden item must be abso position for animations */
+    .carouselinnerP .carouselitemP-prev .carouselitemP-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: inline-block;
+        visibility: visible;
+    }
+    /*  right or prev direction */
+    .active.carouselitemP-right+.carouselitemP-prev.carouselitemP-right, .carouselitemP-prev.carouselitemP-right+.carouselitemP, .carouselitemP-prev.carouselitemP-right+.carouselitemP+.carouselitemP, .carouselitemP-prev.carouselitemP-right+.carouselitemP+.carouselitemP+.carouselitemP {
+        position: absolute;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: inline-block;
+        visibility: visible;
+    }
+}
+/* ------------------------------------------------- */
+
 #animales img {
     width: 500px;
     max-width: 100%;
