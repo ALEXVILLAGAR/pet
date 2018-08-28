@@ -33,8 +33,9 @@
                                     Fundación: <?php echo $fundacion['nombre'] ?>
                                 </li>
                                 <br>
+                               <?php if (!$pet->EnProceso($user->usuario['id'])): ?>
                                 <a class="btn btn-success" align="left" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> >Quiero adoptarla</a>
-
+                               <?php endif ?>
                             </ul>
                             
 

@@ -91,6 +91,13 @@ class Mascota
 		return $resultado['id_mascota']==$id_pet;
 	}
 
+	public function EnProceso($id_user){
+		$id_pet = $this->mascota['id'];
+		$resultado = mysqli_query($this->db, "SELECT * FROM mascota WHERE id_usuario='$id_user' && solicitud = 'proceso' && id='$id_pet'") or die ( "casi");
+		$resultado = mysqli_fetch_array($resultado);
+		return $resultado['id_usuario']==$id_user;
+	}
+
 	public function denegar(){
 		$id_pet = $this->mascota['id'];
 		$consulta = mysqli_query($this->db, "UPDATE mascota SET disponible=1, solicitud='Denegada', id_usuario=null WHERE id='$id_pet'");

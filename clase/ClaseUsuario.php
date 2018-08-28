@@ -99,7 +99,7 @@ class Usuario
 
 	public function mis_adoptados(){
 		$user_id = $this->usuario['id'];
-		$consulta="SELECT * FROM adopcion LEFT JOIN `mascota` ON `adopcion`.`id_usuario` = '$user_id' WHERE `mascota`.`id_usuario` = '$user_id' && solicitud = 'Aprobada'";
+		$consulta="SELECT * FROM adopcion WHERE id_usuario = '$user_id'";
 		$resultado = mysqli_query($this->db, $consulta ) or die ( "casi");
 		return $resultado;	
 	}
