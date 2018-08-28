@@ -128,10 +128,17 @@ class Fundacion
 		return $insertion;
 	}
 
+
+	public static function numero_fundaciones(){
+		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT COUNT(id) FROM fundacion "));
+		return $insertion;
+}
+
 	public function only_reservada(){ //todas las mascotas reservadas
 		$id_fundacion=$this->fundacion['id'];
 		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE disponible=0 && solicitud!='Aprobada' && id_fundacion='$id_fundacion' " ) or die ( "casi");
 		return $resultado;
+
 	}
 }
 

@@ -112,6 +112,11 @@ class Mascota
 		 mysqli_query($this->db,"INSERT INTO adopcion VALUES ('','$fecha','$_POST[id_usuario]','$id_pet',null)") or die ('errorrrr');
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
+
+	public static function total_adoptadas(){
+		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT Count(id) FROM adopcion "));
+		return $insertion;
+	}
 }
 
  ?>
