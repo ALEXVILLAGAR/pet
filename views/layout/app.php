@@ -194,13 +194,12 @@ if (!$user->authorizacion('usuario')) {
                                 <ul>
                                     <li>
                                         <a href="../usuario/MisDenuncias.php">
-                                            Mis de nuncias
+                                            Mis denuncias
                                         </a>
                                     </li>
                                     <li >
                                         <a href="#" data-toggle="modal" data-target="#MhacerDenuncia">
-                                <i class="fas fa-bullhorn">
-                                </i> <span>
+                                 <span>
                                     Hacer Denuncia
                                     </span>
                                 </a>
@@ -265,8 +264,9 @@ if (!$user->authorizacion('usuario')) {
                 </div>
                 <div>
                     <a  data-toggle="modal" data-target="#Mcerrar_sesion" >
-                        <i class="fa fa-power-off">
+                        <i class="fa fa-power-off" title="Cerrar sesión" data-toggle="tooltip">
                         </i>
+
                     </a>
                 </div>
             </div>
