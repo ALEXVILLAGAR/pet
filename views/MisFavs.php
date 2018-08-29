@@ -1,4 +1,5 @@
 <div class="container py-3" >
+
     <?php 
             foreach($user->mis_favoritos() as $element): 
                     $pet = new Mascota($element['id_mascota']);
@@ -38,16 +39,13 @@
                                <?php endif ?>
                             </ul>
                             
-
                         </div>
-                        
                     </div>
-                </div>
-            
 
-        </div>
 
-    </div><br><?php include 'galerias/ConfirmarAdopcion.php'; ?> <?php endforeach ?>
+            </div>
+
+        </div><br><?php include 'galerias/ConfirmarAdopcion.php';?> <?php endforeach?>
 
 </div>
 
