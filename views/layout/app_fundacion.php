@@ -17,6 +17,7 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                         <title>
                             I WANT A PET
                         </title>
+                        <link rel="shortcut icon" href="../../img/icono.png" type="image/x-icon  sizes="64x64">
                         <!-- Bootstrap core CSS -->
                         <link href="../../css/estilos.css" rel="stylesheet">
                             <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -156,16 +157,6 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                    </ul>
                             </div>
                         </li>
-
-                        <li class="">
-                            <a href="..\..\index.php" >
-                                <i class="fas fa-arrow-alt-circle-left">
-                                </i>
-                                <span>
-                                    Inicio
-                                </span>
-                            </a>
-                        </li>
                       
                 <!-- sidebar-menu  -->
 
@@ -191,6 +182,24 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                     </li>                        
                                 </ul>                
                             </div>
+                        </li>
+                        <li class="">
+                            <a href="#" >
+                                <i class="fas fa-address-card">
+                                </i>
+                                <span>
+                                    Ver denuncias
+                                </span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="..\..\index.php" >
+                                <i class="fas fa-arrow-alt-circle-left">
+                                </i>
+                                <span>
+                                    Inicio
+                                </span>
+                            </a>
                         </li>
                      </ul>
                 </div>
