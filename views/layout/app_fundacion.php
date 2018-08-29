@@ -156,6 +156,19 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                    </ul>
                             </div>
                         </li>
+
+                        <li class="">
+                            <a href="..\..\index.php" >
+                                <i class="fas fa-arrow-alt-circle-left">
+                                </i>
+                                <span>
+                                    Inicio
+                                </span>
+                            </a>
+                        </li>
+                      
+                <!-- sidebar-menu  -->
+
                           <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fas fa-archive">
@@ -176,10 +189,13 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                             Procesos de adopcion
                                         </a>
                                     </li>                        
-                                </ul>                </div>
+                                </ul>                
+                            </div>
+                        </li>
+                     </ul>
+                </div>
                <!-- sidebar-menu  -->
 
-                                       
             </div>
             <!-- sidebar-content  -->
             <div class="sidebar-footer">

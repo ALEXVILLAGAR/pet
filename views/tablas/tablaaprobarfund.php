@@ -100,7 +100,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<form action="../../ruta.php?variable=aceptarFundacion" method="post">
+						<form action="../../ruta.php?variable=negarFundacion" method="post">
 						<input type="hidden" name="id_fundacion" value="<?php echo $element['id'] ?>">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
 						<input type="submit" class="btn btn-primary" value="Aceptar">

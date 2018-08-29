@@ -55,6 +55,7 @@ require_once("ControlClass.php");
                                 Fundaciones aliadas
                             </a>
                         </li>
+      
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#services">
                                 Donar
@@ -133,7 +134,11 @@ require_once("ControlClass.php");
                 <hr class="my-6 bg-white">
                 </hr>
             </div>
-            <?php $consulta = Mascota::only_disponible(); $vistauser=true;?>
+            <?php $consulta = Mascota::only_disponible(); 
+            if (SessionesPet::session_active()) {
+                $vistauser=true;
+            }
+             ?>
            <?php include 'views/galerias/galeria_principal.php'?>
        </section> 
 <!--------------------------------FUNDACIONES-------------------------------------->

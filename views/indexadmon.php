@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1 style="color: #62d1f3">Estadisticas</h1>
+                    <h1 class="text-info">Estadisticas</h1>
                 </div>
             </div>
             <br>
@@ -15,7 +15,7 @@
                                     <span><i class="fa fa-home f-s-40  fa-3x px-3 py-4 pr-5" style="color: #4680ff;"></i></span>
                                 </div>
                                 <div class="media-body media-text-right py-4 pr-1 pl-3">
-                                    <h2 class="h2db"> <?php echo count(Fundacion::fundaciones()); ?> </h2>
+                                    <h2 class="h2db"> <?php echo Fundacion::numero_fundaciones()[0]; ?> </h2>
                                     <p class="m-b-0"> Fundaciones</p>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                                     <span><i class="fa fa-paw f-s-40  fa-3x px-2 py-4 pr-5" style="color: #4680ff;"></i></span>
                                 </div>
                                 <div class="media-body media-text-right py-4 pr-1 pl-2">
-                                    <h2 class="h2db"> <?php echo count(Adopcion::adoptados()); ?> </h2>
+                                    <h2 class="h2db"> <?php echo Mascota::total_adoptadas()[0]; ?> </h2>
                                     <p class="m-b-0">Adopciones</p>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                     <span><i class="fa fa-user f-s-40  fa-3x px-3 py-4 pr-5" style="color: #4680ff;"></i></span>
                                 </div>
                                 <div class="media-body media-text-right py-4 pr-1 pl-3">
-                                    <h2 class="h2db"> <?php echo var_dump(Usuario::todos_usuarios()) ?> </h2>
+                                    <h2 class="h2db"> <?php echo Usuario::total_usuarios()[0]; ?> </h2>
                                     <p class="m-b-0">Usuarios</p>
                                 </div>
                             </div>

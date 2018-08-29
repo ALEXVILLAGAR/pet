@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                	<?php foreach (Mascota::only_reservada() as $element): $usuario = Usuario::GetUsuario($element['id_usuario']); $pet=new mascota($element['id'])?>
+                	<?php foreach ($fundacion->only_reservada() as $element): $usuario = Usuario::GetUsuario($element['id_usuario']); $pet=new mascota($element['id'])?>
                 		
                     <tr>
 						<td>
@@ -48,7 +48,7 @@
                         <td> <?php echo $usuario['email'] ?> </td>
                         <td> <?php echo $usuario['direccion'] ?> </td>
                         <td> <?php echo $pet->mascota['nombre'] ?> </td>
-                        <td><img src="data:image/jpg;base64,<?php echo base64_encode($element['foto'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/></td>
+                        <td><img src="data:image/jpg;base64,<?php echo base64_encode($pet->mascota['foto'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/></td>
                         <td>
 
                             <a href="<?php echo "#deleteEmployeeModal".$element['id']?>" class="delete" data-toggle="modal"><i class="fas fa-ban" data-toggle="tooltip" title="Cancelar Solicitud"></i></a>
@@ -73,7 +73,8 @@
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
 						<form action="../../ruta.php?variable=darmascota" method="post">
-							<input type="text" name="id_mascota" value="<?php echo $pet->mascota['id']?>">
+							<input type="hidden" name="id_mascota" value="<?php echo $pet->mascota['id']?>">
+							<input type="hidden" name="id_usuario" value="<?php echo $usuario['id']?>">
 							<input type="submit" class="btn btn-primary" value="Aceptar">
 						</form>
 					</div>
