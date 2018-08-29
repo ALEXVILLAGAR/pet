@@ -26,7 +26,7 @@
                                     </button>
                                 <?php endif ?>
                             <?php endif?>
-                                    <button class="btn btn-info" data-target=<?php echo "#myModal".$element['id'] ?> data-toggle="modal" type="button">
+                                    <button class="btn btn-info"   data-toggle="modal"  href="#" data-target=<?php echo "#myModal".$element['id'] ?> type="button">
                                         Leer Mas
                                     </button>
                                    <?php if (isset($conocerEstado)): ?>
@@ -38,11 +38,12 @@
                                         <button class="btn btn-warning" data-target=<?php echo "#Mcancelar_adopcion".$element['id'] ?> data-toggle="modal" type="button">
                                             cancelar Solicitud.
                                         </button>
-                                        <?php include 'leermas.php'; ?>
+                                        
                                     <?php include '..\modal\Mcancelar_adopcion.php'; ?>
                                     <?php endif ?> 
                                     
                                     <!-- The Modal -->
+                                    <?php include 'leermas.php'; ?>
                                     <?php include 'ConfirmarAdopcion.php'; ?>
                                     <?php include 'MavisoSaveFavorito.php'; ?>
                                      <?php include 'Mestado_Adopcion.php'; ?>

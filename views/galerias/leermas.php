@@ -1,4 +1,4 @@
-<div class="modal" id=<?php echo "myModal".$element['id'] ?> >
+<div class="modal fade" id=<?php echo "myModal".$element['id'] ?> >
     <div class="modal-dialog">
 
         <div class="modal-content border-white">

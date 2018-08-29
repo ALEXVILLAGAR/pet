@@ -13,9 +13,11 @@ require_once("ControlClass.php");
                             I WANT A PET
                         </title>
                         <!-- Bootstrap core CSS -->
+
                         <link href="css/estilos.css" rel="stylesheet">
                             <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
                                 <!-- Custom fonts for this template -->
+                                <link id="template-file" href="views/galerias/perdidos.html" rel="import" />
                                 <link href="css/login-register.css" rel="stylesheet"/>
                                 <link href="css/login-registerF.css" rel="stylesheet"/>
                                 <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -38,6 +40,11 @@ require_once("ControlClass.php");
         </meta>
     </head>
     <body id="page-top">
+        <script type="text/javascript">
+        var getImport = document.querySelector("#template-file"); 
+        var getContent = getImport.import.querySelector("#perd");
+        document.body.appendChild(document.importNode(getContent, true));
+</script>
 <!--------------------------------NAV------------------------------------------>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
@@ -145,62 +152,7 @@ require_once("ControlClass.php");
         <section class="bg-dark" id="about" >
           
     <div class="container">
-        <div class="row text-center">
-            <div class="col-lg-12">
-
-                <h2 class="section-heading text-white">
-                    Fundaciones aliadas
-                </h2>
-                <hr class="my-4">
-                </hr>
-                <div class="carousel slide" data-ride="carousel" id="demo">
-                    <!-- Indicators -->
-                    <ul class="carousel-indicators">
-                        <li class="active" data-slide-to="0" data-target="#demo">
-                        </li>
-                        <li data-slide-to="1" data-target="#demo">
-                        </li>
-                        <li data-slide-to="2" data-target="#demo">
-                        </li>
-                    </ul>
-                    <!-- The slideshow -->
-                    <div class="carousel-inner">
-                        <center>
-                            <?php foreach (Fundacion::FundacionSlide() as $key => $element): ?>
-                                <?php if ($key>2) continue; ?>
-                                <?php if ($key+1==1): ?>
-                                    <div class="carousel-item active">
-                                <?php else: ?>
-                                    <div class="carousel-item">
-                                <?php endif ?>
-            <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto_fundacion'])?>" alt="Los Angeles"/>
-                                        <div class="carousel-caption">
-                                            <h3>
-                                                <?php echo $element['nombre'] ?>
-                                            </h3>
-                                            <p>
-                                                <strong><?php echo "direccion: ".$element['direccion']."<br> Email: ".$element['email'] ?></strong>
-                                            </p>
-                                        </div>
-                                    </img>
-                                </div>
-                            <?php endforeach ?>
-
-                        </center>
-                    </div>
-                    <!-- Left and right controls -->
-                    <a class="carousel-control-prev" data-slide="prev" href="#demo">
-                        <span class="carousel-control-prev-icon">
-                        </span>
-                    </a>
-                    <a class="carousel-control-next" data-slide="next" href="#demo">
-                        <span class="carousel-control-next-icon">
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+        <?php include 'views/galerias/fundaciones.php'?>
 </section>
 <!--------------------------------DONACION----------------------------------------->
          <section id="services">
@@ -269,92 +221,9 @@ require_once("ControlClass.php");
 </section>
 
 <!-- ------------------------Perdidos --------------------------------------------------------->
-<section class="bg-primary">
-    <div class="container-fluid" id="perdidos">
-  <h1 class="text-center mb-3">Bootstrap Multi-Card Carousel</h1>
-  <div id="myCarouselP" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner carouselinnerP row w-100 mx-auto">
-      <div class="carousel-item carouselitemP col-md-4 active">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 1</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item carouselitemP col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 2</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item carouselitemP col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/3ed846/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 3</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item   carouselitemP col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/42ebf4/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 4</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item carouselitemP col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f49b41/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 5</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item carouselitemP col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f4f141/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 6</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item carouselitemP col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/8e41f4/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 7</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#myCarouselP" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarouselP" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+<section class="bg-primary"  id="perd">
 
+   
    
 </section>
 

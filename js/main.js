@@ -8,25 +8,6 @@ $(document).ready(function() {
     });
 });
 /*carousel perdidos*/
-$(document).ready(function() {
-    $("#myCarouselP").on("slide.bs.carousel", function(e) {
-        var $e = $(e.relatedTarget);
-        var idx = $e.index();
-        var itemsPerSlide = 3;
-        var totalItems = $(".carouselitemP").length;
-        if (idx >= totalItems - (itemsPerSlide - 1)) {
-            var it = itemsPerSlide - (totalItems - idx);
-            for (var i = 0; i < it; i++) {
-                // append slides to end
-                if (e.direction == "left") {
-                    $(".carouselitemP").eq(i).appendTo(".carouselinnerP");
-                } else {
-                    $(".carouselitemP").eq(0).appendTo($(this).find(".carouselinnerP"));
-                }
-            }
-        }
-    });
-});
 /*------tabla-------------------------------------------------------*/
 $(document).ready(function() {
     // Activate tooltip
