@@ -183,6 +183,29 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                 </ul>                
                             </div>
                         </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fas fa-question">
+                                </i>
+                                <span>
+                                    preguntas frecuentes
+                                </span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="..\fundacion\preguntas_fundacion.php">
+                                            ver todas
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="#" data-toggle="modal" data-target="#Mhacer_nueva_pregunta">
+                                             ingresar nueva
+                                        </a>
+                                    </li>                        
+                                </ul>                
+                            </div>
+                        </li>
                         <li class="">
                             <a href="#" >
                                 <i class="fas fa-address-card">
@@ -231,3 +254,4 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
             </div>
         </nav>
         <?php include '..\modal\Mcerrar_sesion.php'; ?>
+        <?php include '..\modal\Mhacer_nueva_pregunta.php' ?>

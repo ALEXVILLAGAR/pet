@@ -229,6 +229,13 @@ if(!$user->authorizacion('usuario')){
                                 </ul>
                             </div>
                         </li>
+                        <li>
+                            <a href="..\usuario\preguntas_frecuentes.php">
+                                <i class="fas fa-question">
+                                </i>
+                                preguntas frecuentes
+                            </a>
+                        </li>
                         <li class="">
                             <a href="..\..\index.php" >
                                 <i class="fas fa-arrow-alt-circle-left">

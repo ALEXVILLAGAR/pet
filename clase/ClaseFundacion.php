@@ -140,6 +140,13 @@ class Fundacion
 		return $resultado;
 
 	}
+
+	public static function nueva_preunta(){ //Crea  una pregunta frecuente nueva
+			$fecha = date("Y-m-d H:i:s");
+			$fundacion = $_SESSION['user'];
+			mysqli_query(Conectar::conexion(),"INSERT INTO preguntas VALUES ('','$_POST[pregunta]','$_POST[respuesta]','$fecha','$fundacion[id]')") or die ('errorrrr');
+			header('Location: '.$_SERVER['HTTP_REFERER'] );
+	}
 }
 
  ?>

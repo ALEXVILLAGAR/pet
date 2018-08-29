@@ -95,6 +95,9 @@ switch ($variable) {
 		case 'eliminarUsuario':
 			Usuario::eliminarUsuario();
 			break;
+		case 'nueva_pregunta':
+			Fundacion::nueva_preunta();
+			break;
 	// case 'actualizarFundacionAdmin':
 
 	// 	break;
