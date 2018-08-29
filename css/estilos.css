@@ -1,13 +1,14 @@
+body {
+    overflow-x: hidden;
+}
 #animales {
     position: relative;
     max-width: 100%;
     width: 100%;
 }
-
-.arriba{
+.arriba {
     z-index: 10;
 }
-
 #fundaciones img {
     width: 500px;
     max-width: 100%;
@@ -51,6 +52,7 @@ img {
 }
 #NombreMas {
     color: #1e1e1e;
+    text-transform: uppercase;
 }
 .white-panel:hover {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
@@ -491,4 +493,14 @@ ul.redes li a {
     width: 78%;
     height: 20%;
     margin: 1%;
+}
+/*-------------Modal leer mas---------------*/
+
+.mascota-block h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.mascota-info ul li {
+    font-weight: bold;
+    text-align: left;
 }
