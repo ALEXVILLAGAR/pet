@@ -3,7 +3,7 @@
  ?>
  <section class="bg-faded page-content" >
              <?php include '..\donar.php'?>   <!-- TODO modificar para donar a la fundacion correcta-->
-            <?php include '..\tablas\tabla_preguntas_frecuentes.php' ?>
+            <?php include '..\tablas\tabla_preguntas_frecuentes_fundacion.php' ?>
         </section>
         <!-- page-content" -->
     </div>

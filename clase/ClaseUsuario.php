@@ -120,6 +120,11 @@ class Usuario
 		mysqli_query(Conectar::conexion(),"DELETE FROM usuario WHERE id = '$id'") or die ('error al usuario');
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
+
+	public static function todas_preguntas(){	//retorna todos los usuarios de la bd
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM preguntas " ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;
+	}
 }
 
 

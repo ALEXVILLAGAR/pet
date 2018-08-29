@@ -144,8 +144,15 @@ class Fundacion
 	public static function nueva_preunta(){ //Crea  una pregunta frecuente nueva
 			$fecha = date("Y-m-d H:i:s");
 			$fundacion = $_SESSION['user'];
-			mysqli_query(Conectar::conexion(),"INSERT INTO preguntas VALUES ('','$_POST[pregunta]','$_POST[respuesta]','$fecha','$fundacion[id]')") or die ('errorrrr');
+			mysqli_query(Conectar::conexion(),"INSERT INTO preguntas VALUES ('','$_POST[pregunta]','$_POST[respuesta]','$fecha','$fundacion[nombre]','$fundacion[id]')") or die ('errorrrr');
 			header('Location: '.$_SERVER['HTTP_REFERER'] );
+	}
+
+	public static function mis_preguntas(){//retorna todas las preguntas frecuentes que tiene una fundacion.
+		$fundacion = $_SESSION['user'];
+		echo $fundacion[nombre];
+		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM preguntas WHERE 	id_fundacion = '$fundacion[id]' " ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;
 	}
 }
 

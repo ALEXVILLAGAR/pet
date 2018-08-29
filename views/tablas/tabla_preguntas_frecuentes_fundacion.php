@@ -15,7 +15,7 @@
 
     <?php 
 
-    foreach (Usuario::todas_preguntas() as $element): ?>
+    foreach (Fundacion::mis_preguntas() as $element): ?>
     <tr>
       <td><?php echo $element['pregunta'] ?></td>
       <td><?php echo $element['respuesta'] ?></td>
