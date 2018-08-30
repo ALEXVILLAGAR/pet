@@ -40,11 +40,7 @@ require_once("ControlClass.php");
         </meta>
     </head>
     <body id="page-top">
-        <script type="text/javascript">
-        var getImport = document.querySelector("#template-file"); 
-        var getContent = getImport.import.querySelector("#perd");
-        document.body.appendChild(document.importNode(getContent, true));
-</script>
+   
 <!--------------------------------NAV------------------------------------------>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
@@ -57,23 +53,30 @@ require_once("ControlClass.php");
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
+                         <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#portfolio">
+                                Nuestras mascotas
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#about">
                                 Fundaciones aliadas
                             </a>
                         </li>
+
       
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#services">
                                 Donar
                             </a>
                         </li>
+                      
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#portfolio">
-                                Nuestras mascotas
+                            <a class="nav-link js-scroll-trigger" href="#perd">
+                                Máscotas Perdidas
                             </a>
                         </li>
-                        <li class="nav-item">
+                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#contact">
                                 Contacto
                             </a>
@@ -223,7 +226,7 @@ require_once("ControlClass.php");
 <!-- ------------------------Perdidos --------------------------------------------------------->
 <section class="bg-primary"  id="perd">
 
-   
+   <?php include 'views/galerias/galeria_perdidos.php'?>
    
 </section>
 
@@ -313,7 +316,11 @@ require_once("ControlClass.php");
         <script src="js/main.js">
         </script>
         <script src="js/login-register.js" type="text/javascript"></script>
-        <?php include 'views/login/login.html'?>
+        <?php include 'views/login/login.php'?>
+         <?php include 'views/login/loginF.php'?>
+
+
+    
     
 
     <script>

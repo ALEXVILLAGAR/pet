@@ -1,98 +1,132 @@
-
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css" rel="stylesheet">
-                <link href="css/perdidos.css" rel="stylesheet">
-                </link>
-            </link>
-
-<div class="container-fluid" id="Carouselperdidos">
-  <h1 class="text-center mb-3">Bootstrap Multi-Card Carousel</h1>
-  <div id="carouselP" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner row w-100 mx-auto">
-      <div class="carousel-item col-md-4 active">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f44242/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 1</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
+<div class="container">
+    <!--   <h1 class="text-center mb-3 font-weight-bold text-light">
+      Denuncias
+  </h1> -->
+    <!--  <div class="espacio">
+   </div> -->
+    <div "="">
+        <h3 class="text-center text-light font-weight-bold">
+            En I Want A Pet
+            <br>
+                te  ayudamos  a encontrar tu mascota perdida
+            </br>
+        </h3>
+        <!-- <div class="espacio">
         </div>
-      </div>
-      <div class="carousel-item col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 2</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/3ed846/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 3</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/42ebf4/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 4</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f49b41/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 5</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/f4f141/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 6</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item col-md-4">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="http://placehold.it/800x600/8e41f4/fff" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card 7</h4>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
+        <h3 class="text-center text-light font-weight-bold">
+            aqui podras subir tu anuncio con el cual  podremos ayudarte
+        </h3> -->
     </div>
-    <a class="carousel-control-prev" href="#carouselP" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselP" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+    <br>
+        <div class="carousel slide h-50" data-ride="carousel" id="carruselcard">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="card rounded border-0">
+                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            Card 2
+                                        </h4>
+                                        <p class="card-text">
+                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                        </p>
+                                    </div>
+                                </img>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="card rounded border-0">
+                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            Card 2
+                                        </h4>
+                                        <p class="card-text">
+                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                        </p>
+                                    </div>
+                                </img>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="card rounded border-0">
+                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            Card 2
+                                        </h4>
+                                        <p class="card-text">
+                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                        </p>
+                                    </div>
+                                </img>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="card rounded border-0">
+                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            Card 2
+                                        </h4>
+                                        <p class="card-text">
+                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                        </p>
+                                    </div>
+                                </img>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="card rounded border-0">
+                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            Card 2
+                                        </h4>
+                                        <p class="card-text">
+                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                        </p>
+                                    </div>
+                                </img>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="card">
+                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            Card 2
+                                        </h4>
+                                        <p class="card-text">
+                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                        </p>
+                                    </div>
+                                </img>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" data-slide="prev" href="#carruselcard" role="button">
+                <span aria-hidden="true" class="carousel-control-prev-icon">
+                </span>
+                <span class="sr-only">
+                    Previous
+                </span>
+            </a>
+            <a class="carousel-control-next" data-slide="next" href="#carruselcard" role="button">
+                <span aria-hidden="true" class="carousel-control-next-icon">
+                </span>
+                <span class="sr-only">
+                    Next
+                </span>
+            </a>
+        </div>
+    </br>
 </div>
-
- <script src="js/perdidos.js">
-        </script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js">
-        </script>

@@ -1,3 +1,6 @@
+body {
+    overflow-x: hidden;
+}
 #animales {
     position: relative;
     max-width: 100%;
@@ -23,7 +26,6 @@ img {
     max-width: 100%;
     height: auto;
 }
-/
 /* ------------------------------------------------- */
 
 #animales img {
@@ -69,11 +71,21 @@ img {
     height: 35rem;
     width: 80%;
 }
+/*  arreglos padding secciones  */
+
 #about {
     padding: 1rem 0
 }
 #contact {
-    padding-bottom: 1rem
+    padding-top: 13rem;
+    padding-bottom: 2rem;
+}
+#contact .container {
+    padding-bottom: 5rem;
+    margin-top: 0rem;
+}
+#perd {
+    padding: 2.2rem 0
 }
 .abajo {
     z-index: -1;
