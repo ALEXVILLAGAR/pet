@@ -150,7 +150,6 @@ class Fundacion
 
 	public static function mis_preguntas(){//retorna todas las preguntas frecuentes que tiene una fundacion.
 		$fundacion = $_SESSION['user'];
-		echo $fundacion[nombre];
 		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM preguntas WHERE 	id_fundacion = '$fundacion[id]' " ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 		return $resultado;
 	}
