@@ -53,9 +53,10 @@ if(!$user->authorizacion('usuario')){
 <body>
 
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
-        <button class="btn btn-md bg-primary border border-dark text-primary arriba" id="show-sidebar">
-             <i class=" bg-dark btn btn-md ">Mi menu</i>
-        </button>
+        <a class="btn btn-sm btn-dark" href="#" id="show-sidebar">
+            <i class="fas fa-bars 3x" >
+            </i>
+        </a>
         <nav class="sidebar-wrapper" id="sidebar">
             <div class="sidebar-content">
                 <div class="sidebar-brand">

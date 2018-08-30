@@ -1,13 +1,14 @@
+body {
+    overflow-x: hidden;
+}
 #animales {
     position: relative;
     max-width: 100%;
     width: 100%;
 }
-
-.arriba{
+.arriba {
     z-index: 10;
 }
-
 #fundaciones img {
     width: 500px;
     max-width: 100%;

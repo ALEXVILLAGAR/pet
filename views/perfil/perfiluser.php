@@ -119,7 +119,7 @@
                     </form>
                 </div>
                 <div class="tab-pane" id="pass">
-                    <form action="../../ruta.php?variable=cambiarPassUser" role="form" method="post">
+                    <form action="../../ruta.php?variable=cambiarPassUser" role="form" method="post" name="formpass" onsubmit="return validar_clave()">
                         
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
@@ -136,7 +136,7 @@
                                 Contraseña
                             </label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" name="password" required>
+                                <input class="form-control" type="password" name="password" required >
                                 </input>
                             </div>
                         </div>
@@ -146,14 +146,11 @@
                                 Confirmar contraseña
                             </label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" name="confirm-password" required>
+                                <input class="form-control" type="password" name="password2" required >
                                 </input>
                             </div>
                         </div>
-                        
-
-
-
+                         
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">
                             </label>

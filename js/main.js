@@ -54,3 +54,30 @@ $(function() {
         $(this).toggleClass("heart-blast");
     });
 });
+/*----------CAMBIO PASSWORD--------*/
+function validar_clave() {
+    var caract_invalido = " ";
+    var caract_longitud = 6;
+    var cla1 = document.formpass.password.value;
+    var cla2 = document.formpass.password2.value;
+    if (cla1 == '' || cla2 == '') {
+        alert('Debes introducir tu clave en los dos campos.');
+        return false;
+    }
+    if (document.formpass.password.value.length < caract_longitud) {
+        alert('Tu clave debe constar de ' + caract_longitud + ' caracteres.');
+        return false;
+    }
+    if (document.formpass.password.value.indexOf(caract_invalido) > -1) {
+        alert("Las claves no pueden contener espacios");
+        return false;
+    } else {
+        if (cla1 != cla2) {
+            alert("Las claves introducidas no son iguales");
+            return false;
+        } else {
+            alert('Contraeña correcta');
+            return true;
+        }
+    }
+}
