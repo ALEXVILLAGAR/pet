@@ -91,9 +91,18 @@ class Mascota
 		return $resultado['id_mascota']==$id_pet;
 	}
 
-	public function denegar(){
+	public function EnProceso($id_user){
 		$id_pet = $this->mascota['id'];
-		$consulta = mysqli_query($this->db, "UPDATE mascota SET disponible=1, solicitud='Denegada', id_usuario=null WHERE id='$id_pet'");
+		$resultado = mysqli_query($this->db, "SELECT * FROM mascota WHERE id_usuario='$id_user' && solicitud = 'proceso' && id='$id_pet'") or die ( "casi");
+		$resultado = mysqli_fetch_array($resultado);
+		return $resultado['id_usuario']==$id_user;
+	}
+
+	public function denegar(){
+		$id_pet = $this->mascota;
+		$fecha = date("Y-m-d H:i:s");
+		mysqli_query($this->db,"INSERT INTO denegado VALUES ('','$id_pet[id_usuario]','$id_pet[id]','$fecha')");
+		mysqli_query($this->db, "UPDATE mascota SET disponible=1, solicitud='Denegada', id_usuario=null WHERE id='$id_pet[id]'");
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 
@@ -109,6 +118,15 @@ class Mascota
 	public static function total_adoptadas(){
 		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT Count(id) FROM adopcion "));
 		return $insertion;
+	}
+
+	public static function MascotasDe(){
+		$obj = array();
+		foreach (Fundacion::fundaciones() as $element) {
+			$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE id_fundacion='$element[id]'") or die ( "casi");
+			$obj[]=mysqli_num_rows($resultado);
+		}
+		return $obj;
 	}
 }
 

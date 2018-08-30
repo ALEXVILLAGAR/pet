@@ -1,16 +1,17 @@
-<?php 
+<?php
 // session_start();
-require_once("..\..\ControlClass.php");
-if(!(SessionesPet::session_active())){
+require_once "..\..\ControlClass.php";
+if (!(SessionesPet::session_active())) {
     header('Location: index.php');
     exit;
 }
+
 $user =new Usuario();
 if(!$user->authorizacion('usuario')){
-    include '../../error.html';
+    include '../../error.php';
     exit;
 }
- ?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -22,8 +23,10 @@ if(!$user->authorizacion('usuario')){
                         <title>
                             I WANT A PET
                         </title>
+                        <link rel="shortcut icon" href="../../img/icono.png" type="image/x-icon  sizes="64x64">
                         <!-- Bootstrap core CSS -->
                         <link href="../../css/estilos.css" rel="stylesheet">
+                        <link href="../../css/heart.css" rel="stylesheet">
                             <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
                                 <!-- Custom fonts for this template -->
                                 <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -72,21 +75,21 @@ if(!$user->authorizacion('usuario')){
                     <div class="user-pic">
 
         <?php if (isset($user->usuario['foto_perfil'])): ?>
-            <img src="data:image/jpg;base64,<?php echo base64_encode($user->usuario['foto_perfil'])?> " class="img-responsive img-rounded" alt="User picture"/>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($user->usuario['foto_perfil']) ?> " class="img-responsive img-rounded" alt="User picture"/>
         <?php else: ?>
             <img alt="User picture" class="img-responsive img-rounded" src="//placehold.it/150">
-        <?php endif ?>
-        
+        <?php endif?>
+
                     </div>
                     <div class="user-info">
                         <span class="user-name">
-                            
+
                             <strong>
-                              <?php echo($user->usuario['nombre']); ?>
+                              <?php echo ($user->usuario['nombre']); ?>
                             </strong>
                         </span>
                         <span class="user-role">
-                              <?php echo($user->usuario['tipo']); ?>
+                              <?php echo ($user->usuario['tipo']); ?>
                         </span>
                         <span class="user-status">
                             <i class="fa fa-circle">
@@ -192,13 +195,12 @@ if(!$user->authorizacion('usuario')){
                                 <ul>
                                     <li>
                                         <a href="../usuario/MisDenuncias.php">
-                                            Mis de nuncias
+                                            Mis denuncias
                                         </a>
                                     </li>
                                     <li >
                                         <a href="#" data-toggle="modal" data-target="#MhacerDenuncia">
-                                <i class="fas fa-bullhorn">
-                                </i> <span>
+                                 <span>
                                     Hacer Denuncia
                                     </span>
                                 </a>
@@ -227,9 +229,21 @@ if(!$user->authorizacion('usuario')){
                                             Procesos de adopcion
                                         </a>
                                     </li>
-                              
+                                    <li >
+                                        <a href="..\usuario\Rechazados.php">
+                                            Rechazos
+                                        </a>
+                                    </li>
+
                                 </ul>
                             </div>
+                        </li>
+                        <li>
+                            <a href="..\usuario\preguntas_frecuentes.php">
+                                <i class="fas fa-question">
+                                </i>
+                                preguntas frecuentes
+                            </a>
                         </li>
                         <li class="">
                             <a href="..\..\index.php" >
@@ -263,16 +277,19 @@ if(!$user->authorizacion('usuario')){
                 </div>
                 <div>
                     <a  data-toggle="modal" data-target="#Mcerrar_sesion" >
-                        <i class="fa fa-power-off">
+                        <i class="fa fa-power-off" title="Cerrar sesión" data-toggle="tooltip">
                         </i>
+
                     </a>
                 </div>
             </div>
         </nav>
         <!-- sidebar-wrapper  -->
-        
-        <?php include '..\modal\MhacerDenuncia.php' ?>
-       <?php include '..\modal\Mmi_Calificacion.php' ?>
-        <?php include '..\modal\Mcerrar_sesion.php' ?>
+
+
+        <?php include '..\modal\MhacerDenuncia.php'?>
+       <?php include '..\modal\Mmi_Calificacion.php'?>
+        <?php include '..\modal\Mcerrar_sesion.php'?>
+
 
 

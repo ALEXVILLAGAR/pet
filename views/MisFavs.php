@@ -1,4 +1,5 @@
 <div class="container py-3" >
+
     <?php 
             foreach($user->mis_favoritos() as $element): 
                     $pet = new Mascota($element['id_mascota']);
@@ -33,20 +34,18 @@
                                     Fundación: <?php echo $fundacion['nombre'] ?>
                                 </li>
                                 <br>
+                               <?php if (!$pet->EnProceso($user->usuario['id'])): ?>
                                 <a class="btn btn-success" align="left" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> >Quiero adoptarla</a>
-
+                               <?php endif ?>
                             </ul>
                             
-
                         </div>
-                        
                     </div>
-                </div>
-            
 
-        </div>
 
-    </div><br><?php include 'galerias/ConfirmarAdopcion.php'; ?> <?php endforeach ?>
+            </div>
+
+        </div><br><?php include 'galerias/ConfirmarAdopcion.php';?> <?php endforeach?>
 
 </div>
 
