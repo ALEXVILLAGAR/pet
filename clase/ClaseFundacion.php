@@ -128,12 +128,6 @@ class Fundacion
 		return $insertion;
 	}
 
-
-	public static function numero_fundaciones(){
-		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT COUNT(id) FROM fundacion "));
-		return $insertion;
-}
-
 	public function only_reservada(){ //todas las mascotas reservadas
 		$id_fundacion=$this->fundacion['id'];
 		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM mascota WHERE disponible=0 && solicitud!='Aprobada' && id_fundacion='$id_fundacion' " ) or die ( "casi");
@@ -141,17 +135,27 @@ class Fundacion
 
 	}
 
-	public static function nueva_preunta(){ //Crea  una pregunta frecuente nueva
-			$fecha = date("Y-m-d H:i:s");
-			$fundacion = $_SESSION['user'];
-			mysqli_query(Conectar::conexion(),"INSERT INTO preguntas VALUES ('','$_POST[pregunta]','$_POST[respuesta]','$fecha','$fundacion[nombre]','$fundacion[id]')") or die ('errorrrr');
-			header('Location: '.$_SERVER['HTTP_REFERER'] );
+	public function nueva_pregunta(){ //Crea  una pregunta frecuente nueva
+		$fecha = date("Y-m-d H:i:s");
+		$fundacion = $this->fundacion;
+		mysqli_query($this->db,"INSERT INTO preguntas VALUES ('','$_POST[pregunta]','$_POST[respuesta]','$fecha','$fundacion[id]')") or die ('errorrrr');
+		header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
-	public static function mis_preguntas(){//retorna todas las preguntas frecuentes que tiene una fundacion.
-		$fundacion = $_SESSION['user'];
-		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM preguntas WHERE 	id_fundacion = '$fundacion[id]' " ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+
+	public function mis_preguntas(){//retorna todas las preguntas frecuentes que tiene una fundacion.
+		$fundacion = $this->fundacion;
+		$resultado = mysqli_query($this->db, "SELECT * FROM preguntas WHERE id_fundacion = '$fundacion[id]' " ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 		return $resultado;
+	}
+
+	public static function DonacionesDe(){
+		$obj = array();
+		foreach (Fundacion::fundaciones() as $element) {
+			$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM donaciones WHERE id_fundacion='$element[id]'") or die ( "casi");
+			$obj[]=mysqli_num_rows($resultado);
+		}
+		return $obj;
 	}
 }
 

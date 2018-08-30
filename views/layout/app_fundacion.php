@@ -145,7 +145,7 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                                     Donaciones
                                 </span>
                                 <span class="badge badge-pill badge-primary">
-                                    3
+                                    <?php echo mysqli_num_rows($fundacion->mis_donaciones()); ?>
                                 </span>
                             </a>
                             <div class="sidebar-submenu">

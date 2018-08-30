@@ -229,6 +229,11 @@ if(!$user->authorizacion('usuario')){
                                             Procesos de adopcion
                                         </a>
                                     </li>
+                                    <li >
+                                        <a href="..\usuario\Rechazados.php">
+                                            Rechazos
+                                        </a>
+                                    </li>
 
                                 </ul>
                             </div>
