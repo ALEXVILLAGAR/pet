@@ -22,8 +22,9 @@ if (!$user->authorizacion('usuario')) {
                 <meta content="" name="description">
                     <meta content="" name="author">
                         <title>
-                            I WANT A PET
+                            I Want A Pet
                         </title>
+                        <link href="../../img/icon.png" rel="shortcut icon"/>
                         <!-- Bootstrap core CSS -->
                         <link href="../../css/estilos.css" rel="stylesheet">
                         <link href="../../css/heart.css" rel="stylesheet">
