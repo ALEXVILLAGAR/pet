@@ -7,6 +7,7 @@ $(document).ready(function() {
         single_column_breakpoint: 900
     });
 });
+/*carousel perdidos*/
 /*------tabla-------------------------------------------------------*/
 $(document).ready(function() {
     // Activate tooltip
