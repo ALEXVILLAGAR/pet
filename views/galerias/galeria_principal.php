@@ -5,29 +5,29 @@
     $pet       = new Mascota($element['id']);
     $fundacion = $pet->perteneceA();
     ?>
-                                                <div class="animal white-panel">
-                                                    <h3 href="#Nombre2" id="NombreMas">
-                                                        <?php echo $pet->mascota['nombre'] ?>
-                                                    </h3>
-                                                    <hr>
-                                                         <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto']) ?> " width="250"/>
-                                                            <div class="animal-info panel">
-                                                                <input id="toggle-heart" type="checkbox"/>
-                                                                <label aria-label="like" for="toggle-heart">
-                                                                    ❤
-                                                                </label>
-                                                                <br>
-                                                            <?php if (isset($vistauser) && Control::botonesGaleria()): ?>
-                                                                    <a class="btn btn-primary" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota" . $element['id'] ?> >
-                                                                        Adoptar
-                                                                    </a>
-                                                                    <!-- Button to Open the Modal -->
+                                                                <div class="animal white-panel">
+                                                                    <h3 href="#Nombre2" id="NombreMas">
+                                                                        <?php echo $pet->mascota['nombre'] ?>
+                                                                    </h3>
+                                                                    <hr>
+                                                                         <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto']) ?> " width="250"/>
+                                                                            <div class="animal-info panel" >
+                                                                                <input id="like" type="checkbox" />
+                                                                                <label aria-label="like" for="like" >
+                                                                                    ❤
+                                                                                </label>
+                                                                                <br>
+                                                                            <?php if (isset($vistauser) && Control::botonesGaleria()): ?>
+                                                                                    <a class="btn btn-primary" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota" . $element['id'] ?> >
+                                                                                        Adoptar
+                                                                                    </a>
+                                                                                    <!-- Button to Open the Modal -->
 
-                                                                <?php if (!$pet->MePrefiere(SessionesPet::session_info()['id'])): ?>
-                                                                    <!-- <button class="btn btn-danger"  href="#" data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito" . $element['id'] ?> type="button">
-                                                                        me gusta <span class="fa fa-heart mb-2 sr-icons"></span>
-                                                                    </button>-->
-                                                                <?php endif?>
+                                                                                <?php if (!$pet->MePrefiere(SessionesPet::session_info()['id'])): ?>
+                                                                                    <!-- <button class="btn btn-danger"  href="#" data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito" . $element['id'] ?> type="button">
+                                                                                        me gusta <span class="fa fa-heart mb-2 sr-icons"></span>
+                                                                                    </button>-->
+                                                                                <?php endif?>
                             <?php endif?>
                                     <button class="btn btn-info"   data-toggle="modal"  href="#" data-target=<?php echo "#myModal".$element['id'] ?> type="button">
                                         Leer Mas

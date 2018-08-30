@@ -65,8 +65,8 @@ img {
     transition: all 0.3s ease-in-out;
 }
 .logo {
-    height: 60px;
-    width: 60px;
+    height: 1.2em;
+    width: auto;
 }
 #about img {
     height: 35rem;

@@ -1,8 +1,8 @@
-[id='toggle-heart'] {
+[id='like'] {
     position: absolute;
     left: -100vw;
 }
-[id='toggle-heart']:checked+label {
+[id='like']:checked+label {
     color: #e2264d;
     -webkit-filter: none;
     filter: none;
@@ -10,7 +10,7 @@
     -webkit-animation: heart 2s cubic-bezier(0.17, 0.89, 0.32, 1.49);
     animation: heart 1s cubic-bezier(0.17, 0.89, 0.32, 1.49);
 }
-[for='toggle-heart'] {
+[for='like'] {
     -webkit-align-self: center;
     -ms-flex-item-align: center;
     align-self: center;
