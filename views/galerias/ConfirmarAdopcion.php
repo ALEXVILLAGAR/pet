@@ -1,5 +1,5 @@
  <!-- Modal reservar mascota para adopcion-->
-<div class="modal fade " id=<?php echo "reservar_mascota".$element['id'] ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade " id=<?php echo "reservar_mascota" . $element['id'] ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content rounded  border-primary">
       <div class="modal-header bg bg-dark">
@@ -17,12 +17,12 @@
         <th class="table-primary border border-secondary" colspan="4">Debes acudir a:</th>
     </tr>
     <tr>
-    
+
       <td class="border-top-0 border border-secondary"><?php echo $fundacion['nombre']; ?></td>
       <td class="border-top-0 border border-secondary"><?php echo $fundacion['direccion']; ?></td>
       <td class="border-top-0 border border-secondary"><?php echo $fundacion['telefono']; ?></td>
       <td class="border-top-0 border border-secondary">3 day</td>
-    
+
     </tr>
   </thead>
 
@@ -45,9 +45,13 @@
       </div>
       <div class="modal-footer bg-secondary">
 
-        <form action="http://localhost:8080/pet/ruta.php?variable=adoptar" method="post">
+        <!-- <form action="http://localhost:8080/pet/ruta.php?variable=adoptar" method="post"> --> <!--puerto 8080 para alex-->
+        <!-- <form action="http://localhost/pet/ruta.php?variable=adoptar" method="post"> -->
+        <form action="/pet/ruta.php?variable=adoptar" method="post">
+
           <input type="hidden" name="id_pet" value="<?php echo $element['id'] ?>">
-          <input type="hidden" name="id_usuario" value="<?php $user = new Usuario(); echo $user->usuario['id'] ?>">
+          <input type="hidden" name="id_usuario" value="<?php $user = new Usuario();
+echo $user->usuario['id']?>">
           <button type="submit" class="btn btn-success border border-info" >Confirmar reserva</button>
         </form>
         <button type="reset" class="btn btn-primary border border-info" data-dismiss="modal">cancelar reserva</button>

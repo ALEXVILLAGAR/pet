@@ -1,5 +1,5 @@
 <?php if (isset($element['id'])): ?>
-<div class="modal" id=<?php echo "newDonationM".$element['id'] ?>>
+<div class="modal" id="<?php echo "newDonationM".$element['id'] ?>">
     <?php else: ?>
 <div class="modal" id="newDonationM" ?>>
 <?php endif ?>
@@ -9,10 +9,10 @@
             <div class="modal-header bg-dark text-white">
                 <h3 class="modal-title" id="myModalLabel">
                     Nueva Donación
-                <form action="../../ruta.php?variable=donacion" id="form-donar" method="post">
+                <form action="/pet/ruta.php?variable=donacion" id="form-donar" method="post">
                     <input type="hidden" name="monto" id="monto" value="">
-                    <?php if (isset($element['nombre'])):
-                         echo $element['nombre'] ?>
+                    <?php if (isset($element['nombre'])): ?>
+                         <label for="id_fundacion"> <?php echo $element['nombre'] ?> </label>
                          <input type="hidden" name="id_fundacion" value="<?php echo $element['id'] ?>">
                     <?php else: ?>
                            <select name="id_fundacion">

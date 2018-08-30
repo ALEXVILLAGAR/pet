@@ -35,6 +35,15 @@ class Adopcion
 		return $resultado;	
 	}
 
+	public static function AdopcionesDadas(){
+		$obj = array();
+		foreach (Fundacion::fundaciones() as $element) {
+			$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM adopcion LEFT JOIN `mascota` ON `adopcion`.`id_mascota` = `mascota`.`id` WHERE `mascota`.`id_fundacion` = '$element[id]'" ) or die ( "casi");
+			$obj[]=mysqli_num_rows($resultado);
+		}
+		return $obj;
+	}
+
 }
 
  ?>

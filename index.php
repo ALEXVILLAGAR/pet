@@ -12,6 +12,8 @@ require_once("ControlClass.php");
                         <title>
                             I WANT A PET
                         </title>
+        <link rel="shortcut icon" href="img/icono.png" type="image/x-icon  sizes="64x64">
+
                         <!-- Bootstrap core CSS -->
                         <link href="css/estilos.css" rel="stylesheet">
                             <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -213,6 +215,12 @@ require_once("ControlClass.php");
                 </hr>
             </div>
         </div>
+
+        <?php if (!SessionesPet::session_active()):
+                $var = "#loginModal";
+            else:
+                $var = "#newDonationM".$element['id'];
+        endif ?>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">
@@ -220,11 +228,11 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-handshake-o text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                       <a href="#" data-target="#loginModal" data-toggle="modal">en Domicilios</a> 
+                       <a href="#" data-toggle="modal" data-target=<?php echo $var ?>> en Domicilios</a> 
                     </h3>
 
                     <p class="text-muted mb-0">
-                        Our templates are updated regularly so they don't break.
+                        Puedes acudir directamente a las fundaciones.
                     </p>
                 </div>
             </div>
@@ -233,10 +241,10 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-btc text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        <a href="#" data-target="#loginModal" data-toggle="modal">en linea</a>
+                        <a href="#" data-target=<?php echo $var ?> data-toggle="modal">en linea</a>
                     </h3>
                     <p class="text-muted mb-0">
-                        You can use this theme as is, or you can make changes!
+                        hacer donaciones en linea con medios tradicionales.
                     </p>
                 </div>
             </div>
@@ -245,10 +253,10 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-money text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        <a href="#" data-target="#loginModal" data-toggle="modal">puntos de atención</a>
+                        <a href="#" data-target=<?php echo $var ?> data-toggle="modal">puntos de atención</a>
                     </h3>
                     <p class="text-muted mb-0">
-                        We update dependencies to keep things fresh.
+                        tenemos punto de recaudo en diferentes centros comerciales de la ciudad.
                     </p>
                 </div>
             </div>
@@ -257,10 +265,10 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-whatsapp text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        <a href="#" data-target="#loginModal" data-toggle="modal">contactanos</a>
+                        <a href="#" data-target=<?php echo $var ?> data-toggle="modal">contactanos</a>
                     </h3>
                     <p class="text-muted mb-0">
-                        You have to make your websites with love these days!
+                        comunicate con nosotros y te guiaremos en este proceso.
                     </p>
                 </div>
             </div>
@@ -272,22 +280,29 @@ require_once("ControlClass.php");
             <div class="container ">
                 <div class="row">
                     <div class="col-lg-4 mx-auto text-center">
-                        <h3>
+                        <h3 class="text-primary">
                             I WANT A PET
                         </h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae aliquid minus quas omnis nisi unde dicta aperiam quaerat aliquam ut provident culpa iure neque ducimus voluptatum veritatis dolore, earum suscipit quibusdam animi quo est quae. Nobis, cumque, error. Atque quibusdam, ipsa magnam doloremque eos tempore asperiores id omnis adipisci aut.
-                        </p>
+                        <img src="img/logo2.png" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_pet">
+                        <br><br>
+                        <p class="text-info text-center">si vamos a poner algo de texto.</p>
+                        
+                        
                     </div>
                     <div class="col-lg-4 ml-auto text-center">
-                        <h3>
-                            Desarollado por:
-                        </h3>
-                        <div class="author info">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, quae vitae molestias omnis repellendus alias laudantium, fugiat dolore culpa nisi magnam ullam eaque ad repudiandae quis adipisci dicta possimus error autem repellat cum nesciunt odit. Illum, facilis doloremque error vel.
+                        <h2 class="text-primary">desarrolado por:</h2>
+                        <img src="img/logo_prisma.jpg" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_prisma">
+                        <center><div class="author info text-info">
+                            <p class="text-center">
+                                <h5 class="text-primary"><i class="fa fa-users text-primary"> </i> integrantes:</h5>
+                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> integrante</h7>
+                                
                             </p>
                         </div>
+                        </center>
                     </div>
                     <div class="col-lg-4 mr-auto text-center">
                         <h3>
@@ -330,6 +345,7 @@ require_once("ControlClass.php");
                     </div>
                 </div>
             </div>
+            <div><h5><i class="fa fa-copyright"> Prisma 2018. </i></h5></div>
         </section>
 
 
@@ -354,6 +370,7 @@ require_once("ControlClass.php");
         </script>
         <script src="js/login-register.js" type="text/javascript"></script>
         <?php include 'views/login/login.html'?>
+        <?php include 'views/donar.php'?>
     
 
     <script>
