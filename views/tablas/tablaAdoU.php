@@ -1,6 +1,6 @@
 <div class="container tabla">
         <div class="table-wrapper">
-            <div class="table-title">
+            <div class="table-title bg-danger">
                 <div class="row">
                     <div class="col-sm-6">
 						<h2><b>Adopciones</b></h2>

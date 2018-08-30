@@ -1,36 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title></title>
-</head>
+
+
 <body>
-    <script type="text/javascript">
-        function loginAjaxF(email, clave) {
-    var parametros = {"correo" : email,
-    "clave": clave};
-    if(parametros["correo"]!="" && parametros["clave"]!=""){
-        $.ajax({
-            data: parametros,
-            url: 'ruta.php?variable=login_fundacion',
-            type: 'post',
-            success: function(response){
-                if(response!=0){
-                    window.location.assign("views/fundacion/userfundacion.php");
-                }else{
-                    shakeModalF();
-                }
-            },
-            fail: function(response){
-                shakeModalF();
-            }
-        });
-    }else{
-        shakeModalF();
-    }
-}
-
-    </script>
-
+    
     <div class="modal fade login" id="loginModalF" style="overflow-y: scroll;">
     <div class="modal-dialog login animated">
         <div class="modal-content">
@@ -134,5 +107,31 @@
 
    <?php include 'views/modal/terminosycondF.html'?>
 
+
 </body>
+<script type="text/javascript">
+    function loginAjaxF(email, clave) {
+    var parametros = {"correo" : email,
+    "clave": clave};
+    if(parametros["correo"]!="" && parametros["clave"]!=""){
+        $.ajax({
+            data: parametros,
+            url: 'ruta.php?variable=login_fundacion',
+            type: 'post',
+            success: function(response){
+                if(response!=0){
+                    window.location.assign("views/fundacion/userfundacion.php");
+                }else{
+                    shakeModalF();
+                }
+            },
+            fail: function(response){
+                shakeModalF();
+            }
+        });
+    }else{
+        shakeModalF();
+    }
+}
+    </script>
 </html>
