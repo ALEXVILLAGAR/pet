@@ -15,12 +15,12 @@
 
     <?php 
 
-    foreach (Fundacion::mis_preguntas() as $element): ?>
+    foreach ($fundacion->mis_preguntas() as $element): ?>
     <tr>
       <td><?php echo $element['pregunta'] ?></td>
       <td><?php echo $element['respuesta'] ?></td>
       <td><?php echo $element['fecha'] ?></td>
-      <td><?php echo $element['nombre_fundacion'] ?></td>
+      <td><?php echo $fundacion->fundacion['nombre'] ?></td>
     </tr>
     <?php endforeach ?>
   </tbody>

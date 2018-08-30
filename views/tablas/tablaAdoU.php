@@ -3,7 +3,11 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2><b>Adopciones</b></h2>
+                        <h2><b> <?php if (isset($rechazados)): ?>
+                            Rechazados
+                        <?php else: ?>
+                            Adopciones
+                        <?php endif ?></b></h2>
                     </div>
                     <div class="">
                         <div class="search-box">
@@ -40,7 +44,7 @@
                 <tbody>
                     <?php
 // var_dump(mysqli_fetch_array($user->mis_adoptados()));
-foreach ($user->mis_adoptados() as $element):
+foreach ($consulta as $element):
     $pet       = new Mascota($element['id_mascota']);
     $fundacion = $pet->perteneceA();
     ?>

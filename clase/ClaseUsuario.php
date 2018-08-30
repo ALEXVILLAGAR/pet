@@ -4,7 +4,14 @@ class Usuario
 {
 	private $db;
 	public $usuario;
-	
+
+
+	/**
+	 * Class Constructor
+	 * @param    $db   
+	 * @param    $usuario   
+	 */
+		
 	function __construct()
 	{
 		$this->db = Conectar::conexion();
@@ -40,14 +47,16 @@ class Usuario
 		return $resultado;
 	}
 
-	public function preferencia(){ //añadir una mascota a mis favotiros
+	public function preferencia($id_pet){ //añadir una mascota a mis favotiros
 		$user_id = $this->usuario['id'];
-		$resultado = mysqli_query($this->db, "SELECT * FROM preferencia WHERE id_mascota = '$_POST[id_pet]'" ) or die ( "Algo ha ido mal en la consulta");
+		$resultado = mysqli_query($this->db, "SELECT * FROM preferencia WHERE id_mascota = '$id_pet'" ) or die ( "Algo ha ido mal en la consulta");
 		$resultado=mysqli_fetch_array($resultado);
 		if($resultado['id_usuario']!=$user_id){
-			$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$_POST[id_pet]','$user_id')") or die ('error');
-		}else{ header('Location: index.php'); }
-		header('Location: '.$_SERVER['HTTP_REFERER'] );
+			$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$id_pet','$user_id')") or die ('error');
+		}else{ //header('Location: index.php');
+		echo 0; }
+		// header('Location: '.$_SERVER['HTTP_REFERER'] );
+		echo 1;
 	}
 
 	public function mis_favoritos(){	//favoritos de cada usuario
@@ -97,12 +106,6 @@ class Usuario
 		return $resultado;
 	}
 
-
-	public static function total_usuarios(){
-		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT Count(id) FROM usuario "));
-		return $insertion;
-        }
-
 	public function mis_adoptados(){
 		$user_id = $this->usuario['id'];
 		$consulta="SELECT * FROM adopcion WHERE id_usuario = '$user_id'";
@@ -121,8 +124,15 @@ class Usuario
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 
-	public static function todas_preguntas(){	//retorna todos los usuarios de la bd
-		$resultado = mysqli_query(Conectar::conexion(), "SELECT * FROM preguntas " ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+	public function todas_preguntas(){	//retorna todos los usuarios de la bd
+		$resultado = mysqli_query($this->db, "SELECT * FROM preguntas " ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;
+	}
+
+	public function mis_denegados()
+	{
+		$id = $this->usuario['id'];
+		$resultado = mysqli_query($this->db, "SELECT * FROM denegado WHERE id_usuario='$id'" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 		return $resultado;
 	}
 }

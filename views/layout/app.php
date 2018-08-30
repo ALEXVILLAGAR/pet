@@ -199,10 +199,7 @@ if(!$user->authorizacion('usuario')){
                                     </li>
                                     <li >
                                         <a href="#" data-toggle="modal" data-target="#MhacerDenuncia">
-<<<<<<< HEAD
-=======
                                  <span>
->>>>>>> master
                                     Hacer Denuncia
                                     </span>
                                 </a>
@@ -229,6 +226,11 @@ if(!$user->authorizacion('usuario')){
                                     <li >
                                         <a href="..\usuario\Estado_Adopcion.php">
                                             Procesos de adopcion
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="..\usuario\Rechazados.php">
+                                            Rechazos
                                         </a>
                                     </li>
 
