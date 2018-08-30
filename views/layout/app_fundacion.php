@@ -1,8 +1,8 @@
-<?php 
+<?php
 // session_start();
-require_once("../../ControlClass.php");
+require_once "../../ControlClass.php";
 $fundacion = new Fundacion();
-if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
+if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
     header('Location: index.php');
     exit;
 }
@@ -15,8 +15,9 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                 <meta content="" name="description">
                     <meta content="" name="author">
                         <title>
-                            I WANT A PET
+                            I Want A Pet
                         </title>
+                        <link href="../../img/icon.png" rel="shortcut icon"/>
                         <!-- Bootstrap core CSS -->
                         <link href="../../css/estilos.css" rel="stylesheet">
                             <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -66,19 +67,19 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                     <div class="user-pic">
 
         <?php if (isset($fundacion->fundacion['foto_fundacion'])): ?>
-            <img src="data:image/jpg;base64,<?php echo base64_encode($fundacion->fundacion['foto_fundacion'])?>" alt="User picture" class="img-responsive img-rounded"/>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($fundacion->fundacion['foto_fundacion']) ?>" alt="User picture" class="img-responsive img-rounded"/>
         <?php else: ?>
              <img alt="User picture" class="img-responsive img-rounded" src="../../img/user.jpg">
-        <?php endif ?>
-        
+        <?php endif?>
+
                     </div>
                     <div class="user-info">
                         <span class="user-name">
                             <strong>
-                                <?php  echo($fundacion->fundacion['nombre']); ?>
+                                <?php echo ($fundacion->fundacion['nombre']); ?>
                             </strong>
                         </span>
-                        <span class="user-role">                            
+                        <span class="user-role">
                             Fundación
                         </span>
                         <span class="user-status">
@@ -166,7 +167,7 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                 </span>
                             </a>
                         </li>
-                      
+
                 <!-- sidebar-menu  -->
 
                           <li class="sidebar-dropdown">
@@ -188,8 +189,8 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                                         <a href="..\fundacion\Estado_AdopcionF.php">
                                             Procesos de adopcion
                                         </a>
-                                    </li>                        
-                                </ul>                
+                                    </li>
+                                </ul>
                             </div>
                         </li>
                      </ul>
@@ -221,4 +222,4 @@ if(!SessionesPet::session_active() || !$fundacion->is_fundacion()){
                 </div>
             </div>
         </nav>
-        <?php include '..\modal\Mcerrar_sesion.php'; ?>
+        <?php include '..\modal\Mcerrar_sesion.php';?>
