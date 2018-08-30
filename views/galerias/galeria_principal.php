@@ -42,16 +42,15 @@
                                             cancelar Solicitud.
                                         </button>
 
-                                        
-                                    <?php include '..\modal\Mcancelar_adopcion.php'; ?>
-                                    <?php endif ?> 
-                                    
+                                    <?php include '..\modal\Mcancelar_adopcion.php';?>
+                                <?php endif?>
+
                                     <!-- The Modal -->
-                                    <?php include 'leermas.php'; ?>
-                                    <?php include 'ConfirmarAdopcion.php'; ?>
-                                    <?php include 'MavisoSaveFavorito.php'; ?>
-                                     <?php include 'Mestado_Adopcion.php'; ?>
-                                    
+                                    <?php include 'leermas.php';?>
+                                    <?php include 'ConfirmarAdopcion.php';?>
+                                    <!-- <?php// include 'MavisoSaveFavorito.php';?> -->
+                                     <?php include 'Mestado_Adopcion.php';?>
+
 
                                 </p>
                             </div>
