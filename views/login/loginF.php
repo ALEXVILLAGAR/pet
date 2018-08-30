@@ -4,7 +4,7 @@
 
 <body>
     
-    <div class="modal fade login" id="loginModalF" style="overflow-y: scroll;">
+    <div class="modal fade login" id="loginModalF" >
     <div class="modal-dialog login animated">
         <div class="modal-content">
             <div class="modal-header text-center">
