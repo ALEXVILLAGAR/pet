@@ -1,6 +1,6 @@
 
         <div class="table-wrapper tabla">
-       <div class="table-title">
+       <div class="table-title bg-success">
                 <div class="row">
                     <div class="col-sm-6 pr-5 col-lg-5">
                         <h2><b>Donaciones Recibidas </b></h2>

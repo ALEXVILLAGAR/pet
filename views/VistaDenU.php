@@ -1,8 +1,8 @@
 
 
 <section>
-    <div class="container py-3">
-        <div class="card" style="z-index: -1;">
+    <div class="container py-3" id="Denuncias">
+        <div class="card border-none shadow rounded" style="z-index: -1;">
             <div class="row ">
                    <?php foreach ($user->mis_denuncias() as $element): ?>
 
@@ -14,18 +14,29 @@
                     </img>
                     <?php endif ?>
                 </div>
-                <div class="col-md-8 px-3">
+                <div class="col-md-8 px-3 pt-3">
                         
                     <div class="card-block px-3">
-                        <h4 class="card-title">
+                        <h4 class="card-title font-weight-bold">
                             <?php echo $element['fecha'] ?>
-                        </h4>
-                        <p class="card-text">
-                            <?php echo "Descripcion: ".$element['descripcion']." direccion: <br>".$element['direccion'] ?>
-                        </p>
-                        <p class="card-text">
+                        </h4>        
+                                 
+                        <p class="card-text mx-3">
+
+                             <ul class="list-group list-group-flush">
+                                 <li class="list-group-item"><span class="font-weight-bold "> Descripción: </span><?php echo $element['descripcion'] ?></li>
+                             <li class="list-group-item"><span class="font-weight-bold "> Dirección: </span><?php echo $element['direccion'] ?></li>
+
+                         
+                                                     
+                        <p class="card-text text-justify list-group-item">
                             Duis aute irure sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
+                         </p>
+                            
+                        </ul>  
+
+                           
                         <form action="../../ruta.php?variable=resolver_denuncia" method="get" accept-charset="utf-8">
                             <input type="hidden" name="id_denuncia" value="<?php echo $element['id'] ?>">
                             <button type="submit" class="btn btn-primary"> resuelta </button>

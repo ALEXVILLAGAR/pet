@@ -89,16 +89,20 @@
     animation-name: shake;
 }
 .login .modal-title {
-    padding-left: 5rem;
+    margin: 0 auto;
+    /* align-self: center; */
 }
 .login .modal-dialog {
-    width: 450px;
+    max-width: 380px;
 }
 .login .modal-footer {
     border-top: 0;
     margin-top: 0px;
-    padding: 10px 20px 20px;
+    padding: 5px 20px 20px;
     background-color: #eeeeee;
+}
+#register-footerU {
+    margin-top: 1px !important;
 }
 .login .modal-header {
     border: 0 none;
@@ -108,6 +112,7 @@
 }
 .login .modal-body {
     background-color: #eeeeee;
+    max-width: 380px;
 }
 .login .division {
     float: none;
@@ -132,46 +137,6 @@
 .login .division span {
     color: #424242;
     font-size: 17px;
-}
-.login .box .social {
-    float: none;
-    margin: 0 auto 30px;
-    text-align: center;
-}
-.login .social .circle {
-    background-color: #EEEEEE;
-    color: #FFFFFF;
-    border-radius: 100px;
-    display: inline-block;
-    margin: 0 17px;
-    padding: 15px;
-}
-.login .social .circle .fa {
-    font-size: 16px;
-}
-.login .social .facebook {
-    background-color: #455CA8;
-    color: #FFFFFF;
-}
-.login .social .google {
-    background-color: #F74933;
-}
-.login .social .github {
-    background-color: #403A3A;
-}
-.login .facebook:hover {
-    background-color: #6E83CD;
-}
-.login .google:hover {
-    background-color: #FF7566;
-}
-.login .github:hover {
-    background-color: #4D4D4d;
-    ;
-}
-.modal-body .box .content .social img {
-    height: 10rem;
-    width: 60%;
 }
 .login .forgot {
     color: #797979;
@@ -221,9 +186,7 @@
 .login .box .form .espacio1 {
     padding-bottom: 0.7rem;
 }
-
-.login .box .form input[type="text"], .login .box .form input[type="password"],.login .box .form input[type="email"] {
-
+.login .box .form input[type="text"], .login .box .form input[type="password"], .login .box .form input[type="email"] {
     border-radius: 3px;
     border: none;
     color: #333333;
@@ -232,11 +195,6 @@
     margin-bottom: 6px;
     padding: 13px 12px;
     width: 85%;
-}
-@media (max-width:400px) {
-    .login .modal-dialog {
-        width: 100%;
-    }
 }
 .big-login, .big-register {
     background-color: #00bbff;

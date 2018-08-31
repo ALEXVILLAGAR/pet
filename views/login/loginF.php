@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
-
+<script type="text/javascript">
+    function loginAjaxF(email, clave) {
+    var parametros = {"correo" : email,
+    "clave": clave};
+    if(parametros["correo"]!="" && parametros["clave"]!=""){
+        $.ajax({
+            data: parametros,
+            url: 'ruta.php?variable=login_fundacion',
+            type: 'post',
+            success: function(response){
+                if(response!=0){
+                    window.location.assign("views/fundacion/userfundacion.php");
+                }else{
+                    shakeModalF();
+                }
+            },
+            fail: function(response){
+                shakeModalF();
+            }
+        });
+    }else{
+        shakeModalF();
+    }
+}
+    </script>
 
 <body>
     
-    <div class="modal fade login" id="loginModalF" >
+    <div class="modal fade login" id="loginModalF">
     <div class="modal-dialog login animated">
         <div class="modal-content">
             <div class="modal-header text-center">
-                <h2 class="modal-title text-dark px-5">
+                <h2 class="modal-title titulo text-dark">
                     Iniciar Sesión
                 </h2>
                 <button aria-hidden="true" class="close" data-dismiss="modal" type="button" onclick="javascript:window.location.reload();">
@@ -18,10 +42,6 @@
             <div class="modal-body">
                 <div class="box">
                     <div class="content">
-                        <div class="social">
-                            <img src="img/user.jpg" style="">
-                            </img>
-                        </div>
                         <div class="division">
                             <div class="line.l">
                             </div>
@@ -29,7 +49,7 @@
                         <div class="error">
                         </div>
                         <div class="form loginBox lbF">
-                            <form accept-charset="UTF-8" action="ruta.php?variable=login_fundacion" method="post">
+                           <!--  <form accept-charset="UTF-8" > -->
                             <input autofocus="autofocus" class="form-control mx-auto" id="email_fundacion" name="correo" placeholder="Correo" required="" type="text">
                             </input>
                             <input autofocus="autofocus" class="form-control mx-auto" id="password_fundacion" name="clave" placeholder="clave" required="" type="password">
@@ -38,7 +58,7 @@
                             </div>
                             <input class="btn btn-default btn-login" onclick="loginAjaxF($('#email_fundacion').val(),$('#password_fundacion').val())" type="submit" value="Inicio Sesión">
                             </input>
-                            </form>
+                         <!--    </form> -->
                         </div>
                     </div>
                 </div>
@@ -109,29 +129,5 @@
 
 
 </body>
-<script type="text/javascript">
-    function loginAjaxF(email, clave) {
-    var parametros = {"correo" : email,
-    "clave": clave};
-    if(parametros["correo"]!="" && parametros["clave"]!=""){
-        $.ajax({
-            data: parametros,
-            url: 'ruta.php?variable=login_fundacion',
-            type: 'post',
-            success: function(response){
-                if(response!=0){
-                    window.location.assign("views/fundacion/userfundacion.php");
-                }else{
-                    shakeModalF();
-                }
-            },
-            fail: function(response){
-                shakeModalF();
-            }
-        });
-    }else{
-        shakeModalF();
-    }
-}
-    </script>
+
 </html>

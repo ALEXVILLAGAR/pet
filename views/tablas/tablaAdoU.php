@@ -1,4 +1,4 @@
-<div class="container tabla">
+<div class="container tabla" id="tablaadopu">
         <div class="table-wrapper">
             <div class="table-title bg-danger">
                 <div class="row">
@@ -74,7 +74,7 @@
                     </div>
                     <div class="modal-body">
                         <p>esta seguro de borrar estos registros?</p>
-                        <p class="text-warning"><small>Esta Acción no puede ser deshecha.</small></p>
+                        <p class="text-warning"><small>Esta Acción no se puede deshacer.</small></p>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">

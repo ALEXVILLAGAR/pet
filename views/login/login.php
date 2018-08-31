@@ -2,6 +2,8 @@
 <html>
     </head>
     <body>
+
+  <!--  verificar cuenta usuario  -->     
         <script>
     function loginAjax(email, clave) {
     var parametros = {"correo" : email,
@@ -28,11 +30,11 @@
 }
 
 </script>
-        <div class="modal fade login" id="loginModal" style="overflow-y: scroll;">
+        <div class="modal fade login" id="loginModal" >
             <div class="modal-dialog login animated" >
                 <div class="modal-content">
                     <div class="modal-header text-center">
-                        <h2 class="modal-title text-dark px-5">
+                        <h2 class="modal-title titulo text-dark px-5">
                             Iniciar Sesión
                         </h2>
                         <button aria-hidden="true" class="close" data-dismiss="modal" type="button"  onclick="javascript:window.location.reload();">
@@ -42,10 +44,6 @@
                     <div class="modal-body" >
                         <div class="box">
                             <div class="content">
-                                <div class="social">
-                                    <img src="img/user.jpg" style="">
-                                    </img>
-                                </div>
                                 <div class="division">
                                     <div class="line.l">
                                     </div>
@@ -78,7 +76,7 @@
                                 ?
                             </span>
                         </div>
-                        <div class="forgot register-footer rfU" id="register-footerU" style="display:none">
+                        <div class="forgot register-footer rfU" id="register-footerU" style="display:none;">
                             <span>
                                 Ya Tienes Una Cuenta?
                             </span>

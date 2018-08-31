@@ -19,7 +19,7 @@ require_once("ControlClass.php");
                                 <!-- Custom fonts for this template -->
                                 <link id="template-file" href="views/galerias/perdidos.html" rel="import" />
                                 <link href="css/login-register.css" rel="stylesheet"/>
-                                <link href="css/login-registerF.css" rel="stylesheet"/>
+                          
                                 <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
                                     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
                                         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
@@ -105,15 +105,16 @@ require_once("ControlClass.php");
                         <hr>
                         </hr>
                     </div>
-                    <div class="col-lg-8 mx-auto">
+                    <div class="col-lg-12 mx-auto">
 <?php
               if(!(SessionesPet::session_active())){
 ?>
-                        <button class="btn btn-primary btn-xl js-scroll-trigger" data-target="#loginModal" data-toggle="modal">
+                        <button class="btn btn-primary btn-xl js-scroll-trigger mx-2 my-xs-2 arriba" data-target="#loginModal" data-toggle="modal">
                             Quiero Adoptar
                         </button>
+              
 
-                        <button class="btn btn-primary btn-xl js-scroll-trigger" data-target="#loginModalF" data-toggle="modal">
+                        <button class="btn btn-primary btn-xl js-scroll-trigger mx-2" data-target="#loginModalF" data-toggle="modal">
                             Soy Fundación
                         </button>
     <?php
@@ -159,6 +160,7 @@ require_once("ControlClass.php");
 </section>
 <!--------------------------------DONACION----------------------------------------->
          <section id="services">
+             <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center py-2 text-xs-center">
                 <h2 class="section-heading">
@@ -168,7 +170,7 @@ require_once("ControlClass.php");
                 </hr>
             </div>
         </div>
-    <div class="container">
+   
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box mt-5 mx-auto">

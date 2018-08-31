@@ -31,11 +31,11 @@
                                     </button>
                                    <?php if (isset($conocerEstado)): ?>
                                     <br><br>
-                                        <button class="btn btn-warning" data-target=<?php echo "#Mestado_Adopcion".$element['id'] ?> data-toggle="modal" type="button">
+                                        <button class="btn btn-muted" data-target=<?php echo "#Mestado_Adopcion".$element['id'] ?> data-toggle="modal" type="button">
                                             conocer estado
                                         </button>
                                         <br><br>
-                                        <button class="btn btn-warning" data-target=<?php echo "#Mcancelar_adopcion".$element['id'] ?> data-toggle="modal" type="button">
+                                        <button class="btn btn-danger" data-target=<?php echo "#Mcancelar_adopcion".$element['id'] ?> data-toggle="modal" type="button">
                                             cancelar Solicitud.
                                         </button>
                                         

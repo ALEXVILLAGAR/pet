@@ -1,11 +1,11 @@
-<div class="container py-3" >
+<div class="container py-3"  id="favoritos">
     <?php 
             foreach($user->mis_favoritos() as $element): 
                     $pet = new Mascota($element['id_mascota']);
                     $fundacion = $pet->perteneceA();
                     if ($pet->mascota['solicitud']!=null) continue;
                 ?>
-    <div class="card border-danger rounded-right" style="z-index: ">
+    <div class="card border-none  shadow rounded" style="z-index: ">
         <div class="row ">
              
             <div class="col-md-4 box " id="fundaciones">
@@ -13,30 +13,30 @@
                 </img>
             </div>
            
-                <div class="col-md-8 px-3">
+                <div class="col-md-8 px-3 py-3">
                     <div class="card-block px-3">
-                        <h4 class="card-title">
+                        <h4 class="card-title text-uppercase font-weight-bold">
                             <?php echo $pet->mascota['nombre'] ?>
                         </h4>
                         <div class="mascota-info panel">
-                            <ul>
-                                <li>
-                                    Raza: <?php echo $pet->mascota['raza'] ?>
+                            <ul class=" list-group list-group-flush  pt-1 mx-3">
+                                <li class="list-group-item">
+                                    <span class="font-weight-bold">Raza:</span> <?php echo $pet->mascota['raza'] ?>
                                 </li>
-                                <li>
-                                    Edad: <?php echo $pet->mascota['edad'] ?>
+                                <li class="list-group-item">
+                                    <span class="font-weight-bold">Edad:</span> <?php echo $pet->mascota['edad'] ?>
                                 </li>
-                                <li>
-                                    Tamaño: <?php echo $pet->mascota['tamano'] ?>
+                                <li class="list-group-item">
+                                    <span class="font-weight-bold">Tamaño:</span> <?php echo $pet->mascota['tamano'] ?>
                                 </li>
-                                <li>
-                                    Fundación: <?php echo $fundacion['nombre'] ?>
+                                <li class="list-group-item">
+                                   <span class="font-weight-bold">Fundación:</span> <?php echo $fundacion['nombre'] ?>
                                 </li>
                                 <br>
-                                <a class="btn btn-success" align="left" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> >Quiero adoptarla</a>
-
+                                
                             </ul>
-                            
+                            <a class="btn btn-success" align="left" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> >Quiero adoptarla</a>
+
 
                         </div>
                         

@@ -23,7 +23,7 @@ function showRegisterForm() {
         $('.lfU').fadeOut('fast', function() {
             $('.rfU').fadeIn('fast');
         });
-        $('.modal-title').html('Registrate');
+        $('.titulo').html('Registrate');
     });
     $('.error').removeClass('alert alert-danger').html('');
 }
@@ -34,7 +34,7 @@ function showLoginForm() {
         $('#register-footerU').fadeOut('fast', function() {
             $('#login-footerU').fadeIn('fast');
         });
-        $('.modal-title').html('Iniciar Sesión');
+        $('.titulo').html('Iniciar Sesión');
     });
     $('.error').removeClass('alert alert-danger').html('');
 }
@@ -68,7 +68,7 @@ function showRegisterFormF() {
         $('.lfF').fadeOut('fast', function() {
             $('.rfF').fadeIn('fast');
         });
-        $('.modal-title').html('Registrate');
+        $('.titulo').html('Registrate');
     });
     $('.error').removeClass('alert alert-danger').html('');
 }
@@ -97,7 +97,6 @@ function openRegisterModalF() {
         $('#loginModalF').modal('show');
     }, 230);
 }
-
 
 function shakeModalF() {
     $('#loginModalF .modal-dialog').addClass('shake');
