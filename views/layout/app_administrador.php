@@ -5,6 +5,7 @@ if (!(SessionesPet::session_active())) {
     header('Location: index.php');
     exit;
 }
+
 $user = new Usuario();
 if (!$user->authorizacion('admi')) {
     include '../../error.html';
@@ -23,7 +24,9 @@ if (!$user->authorizacion('admi')) {
                        <title>
                             I Want A Pet
                         </title>
+
                         <link href="../../img/icon.png" rel="shortcut icon"/>
+
                         <!-- Bootstrap core CSS -->
                         <link href="../../css/estilos.css" rel="stylesheet">
                             <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -178,6 +181,11 @@ if (!$user->authorizacion('admi')) {
                                     <li>
                                         <a href="gestion_usuarios.php">
                                             Gestion usuarios
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            ver denuncias
                                         </a>
                                     </li>
                                 </ul>

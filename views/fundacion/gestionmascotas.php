@@ -164,7 +164,7 @@
 			<div class="modal-content">
 				<form action="../../ruta.php?variable=agregar_pet" method="POST" enctype="multipart/form-data">
 					<div class="modal-header">
-						<h4 class="modal-title">Añadir Protectora</h4>
+						<h4 class="modal-title">Añadir mascota</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
 					</div>
 					<div class="modal-body">
