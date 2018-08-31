@@ -51,12 +51,12 @@ class Usuario
 		$user_id = $this->usuario['id'];
 		$resultado = mysqli_query($this->db, "SELECT * FROM preferencia WHERE id_mascota = '$id_pet'" ) or die ( "Algo ha ido mal en la consulta");
 		$resultado=mysqli_fetch_array($resultado);
-		if($resultado['id_usuario']!=$user_id){
-			$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$id_pet','$user_id')") or die ('error');
-		}else{ //header('Location: index.php');
-		echo 0; }
-		// header('Location: '.$_SERVER['HTTP_REFERER'] );
-		echo 1;
+		if($resultado['id_usuario']!=$user_id){ //si es un usuario diferente agrega la preferencia
+			mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$id_pet','$user_id')") or die ('error');
+		}else{
+			mysqli_query($this->db,"DELETE FROM preferencia WHERE id_usuario = '$user_id' && id_mascota='$id_pet'") or die ('error eliminar preferencia');
+		}
+		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 
 	public function mis_favoritos(){	//favoritos de cada usuario
