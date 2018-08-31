@@ -345,25 +345,17 @@ endif?>
                         <h3 class="text-primary">
                             I WANT A PET
                         </h3>
-                        <img src="img/logo1.jpg" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_pet">
+                        <img src="img/icon.png" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_pet">
                         <br><br>
-                        <p class="text-info text-center">si vamos a poner algo de texto.</p>
+                        
 
 
                     </div>
                     <div class="col-lg-4 ml-auto text-center">
-                        <h2 class="text-primary">desarrolado por:</h2>
-                        <img src="img/logo_prisma.jpg" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_prisma">
+                        <h2 class="text-primary">Desarrolado por:</h2>
+                        <img src="img/logo_prisma.png" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_prisma">
                         <center><div class="author info text-info">
-                            <p class="text-center">
-                                <h5 class="text-primary"><i class="fa fa-users text-primary"> </i> integrantes:</h5>
-
-                                <h7><i class="fa fa-user-circle"></i> Alexander Villaneda</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> Camilo Pelaez</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> Camilo Tapasco</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> Ricardo</h7>
-                                
-                            </p>
+                            
                         </div>
                         </center>
                     </div>
@@ -397,14 +389,15 @@ endif?>
                                 </a>
                             </li>
                         </ul>
-                        <h3>
-                            Escribenos
-                        </h3>
-                        <i class="fa fa-at">
-                            <a href="#">
-                                camilogmz95@gmail.com
-                            </a>
-                        </i>
+                        <p class="text-left">
+                                <h4 class="text-primary"><i class="fa fa-users text-primary"> </i> Integrantes:</h4>
+
+                                <h7> Alexander Villaneda</h7><br>
+                                <h7></i> Camilo Pelaez</h7><br>
+                                <h7> Camilo Tapasco</h7><br>
+                                <h7></i> Ricardo Clavijo</h7>
+                                
+                            </p>
                     </div>
                 </div>
             </div>
