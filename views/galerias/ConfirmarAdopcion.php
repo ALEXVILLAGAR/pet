@@ -45,7 +45,10 @@
       </div>
       <div class="modal-footer bg-secondary">
 
+        <!-- <form action="http://localhost:8080/pet/ruta.php?variable=adoptar" method="post"> --> <!--puerto 8080 para alex-->
+        <!-- <form action="http://localhost/pet/ruta.php?variable=adoptar" method="post"> -->
         <form action="/pet/ruta.php?variable=adoptar" method="post">
+
           <input type="hidden" name="id_pet" value="<?php echo $element['id'] ?>">
           <input type="hidden" name="id_usuario" value="<?php $user = new Usuario();
 echo $user->usuario['id']?>">

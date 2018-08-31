@@ -52,7 +52,7 @@ switch ($variable) {
 		break;
 	case 'agregarFav':
 		$user = new Usuario();
-		$user->preferencia();
+		$user->preferencia($_GET['id_mascota']);
 		break;
 	case 'adoptar':
 		Mascota::reservar();
@@ -92,19 +92,13 @@ switch ($variable) {
 	case 'negarFundacion':
 		Fundacion::denegar();
 		break;
-		case 'eliminarUsuario':
-			Usuario::eliminarUsuario();
-			break;
-	// case 'actualizarFundacionAdmin':
-
-	// 	break;
-	// case 'users':
-	// 	$user = new Usuario();
-	// 	$user->todos_usuarios();
-	// break;
-	// case 'login':
-	// 	# code...
-	// 	break;
+	case 'eliminarUsuario':
+		Usuario::eliminarUsuario();
+		break;
+	case 'nueva_pregunta':
+		$fundacion = new Fundacion();
+		$fundacion->nueva_pregunta();
+		break;
 	default:
 		# code...
 		break;
