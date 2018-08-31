@@ -48,10 +48,8 @@
         <!-- <form action="http://localhost:8080/pet/ruta.php?variable=adoptar" method="post"> --> <!--puerto 8080 para alex-->
         <!-- <form action="http://localhost/pet/ruta.php?variable=adoptar" method="post"> -->
         <form action="/pet/ruta.php?variable=adoptar" method="post">
-
-          <input type="hidden" name="id_pet" value="<?php echo $element['id'] ?>">
-          <input type="hidden" name="id_usuario" value="<?php $user = new Usuario();
-echo $user->usuario['id']?>">
+          <input type="hidden" name="id_pet" value="<?php echo $pet->mascota['id'] ?>">
+          <input type="hidden" name="id_usuario" value="<?php $user = new Usuario();echo $user->usuario['id']?>">
           <button type="submit" class="btn btn-success border border-info" >Confirmar reserva</button>
         </form>
         <button type="reset" class="btn btn-primary border border-info" data-dismiss="modal">cancelar reserva</button>

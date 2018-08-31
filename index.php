@@ -1,23 +1,27 @@
-<?PHP 
+<?PHP
 // session_start();
-require_once("ControlClass.php");
- ?>
-<!DOCTYPE html> 
+require_once "ControlClass.php";
+?>
+<!DOCTYPE html>
 <html lang="en">
     <head>
+        <link href="img/icon.png" rel="shortcut icon"/>
         <meta charset="utf-8">
             <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
                 <meta content="" name="description">
                     <meta content="" name="author">
                         <title>
-                            I WANT A PET
+                            I Want A Pet
                         </title>
         <link rel="shortcut icon" href="img/icono.png" type="image/x-icon  sizes="64x64">
 
                         <!-- Bootstrap core CSS -->
+
                         <link href="css/estilos.css" rel="stylesheet">
+                        <link rel="stylesheet" href="css/heart.css">
                             <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
                                 <!-- Custom fonts for this template -->
+                                <link id="template-file" href="views/galerias/perdidos.html" rel="import" />
                                 <link href="css/login-register.css" rel="stylesheet"/>
                                 <link href="css/login-registerF.css" rel="stylesheet"/>
                                 <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -40,6 +44,7 @@ require_once("ControlClass.php");
         </meta>
     </head>
     <body id="page-top">
+   
 <!--------------------------------NAV------------------------------------------>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
@@ -52,28 +57,33 @@ require_once("ControlClass.php");
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#about">
-                                Fundaciones aliadas
-                            </a>
-                        </li>
-      
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#services">
-                                Donar
-                            </a>
-                        </li>
-                        <li class="nav-item">
+                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#portfolio">
                                 Nuestras mascotas
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#about">
+                                Fundaciones aliadas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#services">
+                                Donar
+                            </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#perd">
+                                Máscotas Perdidas
+                            </a>
+                        </li>
+                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#contact">
                                 Contacto
                             </a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -99,28 +109,28 @@ require_once("ControlClass.php");
                     </div>
                     <div class="col-lg-8 mx-auto">
 <?php
-              if(!(SessionesPet::session_active())){
-?>
-                        <button class="btn btn-primary btn-xl js-scroll-trigger" data-target="#loginModal" data-toggle="modal">
+if (!(SessionesPet::session_active())) {
+    ?>
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" data-target="#loginModal" data-toggle="modal">
                             Quiero Adoptar
-                        </button>
+                        </a>
 
-                        <button class="btn btn-primary btn-xl js-scroll-trigger" data-target="#loginModalF" data-toggle="modal">
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" data-target="#loginModalF" data-toggle="modal">
                             Soy Fundación
-                        </button>
+                        </a>
     <?php
-            }else {
+} else {
 
-        ?>  
+    ?>
             <a class="text-white btn btn-primary btn-xl js-scroll-trigger" href="ruta.php?variable=return_home">Regresar a mi perfil</a>
 
             <a class="text-white btn btn-primary btn-xl js-scroll-trigger" href="ruta.php?variable=cerrar_login">cerrar mi sesión</a>
-        
+
          <?php
 
-            }
-        ?> 
-                        
+}
+?>
+
                     </div>
                 </div>
             </div>
@@ -136,17 +146,18 @@ require_once("ControlClass.php");
                 <hr class="my-6 bg-white">
                 </hr>
             </div>
-            <?php $consulta = Mascota::only_disponible(); 
-            if (SessionesPet::session_active()) {
-                $vistauser=true;
-            }
-             ?>
+            <?php $consulta = Mascota::only_disponible();
+if (SessionesPet::session_active()) {
+    $vistauser = true;
+}
+?>
            <?php include 'views/galerias/galeria_principal.php'?>
-       </section> 
+       </section>
 <!--------------------------------FUNDACIONES-------------------------------------->
         <section class="bg-dark" id="about" >
-          
+
     <div class="container">
+
         <div class="row text-center">
             <div class="col-lg-12">
 
@@ -169,24 +180,27 @@ require_once("ControlClass.php");
                     <div class="carousel-inner">
                         <center>
                             <?php foreach (Fundacion::FundacionSlide() as $key => $element): ?>
-                                <?php if ($key>2) continue; ?>
-                                <?php if ($key+1==1): ?>
+                                <?php if ($key > 2) {
+    continue;
+}
+?>
+                                <?php if ($key + 1 == 1): ?>
                                     <div class="carousel-item active">
                                 <?php else: ?>
                                     <div class="carousel-item">
-                                <?php endif ?>
-            <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto_fundacion'])?>" alt="Los Angeles"/>
+                                <?php endif?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto_fundacion']) ?>" alt="Los Angeles"/>
                                         <div class="carousel-caption">
                                             <h3>
                                                 <?php echo $element['nombre'] ?>
                                             </h3>
                                             <p>
-                                                <strong><?php echo "direccion: ".$element['direccion']."<br> Email: ".$element['email'] ?></strong>
+                                                <strong><?php echo "direccion: " . $element['direccion'] . "<br> Email: " . $element['email'] ?></strong>
                                             </p>
                                         </div>
                                     </img>
                                 </div>
-                            <?php endforeach ?>
+                            <?php endforeach?>
 
                         </center>
                     </div>
@@ -228,7 +242,9 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-handshake-o text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
+
                        <a href="#" data-toggle="modal" data-target=<?php echo $var ?>> en Domicilios</a> 
+
                     </h3>
 
                     <p class="text-muted mb-0">
@@ -275,6 +291,14 @@ require_once("ControlClass.php");
         </div>
     </div>
 </section>
+
+<!-- ------------------------Perdidos --------------------------------------------------------->
+<section class="bg-primary"  id="perd">
+
+   <?php include 'views/galerias/galeria_perdidos.php'?>
+   
+</section>
+
 <!--------------------------------CONTACTO----------------------------------------->
         <section class="bg-dark text-white" id="contact">
             <div class="container ">
@@ -369,9 +393,14 @@ require_once("ControlClass.php");
         <script src="js/main.js">
         </script>
         <script src="js/login-register.js" type="text/javascript"></script>
-        <?php include 'views/login/login.html'?>
+
+       
         <?php include 'views/donar.php'?>
-    
+        <?php include 'views/login/login.php'?>
+         <?php include 'views/login/loginF.php'?>
+
+        <!--<?php include 'views/login/login.html'?>-->
+
 
     <script>
 function valida(e){
@@ -385,7 +414,7 @@ function valida(e){
     return patron.test(String.fromCharCode(tecla));
 }
 
-function igual(e){ 
+function igual(e){
     tecla = (document.all) ? e.keyCode : e.which;
     if (tecla==8){
         return true;
@@ -396,7 +425,7 @@ function igual(e){
     }else{
         valido.innerText = "No Coinciden";
     }
-}   
+}
 </script>
 
     </body>

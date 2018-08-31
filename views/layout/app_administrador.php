@@ -1,17 +1,17 @@
-<?php 
+<?php
 // session_start();
-require_once("..\..\ControlClass.php");
-if(!(SessionesPet::session_active())){
+require_once "..\..\ControlClass.php";
+if (!(SessionesPet::session_active())) {
     header('Location: index.php');
     exit;
 }
+
 $user =new Usuario();
 if(!$user->authorizacion('admi')){
     include '../../error.php';
-
     exit;
 }
- ?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -20,10 +20,10 @@ if(!$user->authorizacion('admi')){
             <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
                 <meta content="" name="description">
                     <meta content="" name="author">
-                        <title>
-                            I WANT A PET
+                       <title>
+                            I Want A Pet
                         </title>
-                        <link rel="shortcut icon" href="../../img/icono.png" type="image/x-icon  sizes="64x64">
+                        <link href="../../img/icon.png" rel="shortcut icon"/>
                         <!-- Bootstrap core CSS -->
                         <link href="../../css/estilos.css" rel="stylesheet">
                             <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -72,22 +72,22 @@ if(!$user->authorizacion('admi')){
                 <div class="sidebar-header">
                     <div class="user-pic">
                        <?php if (isset($user->usuario['foto_perfil'])): ?>
-            <img src="data:image/jpg;base64,<?php echo base64_encode($user->usuario['foto_perfil'])?> " class="img-responsive img-rounded" alt="User picture"/>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($user->usuario['foto_perfil']) ?> " class="img-responsive img-rounded" alt="User picture"/>
         <?php else: ?>
             <img alt="User picture" class="img-responsive img-rounded" src="//placehold.it/150">
-        <?php endif ?>
+        <?php endif?>
                     </div>
                     <div class="user-info">
                         <span class="user-name">
                             <strong>
                             </strong>
                             <strong>
-                               <?php echo($user->usuario['nombre']); ?>
+                               <?php echo ($user->usuario['nombre']); ?>
                             </strong>
                         </span>
                         <span class="user-role">
                             <strong>Administrador</strong>
-                            <strong> <?php echo($user->usuario['email']); ?></strong>
+                            <strong> <?php echo ($user->usuario['email']); ?></strong>
                         </span>
                         <span class="user-status">
                             <i class="fa fa-circle">
@@ -221,15 +221,15 @@ if(!$user->authorizacion('admi')){
                         <i class="fa fa-power-off">
                         </i>
                     </a>
-                   
+
                 </div>
             </div>
         </nav>
         <!-- sidebar-wrapper  -->
-         
- <?php include '..\modal\Mcerrar_sesion.php' ?>
-      
+
+ <?php include '..\modal\Mcerrar_sesion.php'?>
+
         <!-- page-content" -->
-    
+
 
 
