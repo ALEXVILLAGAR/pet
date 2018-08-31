@@ -12,7 +12,9 @@
      <h5 class="text-info">Quieres añadir a <?php echo $element['nombre'] ?> a tus favoritos ?</h5>
       </div>
       <div class="modal-footer bg-secondary">
-        <form action="http://localhost/pet/ruta.php?variable=agregarFav" method="post" accept-charset="utf-8">
+
+        <form action="/pet/ruta.php?variable=agregarFav" method="post" accept-charset="utf-8">
+
           <input type="hidden" name="id_pet" value="<?php echo $element['id']  ?>">
           
         <button  type="submit" class="btn btn-primary bg-success text-dark">Añadir</button>

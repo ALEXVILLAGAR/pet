@@ -1,0 +1,32 @@
+[id='like'] {
+    position: absolute;
+    left: -100vw;
+}
+[id='like']:checked+label {
+    color: #e2264d;
+    -webkit-filter: none;
+    filter: none;
+    will-change: font-size;
+    -webkit-animation: heart 2s cubic-bezier(0.17, 0.89, 0.32, 1.49);
+    animation: heart 1s cubic-bezier(0.17, 0.89, 0.32, 1.49);
+}
+[for='like'] {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    position: relative;
+    color: #888;
+    font-size: 2em;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+@keyframes heart {
+    0%, 17.5% {
+        font-size: 0;
+    }
+}

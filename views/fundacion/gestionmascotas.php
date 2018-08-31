@@ -63,51 +63,51 @@
 
     <div id=<?php echo "editEmployeeModal".$element['id'] ?> class="modal fade">
 		<div class="modal-dialog">
-			<div class="modal-content">
+			<div class="modal-content border border-primary">
 				<form action="../../ruta.php?variable=updatePet" method="POST" enctype="multipart/form-data">
-					<div class="modal-header">
+					<div class="modal-header bg-dark text-white">
 						<h4 class="modal-title">Editar Información</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 
 					<div class="modal-body">
 						<div class="form-group">
-								<label>Nombre</label>
+								<label class="text-info">Nombre:</label>
 								<input type="text" class="form-control" name="nombre" value="<?php echo $element['nombre'] ?>" placeholder="nombre" required>
 							</div>
 						<input type="hidden" name="id" value=<?php echo $element['id'] ?>>
 						<div class="form-group">
-							<label> Especie </label>
+							<label class="text-info"> Especie: </label>
 							<input type="text" class="form-control" name="especie" value="<?php echo $element['especie'] ?>" readonly>
 						</div>
 
 							<div class="form-group">
-								<label>Raza</label>
+								<label class="text-info">Raza:</label>
 								<input type="text" class="form-control" name="raza" placeholder="raza" value="<?php echo $element['raza'] ?>" required> 
 							</div>
 							<div class="form-group">
-								<label>Edad</label>
+								<label class="text-info">Edad:</label>
 								<input type="text" class="form-control" name="edad" value="<?php echo $element['edad'] ?>" placeholder="edad" required> 
 							</div>
 
 							<div class="form-group">
-								<label>Tamaño</label>
+								<label class="text-info">Tamaño:</label>
 								<input type="text" class="form-control" name="tamano" value="<?php echo $element['tamano'] ?>" placeholder="Pequeño, Mediano, Grande" required autofocus="autofocus"> 
 							</div>
 
 							<div class="form-group">
-								<label>Estado</label>
+								<label class="text-info">Estado:</label>
 								<input type="text" class="form-control" name="estado" placeholder="estado ()" value="<?php echo $element['estado'] ?>" required>
 							</div>
 
 							<div class="form-group">
-								<label>Foto</label>
+								<label class="text-info">Foto:</label>
 
 								<input type="file"  name="imagen" class="form-control">
 
 							</div>
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer bg-secondary">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
 						<input type="submit" class="btn btn-info" value="Guardar">
 					</div>
@@ -118,17 +118,17 @@
 	<!-- Delete Modal HTML -->
 	<div id=<?php echo "deleteEmployeeModal".$element['id'] ?> class="modal fade">
 		<div class="modal-dialog">
-			<div class="modal-content">
+			<div class="modal-content border border-danger">
 				<form action="../../ruta.php?variable=eliminar_pet" method="post">
-					<div class="modal-header">
+					<div class="modal-header bg-dark text-white">
 						<h4 class="modal-title">Eliminar Mascota</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<button type="button" class="close bg-danger" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<p>¿Seguro que quieres eliminar estos registros de <?php echo $element['nombre'] ?> ?</p>
-						<p class="text-warning"><i class="fas fa-exclamation-triangle"></i><small>Esta acción no se puede deshacer.</small></p>
+						<h5 class="text-danger"><i class="fas fa-exclamation-triangle"></i><small>Esta acción no se puede deshacer.</small></h5>
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer bg-secondary">
 						<input type="hidden" name="id" value="<?php echo $element['id'] ?>">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
 						<input type="submit" class="btn btn-danger" value="Eliminar">
@@ -161,20 +161,20 @@
 <!-- Add modal  -->
 <div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
-			<div class="modal-content">
+			<div class="modal-content border border-warning">
 				<form action="../../ruta.php?variable=agregar_pet" method="POST" enctype="multipart/form-data">
-					<div class="modal-header">
-						<h4 class="modal-title">Añadir Protectora</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+					<div class="modal-header bg-dark text-white">
+						<h4 class="modal-title">Añadir mascota</h4>
+						<button type="button" class="close bg-danger" data-dismiss="modal" aria-hidden="true">X</button>
 					</div>
 					<div class="modal-body">
 							<div class="form-group">
-								<label>Nombre</label>
+								<label class="text-info">Nombre:</label>
 								<input type="text" class="form-control" name="nombre" placeholder="nombre" required>
 							</div>
 
 							<div class="form-group">
-								<label>Especie</label>
+								<label class="text-info">Especie:</label>
 								<select name="especie" required autofocus="autofocus" class="form-control">
 									  <option value="Gato">Gato</option>
 									  <option value="Perro">Perro</option>
@@ -183,34 +183,34 @@
 
 
 							<div class="form-group">
-								<label>Raza</label>
+								<label class="text-info">Raza:</label>
 
 								<input type="text" class="form-control" name="raza" placeholder="raza" required> 
 							</div>
 							<div class="form-group">
-								<label>Edad</label>
+								<label class="text-info">Edad:</label>
 
 								<input type="text" class="form-control" name="edad" placeholder="edad" required> 
 							</div>
 
 							<div class="form-group">
-								<label>Tamaño</label>
+								<label class="text-info">Tamaño:</label>
 								<input type="text" class="form-control" name="tamano" placeholder="Pequeño, Mediano, Grande" required autofocus="autofocus"> 
 							</div>
 
 							<div class="form-group">
-								<label>Estado</label>
+								<label class="text-info">Estado:</label>
 
 								<input type="text" class="form-control" name="estado" placeholder="estado ()" required>
 							</div>
 
 							<div class="form-group">
-								<label>Foto</label>
+								<label class="text-info">Foto:</label>
 
 								<input type="file"  name="imagen" class="form-control" required>
 							</div>
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer bg-secondary">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
 						<input type="submit" class="btn btn-info" value="Añadir">
 					</div>

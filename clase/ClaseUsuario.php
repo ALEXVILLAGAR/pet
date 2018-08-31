@@ -4,7 +4,14 @@ class Usuario
 {
 	private $db;
 	public $usuario;
-	
+
+
+	/**
+	 * Class Constructor
+	 * @param    $db   
+	 * @param    $usuario   
+	 */
+		
 	function __construct()
 	{
 		$this->db = Conectar::conexion();
@@ -40,14 +47,16 @@ class Usuario
 		return $resultado;
 	}
 
-	public function preferencia(){ //añadir una mascota a mis favotiros
+	public function preferencia($id_pet){ //añadir una mascota a mis favotiros
 		$user_id = $this->usuario['id'];
-		$resultado = mysqli_query($this->db, "SELECT * FROM preferencia WHERE id_mascota = '$_POST[id_pet]'" ) or die ( "Algo ha ido mal en la consulta");
+		$resultado = mysqli_query($this->db, "SELECT * FROM preferencia WHERE id_mascota = '$id_pet'" ) or die ( "Algo ha ido mal en la consulta");
 		$resultado=mysqli_fetch_array($resultado);
-		if($resultado['id_usuario']!=$user_id){
-			$insertion = mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$_POST[id_pet]','$user_id')") or die ('error');
-		}else{ header('Location: index.php'); }
-		header('Location: '.$_SERVER['HTTP_REFERER'] );
+		if($resultado['id_usuario']!=$user_id){ //si es un usuario diferente agrega la preferencia
+			mysqli_query($this->db,"INSERT INTO preferencia VALUES ('','$id_pet','$user_id')") or die ('error');
+		}else{
+			mysqli_query($this->db,"DELETE FROM preferencia WHERE id_usuario = '$user_id' && id_mascota='$id_pet'") or die ('error eliminar preferencia');
+		}
+		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 
 	public function mis_favoritos(){	//favoritos de cada usuario
@@ -97,15 +106,9 @@ class Usuario
 		return $resultado;
 	}
 
-
-	public static function total_usuarios(){
-		$insertion = mysqli_fetch_array(mysqli_query(Conectar::conexion(),"SElECT Count(id) FROM usuario "));
-		return $insertion;
-        }
-
 	public function mis_adoptados(){
 		$user_id = $this->usuario['id'];
-		$consulta="SELECT * FROM adopcion LEFT JOIN `mascota` ON `adopcion`.`id_usuario` = '$user_id' WHERE `mascota`.`id_usuario` = '$user_id' && solicitud = 'Aprobada'";
+		$consulta="SELECT * FROM adopcion WHERE id_usuario = '$user_id'";
 		$resultado = mysqli_query($this->db, $consulta ) or die ( "casi");
 		return $resultado;	
 
@@ -119,6 +122,18 @@ class Usuario
 		mysqli_query(Conectar::conexion(),"DELETE FROM denuncia WHERE id_usuario = '$id'") or die ('error denuncia');
 		mysqli_query(Conectar::conexion(),"DELETE FROM usuario WHERE id = '$id'") or die ('error al usuario');
 		header('Location: '.$_SERVER['HTTP_REFERER']);
+	}
+
+	public function todas_preguntas(){	//retorna todos los usuarios de la bd
+		$resultado = mysqli_query($this->db, "SELECT * FROM preguntas " ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;
+	}
+
+	public function mis_denegados()
+	{
+		$id = $this->usuario['id'];
+		$resultado = mysqli_query($this->db, "SELECT * FROM denegado WHERE id_usuario='$id'" ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+		return $resultado;
 	}
 }
 

@@ -1,20 +1,23 @@
-<?PHP 
+<?PHP
 // session_start();
-require_once("ControlClass.php");
- ?>
-<!DOCTYPE html> 
+require_once "ControlClass.php";
+?>
+<!DOCTYPE html>
 <html lang="en">
     <head>
+        <link href="img/icon.png" rel="shortcut icon"/>
         <meta charset="utf-8">
             <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
                 <meta content="" name="description">
                     <meta content="" name="author">
                         <title>
-                            I WANT A PET
+                            I Want A Pet
                         </title>
+
                         <!-- Bootstrap core CSS -->
 
                         <link href="css/estilos.css" rel="stylesheet">
+                        <link rel="stylesheet" href="css/heart.css">
                             <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
                                 <!-- Custom fonts for this template -->
                                 <link id="template-file" href="views/galerias/perdidos.html" rel="import" />
@@ -34,10 +37,16 @@ require_once("ControlClass.php");
                                 </link>
                             </link>
                         </link>
+
                     </meta>
                 </meta>
             </meta>
         </meta>
+        <link rel="shortcut icon" href="img/icono.png" type="image/x-icon  sizes="64x64">
+    <link href="https://unpkg.com/flickity@2.0/dist/flickity.min.css" rel="stylesheet">
+            <script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js">
+            </script>
+        </link>
     </head>
     <body id="page-top">
    
@@ -58,13 +67,16 @@ require_once("ControlClass.php");
                                 Nuestras mascotas
                             </a>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#portfolio">
+                                Nuestras mascotas
+                            </a>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#about">
                                 Fundaciones aliadas
                             </a>
                         </li>
-
-      
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#services">
                                 Donar
@@ -72,8 +84,9 @@ require_once("ControlClass.php");
                         </li>
                       
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#perd">
-                                Máscotas Perdidas
+                            <a class="nav-link js-scroll-trigger" href="#perdidas">
+                                Mascotas Perdidas
+
                             </a>
                         </li>
                          <li class="nav-item">
@@ -81,7 +94,7 @@ require_once("ControlClass.php");
                                 Contacto
                             </a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -107,6 +120,7 @@ require_once("ControlClass.php");
                     </div>
                     <div class="col-lg-12 mx-auto">
 <?php
+
               if(!(SessionesPet::session_active())){
 ?>
                         <button class="btn btn-primary btn-xl js-scroll-trigger mx-2 my-xs-2 arriba" data-target="#loginModal" data-toggle="modal">
@@ -115,21 +129,22 @@ require_once("ControlClass.php");
               
 
                         <button class="btn btn-primary btn-xl js-scroll-trigger mx-2" data-target="#loginModalF" data-toggle="modal">
-                            Soy Fundación
-                        </button>
-    <?php
-            }else {
 
-        ?>  
+                            Soy Fundación
+                        </a>
+    <?php
+} else {
+
+    ?>
             <a class="text-white btn btn-primary btn-xl js-scroll-trigger" href="ruta.php?variable=return_home">Regresar a mi perfil</a>
 
             <a class="text-white btn btn-primary btn-xl js-scroll-trigger" href="ruta.php?variable=cerrar_login">cerrar mi sesión</a>
-        
+
          <?php
 
-            }
-        ?> 
-                        
+}
+?>
+
                     </div>
                 </div>
             </div>
@@ -137,7 +152,7 @@ require_once("ControlClass.php");
 <!--------------------------------GALERIA------------------------------------------>
 
        <section class="bg-primary mascotas-index py-2 text-xs-center p-0" id="portfolio">
-        <div class="col-lg-12 text-center">
+        <div class="col-lg-12 text-center ">
     <br>
                 <h2 class="section-heading text-white">
                     Nuestras mascotas
@@ -145,20 +160,80 @@ require_once("ControlClass.php");
                 <hr class="my-6 bg-white">
                 </hr>
             </div>
-            <?php $consulta = Mascota::only_disponible(); 
-            if (SessionesPet::session_active()) {
-                $vistauser=true;
-            }
-             ?>
+            <?php $consulta = Mascota::only_disponible();
+if (SessionesPet::session_active()) {
+    $vistauser = true;
+}
+?>
            <?php include 'views/galerias/galeria_principal.php'?>
-       </section> 
+       </section>
 <!--------------------------------FUNDACIONES-------------------------------------->
         <section class="bg-dark" id="about" >
-          
+
     <div class="container">
-        <?php include 'views/galerias/fundaciones.php'?>
+
+        <div class="row text-center">
+            <div class="col-lg-12">
+
+                <h2 class="section-heading text-white">
+                    Fundaciones aliadas
+                </h2>
+                <hr class="my-4">
+                </hr>
+                <div class="carousel slide" data-ride="carousel" id="demo">
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li class="active" data-slide-to="0" data-target="#demo">
+                        </li>
+                        <li data-slide-to="1" data-target="#demo">
+                        </li>
+                        <li data-slide-to="2" data-target="#demo">
+                        </li>
+                    </ul>
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <center>
+                            <?php foreach (Fundacion::FundacionSlide() as $key => $element): ?>
+                                <?php if ($key > 2) {
+    continue;
+}
+?>
+                                <?php if ($key + 1 == 1): ?>
+                                    <div class="carousel-item active">
+                                <?php else: ?>
+                                    <div class="carousel-item">
+                                <?php endif?>
+            <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto_fundacion']) ?>" alt="Los Angeles"/>
+                                        <div class="carousel-caption">
+                                            <h3>
+                                                <?php echo $element['nombre'] ?>
+                                            </h3>
+                                            <p>
+                                                <strong><?php echo "direccion: " . $element['direccion'] . "<br> Email: " . $element['email'] ?></strong>
+                                            </p>
+                                        </div>
+                                    </img>
+                                </div>
+                            <?php endforeach?>
+
+                        </center>
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" data-slide="prev" href="#demo">
+                        <span class="carousel-control-prev-icon">
+                        </span>
+                    </a>
+                    <a class="carousel-control-next" data-slide="next" href="#demo">
+                        <span class="carousel-control-next-icon">
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <!--------------------------------DONACION----------------------------------------->
+
          <section id="services">
              <div class="container">
         <div class="row">
@@ -170,18 +245,27 @@ require_once("ControlClass.php");
                 </hr>
             </div>
         </div>
-   
+
+        <?php if (!SessionesPet::session_active()):
+    $var = "#loginModal";
+else:
+    $var = "#newDonationM" . $element['id'];
+endif?>
+
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box mt-5 mx-auto">
                     <i class="fa fa-4x fa-handshake-o text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                       <a href="#" data-target="#loginModal" data-toggle="modal">en Domicilios</a> 
+
+
+                       <a href="#" data-toggle="modal" data-target=<?php echo $var ?>> en Domicilios</a> 
+
                     </h3>
 
                     <p class="text-muted mb-0">
-                        Our templates are updated regularly so they don't break.
+                        Puedes acudir directamente a las fundaciones.
                     </p>
                 </div>
             </div>
@@ -190,10 +274,10 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-btc text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        <a href="#" data-target="#loginModal" data-toggle="modal">en linea</a>
+                        <a href="#" data-target=<?php echo $var ?> data-toggle="modal">en linea</a>
                     </h3>
                     <p class="text-muted mb-0">
-                        You can use this theme as is, or you can make changes!
+                        hacer donaciones en linea con medios tradicionales.
                     </p>
                 </div>
             </div>
@@ -202,10 +286,10 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-money text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        <a href="#" data-target="#loginModal" data-toggle="modal">puntos de atención</a>
+                        <a href="#" data-target=<?php echo $var ?> data-toggle="modal">puntos de atención</a>
                     </h3>
                     <p class="text-muted mb-0">
-                        We update dependencies to keep things fresh.
+                        tenemos punto de recaudo en diferentes centros comerciales de la ciudad.
                     </p>
                 </div>
             </div>
@@ -214,45 +298,81 @@ require_once("ControlClass.php");
                     <i class="fa fa-4x fa-whatsapp text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-                        <a href="#" data-target="#loginModal" data-toggle="modal">contactanos</a>
+                        <a href="#" data-target=<?php echo $var ?> data-toggle="modal">contactanos</a>
                     </h3>
                     <p class="text-muted mb-0">
-                        You have to make your websites with love these days!
+                        comunicate con nosotros y te guiaremos en este proceso.
                     </p>
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
+ 
 </section>
+<!--------------------------------PERDIDOS----------------------------------------->
+<section class="carousel-wrapper " id="perdidas">
+    
+                
+            <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": true }'>
+                <?php foreach (Denuncia::denuncias() as $elemento): ?>
+                    <?php if ($elemento['resuelta']==1):continue; endif ?>
+                        <?php $user = Usuario::GetUsuario($elemento['id_usuario']) ?>
+                    <div class="carousel-cell ">
+                        <h3>
+                            <?php echo "Denuncia ".$elemento['id'] ?>
+                        </h3>
+                        <p>
+                            <?php echo $elemento['descripcion'] ?>
+                    <br>
+                            <?php echo "<strong>Direccion: </strong>".$elemento['direccion'] ?>
+                        </p>
+                        <?php if ($elemento['imagen']!=null): ?>
+                            <img src="data:image/jpg;base64,<?php echo base64_encode($elemento['imagen'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/>
+                        <?php else: ?>
+                            <img src="https://via.placeholder.com/350x350?text=1"/>
+                        <?php endif ?> <?php echo $user['nombre'] ?>
+                        <div>
+                            <span>
+                            <?php echo $elemento['fecha'] ?>
+                            </span>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            </div>
 
-<!-- ------------------------Perdidos --------------------------------------------------------->
-<section class="bg-primary"  id="perd">
+    </section>
 
-   <?php include 'views/galerias/galeria_perdidos.php'?>
-   
-</section>
+
 
 <!--------------------------------CONTACTO----------------------------------------->
         <section class="bg-dark text-white" id="contact">
             <div class="container ">
                 <div class="row">
                     <div class="col-lg-4 mx-auto text-center">
-                        <h3>
+                        <h3 class="text-primary">
                             I WANT A PET
                         </h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae aliquid minus quas omnis nisi unde dicta aperiam quaerat aliquam ut provident culpa iure neque ducimus voluptatum veritatis dolore, earum suscipit quibusdam animi quo est quae. Nobis, cumque, error. Atque quibusdam, ipsa magnam doloremque eos tempore asperiores id omnis adipisci aut.
-                        </p>
+                        <img src="img/logo1.jpg" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_pet">
+                        <br><br>
+                        <p class="text-info text-center">si vamos a poner algo de texto.</p>
+
+
                     </div>
                     <div class="col-lg-4 ml-auto text-center">
-                        <h3>
-                            Desarollado por:
-                        </h3>
-                        <div class="author info">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, quae vitae molestias omnis repellendus alias laudantium, fugiat dolore culpa nisi magnam ullam eaque ad repudiandae quis adipisci dicta possimus error autem repellat cum nesciunt odit. Illum, facilis doloremque error vel.
+                        <h2 class="text-primary">desarrolado por:</h2>
+                        <img src="img/logo_prisma.jpg" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_prisma">
+                        <center><div class="author info text-info">
+                            <p class="text-center">
+                                <h5 class="text-primary"><i class="fa fa-users text-primary"> </i> integrantes:</h5>
+
+                                <h7><i class="fa fa-user-circle"></i> Alexander Villaneda</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> Camilo Pelaez</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> Camilo Tapasco</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> Ricardo</h7>
+                                
                             </p>
                         </div>
+                        </center>
                     </div>
                     <div class="col-lg-4 mr-auto text-center">
                         <h3>
@@ -295,6 +415,7 @@ require_once("ControlClass.php");
                     </div>
                 </div>
             </div>
+            <div><h5><i class="fa fa-copyright"> Prisma 2018. </i></h5></div>
         </section>
 
 
@@ -318,12 +439,13 @@ require_once("ControlClass.php");
         <script src="js/main.js">
         </script>
         <script src="js/login-register.js" type="text/javascript"></script>
+       
+        <?php include 'views/donar.php'?>
         <?php include 'views/login/login.php'?>
          <?php include 'views/login/loginF.php'?>
 
+        <!--<?php //include 'views/login/login.html'?>-->
 
-    
-    
 
     <script>
 function valida(e){
@@ -337,18 +459,18 @@ function valida(e){
     return patron.test(String.fromCharCode(tecla));
 }
 
-function igual(e){ 
+function igual(e){
     tecla = (document.all) ? e.keyCode : e.which;
     if (tecla==8){
         return true;
     }
-    valido=document.getElementById('ContraOk');
-    if(document.getElementById('contra_registro').value == document.getElementById('confirm_contra').value){
-        valido.innerText = "Coinciden";
-    }else{
-        valido.innerText = "No Coinciden";
-    }
-}   
+    // valido=document.getElementById('ContraOk');
+    // if(document.getElementById('contra_registro').value == document.getElementById('confirm_contra').value){
+    //     valido.innerText = "Coinciden";
+    // }else{
+    //     valido.innerText = "No Coinciden";
+    // }
+}
 </script>
 
     </body>

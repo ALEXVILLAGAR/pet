@@ -64,18 +64,20 @@
 
 	<!-- Delete Modal HTML -->
 	<div id="<?php echo "deleteEmployeeModal".$element['id'] ?>" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
+		<div class="modal-dialog border border-danger">
+			<div class="modal-content ">
 				<form>
-					<div class="modal-header">
+					<div class="modal-header bg-dark text-white">
 						<h4 class="modal-title">Eliminar registro de Adopcion</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<button type="button" class="close bg-danger" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
+
 						<p>Esta seguro de borrar estos registros?</p>
 						<p class="text-warning"><small>Esta Acción no se puede deshacer.</small></p>
+
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer bg-secondary">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
 						<input type="submit" class="btn btn-danger" value="Eliminar">
 					</div>

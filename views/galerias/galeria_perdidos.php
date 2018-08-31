@@ -19,100 +19,37 @@
     </div>
     <br>
         <div class="carousel slide h-50" data-ride="carousel" id="carruselcard">
+            
             <div class="carousel-inner">
+                
                 <div class="carousel-item active">
+                    <?php foreach (Denuncia::denuncias() as $elemento):?>
                     <div class="row">
-                        <div class="col-sm">
+
+                        <div class="col-sm bg-dark" >
+                            
                             <div class="card rounded border-0">
-                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
+                               
+                                <img class="card-img-top img-fluid" src="data:image/jpg;base64,<?php echo base64_encode($elemento['imagen']) ?> " width="250"/>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            Card 2
+                                            <?php echo "denuncia numero ".$elemento['id']; ?>
                                         </h4>
                                         <p class="card-text">
-                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                            <?php echo $elemento['descripcion']; ?>
                                         </p>
                                     </div>
                                 </img>
                             </div>
+                        
                         </div>
-                        <div class="col-sm">
-                            <div class="card rounded border-0">
-                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            Card 2
-                                        </h4>
-                                        <p class="card-text">
-                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                                        </p>
-                                    </div>
-                                </img>
-                            </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="card rounded border-0">
-                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            Card 2
-                                        </h4>
-                                        <p class="card-text">
-                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                                        </p>
-                                    </div>
-                                </img>
-                            </div>
-                        </div>
+                       
                     </div>
+<?php endforeach ?>
                 </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-sm">
-                            <div class="card rounded border-0">
-                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            Card 2
-                                        </h4>
-                                        <p class="card-text">
-                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                                        </p>
-                                    </div>
-                                </img>
-                            </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="card rounded border-0">
-                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            Card 2
-                                        </h4>
-                                        <p class="card-text">
-                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                                        </p>
-                                    </div>
-                                </img>
-                            </div>
-                        </div>
-                        <div class="col-sm">
-                            <div class="card">
-                                <img alt="Card image cap" class="card-img-top img-fluid" src="http://placehold.it/800x600/418cf4/fff">
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            Card 2
-                                        </h4>
-                                        <p class="card-text">
-                                            This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                                        </p>
-                                    </div>
-                                </img>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
+
             <a class="carousel-control-prev" data-slide="prev" href="#carruselcard" role="button">
                 <span aria-hidden="true" class="carousel-control-prev-icon">
                 </span>
