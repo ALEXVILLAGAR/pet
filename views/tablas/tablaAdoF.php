@@ -1,6 +1,6 @@
 <div class="container tabla">
         <div class="table-wrapper">
-            <div class="table-title">
+            <div class="table-title bg-danger">
                 <div class="row">
                     <div class="col-sm-6">
 						<h2><b>Adoptados </b></h2>
@@ -72,8 +72,10 @@
 						<button type="button" class="close bg-danger" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p class="text-warning">esta seguro de borrar estos registros?</p>
-						<h6 class="text-danger">Esta Acción no puede ser deshecha.</h6>
+
+						<p>Esta seguro de borrar estos registros?</p>
+						<p class="text-warning"><small>Esta Acción no se puede deshacer.</small></p>
+
 					</div>
 					<div class="modal-footer bg-secondary">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">

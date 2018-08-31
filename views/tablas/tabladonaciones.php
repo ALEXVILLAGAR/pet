@@ -1,7 +1,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 
         <div class="table-wrapper tabla">
-            <div class="table-title">
+            <div class="table-title bg-info">
                 <div class="row">
                     <div class="col-sm-6 pr-5 col-lg-5">
                         <h2><b>Mis Donaciones </b></h2>
@@ -35,15 +35,15 @@
                 </tbody>
             </table>
             <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <div class="hint-text">Mostrando <b>5</b> De <b>25</b> Entradas</div>
                 <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item disabled"><a href="#">Previo</a></li>
                     <li class="page-item"><a href="#" class="page-link">1</a></li>
                     <li class="page-item"><a href="#" class="page-link">2</a></li>
                     <li class="page-item active"><a href="#" class="page-link">3</a></li>
                     <li class="page-item"><a href="#" class="page-link">4</a></li>
                     <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Siguiente</a></li>
                 </ul>
             </div>
         </div>

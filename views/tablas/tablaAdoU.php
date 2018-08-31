@@ -1,6 +1,6 @@
-<div class="container tabla">
+<div class="container tabla" id="tablaadopu">
         <div class="table-wrapper">
-            <div class="table-title">
+            <div class="table-title bg-danger">
                 <div class="row">
                     <div class="col-sm-6">
                         <h2><b> <?php if (isset($rechazados)): ?>
@@ -67,25 +67,26 @@ foreach ($consulta as $element):
                             </td>
                         </tr>
 
-                        <!-- Delete Modal HTML -->
-        <div class="modal fade" id=<?php echo "deleteEmployeeModal" . $element['id'] ?>>
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h4 class="modal-title">Eliminar Registro</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <p>esta seguro de borrar estos registros?</p>
-                            <p class="text-warning"><small>Esta Acción no puede ser deshecha.</small></p>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" class="btn btn-danger" value="Eliminar">
-                        </div>
-                    </form>
-                </div>
+
+                    <!-- Delete Modal HTML -->
+    <div class="modal fade" id=<?php echo "deleteEmployeeModal".$element['id'] ?>>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Eliminar Registro</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>esta seguro de borrar estos registros?</p>
+                        <p class="text-warning"><small>Esta Acción no se puede deshacer.</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                        <input type="submit" class="btn btn-danger" value="Eliminar">
+                    </div>
+                </form>
+
             </div>
         </div>
 

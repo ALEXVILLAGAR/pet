@@ -88,9 +88,10 @@
     -o-animation-name: shake;
     animation-name: shake;
 }
-.login .modal-title {
+/* .login .modal-title {
     padding-left: 5rem;
-}
+} */
+
 .login .modal-dialog {
     width: 450px;
 }
@@ -221,7 +222,7 @@
 .login .box .form .espacio1 {
     padding-bottom: 0.7rem;
 }
-.login .box .form input[type="text"], .login .box .form input[type="password"],.login .box .form input[type="email"] {
+.login .box .form input[type="text"], .login .box .form input[type="password"], .login .box .form input[type="email"] {
     border-radius: 3px;
     border: none;
     color: #333333;

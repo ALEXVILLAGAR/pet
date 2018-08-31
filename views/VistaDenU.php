@@ -1,13 +1,15 @@
 
 
 <section>
+
     <div class="container py-3">
          <?php foreach ($user->mis_denuncias() as $element): ?>
             <br>
-        <div class="card    border border-dark" >
+        <div class="card    border-none shadow rounded" >
             
             <div class="row espacio1">
                   
+
 
                 <div class="col-md-4">
                     <?php if ($element['imagen']!=null): ?>
@@ -19,36 +21,38 @@
                     <p class="text-primary text-center">  foto de la mascota (no obligatoria).</p>
                     <?php endif ?>
                 </div>
-                <div class="col-md-8 px-3">
+                <div class="col-md-8 px-3 pt-3">
                         
                     <div class="card-block px-3">
-                        <h4 class="card-title">
-                            <?php echo "esta denuncia es del ". $element['fecha'] ?>
-                        </h4>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item ">
-                        <p class="card-text">
-                            <h5 class="text-info">denuncia que:</h5>
-                            <?php echo  $element['descripcion']; ?>
+
+                        <h4 class="card-title font-weight-bold">
+                            <?php echo $element['fecha'] ?>
+                        </h4>        
+                                 
+                        <p class="card-text mx-3">
+
+                             <ul class="list-group list-group-flush">
+                                 <li class="list-group-item"><span class="font-weight-bold "> Descripción: </span><?php echo $element['descripcion'] ?></li>
+                             <li class="list-group-item"><span class="font-weight-bold "> Dirección: </span><?php echo $element['direccion'] ?></li>
+
+                         
+                                                     
+                        <p class="card-text text-justify list-group-item">
+                            Duis aute irure sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
-                            </li>
-                            <li class="list-group-item ">
-                        <p class="card-text">
-                            <h5 class="text-info">direccion del caso:</h5>
-                            <?php echo  $element['direccion'] ?>
-                        </p>
-                        </li>
-                            <li class="list-group-item ">
-                        <h5 class="text-info">NOTA:</h5>
-                        <p class="card-text">
-                           estas denuncias se hacen con el fin de hacer público casos de animales abandonados o perdidos y alguna de nuestras fundaciones pueda hacerse cargo.
-                        </p>
-                        </li>
-                        </ul>
-                    </div>
-                    <?php if (!($element['resuelta']=='1')) {?>
+                         </p>
+                            
+                        </ul>  
+
+                           
+                     <?php if (!($element['resuelta']=='1')) {?>
                        <form action="../../ruta.php?variable=resolver_denuncia" method="POST" accept-charset="utf-8">
                         <br>
+
+                        
+                    </div>
+                    
+
                             <input type="hidden" name="id_denuncia" value="<?php echo $element['id'] ?>">
                             <h2 class="text-danger"><i class="fas fa-cogs"></i>esta denuncia aún no se atendido</h2>
                             <button type="submit" class="btn btn-primary text-center"> se resolvió  </button>
