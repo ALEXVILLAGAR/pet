@@ -13,9 +13,9 @@ require_once "ControlClass.php";
                         <title>
                             I Want A Pet
                         </title>
-        <link rel="shortcut icon" href="img/icono.png" type="image/x-icon  sizes="64x64">
 
                         <!-- Bootstrap core CSS -->
+
                         <link href="css/estilos.css" rel="stylesheet">
                         <link rel="stylesheet" href="css/heart.css">
                             <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -36,10 +36,16 @@ require_once "ControlClass.php";
                                 </link>
                             </link>
                         </link>
+
                     </meta>
                 </meta>
             </meta>
         </meta>
+        <link rel="shortcut icon" href="img/icono.png" type="image/x-icon  sizes="64x64">
+    <link href="https://unpkg.com/flickity@2.0/dist/flickity.min.css" rel="stylesheet">
+            <script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js">
+            </script>
+        </link>
     </head>
     <body id="page-top">
 <!--------------------------------NAV------------------------------------------>
@@ -55,6 +61,11 @@ require_once "ControlClass.php";
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#portfolio">
+                                Nuestras mascotas
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#about">
                                 Fundaciones aliadas
                             </a>
@@ -66,8 +77,8 @@ require_once "ControlClass.php";
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#portfolio">
-                                Nuestras mascotas
+                            <a class="nav-link js-scroll-trigger" href="#perdidas">
+                                Mascotas Perdidas
                             </a>
                         </li>
                         <li class="nav-item">
@@ -210,7 +221,7 @@ if (SessionesPet::session_active()) {
     </div>
 </section>
 <!--------------------------------DONACION----------------------------------------->
-         <section id="services">
+<section id="services">
         <div class="row">
             <div class="col-lg-12 text-center py-2 text-xs-center">
                 <h2 class="section-heading">
@@ -282,6 +293,84 @@ endif?>
         </div>
     </div>
 </section>
+<!--------------------------------PERDIDOS----------------------------------------->
+<section class="carousel-wrapper " id="perdidas">
+            <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": true }'>
+                <div class="carousel-cell ">
+                    <h3>
+                        Product 2
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
+                    </p>
+                    <img src="https://via.placeholder.com/350x350?text=1"/>
+                    <div>
+                        <span>
+                            22/08/2018
+                        </span>
+                    </div>
+                </div>
+                <div class="carousel-cell">
+                    <h3>
+                        Product 2
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
+                    </p>
+                    <img src="https://via.placeholder.com/350x350?text=2"/>
+                    <div>
+                        <span>
+                            22/08/2018
+                        </span>
+                    </div>
+                </div>
+                <div class="carousel-cell">
+                    <h3>
+                        Product 2
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
+                    </p>
+                    <img src="https://via.placeholder.com/350x350?text=2"/>
+                    <div>
+                        <span>
+                            22/08/2018
+                        </span>
+                    </div>
+                </div>
+                <div class="carousel-cell">
+                    <h3>
+                        Product 2
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
+                    </p>
+                    <img src="https://via.placeholder.com/350x350?text=3"/>
+                    <div>
+                        <span>
+                            22/08/2018
+                        </span>
+                    </div>
+                </div>
+                <div class="carousel-cell">
+                    <h3>
+                        Product 2
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
+                    </p>
+                    <img src="https://via.placeholder.com/350x350?text=4"/>
+                    <div>
+                        <span>
+                            22/08/2018
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+
 <!--------------------------------CONTACTO----------------------------------------->
         <section class="bg-dark text-white" id="contact">
             <div class="container ">
