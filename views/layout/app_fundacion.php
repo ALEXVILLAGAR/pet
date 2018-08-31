@@ -19,10 +19,7 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                         </title>
 
                         <link href="../../img/icon.png" rel="shortcut icon"/>
-<<<<<<< HEAD
 
-=======
->>>>>>> master
                         <!-- Bootstrap core CSS -->
                         <link href="../../css/estilos.css" rel="stylesheet">
                             <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -162,28 +159,6 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                                    </ul>
                             </div>
                         </li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> master
-
-                        <li class="">
-                            <a href="..\..\index.php" >
-                                <i class="fas fa-arrow-alt-circle-left">
-                                </i>
-                                <span>
-                                    Inicio
-                                </span>
-                            </a>
-                        </li>
-<<<<<<< HEAD
-
-=======
-
->>>>>>> master
-=======
->>>>>>> master
-                <!-- sidebar-menu  -->
 
                           <li class="sidebar-dropdown">
                             <a href="#">
@@ -232,15 +207,6 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                             </div>
                         </li>
                         <li class="">
-                            <a href="#" >
-                                <i class="fas fa-address-card">
-                                </i>
-                                <span>
-                                    Ver denuncias
-                                </span>
-                            </a>
-                        </li>
-                        <li class="">
                             <a href="..\..\index.php" >
                                 <i class="fas fa-arrow-alt-circle-left">
                                 </i>
@@ -278,15 +244,6 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                 </div>
             </div>
         </nav>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <?php include '..\modal\Mcerrar_sesion.php';?>
-=======
-        <?php include '..\modal\Mcerrar_sesion.php';?>
-        <?php include '..\modal\Mhacer_nueva_pregunta.php'?>
->>>>>>> master
-=======
+
         <?php include '..\modal\Mcerrar_sesion.php'; ?>
         <?php include '..\modal\Mhacer_nueva_pregunta.php' ?>
-
->>>>>>> master

@@ -50,12 +50,12 @@ $(document).ready(function() {
     });
 });
 /*------------CORAZON FAV----------*/
-var checkbox = document.getElementById('like');
-checkbox.addEventListener("change", validaCheckbox, false);
+// var checkbox = document.getElementById('like');
+// checkbox.addEventListener("change", validaCheckbox, false);
 
-function validaCheckbox() {
-    var checked = checkbox.checked;
-    if (checked) {
-        alert('checkbox esta seleccionado');
-    }
-}
+// function validaCheckbox() {
+//     var checked = checkbox.checked;
+//     if (checked) {
+//         alert('checkbox esta seleccionado');
+//     }
+// }

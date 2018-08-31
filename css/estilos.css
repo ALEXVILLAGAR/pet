@@ -523,8 +523,9 @@ ul.redes li a {
     width: auto;
     height: 100%;
     background-color: #f05f40;
-    overflow: hidden;
+    
 }
+
 .carousel-wrapper .carousel {
     position: absolute;
     top: 50%;

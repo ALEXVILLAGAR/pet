@@ -13,9 +13,7 @@
   </thead>
   <tbody>
 
-    <?php 
-
-    foreach ($fundacion->mis_preguntas() as $element): ?>
+    <?php foreach ($fundacion->mis_preguntas() as $element): ?>
     <tr>
       <td><?php echo $element['pregunta'] ?></td>
       <td><?php echo $element['respuesta'] ?></td>

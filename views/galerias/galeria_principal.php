@@ -19,16 +19,20 @@
                                             <label aria-label="like" for="toggle-heart">
                                                 ❤
                                             </label> -->
-                                    <button class="btn btn-success"  href="#" data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito".$element['id'] ?> type="button">
-                                        me gusta <span class="fa fa-heart mb-2 sr-icons"></span>
-                                    </button>
+
+        <form action="/pet/ruta.php?variable=agregarFav" method="post" accept-charset="utf-8">
+          <input type="hidden" name="id_pet" value="<?php echo $element['id']  ?>">
+          
+            <button  type="submit" class="btn btn-success">Me gusta ❤</button>
+        </form>
 
                                 <?php else: ?>
 
-                                    <button class="btn btn-danger"  href="#" data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito".$element['id'] ?> type="button">
-                                        no me gusta <span class="fa fa-heart mb-2 sr-icons"></span>
-                                    </button>
-
+        <form action="/pet/ruta.php?variable=agregarFav" method="post" accept-charset="utf-8">
+            <input type="hidden" name="id_pet" value="<?php echo $element['id']  ?>">
+          
+            <button  type="submit" class="btn btn-danger">No Me gusta</button>
+        </form>
                                 <?php endif?>
                                     
                                         <br>

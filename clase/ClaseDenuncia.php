@@ -34,6 +34,11 @@ class Denuncia
           header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
+	public static function pendientes(){
+	    $consulta =  mysqli_query(Conectar::conexion(),"SELECT * FROM denuncia") or die ('error');
+		return $consulta;
+	}
+
 }
 
  ?>

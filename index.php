@@ -305,77 +305,32 @@ endif?>
 </section>
 <!--------------------------------PERDIDOS----------------------------------------->
 <section class="carousel-wrapper " id="perdidas">
+                
             <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": true }'>
-                <div class="carousel-cell ">
-                    <h3>
-                        Product 2
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
-                    </p>
-                    <img src="https://via.placeholder.com/350x350?text=1"/>
-                    <div>
-                        <span>
-                            22/08/2018
-                        </span>
+                <?php foreach (Denuncia::denuncias() as $elemento): ?>
+                    <?php if ($elemento['resuelta']==1):continue; endif ?>
+                        <?php $user = Usuario::GetUsuario($elemento['id_usuario']) ?>
+                    <div class="carousel-cell ">
+                        <h3>
+                            <?php echo "Denuncia ".$elemento['id'] ?>
+                        </h3>
+                        <p>
+                            <?php echo $elemento['descripcion'] ?>
+                    <br>
+                            <?php echo "<strong>Direccion: </strong>".$elemento['direccion'] ?>
+                        </p>
+                        <?php if ($elemento['imagen']!=null): ?>
+                            <img src="data:image/jpg;base64,<?php echo base64_encode($elemento['imagen'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/>
+                        <?php else: ?>
+                            <img src="https://via.placeholder.com/350x350?text=1"/>
+                        <?php endif ?> <?php echo $user['nombre'] ?>
+                        <div>
+                            <span>
+                            <?php echo $elemento['fecha'] ?>
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-cell">
-                    <h3>
-                        Product 2
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
-                    </p>
-                    <img src="https://via.placeholder.com/350x350?text=2"/>
-                    <div>
-                        <span>
-                            22/08/2018
-                        </span>
-                    </div>
-                </div>
-                <div class="carousel-cell">
-                    <h3>
-                        Product 2
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
-                    </p>
-                    <img src="https://via.placeholder.com/350x350?text=2"/>
-                    <div>
-                        <span>
-                            22/08/2018
-                        </span>
-                    </div>
-                </div>
-                <div class="carousel-cell">
-                    <h3>
-                        Product 2
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
-                    </p>
-                    <img src="https://via.placeholder.com/350x350?text=3"/>
-                    <div>
-                        <span>
-                            22/08/2018
-                        </span>
-                    </div>
-                </div>
-                <div class="carousel-cell">
-                    <h3>
-                        Product 2
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
-                    </p>
-                    <img src="https://via.placeholder.com/350x350?text=4"/>
-                    <div>
-                        <span>
-                            22/08/2018
-                        </span>
-                    </div>
-                </div>
+                <?php endforeach ?>
             </div>
 
     </section>
@@ -502,12 +457,12 @@ function igual(e){
     if (tecla==8){
         return true;
     }
-    valido=document.getElementById('ContraOk');
-    if(document.getElementById('contra_registro').value == document.getElementById('confirm_contra').value){
-        valido.innerText = "Coinciden";
-    }else{
-        valido.innerText = "No Coinciden";
-    }
+    // valido=document.getElementById('ContraOk');
+    // if(document.getElementById('contra_registro').value == document.getElementById('confirm_contra').value){
+    //     valido.innerText = "Coinciden";
+    // }else{
+    //     valido.innerText = "No Coinciden";
+    // }
 }
 </script>
 
