@@ -390,7 +390,7 @@ endif?>
                         <h3 class="text-primary">
                             I WANT A PET
                         </h3>
-                        <img src="img/logo2.png" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_pet">
+                        <img src="img/logo1.jpg" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_pet">
                         <br><br>
                         <p class="text-info text-center">si vamos a poner algo de texto.</p>
 
@@ -402,11 +402,12 @@ endif?>
                         <center><div class="author info text-info">
                             <p class="text-center">
                                 <h5 class="text-primary"><i class="fa fa-users text-primary"> </i> integrantes:</h5>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7>
 
+                                <h7><i class="fa fa-user-circle"></i> Alexander Villaneda</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> Camilo Pelaez</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> Camilo Tapasco</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> Ricardo</h7>
+                                
                             </p>
                         </div>
                         </center>
