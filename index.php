@@ -233,11 +233,9 @@ endif?>
                     <i class="fa fa-4x fa-handshake-o text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
-<<<<<<< HEAD
-                       <a href="#" data-target="#loginModal" data-toggle="modal">en Domicilios</a>
-=======
+
                        <a href="#" data-toggle="modal" data-target=<?php echo $var ?>> en Domicilios</a>
->>>>>>> master
+
                     </h3>
 
                     <p class="text-muted mb-0">
