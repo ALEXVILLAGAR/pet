@@ -5,7 +5,6 @@
     $pet       = new Mascota($element['id']);
     $fundacion = $pet->perteneceA();
     ?>
-
                                                 <div class="animal white-panel">
                                                     <h3 href="#Nombre2" id="NombreMas">
                                                         <?php echo $pet->mascota['nombre'] ?>
@@ -20,16 +19,20 @@
                                             <label aria-label="like" for="toggle-heart">
                                                 ❤
                                             </label> -->
-                                    <button class="btn btn-success"  href="#" data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito".$element['id'] ?> type="button">
-                                        me gusta <span class="fa fa-heart mb-2 sr-icons"></span>
-                                    </button>
+
+        <form action="/pet/ruta.php?variable=agregarFav" method="post" accept-charset="utf-8">
+          <input type="hidden" name="id_pet" value="<?php echo $element['id']  ?>">
+          
+            <button  type="submit" class="btn btn-success">Me gusta ❤</button>
+        </form>
 
                                 <?php else: ?>
 
-                                    <button class="btn btn-danger"  href="#" data-toggle="modal" data-target=<?php echo "#MavisoSaveFavorito".$element['id'] ?> type="button">
-                                        no me gusta <span class="fa fa-heart mb-2 sr-icons"></span>
-                                    </button>
-
+        <form action="/pet/ruta.php?variable=agregarFav" method="post" accept-charset="utf-8">
+            <input type="hidden" name="id_pet" value="<?php echo $element['id']  ?>">
+          
+            <button  type="submit" class="btn btn-danger">No Me gusta</button>
+        </form>
                                 <?php endif?>
                                     
                                         <br>
@@ -38,8 +41,9 @@
                                         </a>
                                         <!-- Button to Open the Modal -->
 
-                                   
+
                                 <?php endif?>
+
                                     <button class="btn btn-info" data-target=<?php echo "#myModal" . $element['id'] ?> data-toggle="modal" type="button">
                                         Leer Mas
                                     </button>
@@ -69,8 +73,9 @@
                     </hr>
                 </div>
 
-    <!--              <script type="text/javascript">
+              <!-- <script type="text/javascript">
     var checkbox = document.getElementById('<?php //echo 'toggle-heart'.$element['id']?>');
+
     checkbox.addEventListener("change", function(){
             if(checkbox.checked){
                  $.ajax({
@@ -89,11 +94,10 @@
             });
         }
     },false);
-    </script> -->
+    </script>  -->
 
                 <?php endforeach?>
 
             </div>
         </div>
 
-   

@@ -28,7 +28,16 @@ class Denuncia
 		return $consulta;
 	}
 
-	// public function resolver()
+	public function resolver(){
+		$id=$_POST['id_denuncia'];
+	    mysqli_query(Conectar::conexion(),"UPDATE denuncia SET resuelta='1' WHERE id = '$id'") or die ('error');	
+          header('Location: '.$_SERVER['HTTP_REFERER'] );
+	}
+
+	public static function pendientes(){
+	    $consulta =  mysqli_query(Conectar::conexion(),"SELECT * FROM denuncia") or die ('error');
+		return $consulta;
+	}
 
 }
 

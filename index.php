@@ -13,7 +13,6 @@ require_once "ControlClass.php";
                         <title>
                             I Want A Pet
                         </title>
-        <link rel="shortcut icon" href="img/icono.png" type="image/x-icon  sizes="64x64">
 
                         <!-- Bootstrap core CSS -->
 
@@ -38,10 +37,16 @@ require_once "ControlClass.php";
                                 </link>
                             </link>
                         </link>
+
                     </meta>
                 </meta>
             </meta>
         </meta>
+        <link rel="shortcut icon" href="img/icono.png" type="image/x-icon  sizes="64x64">
+    <link href="https://unpkg.com/flickity@2.0/dist/flickity.min.css" rel="stylesheet">
+            <script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js">
+            </script>
+        </link>
     </head>
     <body id="page-top">
    
@@ -62,6 +67,11 @@ require_once "ControlClass.php";
                                 Nuestras mascotas
                             </a>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#portfolio">
+                                Nuestras mascotas
+                            </a>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#about">
                                 Fundaciones aliadas
@@ -74,8 +84,9 @@ require_once "ControlClass.php";
                         </li>
                       
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#perd">
-                                Máscotas Perdidas
+                            <a class="nav-link js-scroll-trigger" href="#perdidas">
+                                Mascotas Perdidas
+
                             </a>
                         </li>
                          <li class="nav-item">
@@ -219,7 +230,7 @@ if (SessionesPet::session_active()) {
     </div>
 </section>
 <!--------------------------------DONACION----------------------------------------->
-         <section id="services">
+<section id="services">
         <div class="row">
             <div class="col-lg-12 text-center py-2 text-xs-center">
                 <h2 class="section-heading">
@@ -231,10 +242,10 @@ if (SessionesPet::session_active()) {
         </div>
 
         <?php if (!SessionesPet::session_active()):
-                $var = "#loginModal";
-            else:
-                $var = "#newDonationM".$element['id'];
-        endif ?>
+    $var = "#loginModal";
+else:
+    $var = "#newDonationM" . $element['id'];
+endif?>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">
@@ -242,6 +253,7 @@ if (SessionesPet::session_active()) {
                     <i class="fa fa-4x fa-handshake-o text-primary mb-3 sr-icons">
                     </i>
                     <h3 class="mb-3">
+
 
                        <a href="#" data-toggle="modal" data-target=<?php echo $var ?>> en Domicilios</a> 
 
@@ -291,13 +303,39 @@ if (SessionesPet::session_active()) {
         </div>
     </div>
 </section>
+<!--------------------------------PERDIDOS----------------------------------------->
+<section class="carousel-wrapper " id="perdidas">
+                
+            <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": true }'>
+                <?php foreach (Denuncia::denuncias() as $elemento): ?>
+                    <?php if ($elemento['resuelta']==1):continue; endif ?>
+                        <?php $user = Usuario::GetUsuario($elemento['id_usuario']) ?>
+                    <div class="carousel-cell ">
+                        <h3>
+                            <?php echo "Denuncia ".$elemento['id'] ?>
+                        </h3>
+                        <p>
+                            <?php echo $elemento['descripcion'] ?>
+                    <br>
+                            <?php echo "<strong>Direccion: </strong>".$elemento['direccion'] ?>
+                        </p>
+                        <?php if ($elemento['imagen']!=null): ?>
+                            <img src="data:image/jpg;base64,<?php echo base64_encode($elemento['imagen'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/>
+                        <?php else: ?>
+                            <img src="https://via.placeholder.com/350x350?text=1"/>
+                        <?php endif ?> <?php echo $user['nombre'] ?>
+                        <div>
+                            <span>
+                            <?php echo $elemento['fecha'] ?>
+                            </span>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            </div>
 
-<!-- ------------------------Perdidos --------------------------------------------------------->
-<section class="bg-primary"  id="perd">
+    </section>
 
-   <?php include 'views/galerias/galeria_perdidos.php'?>
-   
-</section>
+
 
 <!--------------------------------CONTACTO----------------------------------------->
         <section class="bg-dark text-white" id="contact">
@@ -307,11 +345,11 @@ if (SessionesPet::session_active()) {
                         <h3 class="text-primary">
                             I WANT A PET
                         </h3>
-                        <img src="img/logo2.png" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_pet">
+                        <img src="img/logo1.jpg" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_pet">
                         <br><br>
                         <p class="text-info text-center">si vamos a poner algo de texto.</p>
-                        
-                        
+
+
                     </div>
                     <div class="col-lg-4 ml-auto text-center">
                         <h2 class="text-primary">desarrolado por:</h2>
@@ -319,10 +357,11 @@ if (SessionesPet::session_active()) {
                         <center><div class="author info text-info">
                             <p class="text-center">
                                 <h5 class="text-primary"><i class="fa fa-users text-primary"> </i> integrantes:</h5>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7>
+
+                                <h7><i class="fa fa-user-circle"></i> Alexander Villaneda</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> Camilo Pelaez</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> Camilo Tapasco</h7><br>
+                                <h7><i class="fa fa-user-circle"></i> Ricardo</h7>
                                 
                             </p>
                         </div>
@@ -393,13 +432,12 @@ if (SessionesPet::session_active()) {
         <script src="js/main.js">
         </script>
         <script src="js/login-register.js" type="text/javascript"></script>
-
        
         <?php include 'views/donar.php'?>
         <?php include 'views/login/login.php'?>
          <?php include 'views/login/loginF.php'?>
 
-        <!--<?php include 'views/login/login.html'?>-->
+        <!--<?php //include 'views/login/login.html'?>-->
 
 
     <script>
@@ -419,12 +457,12 @@ function igual(e){
     if (tecla==8){
         return true;
     }
-    valido=document.getElementById('ContraOk');
-    if(document.getElementById('contra_registro').value == document.getElementById('confirm_contra').value){
-        valido.innerText = "Coinciden";
-    }else{
-        valido.innerText = "No Coinciden";
-    }
+    // valido=document.getElementById('ContraOk');
+    // if(document.getElementById('contra_registro').value == document.getElementById('confirm_contra').value){
+    //     valido.innerText = "Coinciden";
+    // }else{
+    //     valido.innerText = "No Coinciden";
+    // }
 }
 </script>
 

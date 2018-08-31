@@ -6,6 +6,7 @@ if (!(SessionesPet::session_active())) {
     exit;
 }
 
+
 $user =new Usuario();
 if(!$user->authorizacion('admi')){
     include '../../error.php';
@@ -23,7 +24,10 @@ if(!$user->authorizacion('admi')){
                        <title>
                             I Want A Pet
                         </title>
+
                         <link href="../../img/icon.png" rel="shortcut icon"/>
+
+
                         <!-- Bootstrap core CSS -->
                         <link href="../../css/estilos.css" rel="stylesheet">
                             <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

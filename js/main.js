@@ -84,3 +84,11 @@ function validar_clave() {
                 alert('checkbox esta seleccionado'); >>> >>> > lider / master
             }
         }
+        // var checkbox = document.getElementById('like');
+        // checkbox.addEventListener("change", validaCheckbox, false);
+        // function validaCheckbox() {
+        //     var checked = checkbox.checked;
+        //     if (checked) {
+        //         alert('checkbox esta seleccionado');
+        //     }
+        // }
