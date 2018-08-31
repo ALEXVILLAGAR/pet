@@ -142,6 +142,7 @@ class Fundacion
 		header('Location: '.$_SERVER['HTTP_REFERER'] );
 	}
 
+
 	public function mis_preguntas(){//retorna todas las preguntas frecuentes que tiene una fundacion.
 		$fundacion = $this->fundacion;
 		$resultado = mysqli_query($this->db, "SELECT * FROM preguntas WHERE id_fundacion = '$fundacion[id]' " ) or die ( "Algo ha ido mal en la consulta a la base de datos");

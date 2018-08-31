@@ -7,6 +7,7 @@ $(document).ready(function() {
         single_column_breakpoint: 900
     });
 });
+/*carousel perdidos*/
 /*------tabla-------------------------------------------------------*/
 $(document).ready(function() {
     // Activate tooltip
@@ -49,11 +50,6 @@ $(document).ready(function() {
     });
 });
 /*------------CORAZON FAV----------*/
-$(function() {
-    $(".heart").on("click", function() {
-        $(this).toggleClass("heart-blast");
-    });
-});
 /*----------CAMBIO PASSWORD--------*/
 function validar_clave() {
     var caract_invalido = " ";
@@ -79,5 +75,12 @@ function validar_clave() {
             alert('Contraeña correcta');
             return true;
         }
-    }
-}
+        var checkbox = document.getElementById('like');
+        checkbox.addEventListener("change", validaCheckbox, false);
+
+        function validaCheckbox() {
+            var checked = checkbox.checked;
+            if (checked) {
+                alert('checkbox esta seleccionado'); >>> >>> > lider / master
+            }
+        }

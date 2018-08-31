@@ -2,9 +2,12 @@
 
 <section>
     <div class="container py-3">
-        <div class="card" style="z-index: -1;">
-            <div class="row ">
-                   <?php foreach ($user->mis_denuncias() as $element): ?>
+         <?php foreach ($user->mis_denuncias() as $element): ?>
+            <br><br>
+        <div class="card    border border-dark" >
+            
+            <div class="row espacio1">
+                  
 
                 <div class="col-md-4">
                     <?php if ($element['imagen']!=null): ?>
@@ -26,16 +29,17 @@
                         <p class="card-text">
                             Duis aute irure sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
-                        <form action="../../ruta.php?variable=resolver_denuncia" method="get" accept-charset="utf-8">
+                        
+                    </div>
+                       <form action="../../ruta.php?variable=resolver_denuncia" method="POST" accept-charset="utf-8">
                             <input type="hidden" name="id_denuncia" value="<?php echo $element['id'] ?>">
                             <button type="submit" class="btn btn-primary"> resuelta </button>
                         </form>
-                    </div>
-
                 </div>
-                <?php endforeach ?> 
-            </div>
-        </div>
+                
+            </div> 
+           
+        </div><?php endforeach ?> 
         <div class="espacio1">
         </div>
         <!--         <br>
