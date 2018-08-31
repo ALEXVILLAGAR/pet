@@ -17,7 +17,9 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                         <title>
                             I Want A Pet
                         </title>
+
                         <link href="../../img/icon.png" rel="shortcut icon"/>
+
                         <!-- Bootstrap core CSS -->
                         <link href="../../css/estilos.css" rel="stylesheet">
                             <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -144,7 +146,7 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                                     Donaciones
                                 </span>
                                 <span class="badge badge-pill badge-primary">
-                                    3
+                                    <?php echo mysqli_num_rows($fundacion->mis_donaciones()); ?>
                                 </span>
                             </a>
                             <div class="sidebar-submenu">
@@ -157,6 +159,7 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                                    </ul>
                             </div>
                         </li>
+<<<<<<< HEAD
 
                         <li class="">
                             <a href="..\..\index.php" >
@@ -168,6 +171,9 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                             </a>
                         </li>
 
+=======
+
+>>>>>>> master
                 <!-- sidebar-menu  -->
 
                           <li class="sidebar-dropdown">
@@ -192,6 +198,47 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fas fa-question">
+                                </i>
+                                <span>
+                                    preguntas frecuentes
+                                </span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="..\fundacion\preguntas_fundacion.php">
+                                            ver todas
+                                        </a>
+                                    </li>
+                                    <li >
+                                        <a href="#" data-toggle="modal" data-target="#Mhacer_nueva_pregunta">
+                                             ingresar nueva
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="">
+                            <a href="#" >
+                                <i class="fas fa-address-card">
+                                </i>
+                                <span>
+                                    Ver denuncias
+                                </span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="..\..\index.php" >
+                                <i class="fas fa-arrow-alt-circle-left">
+                                </i>
+                                <span>
+                                    Inicio
+                                </span>
+                            </a>
                         </li>
                      </ul>
                 </div>
@@ -222,4 +269,9 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                 </div>
             </div>
         </nav>
+<<<<<<< HEAD
         <?php include '..\modal\Mcerrar_sesion.php';?>
+=======
+        <?php include '..\modal\Mcerrar_sesion.php';?>
+        <?php include '..\modal\Mhacer_nueva_pregunta.php'?>
+>>>>>>> master
