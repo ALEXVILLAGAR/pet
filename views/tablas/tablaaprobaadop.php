@@ -59,18 +59,18 @@
                     <!-- Aceptar Modal HTML -->
 	<div id=<?php echo "aceptarEmployeeModal".$element['id']?> class="modal fade">
 		<div class="modal-dialog">
-			<div class="modal-content">
-					<div class="modal-header">
+			<div class="modal-content border border-success">
+					<div class="modal-header bg-dark text-white">
 						<h4 class="modal-title">Aceptar Solicitud de <?php echo $usuario['nombre'] ?></h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<button type="button" class="close bg-danger" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p>La mascota <?php echo $pet->mascota['nombre'] ?> sera adoptada por <?php echo $usuario['nombre'] ?> .</p>
-						<p class="text-info"><small>Se enviara un email a la fundación para notificarla.</small></p>
+						<h5 class="text-center text-info">La mascota <?php echo $pet->mascota['nombre'] ?> sera adoptada por <?php echo $usuario['nombre'] ?>.</h5>
+						<h6 class="text-warning text-center"><small>Se enviara un email a la fundación para notificarla.</small></h6>
 
 					</div>
 
-					<div class="modal-footer">
+					<div class="modal-footer bg-secondary">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
 						<form action="../../ruta.php?variable=darmascota" method="post">
 							<input type="hidden" name="id_mascota" value="<?php echo $pet->mascota['id']?>">
@@ -85,20 +85,20 @@
 	<!-- Delete Modal HTML -->
 	<div id="<?php echo "deleteEmployeeModal".$element['id']?>" class="modal fade">
 		<div class="modal-dialog">
-			<div class="modal-content">
-					<div class="modal-header">
+			<div class="modal-content border border-danger">
+					<div class="modal-header bg-dark text-white">
 						<h4 class="modal-title">Cancelar Solicitud de la mascota <?php echo $pet->mascota['nombre'] ?></h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<button type="button" class="close bg-danger" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p>¿Seguro que quieres cancelar la solicitud de esta fundación?</p>
-						<p class="text-warning"><small>Se enviara un email a la fundación para notificarla.</small></p>
+						<h5 class="text-info text-center">¿Seguro que quieres cancelar la solicitud de esta fundación?</h5>
+						<p class="text-warning text-center"><small>Se enviara un email a la fundación para notificarla.</small></p>
 						<div class="form-group">
-							<label>Comentarios</label>
-							<textarea placeholder="Agrege aqui la razón para negar la solicitud"	class="form-control" maxlength="65525" required="required"></textarea>
+							<label class="text-danger">agregar un comentario:</label>
+							<textarea placeholder="Agrege aqui la razón porque negar la solicitud"	class="form-control" maxlength="65525" required="required"></textarea>
 						</div>
 					</div>
-					<div class="modal-footer">
+					<div class="modal-footer bg-secondary">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">
 						<form action="../../ruta.php?variable=negar_adopcion" method="POST">
 							<input type="hidden" name="id_mascota" value="<?php echo $pet->mascota['id']?>">

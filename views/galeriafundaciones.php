@@ -22,11 +22,11 @@
                                     </button>
                                     
                                 <!-- Button to Open the Modal -->
-                                <button class="btn btn-info" data-target="<?php echo "#newDonationM".$element['id'] ?>" data-toggle="modal" type="button">
+                          <!--       <button class="btn btn-info" data-target="<?php //echo "#newDonationM".$element['id'] ?>" data-toggle="modal" type="button">
                                     Donar
-                                </button>
+                                </button> -->
                                 <!-- The Modal -->
-                                <?php include 'donar.php' ?>
+                                <!-- <?php //include 'modal/Mdonar_fundacion.php' ?> -->
                                 <?php include 'galerias/leermasGalerias.php' ?>
                             </p>
                         </div>

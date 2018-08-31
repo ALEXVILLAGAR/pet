@@ -4,7 +4,6 @@
             foreach($user->mis_favoritos() as $element): 
                     $pet = new Mascota($element['id_mascota']);
                     $fundacion = $pet->perteneceA();
-                    if ($pet->mascota['solicitud']!=null) continue;
                 ?>
     <div class="card border-danger rounded-right" style="z-index: ">
         <div class="row ">
@@ -34,9 +33,11 @@
                                     Fundación: <?php echo $fundacion['nombre'] ?>
                                 </li>
                                 <br>
-                               <?php if (!$pet->EnProceso($user->usuario['id'])): ?>
+
+                            <?php if ($pet->mascota['solicitud']==null) : ?>
                                 <a class="btn btn-success" align="left" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota".$element['id'] ?> >Quiero adoptarla</a>
-                               <?php endif ?>
+                            <?php endif ?>
+
                             </ul>
                             
                         </div>
@@ -45,7 +46,9 @@
 
             </div>
 
-        </div><br><?php include 'galerias/ConfirmarAdopcion.php';?> <?php endforeach?>
+        </div><br><?php include 'galerias/ConfirmarAdopcion.php';?> 
+
+    <?php endforeach ?>
 
 </div>
 

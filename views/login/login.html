@@ -1,5 +1,5 @@
 <script>
-function loginAjax(email, clave) {
+    function loginAjax(email, clave) {
     var parametros = {"correo" : email,
     "clave": clave};
     if(parametros["correo"]!="" && parametros["clave"]!=""){
@@ -47,7 +47,6 @@ function loginAjaxF(email, clave) {
     }
 }
 </script>
-
 <!-- Modal -->
 <div class="modal fade login" id="loginModal">
     <div class="modal-dialog login animated">
@@ -75,15 +74,15 @@ function loginAjaxF(email, clave) {
                         </div>
                         <div class="form loginBox lbU" id="loginBoxU">
                             <!-- <form accept-charset="UTF-8" action="ruta.php?variable=login" method="post"> -->
-                                <input autofocus="autofocus" class="form-control mx-auto" id="correo_login" name="correo" placeholder="Correo" type="email" required>
-                                </input>
-                                <input autofocus="autofocus" class="form-control mx-auto" id="password_login" name="clave" placeholder="Contraseña" type="password" required>
-                                </input>
-                                <div class="espacio1">
-                                </div>
-                                <input class="btn btn-default btn-login" type="submit" value="Inicio Sesión" onclick="loginAjax($('#correo_login').val(),$('#password_login').val())">
-                                    <!-- href="user.php"  -->
-                                </input>
+                            <input autofocus="autofocus" class="form-control mx-auto" id="correo_login" name="correo" placeholder="Correo" required="" type="email">
+                            </input>
+                            <input autofocus="autofocus" class="form-control mx-auto" id="password_login" name="clave" placeholder="Contraseña" required="" type="password">
+                            </input>
+                            <div class="espacio1">
+                            </div>
+                            <input class="btn btn-default btn-login" onclick="loginAjax($('#correo_login').val(),$('#password_login').val())" type="submit" value="Inicio Sesión">
+                                <!-- href="user.php"  -->
+                            </input>
                             <!-- </form> -->
                         </div>
                     </div>
@@ -221,15 +220,15 @@ function loginAjaxF(email, clave) {
                         </div>
                         <div class="form loginBox lbF">
                             <!-- <form accept-charset="UTF-8" action="ruta.php?variable=login_fundacion" method="post"> -->
-                                <input autofocus="autofocus" class="form-control mx-auto" id="email_fundacion" name="correo" placeholder="Correo" required="" type="text">
-                                </input>
-                                <input autofocus="autofocus" class="form-control mx-auto" id="password_fundacion" name="clave" placeholder="clave" required="" type="password">
-                                </input>
-                                <div class="espacio1">
-                                </div>
-                                <input class="btn btn-default btn-login" type="submit" value="Inicio Sesión" onclick="loginAjaxF($('#email_fundacion').val(),$('#password_fundacion').val())">
-                                    <!-- onclick="loginAjax()" -->
-                                </input>
+                            <input autofocus="autofocus" class="form-control mx-auto" id="email_fundacion" name="correo" placeholder="Correo" required="" type="text">
+                            </input>
+                            <input autofocus="autofocus" class="form-control mx-auto" id="password_fundacion" name="clave" placeholder="clave" required="" type="password">
+                            </input>
+                            <div class="espacio1">
+                            </div>
+                            <input class="btn btn-default btn-login" onclick="loginAjaxF($('#email_fundacion').val(),$('#password_fundacion').val())" type="submit" value="Inicio Sesión">
+                                <!-- onclick="loginAjax()" -->
+                            </input>
                             <!-- </form> -->
                         </div>
                     </div>
@@ -258,34 +257,33 @@ function loginAjaxF(email, clave) {
                 <div class="content registerBox rbF" style="display:none;">
                     <div class="form">
                         <form accept-charset="UTF-8" action="ruta.php?variable=registro_fundacion" data-remote="true" html="{:multipart=>true}" method="post">
-                            <input class="form-control mx-auto" id="email" name="email" placeholder="Correo" type="email" required>
-                                <input class="form-control mx-auto" id="nombre" name="nombre" placeholder="Nombre" type="text" required>
-                                        <input class="form-control mx-auto" id="telefono" name="telefono" placeholder="Telefono" type="text" required>
-                                            <input class="form-control mx-auto" id="direccion" name="direccion" placeholder="Dirección" type="text" required>
-                                                <input class="form-control mx-auto" id="password" name="password" placeholder="Contraseña" type="password" required>
-                                                    <input class="form-control mx-auto" id="password_confirmation" name="Confirma_Contraseña" placeholder="Confirmar_Contraseña" type="password" required>
-                                                        <div class="espacio1">
-                                                        </div>
-                                                        <input class="btn btn-default btn-register" name="commit" type="submit" value="Crea Tu Cuenta">
-                                                        </input>
-                                                        <div class="forgot register-footer rfF" id="register-footerF" style="display:none">
-                                                            <span class="custom-checkbox">
-                                                                <input id="checkbox1" name="options[]" required="" type="checkbox" value="1">
-                                                                    <label for="checkbox1">
-                                                                        Acepta
-                                                                    </label>
-                                                                </input>
-                                                            </span>
-                                                            <a data-target="#exampleModalLongF" data-toggle="modal" href="#">
-                                                                Terminos y Condiciones
-                                                            </a>
-                                                        </div>
+                            <input class="form-control mx-auto" id="email" name="email" placeholder="Correo" required="" type="email">
+                                <input class="form-control mx-auto" id="nombre" name="nombre" placeholder="Nombre" required="" type="text">
+                                    <input class="form-control mx-auto" id="telefono" name="telefono" placeholder="Telefono" required="" type="text">
+                                        <input class="form-control mx-auto" id="direccion" name="direccion" placeholder="Dirección" required="" type="text">
+                                            <input class="form-control mx-auto" id="password" name="password" placeholder="Contraseña" required="" type="password">
+                                                <input class="form-control mx-auto" id="password_confirmation" name="Confirma_Contraseña" placeholder="Confirmar_Contraseña" required="" type="password">
+                                                    <div class="espacio1">
+                                                    </div>
+                                                    <input class="btn btn-default btn-register" name="commit" type="submit" value="Crea Tu Cuenta">
                                                     </input>
+                                                    <div class="forgot register-footer rfF" id="register-footerF" style="display:none">
+                                                        <span class="custom-checkbox">
+                                                            <input id="checkbox1" name="options[]" required="" type="checkbox" value="1">
+                                                                <label for="checkbox1">
+                                                                    Acepta
+                                                                </label>
+                                                            </input>
+                                                        </span>
+                                                        <a data-target="#exampleModalLongF" data-toggle="modal" href="#">
+                                                            Terminos y Condiciones
+                                                        </a>
+                                                    </div>
                                                 </input>
                                             </input>
-                                            <div class="espacio">
-                                            </div>
                                         </input>
+                                        <div class="espacio">
+                                        </div>
                                     </input>
                                 </input>
                             </input>

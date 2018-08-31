@@ -6,10 +6,10 @@ if (!(SessionesPet::session_active())) {
     exit;
 }
 
-$user = new Usuario();
-if (!$user->authorizacion('admi')) {
-    include '../../error.html';
 
+$user =new Usuario();
+if(!$user->authorizacion('admi')){
+    include '../../error.php';
     exit;
 }
 ?>
@@ -26,6 +26,7 @@ if (!$user->authorizacion('admi')) {
                         </title>
 
                         <link href="../../img/icon.png" rel="shortcut icon"/>
+
 
                         <!-- Bootstrap core CSS -->
                         <link href="../../css/estilos.css" rel="stylesheet">

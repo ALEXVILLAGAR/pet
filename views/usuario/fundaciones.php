@@ -3,7 +3,7 @@
  ?>
         <!-- sidebar-wrapper  -->
         <section class="bg-faded page-content" >
-             <?php include '../donar.php'?>
+             <!-- <?php// include' ../modal/Mdonar_fundacion.php'?> -->
             <?php include '../galeriafundaciones.php'?>
             
         </section>

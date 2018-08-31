@@ -5,23 +5,36 @@
     $pet       = new Mascota($element['id']);
     $fundacion = $pet->perteneceA();
     ?>
+                                                <div class="animal white-panel">
+                                                    <h3 href="#Nombre2" id="NombreMas">
+                                                        <?php echo $pet->mascota['nombre'] ?>
+                                                    </h3>
+                                                    <hr>
+                                                         <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto']) ?> " width="250"/>
+                                                            <div class="animal-info panel">
 
-                                                    <div class="animal white-panel">
-                                                        <h3 href="#Nombre2" id="NombreMas">
-                                                            <?php echo $pet->mascota['nombre'] ?>
-                                                        </h3>
-                                                        <hr>
-                                                             <img src="data:image/jpg;base64,<?php echo base64_encode($element['foto']) ?> " width="250"/>
-                                                                <div class="animal-info panel">
+                            <?php if (isset($vistauser) && Control::botonesGaleria()): ?>
+                                <?php if (!$pet->MePrefiere(SessionesPet::session_info()['id'])): ?>
+                                          <!-- <input id="<?php //echo 'toggle-heart'.$element['id']?>" type="checkbox"/>
+                                            <label aria-label="like" for="toggle-heart">
+                                                ❤
+                                            </label> -->
 
-                                    <?php if (isset($vistauser) && Control::botonesGaleria()): ?>
-                                        <?php if (!$pet->MePrefiere(SessionesPet::session_info()['id'])): ?>
-                                              <input id="<?php echo 'toggle-heart' . $element['id'] ?>" type="checkbox"/>
-                                                <label aria-label="like" for="toggle-heart">
-                                                    ❤
-                                                </label>
-                                        <?php endif?>
+        <form action="/pet/ruta.php?variable=agregarFav" method="post" accept-charset="utf-8">
+          <input type="hidden" name="id_pet" value="<?php echo $element['id']  ?>">
+          
+            <button  type="submit" class="btn btn-success">Me gusta ❤</button>
+        </form>
 
+                                <?php else: ?>
+
+        <form action="/pet/ruta.php?variable=agregarFav" method="post" accept-charset="utf-8">
+            <input type="hidden" name="id_pet" value="<?php echo $element['id']  ?>">
+          
+            <button  type="submit" class="btn btn-danger">No Me gusta</button>
+        </form>
+                                <?php endif?>
+                                    
                                         <br>
                                         <a class="btn btn-primary" href="#" data-toggle="modal" data-target=<?php echo "#reservar_mascota" . $element['id'] ?> >
                                             Adoptar
@@ -43,15 +56,16 @@
                                         <button class="btn btn-warning" data-target=<?php echo "#Mcancelar_adopcion" . $element['id'] ?> data-toggle="modal" type="button">
                                             cancelar Solicitud.
                                         </button>
-
-                                    <?php include '..\modal\Mcancelar_adopcion.php';?>
-                                <?php endif?>
-
+                                        
+                                    <?php include '..\modal\Mcancelar_adopcion.php'; ?>
+                                    <?php endif ?> 
+                                    
                                     <!-- The Modal -->
-                                    <?php include 'leermas.php';?>
-                                    <?php include 'ConfirmarAdopcion.php';?>
-                                    <!-- <?php// include 'MavisoSaveFavorito.php';?> -->
-                                     <?php include 'Mestado_Adopcion.php';?>
+                                    <?php include 'leermas.php'; ?>
+                                    <?php include 'ConfirmarAdopcion.php'; ?>
+                                    <?php include 'MavisoSaveFavorito.php'; ?>
+                                     <?php include 'Mestado_Adopcion.php'; ?>
+
 
                                 </p>
                             </div>
@@ -59,12 +73,13 @@
                     </hr>
                 </div>
 
-                 <script type="text/javascript">
-    var checkbox = document.getElementById('<?php echo 'toggle-heart' . $element['id'] ?>');
+              <!-- <script type="text/javascript">
+    var checkbox = document.getElementById('<?php //echo 'toggle-heart'.$element['id']?>');
+
     checkbox.addEventListener("change", function(){
             if(checkbox.checked){
                  $.ajax({
-                url: '/pet/ruta.php?variable=agregarFav&&id_mascota=<?php echo $element['id'] ?>',
+                url: '/pet/ruta.php?variable=agregarFav&&id_mascota=<?php //echo $element['id'] ?>',
                 type: 'get',
                 success: function(response){
                     if(response){
@@ -79,7 +94,7 @@
             });
         }
     },false);
-    </script>
+    </script>  -->
 
                 <?php endforeach?>
 

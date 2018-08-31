@@ -20,6 +20,7 @@ require_once "ControlClass.php";
                         <link rel="stylesheet" href="css/heart.css">
                             <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
                                 <!-- Custom fonts for this template -->
+                                <link id="template-file" href="views/galerias/perdidos.html" rel="import" />
                                 <link href="css/login-register.css" rel="stylesheet"/>
                                 <link href="css/login-registerF.css" rel="stylesheet"/>
                                 <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -48,6 +49,7 @@ require_once "ControlClass.php";
         </link>
     </head>
     <body id="page-top">
+   
 <!--------------------------------NAV------------------------------------------>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
@@ -60,28 +62,34 @@ require_once "ControlClass.php";
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#portfolio">
                                 Nuestras mascotas
                             </a>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#portfolio">
+                                Nuestras mascotas
+                            </a>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#about">
                                 Fundaciones aliadas
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#services">
                                 Donar
                             </a>
                         </li>
+                      
                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#perdidas">
                                 Mascotas Perdidas
+
                             </a>
                         </li>
-                        <li class="nav-item">
+                         <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" href="#contact">
                                 Contacto
                             </a>
@@ -160,6 +168,7 @@ if (SessionesPet::session_active()) {
         <section class="bg-dark" id="about" >
 
     <div class="container">
+
         <div class="row text-center">
             <div class="col-lg-12">
 
@@ -245,7 +254,8 @@ endif?>
                     </i>
                     <h3 class="mb-3">
 
-                       <a href="#" data-toggle="modal" data-target=<?php echo $var ?>> en Domicilios</a>
+
+                       <a href="#" data-toggle="modal" data-target=<?php echo $var ?>> en Domicilios</a> 
 
                     </h3>
 
@@ -295,80 +305,36 @@ endif?>
 </section>
 <!--------------------------------PERDIDOS----------------------------------------->
 <section class="carousel-wrapper " id="perdidas">
+                
             <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": true }'>
-                <div class="carousel-cell ">
-                    <h3>
-                        Product 2
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
-                    </p>
-                    <img src="https://via.placeholder.com/350x350?text=1"/>
-                    <div>
-                        <span>
-                            22/08/2018
-                        </span>
+                <?php foreach (Denuncia::denuncias() as $elemento): ?>
+                    <?php if ($elemento['resuelta']==1):continue; endif ?>
+                        <?php $user = Usuario::GetUsuario($elemento['id_usuario']) ?>
+                    <div class="carousel-cell ">
+                        <h3>
+                            <?php echo "Denuncia ".$elemento['id'] ?>
+                        </h3>
+                        <p>
+                            <?php echo $elemento['descripcion'] ?>
+                    <br>
+                            <?php echo "<strong>Direccion: </strong>".$elemento['direccion'] ?>
+                        </p>
+                        <?php if ($elemento['imagen']!=null): ?>
+                            <img src="data:image/jpg;base64,<?php echo base64_encode($elemento['imagen'])?> " class="mx-auto img-fluid img-circle d-block" alt="Avatar"/>
+                        <?php else: ?>
+                            <img src="https://via.placeholder.com/350x350?text=1"/>
+                        <?php endif ?> <?php echo $user['nombre'] ?>
+                        <div>
+                            <span>
+                            <?php echo $elemento['fecha'] ?>
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-cell">
-                    <h3>
-                        Product 2
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
-                    </p>
-                    <img src="https://via.placeholder.com/350x350?text=2"/>
-                    <div>
-                        <span>
-                            22/08/2018
-                        </span>
-                    </div>
-                </div>
-                <div class="carousel-cell">
-                    <h3>
-                        Product 2
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
-                    </p>
-                    <img src="https://via.placeholder.com/350x350?text=2"/>
-                    <div>
-                        <span>
-                            22/08/2018
-                        </span>
-                    </div>
-                </div>
-                <div class="carousel-cell">
-                    <h3>
-                        Product 2
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
-                    </p>
-                    <img src="https://via.placeholder.com/350x350?text=3"/>
-                    <div>
-                        <span>
-                            22/08/2018
-                        </span>
-                    </div>
-                </div>
-                <div class="carousel-cell">
-                    <h3>
-                        Product 2
-                    </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, esse.
-                    </p>
-                    <img src="https://via.placeholder.com/350x350?text=4"/>
-                    <div>
-                        <span>
-                            22/08/2018
-                        </span>
-                    </div>
-                </div>
+                <?php endforeach ?>
             </div>
 
     </section>
+
 
 
 <!--------------------------------CONTACTO----------------------------------------->
@@ -379,24 +345,17 @@ endif?>
                         <h3 class="text-primary">
                             I WANT A PET
                         </h3>
-                        <img src="img/logo2.png" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_pet">
+                        <img src="img/icon.png" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_pet">
                         <br><br>
-                        <p class="text-info text-center">si vamos a poner algo de texto.</p>
+                        
 
 
                     </div>
                     <div class="col-lg-4 ml-auto text-center">
-                        <h2 class="text-primary">desarrolado por:</h2>
-                        <img src="img/logo_prisma.jpg" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_prisma">
+                        <h2 class="text-primary">Desarrolado por:</h2>
+                        <img src="img/logo_prisma.png" class=".img-fluid  col-md-8 col-md-offset-3"   alt="logo_prisma">
                         <center><div class="author info text-info">
-                            <p class="text-center">
-                                <h5 class="text-primary"><i class="fa fa-users text-primary"> </i> integrantes:</h5>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7><br>
-                                <h7><i class="fa fa-user-circle"></i> integrante</h7>
-
-                            </p>
+                            
                         </div>
                         </center>
                     </div>
@@ -430,14 +389,15 @@ endif?>
                                 </a>
                             </li>
                         </ul>
-                        <h3>
-                            Escribenos
-                        </h3>
-                        <i class="fa fa-at">
-                            <a href="#">
-                                camilogmz95@gmail.com
-                            </a>
-                        </i>
+                        <p class="text-left">
+                                <h4 class="text-primary"><i class="fa fa-users text-primary"> </i> Integrantes:</h4>
+
+                                <h7> Alexander Villaneda</h7><br>
+                                <h7></i> Camilo Pelaez</h7><br>
+                                <h7> Camilo Tapasco</h7><br>
+                                <h7></i> Ricardo Clavijo</h7>
+                                
+                            </p>
                     </div>
                 </div>
             </div>
@@ -465,10 +425,12 @@ endif?>
         <script src="js/main.js">
         </script>
         <script src="js/login-register.js" type="text/javascript"></script>
-        <?php include 'views/login/login.html'?>
-
+       
         <?php include 'views/donar.php'?>
+        <?php include 'views/login/login.php'?>
+         <?php include 'views/login/loginF.php'?>
 
+        <!--<?php //include 'views/login/login.html'?>-->
 
 
     <script>
@@ -488,12 +450,12 @@ function igual(e){
     if (tecla==8){
         return true;
     }
-    valido=document.getElementById('ContraOk');
-    if(document.getElementById('contra_registro').value == document.getElementById('confirm_contra').value){
-        valido.innerText = "Coinciden";
-    }else{
-        valido.innerText = "No Coinciden";
-    }
+    // valido=document.getElementById('ContraOk');
+    // if(document.getElementById('contra_registro').value == document.getElementById('confirm_contra').value){
+    //     valido.innerText = "Coinciden";
+    // }else{
+    //     valido.innerText = "No Coinciden";
+    // }
 }
 </script>
 
