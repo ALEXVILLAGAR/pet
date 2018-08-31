@@ -19,7 +19,10 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                         </title>
 
                         <link href="../../img/icon.png" rel="shortcut icon"/>
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
                         <!-- Bootstrap core CSS -->
                         <link href="../../css/estilos.css" rel="stylesheet">
                             <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -160,6 +163,9 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                             </div>
                         </li>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
 
                         <li class="">
                             <a href="..\..\index.php" >
@@ -170,9 +176,12 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
                                 </span>
                             </a>
                         </li>
+<<<<<<< HEAD
 
 =======
 
+>>>>>>> master
+=======
 >>>>>>> master
                 <!-- sidebar-menu  -->
 
@@ -270,8 +279,14 @@ if (!SessionesPet::session_active() || !$fundacion->is_fundacion()) {
             </div>
         </nav>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <?php include '..\modal\Mcerrar_sesion.php';?>
 =======
         <?php include '..\modal\Mcerrar_sesion.php';?>
         <?php include '..\modal\Mhacer_nueva_pregunta.php'?>
+>>>>>>> master
+=======
+        <?php include '..\modal\Mcerrar_sesion.php'; ?>
+        <?php include '..\modal\Mhacer_nueva_pregunta.php' ?>
+
 >>>>>>> master

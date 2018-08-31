@@ -52,7 +52,7 @@ switch ($variable) {
 		break;
 	case 'agregarFav':
 		$user = new Usuario();
-		$user->preferencia($_GET['id_mascota']);
+		$user->preferencia($_POST['id_pet']);
 		break;
 	case 'adoptar':
 		Mascota::reservar();

@@ -254,7 +254,8 @@ endif?>
                     </i>
                     <h3 class="mb-3">
 
-                       <a href="#" data-toggle="modal" data-target=<?php echo $var ?>> en Domicilios</a>
+
+                       <a href="#" data-toggle="modal" data-target=<?php echo $var ?>> en Domicilios</a> 
 
                     </h3>
 
@@ -475,15 +476,12 @@ endif?>
         <script src="js/main.js">
         </script>
         <script src="js/login-register.js" type="text/javascript"></script>
-<
+       
+        <?php include 'views/donar.php'?>
         <?php include 'views/login/login.php'?>
          <?php include 'views/login/loginF.php'?>
 
-        <!--<?php include 'views/login/login.html'?>-->
-
-
-        <?php include 'views/donar.php'?>
-
+        <!--<?php //include 'views/login/login.html'?>-->
 
 
     <script>
